@@ -1,6 +1,6 @@
-# Wordpress Project Starter
+# Wordpress Project Competitions
 
-A Wordpress project starter theme/process with Timber, UiKit, Sass, Gulp, Webpack & more.
+A Wordpress project competitions theme/process with Timber, UiKit, Sass, Gulp, Webpack & more.
 
 For XAMPP projects.
 
@@ -39,7 +39,7 @@ For XAMPP projects.
 
 3.
 
-        git clone https://github.com/robmccormack89/project-starter-wp.git
+        git clone https://github.com/robmccormack89/project-competitions-wp.git
 
 4. Rename folder of theme to whatever you like. You will need to rename other parts within theme using search/replace later. Steps for that are below.
 
@@ -75,17 +75,17 @@ For XAMPP projects.
 
 1. Rename theme folder
 
-2. Rename 'Starter' & 'starter' references in style.css
+2. Rename 'Competitions' & 'competitions' references in style.css
 
-3. Rename 'Starter' references in *.php file headers
+3. Rename 'Competitions' references in *.php file headers
 
-4. Rename 'Starter' & 'starter' references in: functions.php, theme-functions.php & timber-functions.php
+4. Rename 'Competitions' & 'competitions' references in: functions.php, theme-functions.php & timber-functions.php
 
-5. Rename 'Starter' & 'starter' references in uikit-html-widget.php
+5. Rename 'Competitions' & 'competitions' references in uikit-html-widget.php
 
-6. Rename 'starter' references in tease.twig, single.twig, no-sidebar-template.twig, left-sidebar-template.twig & right-sidebar-template.twig. Example:
+6. Rename 'competitions' references in tease.twig, single.twig, no-sidebar-template.twig, left-sidebar-template.twig & right-sidebar-template.twig. Example:
 
-        {{ post.thumbnail.src('starter-theme-featured-image-archive') }}
+        {{ post.thumbnail.src('competitions-theme-featured-image-archive') }}
 
 **Note:** Always use Match Case!
 

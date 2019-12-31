@@ -2,7 +2,7 @@
 /**
  * Timber theme class & other functions for Twig.
  *
- * @package Starter_Theme
+ * @package Competitions_Theme
  */
 
 // Define paths to Twig templates
@@ -15,8 +15,8 @@ Timber::$dirname = array(
   'views/footer',
 );
 
-// Define Starter_Theme Child Class
-class StarterTheme extends TimberSite
+// Define Competitions_Theme Child Class
+class CompetitionsTheme extends TimberSite
 {
     public function __construct()
     {
@@ -47,27 +47,27 @@ class StarterTheme extends TimberSite
         // Register widget areas
         if (function_exists('register_sidebar')) {
           register_sidebar(array(
-              'name' => esc_html__('Left Sidebar Area', 'starter-theme'),
+              'name' => esc_html__('Left Sidebar Area', 'competitions-theme'),
               'id' => 'sidebar-left',
-              'description' => esc_html__('Sidebar Area for Left Sidebar Templates, you can add multiple widgets here.', 'starter-theme'),
+              'description' => esc_html__('Sidebar Area for Left Sidebar Templates, you can add multiple widgets here.', 'competitions-theme'),
               'before_widget' => '',
               'after_widget' => '',
               'before_title' => '<h3 class="uk-text-bold widget-title"><span>',
               'after_title' => '</span></h3>'
           ));
             register_sidebar(array(
-                'name' => esc_html__('Right Sidebar Area', 'starter-theme'),
+                'name' => esc_html__('Right Sidebar Area', 'competitions-theme'),
                 'id' => 'sidebar-right',
-                'description' => esc_html__('Sidebar Area for Right Sidebar Templates, you can add multiple widgets here.', 'starter-theme'),
+                'description' => esc_html__('Sidebar Area for Right Sidebar Templates, you can add multiple widgets here.', 'competitions-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
                 'before_title' => '<h3 class="uk-text-bold widget-title"><span>',
                 'after_title' => '</span></h3>'
             ));
             register_sidebar(array(
-                'name' => esc_html__('Main Footer Area', 'starter-theme'),
+                'name' => esc_html__('Main Footer Area', 'competitions-theme'),
                 'id' => 'sidebar-footer',
-                'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'starter-theme'),
+                'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'competitions-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
                 'before_title' => '<h4 class="widget-title">',
@@ -80,8 +80,8 @@ class StarterTheme extends TimberSite
     {
         // This theme uses wp_nav_menu() in one locations.
         register_nav_menus(array(
-            'main' => __('Main Menu', 'starter-theme'),
-            'mobile' => __('Mobile Menu', 'starter-theme'),
+            'main' => __('Main Menu', 'competitions-theme'),
+            'mobile' => __('Mobile Menu', 'competitions-theme'),
         ));
     }
 
@@ -123,4 +123,4 @@ class StarterTheme extends TimberSite
     }
 }
 
-new StarterTheme();
+new CompetitionsTheme();

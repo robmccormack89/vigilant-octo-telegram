@@ -1,8 +1,8 @@
 <?php
 /**
- * Starter Theme functions and definitions
+ * Competitions Theme functions and definitions
  *
- * @package Starter_Theme
+ * @package Competitions_Theme
  */
 
 /**
