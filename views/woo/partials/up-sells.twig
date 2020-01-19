@@ -1,0 +1,12 @@
+{% if not up_sells is empty %}
+<h2>Upsells</h2>
+
+<div id="ProductGrid" class="uk-child-width-1-1@s uk-child-width-1-4@m" uk-grid="masonry: true">
+{% for post in up_sells %}
+
+  {% include 'tease-product.twig' %}
+
+{% endfor %}
+</div>
+
+{% endif %}

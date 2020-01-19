@@ -3,14 +3,14 @@
    background: $dark_style_colour
 }
 /* dark muted bg style */
-.dark-style .uk-comment-primary, .dark-style .uk-tile-muted, .dark-style .uk-section-muted, .dark-style .uk-background-muted {
+.dark-style .uk-comment-primary, .dark-style .uk-tile-muted, .dark-style .uk-section-muted, .dark-style .uk-background-muted, .dark-style .uk-card-default, .dark-style .uk-table-striped>tr:nth-of-type(odd), .dark-style .uk-table-striped tbody tr:nth-of-type(odd) {
    background: $dark_style_muted_colour
 }
 /* header */
 .dark-style .uk-navbar-dropdown-nav>li>a {
     color: $dark_style_link_colour
 }
-.dark-style .uk-navbar-dropdown-nav>li>a:focus, .dark-style .uk-navbar-dropdown-nav>li>a:hover {
+.dark-style .uk-navbar-dropdown-nav>li>a:focus, .dark-style .uk-navbar-dropdown-nav>li>a:hover, .dark-style .uk-card-default {
     color: $dark_style_link_hover_colour
 }
 /* borders */

@@ -9,3 +9,6 @@ $theme_border_light: 1px solid rgba(255,255,255,.2);
 // import your custom sass styles. you can partialize it how u like
 @import "assets/sass/partials/general.scss";
 @import "assets/sass/partials/dark.scss";
+@import "assets/sass/partials/fonts.scss";
+@import "assets/sass/woo/woocommerce.scss";
+@import "assets/sass/woo/woocommerce-layout.scss";

@@ -18,6 +18,19 @@ if( class_exists( 'Timber' ) ) {
 }
 
 /**
+* Woo stuff
+*/
+function timber_set_product( $post ) {
+   global $product;
+
+   if ( is_woocommerce() ) {
+       $product = wc_get_product( $post->ID );
+   }
+}
+require get_template_directory() . '/inc/woo-custom.php';
+require get_template_directory() . '/inc/woo-functions.php';
+
+/**
 * Custom Widget
 */
 require get_template_directory() . '/widgets/uikit-html-widget.php';

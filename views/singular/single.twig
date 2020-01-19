@@ -15,7 +15,7 @@
         <h1 class="uk-article-title">{{ post.title }}</h1>
         
         <p class="uk-article-meta">
-          Written on {{post.date | date}}.
+          <!-- Written on {{post.date | date}}. -->
           {% if post.post_type == "post" %}Posted in
             {% for category in post.categories %}
               {% if not loop.last %}

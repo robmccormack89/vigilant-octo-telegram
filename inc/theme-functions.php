@@ -39,9 +39,17 @@ function competitions_theme_setup()
       'flex-width' => true,
       'flex-height' => true
   ));
+  
+  add_theme_support( 'woocommerce' );
+  add_theme_support( 'wc-product-gallery-zoom' );
+  add_theme_support( 'wc-product-gallery-lightbox' );
+  add_theme_support( 'wc-product-gallery-slider' );
+  
+  
 
   // add custom thumbs sizes.
   add_image_size('competitions-theme-featured-image-archive', 800, 300, true);
+  add_image_size('competitions-theme-cart-image', 80, 80, true);
   
 }
 add_action('after_setup_theme', 'competitions_theme_setup');

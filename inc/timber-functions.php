@@ -13,6 +13,8 @@ Timber::$dirname = array(
   'views/singular',
   'views/header',
   'views/footer',
+  'views/woo',
+  'views/woo/partials',
 );
 
 // Define Competitions_Theme Child Class

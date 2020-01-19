@@ -1,0 +1,12 @@
+{% if not related_products is empty %}
+<h2>Related</h2>
+
+<div id="ProductGrid" class="uk-child-width-1-1@s uk-child-width-1-4@m" uk-grid="masonry: true">
+{% for post in related_products %}
+
+  {% include 'tease-product.twig' %}
+
+{% endfor %}
+</div>
+
+{% endif %}
