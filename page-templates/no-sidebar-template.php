@@ -2,7 +2,7 @@
 /**
  * Template Name: No Sidebar Template
  *
- * @package Competitions_Theme
+ * @package Sixstar_Theme
  */
 
 $context = Timber::get_context();

@@ -2,7 +2,7 @@
 /**
  * Woo custom
  *
- * @package Competitions_Theme
+ * @package Sixstar_Theme
  */
 
 // if woocommerce is activated, do this stuff, or not

@@ -2,7 +2,7 @@
 /**
  * The template for displaying the footer
  *
- * @package Competitions_Theme
+ * @package Sixstar_Theme
  */
 
 $timberContext = $GLOBALS['timberContext'];

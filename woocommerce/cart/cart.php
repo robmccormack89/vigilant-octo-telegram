@@ -65,7 +65,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 						</td>
 
 						<td class="product-thumbnail">
-							<img class="uk-border-circle uk-preserve-width" src="<?php echo get_the_post_thumbnail_url($product_id, 'competitions-theme-cart-image');?>">
+							<img class="uk-border-circle uk-preserve-width" src="<?php echo get_the_post_thumbnail_url($product_id, 'sixstar-theme-cart-image');?>">
 							<?php
 							// $thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
 							// 

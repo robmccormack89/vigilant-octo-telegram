@@ -31,7 +31,7 @@ if ( is_singular( 'product' ) ) {
     };
     
     if ( is_shop() ) {
-      $context['title'] = 'Competitions';
+      $context['title'] = 'Sixstar';
     };
 
     Timber::render( 'woo-archive.twig', $context );

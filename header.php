@@ -2,7 +2,7 @@
 /**
  * The header for our theme
  *
- * @package Competitions_Theme
+ * @package Sixstar_Theme
  */
  
 $GLOBALS['timberContext'] = Timber::get_context();

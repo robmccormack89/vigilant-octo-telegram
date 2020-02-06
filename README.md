@@ -1,3 +1,3 @@
-# Competitions Project
+# Sixstar Project
 
 ---

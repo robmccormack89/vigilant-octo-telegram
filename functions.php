@@ -1,8 +1,8 @@
 <?php
 /**
- * Competitions Theme functions and definitions
+ * Sixstar Theme functions and definitions
  *
- * @package Competitions_Theme
+ * @package Sixstar_Theme
  */
 
 /**
