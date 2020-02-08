@@ -3,7 +3,17 @@
   {% if sidebar_footer %}
   	{{sidebar_footer}}
   {% else %}
-  	<p class="uk-text-small uk-text-center">Copyright 2019 <a href="https://github.com/robmccormack89" title="My Github" target="_blank">Created by RMcCormack</a> | A Wordpress Theme built with <a href="http://getuikit.com" title="UIKIT" target="_blank"  >UIKit 3</a>  &amp; <a href="https://github.com/timber/timber" title="Timber WP" target="_blank">Timber WP</a></p>
+  	<p class="uk-text-small uk-text-center">Copyright 2020 <a href="/" class="uk-text-bold" title="" target="_blank">6StarCompetitions</a> | Created by <a href="https://github.com/robmccormack89" class="uk-text-bold" title="My Github" target="_blank">RMcCormack</a></p>
   {% endif %}
   </div>
 </footer>
+<script>
+  jQuery(function($){
+    $("#loginform").addClass("uk-form-stacked");
+    $("label").addClass("uk-form-label");
+    $("#loginform .input").addClass("uk-input");
+    $("#loginform [ type=checkbox ]").addClass("uk-checkbox");
+    $("#loginform .button.button-primary").addClass("uk-button uk-button-default");
+  });
+  
+</script>

@@ -1,16 +1,23 @@
 <div data-uk-offcanvas="flip: true; overlay: true" id="offcanvas-nav">
   <div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
     <button class="uk-offcanvas-close uk-close uk-icon" data-uk-close type="button" title="Close the Mobile Menu"><span class="uk-hidden">Close</span></button>
-    <ul class="uk-nav uk-nav-default">
+    {% if theme_logo_url %}
+    <div class="uk-margin-bottom">
+      <a class="" title="{{ site.title }}" href="{{ site.url }}"><img data-src="{{ theme_logo_url }}" style="width: 250px;" uk-img></a>
+    </div>
+    {% else %}
+    <a class="uk-navbar-item uk-logo uk-padding-remove uk-text-bold uk-text-emphasis" title="{{ site.title }}" href="{{ site.url }}">{{ site.title }}</a>
+    {% endif %}
+    <ul class="uk-nav uk-nav-default uk-nav-parent-icon" uk-nav>
       {% if has_menu_mobile %}
         {% for item in menu_mobile.get_items %}
           {% if item.get_children %}
             <li class="uk-parent {{ item.classes | join(' ') }}">
-              <a href="#">{{ item.title }}</a>
+              <a href="{{ item.get_link }}">{{ item.title }}</a>
               <ul class="uk-nav-sub">
                 {% for child in item.get_children %}
                   <li>
-                    <a href="{{ child.get_link }}">{{ child.title }}</a>
+                    <a href="#">{{ child.title }}</a>
                   </li>
                 {% endfor %}
               </ul>
@@ -24,7 +31,12 @@
       {% else %}
         <li>Add a menu to the Mobile Menu slot in Appearance > Menus.</li>
       {% endif %}
-      <button class="uk-button uk-button-default uk-margin-top uk-width-1-1 uk-margin-small-bottom" type="button" uk-toggle="target: html; cls: dark-style uk-light">Change Style</button>
+      <li class="uk-nav-divider"></li>
     </ul>
+    {% if not user %}
+    <a class="uk-button uk-button-primary uk-width-1-1" href="#modal-container" uk-toggle>Login / Register</a>
+    {% else %}
+    <a class="uk-button uk-button-primary uk-width-1-1" href="/competitions">Play Now</a>
+    {% endif %}
   </div>
 </div>

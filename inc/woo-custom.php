@@ -8,12 +8,20 @@
 // if woocommerce is activated, do this stuff, or not
  if ( class_exists( 'WooCommerce' ) ) {
    
-
+   // add this to functions.php, a custom plugin, or a snippets plugin to remove the description tab in woocommerce
+   // by Robin Scott of Silicon Dales - full info at https://silicondales.com/tutorials/woocommerce-tutorials/remove-description-tab-woocommerce/
+   add_filter( 'woocommerce_product_tabs', 'sd_remove_product_tabs', 98 );
+   function sd_remove_product_tabs( $tabs ) {
+    unset( $tabs['description'] );
+    return $tabs;
+   }
 
 
    /**
     *  moving / removing woocommerce actions
     */
+    
+    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
    
    // archive
    remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 ); // reorder catalog in ProductToolbar from 3rd
@@ -95,7 +103,7 @@
    
    
    function gallery_scripts() {
-       if ( is_archive() || is_product() ) {
+       if ( is_product() ) {
            if ( current_theme_supports( 'wc-product-gallery-zoom' ) ) { 
                wp_enqueue_script( 'zoom' );
            }

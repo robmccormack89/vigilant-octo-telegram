@@ -94,6 +94,7 @@ class SixstarTheme extends TimberSite
       $main_menu_args = array(
           'depth' => 3,
       );
+      $context['is_user_logged_in'] = is_user_logged_in();
       $context['menu_main'] = new \Timber\Menu( 'main' );
       $context['menu_mobile'] = new \Timber\Menu('mobile');
       $context['has_menu_main'] = has_nav_menu( 'main' );

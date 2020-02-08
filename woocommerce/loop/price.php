@@ -23,5 +23,5 @@ global $product;
 ?>
 
 <?php if ( $price_html = $product->get_price_html() ) : ?>
-	Ticket Price: <span class="price uk-text-emphasis"><?php echo $price_html; ?></span>
+	Ticket Price: <span class="price uk-text-emphasis uk-text-bold"><?php echo $price_html; ?></span>
 <?php endif; ?>

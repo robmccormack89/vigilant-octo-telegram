@@ -7,15 +7,15 @@
       <div id="MainProductArchive" class="uk-article">
         <div>
           
-          <div id="ShopBreadsNotices" class="uk-margin-bottom">
+          <div id="ShopBreadsNotices" class="">
             {% do action('woocommerce_before_main_content') %}
           </div>
           
           {% if not user %}
-          <p>You are not logged in. Please log in or create an account before entering a competition via the <a href="/my-account" target="_blank">My Account page</a>.</p>
+          <p class="uk-margin-remove-top">You are not logged in. Please <a href="#modal-container" uk-toggle>log in here</a> before entering a competition.</p>
           {% endif %}
           
-          <h1 id="ShopArchiveTitle" class="uk-article-title woocommerce-products-header__title page-title uk-margin-small-top">
+          <h1 id="ShopArchiveTitle" class="uk-article-title woocommerce-products-header__title page-title uk-margin-top">
             {{ title }}
           </h1>
         

@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 {% block content %}
 
-<div class="uk-section uk-section-small" data-template="archive.twig">
+<div class="uk-section uk-section-small uk-margin-large-bottom" data-template="archive.twig">
   <div class="uk-container">
     
     <div class="product-breadcrumbs-section uk-margin-bottom">
@@ -9,7 +9,7 @@
     </div>
     
     {% if not user %}
-    <p>You are not logged in. Please log in or create an account before entering a competition via the <a href="/my-account" target="_blank">My Account page</a>.</p>
+    <p class="uk-margin-remove-top">You are not logged in. Please <a href="#modal-container" uk-toggle>log in here</a> before entering a competition.</p>
     {% endif %}
 
     <div class="product-notices-section">
@@ -29,16 +29,16 @@
 
       <div class="uk-width-1-2@m">
         {% do action('woocommerce_single_product_summary') %}
-        {% do action('woocommerce_after_single_product_summary') %}
+        {# {% do action('woocommerce_after_single_product_summary') %} #}
       </div>
 
       <meta itemprop="url" content="{{ post.link }}" />
 
     </div>
 
-    <div class="after-product-section uk-margin-large-top">
+    <!-- <div class="after-product-section uk-margin-large-top">
       {% do action('woocommerce_after_single_product') %}
-    </div>
+    </div> -->
   
   </div>
 </div>
