@@ -1,3 +1,3 @@
-# Sixstar Project
+# Sixstar WP
 
 ---

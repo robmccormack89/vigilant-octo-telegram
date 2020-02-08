@@ -2,7 +2,17 @@
   <div class="nav-overlay uk-visible@m">
     <a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" title="Open the Search Box"></a>
   </div>
-  <button class="uk-button uk-button-default uk-visible@m" type="button" uk-toggle="target: html; cls: dark-style uk-light">Change Style</button>
+  {% if not user %}
+  <a class="uk-button uk-button-primary uk-visible@m" href="#modal-container" uk-toggle>Login / Register</a>
+  {% else %}
+  <a class="uk-button uk-button-primary uk-visible@m" href="/competitions">Play Now</a>
+  {% endif %}
+  <div id="modal-container" class="login-modal uk-modal-container" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        {% do action('woo_login_form') %}
+      </div>
+  </div>
   <ul class="uk-navbar-nav uk-hidden@m">
     <li>
       <a class="uk-navbar-toggle" data-uk-navbar-toggle-icon data-uk-toggle href="#offcanvas-nav" title="Open the Mobile Menu"><span class="uk-hidden">Menu</span></a>

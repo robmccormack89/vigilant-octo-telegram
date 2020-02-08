@@ -1,7 +1,18 @@
 // 1. Customizing variables from uikit. These will overwrite the UIKIT imports below. 
-$text-bold-font-weight: 700; 
-$base-heading-font-weight: 700;
-$base-strong-font-weight: 700;
+$text-bold-font-weight: 800; 
+$base-heading-font-weight: 800;
+$base-strong-font-weight: 800;
+$global-font-family: Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+$global-primary-background: #e2a525 !default;
+$global-inverse-color: #fff !default;
+$button-primary-background: $global-primary-background !default;
+
+$inverse-button-primary-background: $global-primary-background !default;
+$inverse-button-primary-color: $global-inverse-color !default;
+$inverse-button-primary-hover-background: darken($button-primary-background, 5%) !default;
+$inverse-button-primary-hover-color: $global-inverse-color !default;
+$inverse-button-primary-active-background: darken($button-primary-background, 10%) !default;
+$inverse-button-primary-active-color: $global-inverse-color !default;
 
 // 2. Import variables & mixins froim uikit. You can also use the default styling scss files, I have used the theme ones.
 @import "node_modules/uikit/src/scss/variables-theme.scss";

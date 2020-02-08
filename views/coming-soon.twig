@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="robots" content="noindex">
+		<title>Coming Soon - {{SiteTitle}}</title>
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="stylesheet" type="text/css" href="/wp-content/themes/sixstar-theme/assets/css/coming-soon.css">
+		<style>
+			html,
+			body {
+			  height: 100%;
+			  width: 100%;
+			  margin: 0;
+			  padding: 0;
+			}
+			body.coming-soon {
+				background-image: url('/wp-content/themes/sixstar-theme/assets/img/color.jpg');
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			.uk-countdown-number {
+			  font-weight: 700;
+			  color: #ffffff!important;
+			}
+
+			.uk-overlay-primary {
+			    background: #080808cc;
+			}
+
+			.uk-button {
+			  font-weight: 800;
+			}
+
+			.uk-light .uk-button-primary {
+			    background-color: #f00;
+			    color: #fff;
+			}
+
+			footer {
+			    border-top: 1px solid #fff;
+			    background-color: #00000040;
+			}
+
+			.uk-link, a {
+			  font-weight: 700;
+			}
+
+			.uk-light .uk-button-primary {
+			  background-color: #e2a525;
+			}
+			.preloader {
+			  align-items: center;
+				pointer-events: none;
+			  background: rgb(23, 22, 22);
+			  display: flex;
+			  height: 100vh;
+			  justify-content: center;
+			  left: 0;
+			  position: fixed;
+			  top: 0;
+			  transition: opacity 0.3s linear;
+			  width: 100%;
+			  z-index: 9999;
+			}
+			::selection {
+			  background: #ffca35;
+			  color: #fff;
+			  text-shadow: none;
+			}
+			.info-modal {
+				border: 1px solid #fff;
+			}
+			/* UIKit based resonsive breakpoints */
+			@media only screen and (max-width:479px) {
+				.uk-text-lead {
+			    font-size: 0.8rem;
+				}
+				.uk-heading-large {
+				    font-size: 2rem;
+				}
+				footer.uk-section-small {
+				    padding-top: 10px;
+				    padding-bottom: 10px;
+				}
+				.main-heading {
+					margin-bottom: 20px!important;
+				}
+			}
+
+			@media only screen and (min-device-width:480px) and (max-device-width:767px) {
+			  
+			}
+
+			@media only screen and (min-device-width:768px) and (max-device-width:959px) {
+
+			}
+
+			@media only screen and (min-device-width:960px) and (max-device-width:1199px) {
+			  
+			}
+
+			@media only screen and (min-width:1200px) {
+			  
+			}
+		</style>
+	
+	</head>
+	<body class="coming-soon uk-cover-container uk-flex uk-flex-center uk-flex-middle uk-height-viewport uk-overflow-hidden" data-uk-height-viewport>
+	
+
+    <div class="uk-position-cover uk-overlay-primary uk-hidden@s"></div>
+
+    <header class="uk-position-top-left uk-position-small uk-position-z-index uk-light">
+      <img class="logo uk-visible@s" src="/wp-content/themes/sixstar-theme/assets/img/6star-logo-125h-430w.png" width=355 alt="Logo">
+      <img class="mobile uk-hidden@s" src="/wp-content/themes/sixstar-theme/assets/img/6star-logo-125h-430w.png" width=150 alt="Mobile Logo">
+    </header>
+
+    <div class="uk-position-center uk-position-z-index uk-padding-small coming-soon-content uk-light">
+      <div class="uk-text-center uk-margin">
+        <h1 class="main-heading rmcc-800 uk-heading-large uk-margin-medium-bottom uk-text-uppercase"><span class="uk-visible@s">Website </span>{{MainTitle}}</h1>
+        <div class="uk-grid-small uk-child-width-auto uk-flex uk-flex-center" uk-grid uk-countdown="{{LaunchDate}}">
+            <div>
+                <div class="uk-countdown-number uk-countdown-days"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center ">Days</div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+                <div class="uk-countdown-number uk-countdown-hours"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center ">Hours</div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+                <div class="uk-countdown-number uk-countdown-minutes"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center ">Minutes</div>
+            </div>
+            <div class="uk-countdown-separator">:</div>
+            <div>
+                <div class="uk-countdown-number uk-countdown-seconds"></div>
+                <div class="uk-countdown-label uk-margin-small uk-text-center ">Seconds</div>
+            </div>
+        </div>
+        <p class="uk-text-lead">{{TagLine}}<br>{{SiteDescription}}</p>
+        <div class="buttons uk-margin-medium-top uk-visible@s">
+            <button class="uk-button uk-button-default uk-button-large uk-margin-small-right" type="button" uk-toggle="target: #modal-center">{{ButtonText1}}</button>
+            <button class="uk-button uk-button-primary uk-button-large" type="button" uk-toggle="target: #modal-group-1">{{ButtonText2}}</button>
+        </div>
+        <div class="mobile-buttons uk-hidden@s">
+            <button class="uk-button uk-button-default uk-margin-small-bottom uk-width-1-1" type="button" uk-toggle="target: #modal-center">{{ButtonText1}}</button>
+            <button class="uk-button uk-button-primary uk-width-1-1" type="button" uk-toggle="target: #modal-group-1">{{ButtonText2}}</button>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="canvas" class="uk-visible@s uk-light" style="opacity:0.95;height:100vh;width:100vw;"></canvas>
+
+    <footer class="uk-position-bottom uk-section uk-section-small uk-width-1-1 uk-position-z-index uk-text-center uk-padding-small uk-light">
+      <span class="uk-text-small uk-text-muted">© {{Year}} - <a href="/">{{SiteTitle}}</a> | Like us on <a href="{{FacebookURL}}" uk-icon="icon: facebook"></a></span>
+    </footer>
+    <!-- uk-flex-top is needed to make vertical margin work for IE11 -->
+    <div id="modal-center" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical uk-background-primary uk-padding info-modal uk-light" style="background-image: url(/wp-content/themes/sixstar-theme/assets/img/fire.jpg);">
+          <div class="uk-position-cover uk-overlay-primary" style="
+    z-index: -1;"></div>
+
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+
+            <div class=""><p class="uk-margin-remove-bottom">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet.</p></div>
+
+        </div>
+    </div>
+    <div id="modal-group-1" uk-modal>
+        <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">Headline 1</h2>
+            </div>
+            <div class="uk-modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <a href="#modal-group-2" class="uk-button uk-button-primary" uk-toggle>Next</a>
+            </div>
+        </div>
+    </div>
+    <div class="preloader">
+      <img src="/wp-content/themes/sixstar-theme/assets/img/spinner.svg" alt="spinner">
+    </div>
+    <script src="/wp-content/themes/sixstar-theme/assets/js/main/main.js"></script>
+    <script>
+
+      // Little Canvas things
+      var canvas = document.querySelector("#canvas"),
+          ctx = canvas.getContext('2d');
+
+      // Set Canvas to be window size
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // Configuration, Play with these
+      var config = {
+        particleNumber: 50,
+        maxParticleSize: 8,
+        maxSpeed: 20,
+        colorVariation: 50
+      };
+
+      // Colors
+      var colorPalette = {
+          bg: {r:10,g:10,b:10},
+          matter: [
+            {r:36,g:18,b:42}, // darkPRPL
+            {r:78,g:36,b:42}, // rockDust
+            {r:252,g:178,b:96}, // solorFlare
+            {r:226,g:165,b:37}, // gold
+            {r:253,g:238,b:152}, // totesASun
+            {r:255,g:0,b:0} // red
+          ]
+      };
+
+      // Some Variables hanging out
+      var particles = [],
+          centerX = canvas.width / 2,
+          centerY = canvas.height / 2,
+          drawBg,
+
+      // Draws the background for the canvas, because space
+      drawBg = function (ctx, color) {
+          ctx.fillStyle = "rgb(10, 10, 10)";
+          ctx.fillRect(0,0,canvas.width,canvas.height);
+      };
+
+      // Particle Constructor
+      var Particle = function (x, y) {
+          // X Coordinate
+          this.x = x || Math.round(Math.random() * canvas.width);
+          // Y Coordinate
+          this.y = y || Math.round(Math.random() * canvas.height);
+          // Radius of the space dust
+          this.r = Math.ceil(Math.random() * config.maxParticleSize);
+          // Color of the rock, given some randomness
+          this.c = colorVariation(colorPalette.matter[Math.floor(Math.random() * colorPalette.matter.length)],true );
+          // Speed of which the rock travels
+          this.s = Math.pow(Math.ceil(Math.random() * config.maxSpeed), .7);
+          // Direction the Rock flies
+          this.d = Math.round(Math.random() * 360);
+      };
+
+      // Provides some nice color variation
+      // Accepts an rgba object
+      // returns a modified rgba object or a rgba string if true is passed in for argument 2
+      var colorVariation = function (color, returnString) {
+          var r,g,b,a, variation;
+          r = Math.round(((Math.random() * config.colorVariation) - (config.colorVariation/2)) + color.r);
+          g = Math.round(((Math.random() * config.colorVariation) - (config.colorVariation/2)) + color.g);
+          b = Math.round(((Math.random() * config.colorVariation) - (config.colorVariation/2)) + color.b);
+          a = Math.random() + .5;
+          if (returnString) {
+              return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+          } else {
+              return {r,g,b,a};
+          }
+      };
+
+      // Used to find the rocks next point in space, accounting for speed and direction
+      var updateParticleModel = function (p) {
+          var a = 180 - (p.d + 90); // find the 3rd angle
+          p.d > 0 && p.d < 180 ? p.x += p.s * Math.sin(p.d) / Math.sin(p.s) : p.x -= p.s * Math.sin(p.d) / Math.sin(p.s);
+          p.d > 90 && p.d < 270 ? p.y += p.s * Math.sin(a) / Math.sin(p.s) : p.y -= p.s * Math.sin(a) / Math.sin(p.s);
+          return p;
+      };
+
+      // Just the function that physically draws the particles
+      // Physically? sure why not, physically.
+      var drawParticle = function (x, y, r, c) {
+          ctx.beginPath();
+          ctx.fillStyle = c;
+          ctx.arc(x, y, r, 0, 2*Math.PI, false);
+          ctx.fill();
+          ctx.closePath();
+      };
+
+      // Remove particles that aren't on the canvas
+      var cleanUpArray = function () {
+          particles = particles.filter((p) => { 
+            return (p.x > -100 && p.y > -100); 
+          });
+      };
+
+
+      var initParticles = function (numParticles, x, y) {
+          for (let i = 0; i < numParticles; i++) {
+              particles.push(new Particle(x, y));
+          }
+          particles.forEach((p) => {
+              drawParticle(p.x, p.y, p.r, p.c);
+          });
+      };
+
+      // That thing
+      window.requestAnimFrame = (function() {
+        return window.requestAnimationFrame ||
+           window.webkitRequestAnimationFrame ||
+           window.mozRequestAnimationFrame ||
+           function(callback) {
+              window.setTimeout(callback, 1000 / 60);
+           };
+      })();
+
+
+      // Our Frame function
+      var frame = function () {
+        // Draw background first
+        drawBg(ctx, colorPalette.bg);
+        // Update Particle models to new position
+        particles.map((p) => {
+          return updateParticleModel(p);
+        });
+        // Draw em'
+        particles.forEach((p) => {
+            drawParticle(p.x, p.y, p.r, p.c);
+        });
+        // Play the same song? Ok!
+        window.requestAnimFrame(frame);
+      };
+
+      // Click listener
+      document.body.addEventListener("mouseup", function (event) {
+          var x = event.clientX,
+              y = event.clientY;
+          cleanUpArray();
+          initParticles(config.particleNumber, x, y);
+      });
+
+      // First Frame
+      frame();
+
+      // First particle explosion
+      initParticles(config.particleNumber);
+
+    </script>
+    <script>
+    const preloader = document.querySelector('.preloader');
+    
+    const fadeEffect = setInterval(() => {
+      // if we don't set opacity 1 in CSS, then   //it will be equaled to "", that's why we   // check it
+      if (!preloader.style.opacity) {
+        preloader.style.opacity = 1;
+      }
+      if (preloader.style.opacity > 0) {
+        preloader.style.opacity -= 0.1;
+      } else {
+        clearInterval(fadeEffect);
+      }
+    }, 200);
+    
+    window.addEventListener('load', null, fadeEffect);
+    </script>
+  </body>
+</html>
