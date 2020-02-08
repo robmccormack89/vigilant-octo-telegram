@@ -1,3 +1,3 @@
-# Sixstar WP
+# 6star WP Theme
 
 ---
