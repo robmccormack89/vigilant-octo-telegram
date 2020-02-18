@@ -3,3 +3,4 @@ node_modules/
 vendor/
 compilation_cache/
 .git
+.ftpconfig
