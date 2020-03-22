@@ -63,6 +63,14 @@ function sixstar_theme_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'sixstar_theme_enqueue_assets'); 
 
+function is_paginated() {
+    global $wp_query;
+    if ( $wp_query->max_num_pages > 1 ) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // regisers custom widget
 function sixstar_custom_uikit_widgets_init() {
@@ -98,4 +106,132 @@ function sixstar_theme_register_required_plugins()
         'message' => '' // Message to output right before the plugins table.
     );
     tgmpa($plugins, $config);
+}
+
+
+
+
+
+
+
+
+function filter_wpseo_breadcrumb_separator($this_options_breadcrumbs_sep) {
+    return '<span uk-icon="icon: chevron-right; ratio: 0.6;"></span>';
+};
+// add the filter
+add_filter('wpseo_breadcrumb_separator', 'filter_wpseo_breadcrumb_separator', 10, 1);
+
+
+
+
+
+
+// Register Custom Post Type
+function cpt_winners() {
+
+	$labels = array(
+		'name'                  => _x( 'Winners', 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( 'Winner', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'             => __( 'Winners', 'text_domain' ),
+		'name_admin_bar'        => __( 'Winner', 'text_domain' ),
+		'archives'              => __( 'Winners Archives', 'text_domain' ),
+		'attributes'            => __( 'Winner Attributes', 'text_domain' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
+		'all_items'             => __( 'All Winners', 'text_domain' ),
+		'add_new_item'          => __( 'Add New Winner', 'text_domain' ),
+		'add_new'               => __( 'Add New', 'text_domain' ),
+		'new_item'              => __( 'New Item', 'text_domain' ),
+		'edit_item'             => __( 'Edit Item', 'text_domain' ),
+		'update_item'           => __( 'Update Item', 'text_domain' ),
+		'view_item'             => __( 'View Item', 'text_domain' ),
+		'view_items'            => __( 'View Items', 'text_domain' ),
+		'search_items'          => __( 'Search Item', 'text_domain' ),
+		'not_found'             => __( 'Not found', 'text_domain' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
+		'featured_image'        => __( 'Featured Image', 'text_domain' ),
+		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
+		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
+		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+		'items_list'            => __( 'Items list', 'text_domain' ),
+		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+	);
+	$rewrite = array(
+		'slug'                  => 'competition-winner',
+		'with_front'            => true,
+		'pages'                 => true,
+		'feeds'                 => false,
+	);
+	$args = array(
+		'label'                 => __( 'Winner', 'text_domain' ),
+		'description'           => __( 'Winners content type', 'text_domain' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => 'competition-winners',
+		'exclude_from_search'   => true,
+		'publicly_queryable'    => true,
+		'query_var'             => 'winner',
+		'rewrite'               => $rewrite,
+		'capability_type'       => 'page',
+		'show_in_rest'          => false,
+	);
+	register_post_type( 'winners', $args );
+
+}
+add_action( 'init', 'cpt_winners', 0 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_filter( 'woocommerce_register_post_type_product', 'nk_custom_post_type_label_woo' );
+ function nk_custom_post_type_label_woo( $args ){
+ $labels = nk_get_cpt_labels('Competition','Competitions');
+    $args['labels'] = $labels;
+    return $args;
+ }
+ 
+function nk_get_cpt_labels($single,$plural){
+   $arr = array(
+      'name' => $plural,
+      'singular_name' => $single,
+      'menu_name' => $plural,
+      'add_new' => 'Add '.$single,
+      'add_new_item' => 'Add New '.$single,
+      'edit' => 'Edit',
+      'edit_item' => 'Edit '.$single,
+      'new_item' => 'New '.$single,
+      'view' => 'View '.$plural,
+      'view_item' => 'View '.$single,
+      'search_items' => 'Search '.$plural,
+      'not_found' => 'No '.$plural.' Found',
+      'not_found_in_trash' => 'No '.$plural.' Found in Trash',
+      'parent' => 'Parent '.$single
+   );
+   return $arr;
 }

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html {{site.language_attributes}}>
+
+<head>
+  <meta charset="{{site.charset}}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='/wp-content/themes/sixstar-theme/assets/css/layout.css' type='text/css' />
+  <script type='text/javascript' src='/wp-content/themes/sixstar-theme/assets/js/main/main.js'></script>
+</head>
+
+{% set dark_bg = '#1f1f1f' %}
+{% set darker_bg = '#191919' %}
+
+<style>
+  #TopNavWrap,
+  #FooterArea {
+    background-color: {
+        {
+        darker_bg
+      }
+    }
+
+    ;
+  }
+
+  #BottomNavWrap {
+    background-color: {
+        {
+        dark_bg
+      }
+    }
+
+    ;
+  }
+</style>
+
+<body class="" data-template="page-layout.twig">
+
+  <div id="SiteWrapper" class="site-wrapper">
+
+    <div id="SiteHeader" class="">
+      <div id="HeaderTop" class="">
+        <div id="TopNav" class="">
+          <nav id="TopNavWrap" class="uk-navbar-container uk-light">
+            <div class="uk-container uk-container-expand">
+              <div class="uk-navbar">
+                <div class="uk-navbar-left">
+                  <ul class="uk-navbar-nav">
+                    <li><a href="#">Address</a></li>
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Phone</a></li>
+                  </ul>
+                </div>
+                <div class="uk-navbar-right">
+                  <ul class="uk-navbar-nav">
+                    <li><a href="#">Socials</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div id="HeaderBottom" class="">
+        <div id="BottomNav" class="">
+          <nav id="BottomNavWrap" class="uk-navbar-container uk-light">
+            <div class="uk-container uk-container-expand">
+              <div class="uk-navbar">
+                <div class="uk-navbar-left">
+                  <a class="uk-navbar-item uk-logo" href="#">Logo</a>
+                </div>
+                <div class="uk-navbar-center">
+                  <ul class="uk-navbar-nav ">
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                  </ul>
+                </div>
+                <div class="uk-navbar-right">
+                  <div class="uk-navbar-item">
+                    <ul class="uk-grid-small uk-grid" uk-grid="">
+                      <li class="uk-first-column">
+                        <a class="uk-icon-button uk-icon" href="#" uk-icon="icon: cart"></a>
+                      </li>
+                      <li>
+                        <a class="uk-icon-button uk-icon" href="#" uk-icon="icon: user"></a>
+                      </li>
+                      <li>
+                        <a class="uk-icon-button uk-icon" href="#" uk-icon="icon: trash"></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div id="SiteContent" class="">
+      <div id="BreadsArea" class="uk-container">The Breadcrumbs</div>
+      <div id="ContentArea" class="uk-section uk-section-small uk-section-muted">
+        <div id="ContentWrap" class="uk-container">
+          <div id="MainTitle" class="">
+            <h1>The Title</h1>
+          </div>
+          <div id="MainContent" class="uk-card uk-card-default uk-card-body">The Content</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="SiteFooter" class="">
+      <!--FOOTER-->
+      <footer id="FooterArea" class="uk-section uk-section-small uk-section-primary footer-padding uk-light" data-template="footer.twig">
+        <div class="uk-container uk-container-large">
+          <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-4@m">
+              <a class="uk-logo" href="#">
+                <h2 class="uk-text-bold" style="font-size:3rem">Logo</h2>
+              </a>
+            </div>
+            <div class="uk-width-3-4@m">
+              <div class="uk-child-width-1-2@s uk-child-width-1-5@m uk-grid-small" uk-grid>
+                <div>
+                  {% if sidebar_footer_1 %}
+                  {{ sidebar_footer_1 }}
+                  {% else %}
+                  <h3 class="uk-text-bold uk-text-muted widget-title">Footer 1</h3>
+                  <p>Add some widgets to the Footer Widget Area 1</p>
+                  {% endif %}
+                </div>
+                <div>
+                  {% if sidebar_footer_2 %}
+                  {{ sidebar_footer_2 }}
+                  {% else %}
+                  <h3 class="uk-text-bold uk-text-muted widget-title">Footer 2</h3>
+                  <p>Add some widgets to the Footer Widget Area 2</p>
+                  {% endif %}
+                </div>
+                <div>
+                  {% if sidebar_footer_3 %}
+                  {{ sidebar_footer_3 }}
+                  {% else %}
+                  <h3 class="uk-text-bold uk-text-muted widget-title">Footer 3</h3>
+                  <p>Add some widgets to the Footer Widget Area 3</p>
+                  {% endif %}
+                </div>
+                <div>
+                  {% if sidebar_footer_4 %}
+                  {{ sidebar_footer_4 }}
+                  {% else %}
+                  <h3 class="uk-text-bold uk-text-muted widget-title">Footer 4</h3>
+                  <p>Add some widgets to the Footer Widget Area 4</p>
+                  {% endif %}
+                </div>
+                <div>
+                  {% if sidebar_footer_5 %}
+                  {{ sidebar_footer_5 }}
+                  {% else %}
+                  <h3 class="uk-text-bold uk-text-muted widget-title">Footer 4</h3>
+                  <p>Add some widgets to the Footer Widget Area 4</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+  </div>
+
+</body>
+<!-- /body -->
+
+</html>

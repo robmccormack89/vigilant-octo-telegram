@@ -1,105 +1,56 @@
 <!DOCTYPE html>
-<html {{site.language_attributes}} class="dark-style uk-light">
-  <head>
+<html {{site.language_attributes}}>
+
+<head>
   <meta charset="{{site.charset}}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- wp header -->
   {{ function('wp_head') }}
-  <!-- /wp header -->
-  <style>
-    ::selection {
-      background: #ffca35;
-      color: #fff;
-      text-shadow: none;
-    }
-    .tickets_numbers {
-      margin-left: -0.5em!important;
-    }
-    .dark-style .uk-modal {
-        background: rgba(53, 53, 53, 0.36);
-    }
-    .dark-style .uk-modal-dialog {
-        background: #101010;
-    }
-    .dark-style .login-modal .uk-modal-body {
-        border: 1px solid hsla(0, 0%, 100%, 0.5);
-    }
-    .dark-style .uk-modal-footer {
-        background: #101010;
-    }
-    .uk-offcanvas-bar {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: -270px;
-        box-sizing: border-box;
-        width: 80vw;
-        padding: 20px;
-        background: #1b1b1b;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    @media only screen and (max-width:479px) {
-      .woocommerce div.product .entry-images div.images {
-          width: 100%;
-      }
-      .uk-navbar-toggle {
-          padding: 0 0 0 15px!important;
-      }
-      ul.lottery-pn-answers li {
-          width: auto!important;
-      }
-      .uk-text-large {
-          font-size: 1.2rem;
-      }
-      .uk-modal-body {
-          padding: 15px;
-      }
-    }
-    .uk-button {
-      font-weight: 700;
-    }
-    .uk-button-large {
-        font-size: 1.1rem;
-    }
-  </style>
-  
-  </head>
-  
-  <!-- body classes go here -->
-  <body class="{{ body_class }} uk-background-center-center" data-template="base.twig">
+</head>
 
-    <!-- main site wrapper -->
-    <div id="SiteWrapper" class="site-wrapper">
-      
-      <!-- header -->
-      {% block header %}
-      {% include 'header.twig' %}
+{% include 'styles.twig' %}
+
+<body class="{{ body_class }}" data-template="base.twig">
+
+  <div id="SiteWrapper" class="site-wrapper">
+
+    {% block header %}
+    {% include 'header.twig' %}
+    {% endblock %}
+    
+    <main role="main" id="MainContent">
+      {% block content %}
+      <div id="SiteContent" class="">
+        {% include 'breads.twig' %}
+        <div id="ContentArea" class="uk-section uk-section-small uk-section-muted">
+          <div id="ContentWrap" class="uk-container">
+            {% block contentwrap %}
+            <div id="MainTitle" class="">
+              <h1 class="uk-heading-line uk-text-bold"><span>{{ title }}</span></h1>
+            </div>
+            <div id="MainContent" class="uk-card uk-card-default uk-card-body">
+              {% block contentonly %}
+              <p>Sorry, Nothing to Display!!</p>
+              {% endblock %}
+            </div>
+            {% endblock %}
+          </div>
+        </div>
+      </div>
       {% endblock %}
-      <!-- /header -->
+    </main>
     
-      <!-- content -->
-      <main role="main" id="MainContent">
-        {% block content %}
-        <p>Sorry, Nothing to Display!!</p>
-        {% endblock %}
-      </main>
-      <!-- /content -->
+    {% block footer %}
+    {% include 'footer.twig' %}
+    {% endblock %}
 
-      <!-- footer -->
-      {% block footer %}
-      {% include 'footer.twig' %}
-      {% endblock %}
-      <!-- /footer -->
+  </div>
+  
+  {{ function('wp_footer') }}
 
-    </div>
-    <!-- /main site wrapper -->
-    
-    <!-- wp footer -->
-    {{ function('wp_footer') }}
-    <!-- /wp footer -->
-    
-  </body>
-  <!-- /body -->
+  {% if is_paginated %}
+  <script src="/wp-content/themes/sixstar-theme/assets/js/main/scroll.js"></script>
+  {% endif %}
+</body>
+<!-- /body -->
+
 </html>

@@ -1,0 +1,139 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div id="HomeSection" class="uk-section uk-section-small" data-template="page-home.twig">
+  <div class="uk-container">
+    <div id="HomeSlider" class="uk-margin-large-bottom">
+      <div class="uk-position-relative uk-visible-toggle" tabindex="-1" uk-slideshow="animation: push; min-height: 350; max-height: 500">
+        <ul class="uk-slideshow-items">
+          <li>
+            <img src="https://demo.6starcompetitions.co.uk/wp-content/uploads/2020/03/blue-bmw-sedan-near-green-lawn-grass-170811.jpg" alt="" uk-cover>
+            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-light">
+              <h2 class="uk-margin-remove">Win a brand new BMW M5!</h2>
+              <p class="uk=margin-small">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper</p>
+              <a href="#" class="uk-button uk-button-primary">Enter Competition</a>
+            </div>
+          </li>
+          <li>
+            <img src="https://demo.6starcompetitions.co.uk/wp-content/uploads/2020/03/action-asphalt-auto-automobile-210019.jpg" alt="" uk-cover>
+            <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-light">
+              <h2 class="uk-margin-remove">Win an Alfa Romeo 4c Spider!</h2>
+              <p class="uk=margin-small">Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper</p>
+              <a href="#" class="uk-button uk-button-primary">Enter Competition</a>
+            </div>
+          </li>
+        </ul>
+        
+        <div class="uk-hidden@l uk-light">
+          <a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        </div>
+        <div class="uk-visible@l">
+          <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+          <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        </div>
+        
+        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+      </div>
+    </div>
+    <div id="HowToPlay" class="uk-margin-large-bottom">
+      <h2 class="uk-text-center">How to Play</h2>
+      <div class="uk-child-width-1-3@s uk-grid-small" uk-grid>
+        <div>
+          <div class="uk-tile uk-tile-muted uk-tile-small uk-text-center">
+            <h4>Step One</h4>
+            <p>Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est</p>
+          </div>
+        </div>
+        <div>
+          <div class="uk-tile uk-tile-muted uk-tile-small uk-text-center">
+            <h4>Step Two</h4>
+            <p>Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est</p>
+          </div>
+        </div>
+        <div>
+          <div class="uk-tile uk-tile-muted uk-tile-small uk-text-center">
+            <h4>Step Three</h4>
+            <p>Ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="FeaturedCompetitions" class="uk-margin-large-bottom">
+      <!-- FEATURED -->
+      <div>
+        <h3 class="uk-heading-line uk-text-bold"><span>Featured Competitions</span></h3>
+        <div data-uk-slider="velocity: 5">
+          <div class="uk-position-relative">
+            <div class="uk-slider-container" style="padding: 1px;">
+              <ul class="uk-slider-items uk-child-width-1-4@m uk-grid uk-grid-small news-slide">
+                {% for post in featured_products %}
+                  <li>
+                    {% include ['tease-product.twig'] %}
+                  </li>
+                {% endfor %}                
+              </ul>
+            </div>
+            <div class="uk-hidden@l uk-light">
+              <a class="uk-position-center-left uk-position-small" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+              <a class="uk-position-center-right uk-position-small" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+            </div>
+            <div class="uk-visible@l">
+              <a class="uk-position-center-left-out uk-position-small" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+              <a class="uk-position-center-right-out uk-position-small" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+            </div>
+          </div>
+          <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin uk-margin-remove-bottom">
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /FEATURED -->
+    </div>
+    <div id="QuickDraws" class="uk-margin-large-bottom">
+      <!-- FEATURED -->
+      <div>
+        <h3 class="uk-heading-line uk-text-bold"><span>Quick Draw Competitions</span></h3>
+        <div data-uk-slider="velocity: 5">
+          <div class="uk-position-relative">
+            <div class="uk-slider-container" style="padding: 1px;">
+              <ul class="uk-slider-items uk-child-width-1-4@m uk-grid uk-grid-small news-slide">
+                {% for post in quickdraw_products %}
+                  <li>
+                    {% include ['tease-product.twig'] %}
+                  </li>
+                {% endfor %}                
+              </ul>
+            </div>
+            <div class="uk-hidden@l uk-light">
+              <a class="uk-position-center-left uk-position-small" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+              <a class="uk-position-center-right uk-position-small" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+            </div>
+            <div class="uk-visible@l">
+              <a class="uk-position-center-left-out uk-position-small" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+              <a class="uk-position-center-right-out uk-position-small" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+            </div>
+          </div>
+          <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin uk-margin-remove-bottom">
+            <li></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /FEATURED -->
+    </div>
+    <div id="PageList" class="uk-section uk-section-small uk-section-muted uk-light uk-padding-small">
+      <ul class="uk-list">
+        <li>Slider Block</li>
+        <li>How it works</li>
+        <li>Featured Competitions</li>
+        <li>More Competitions</li>
+        <li>Winners & Testimonials</li>
+        <li>Newsletter</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

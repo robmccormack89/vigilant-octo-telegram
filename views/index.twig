@@ -1,0 +1,73 @@
+{% extends "base.twig" %}
+
+{% block contentwrap %}
+<div data-block="content-wrap" data-template="index.twig" >
+  
+  <div class="blog-wrap">
+    <div uk-grid>
+      <div id="MainTitle" class="uk-width-auto@s">
+        <h1 class="uk-text-bold uk-text-uppercase dark-text">{{ title }}</h1>
+      </div>
+      <div id="PageNav" class="page_nav uk-width-expand@s uk-inline">
+        <div class="uk-position-center-right uk-visible@s">
+          <ul class="uk-subnav uk-margin-remove-bottom">
+            {% for item in blogcats %}
+            {% if cat_id == item.term_id %}
+              {% set active_class = 'uk-active' %}
+            {% else %}
+              {% set active_class = 'not-active' %}
+            {% endif %}
+            <li id="{{ item.term_id }}" class="{{active_class}}"><a href="{{ catbase }}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a></li>
+            {% endfor %}
+            {% if is_category %}
+            <li id="" class=""><a href="{{ posts_page_url }}" class="uk-text-uppercase font-600">All</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="uk-hidden@s">
+          <ul class="uk-subnav uk-margin-remove-bottom">
+            {% for item in blogcats %}
+            {% if cat_id == item.term_id %}
+              {% set active_class = 'uk-active' %}
+            {% else %}
+              {% set active_class = 'not-active' %}
+            {% endif %}
+            <li id="{{ item.term_id }}" class="{{active_class}}"><a href="{{ catbase }}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a></li>
+            {% endfor %}
+            {% if is_category %}
+            <li id="" class=""><a href="{{ posts_page_url }}" class="uk-text-uppercase font-600">All</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="uk-child-width-1-3@s archive-posts" uk-grid="masonry: true">
+      {% for post in posts %}
+        {% include 'tease.twig' %}
+      {% endfor %}
+      {% if posts is empty %}
+        <p class="uk-text-emphasis">No posts found.</p>
+      {% endif %}
+    </div>
+    {% if posts > 6 %}
+      {% include 'pagination.twig' %}
+    {% endif %} 
+    {% if is_paginated %}
+    <div class="scroll-loaders uk-section uk-section-small">
+      <div class="page-load-status">
+        <div class="loader-ellips infinite-scroll-request">
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+        </div>
+        <p class="infinite-scroll-last">No more Posts</p>
+        <p class="infinite-scroll-error">No posts to load</p>
+      </div>
+      <button class="view-more-button uk-button uk-button-primary uk-align-center">Load More Posts</button>
+    </div>
+    {% endif %}
+  </div>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+<div id="SiteFooter" class="uk-light">
+  <!--FOOTER-->
+  <footer id="FooterArea" data-template="footer.twig">
+    <div id="FooterTop" class="footer_top uk-section uk-section-small uk-section-primary theme-darker-bg standard-text">
+      <div class="uk-container uk-container-large">
+        <div class="uk-grid-large" uk-grid>
+          <div class="uk-width-1-3@m uk-width-1-4@l">
+            <a id="FooterLogo" class="footer_logo uk-logo" href="#">
+              <img data-src="https://demo.6starcompetitions.co.uk/wp-content/uploads/2020/02/sixstar-logo-red.png" uk-img="" src="https://demo.6starcompetitions.co.uk/wp-content/uploads/2020/02/sixstar-logo-red.png">
+            </a>
+          </div>
+          <div id="FooterTopRight" class="footer_top_right uk-width-2-3@m uk-width-3-4@l">
+            <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-5@l uk-grid-small" uk-grid>
+              <div>
+                {% if sidebar_footer_1 %}
+                {{ sidebar_footer_1 }}
+                {% else %}
+                <h3 class="uk-text-bold uk-text-muted widget-title">Footer 1</h3>
+                <p>Add some widgets to the Footer Widget Area 2</p>
+                {% endif %}
+              </div>
+              <div>
+                {% if sidebar_footer_2 %}
+                {{ sidebar_footer_2 }}
+                {% else %}
+                <h3 class="uk-text-bold uk-text-muted widget-title">Footer 2</h3>
+                <p>Add some widgets to the Footer Widget Area 2</p>
+                {% endif %}
+              </div>
+              <div>
+                {% if sidebar_footer_3 %}
+                {{ sidebar_footer_3 }}
+                {% else %}
+                <h3 class="uk-text-bold uk-text-muted widget-title">Footer 3</h3>
+                <p>Add some widgets to the Footer Widget Area 3</p>
+                {% endif %}
+              </div>
+              <div>
+                {% if sidebar_footer_4 %}
+                {{ sidebar_footer_4 }}
+                {% else %}
+                <h3 class="uk-text-bold uk-text-muted widget-title">Footer 4</h3>
+                <p>Add some widgets to the Footer Widget Area 4</p>
+                {% endif %}
+              </div>
+              <div>
+                {% if sidebar_footer_5 %}
+                {{ sidebar_footer_5 }}
+                {% else %}
+                <h3 class="uk-text-bold uk-text-muted widget-title">Footer 4</h3>
+                <p>Add some widgets to the Footer Widget Area 4</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="FooterBottom" class="footer_bottom">
+      <div id="FooterBottomWrap" class="footer_bottom_wrap navbar-height-45 theme-dark-bg muted-text-dark-bg standard-text">
+        <div class="uk-container uk-container-small">
+          <div class="uk-child-width-1-1 uk-grid-small" uk-grid>
+            <div class="uk-align-center">
+              <div class="uk-text-center">
+                {% if sidebar_footer_bottom_top %}
+                {{ sidebar_footer_bottom_top }}
+                {% else %}
+                <p>Add some widgets to the Footer Bottom Left Widget Area</p>
+                {% endif %}
+              </div>
+            </div>
+            <div>
+              <div class="uk-text-center">
+                {% if sidebar_footer_bottom_bottom %}
+                {{ sidebar_footer_bottom_bottom }}
+                {% else %}
+                <p>Add some widgets to the Footer Bottom Left Widget Area</p>
+                {% endif %}  
+              </div>    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  jQuery(function($) {
+    $("#loginform").addClass("uk-form-stacked");
+    $("label").addClass("uk-form-label");
+    $("#loginform .input").addClass("uk-input");
+    $("#loginform [ type=checkbox ]").addClass("uk-checkbox");
+    $("#loginform .button.button-primary").addClass("uk-button uk-button-default");
+    $(".wpcf7-form").addClass("uk-form-stacked");
+    $(".current-menu-item").addClass("uk-active");
+  });
+</script>

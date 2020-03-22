@@ -8,12 +8,17 @@
 // if woocommerce is activated, do this stuff, or not
  if ( class_exists( 'WooCommerce' ) ) {
    
-   // add this to functions.php, a custom plugin, or a snippets plugin to remove the description tab in woocommerce
-   // by Robin Scott of Silicon Dales - full info at https://silicondales.com/tutorials/woocommerce-tutorials/remove-description-tab-woocommerce/
-   add_filter( 'woocommerce_product_tabs', 'sd_remove_product_tabs', 98 );
-   function sd_remove_product_tabs( $tabs ) {
-    unset( $tabs['description'] );
-    return $tabs;
+
+   /**
+    * Rename product data tabs
+    */
+   add_filter( 'woocommerce_product_tabs', 'woo_rename_tabs', 98 );
+   function woo_rename_tabs( $tabs ) {
+   
+   	$tabs['description']['title'] = __( 'Competition Info' );		// Rename the description tab
+   
+   	return $tabs;
+   
    }
 
 
@@ -21,11 +26,12 @@
     *  moving / removing woocommerce actions
     */
     
-    remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+    // remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
    
    // archive
    remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 ); // reorder catalog in ProductToolbar from 3rd
    add_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 10 ); // reorder catalog in ProductToolbar to 1st
+   remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
    
    // tease product
    remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open' ); // remove unnecessary link open html 
@@ -39,6 +45,14 @@
    add_action( 'woocommerce_after_single_product', 'woocommerce_upsell_display', 15 ); // remove upsells -TEMPORARY
    add_action( 'woocommerce_after_single_product', 'woocommerce_output_related_products', 20 ); // remove related -TEMPORARY
    remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
+   
+   remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+   remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+   remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+   
+   add_action( 'woocommerce_after_single_product_summary', 'woocommerce_template_single_meta', 30 );
+   add_action( 'woocommerce_after_single_product_summary', 'woocommerce_template_single_sharing', 40 );
+   add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_excerpt', 30 );
    
    // cart
    remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' ); // remove cross sells from cart page -TEMPORARY
@@ -99,39 +113,22 @@
    }
    add_action( 'wp_enqueue_scripts', 'theme_woo_script_styles', 99 );
    
-   
-   
-   
-   function gallery_scripts() {
-       if ( is_product() ) {
-           if ( current_theme_supports( 'wc-product-gallery-zoom' ) ) { 
-               wp_enqueue_script( 'zoom' );
-           }
-           if ( current_theme_supports( 'wc-product-gallery-slider' ) ) {
-               wp_enqueue_script( 'flexslider' );
-           }
-           if ( current_theme_supports( 'wc-product-gallery-lightbox' ) ) {
-               wp_enqueue_script( 'photoswipe-ui-default' );
-               wp_enqueue_style( 'photoswipe-default-skin' );
-               add_action( 'wp_footer', 'woocommerce_photoswipe' );
-           }
-           wp_enqueue_script( 'wc-add-to-cart-variation' );
-           wp_enqueue_script( 'wc-single-product' );
-           
-       }
 
+   // filters the results count for ajax
+   function iconic_cart_count_fragments( $fragments ) {
+      $fragments['span.header-cart-count'] = '<span class="header-cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
+      return $fragments;
    }
+   add_filter( 'woocommerce_add_to_cart_fragments', 'iconic_cart_count_fragments', 10, 1 );
    
    
    
-   
-   
-   
-   
-   
-   
-   
-
+   // filters the results count for ajax
+   function iconic_subtotal_fragments( $fragments ) {
+      $fragments['span.subtotal-cart'] = '<span class="subtotal-cart">' . WC()->cart->get_cart_subtotal() . '</span>';
+      return $fragments;
+   }
+   add_filter( 'woocommerce_add_to_cart_fragments', 'iconic_subtotal_fragments', 10, 1 );
 
    /**
     * Using WooCommerce Filters

@@ -17,6 +17,8 @@ if ( is_home() && is_front_page() ) {
 $context['pagination'] = Timber::get_pagination();
 $context['paged'] = $paged;
 
+
+
 $templates = array( 'index.twig' );
 if ( is_home() ) {
 	array_unshift( $templates, 'home.twig' );

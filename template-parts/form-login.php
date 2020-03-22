@@ -34,6 +34,8 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 <?php wp_login_form() ?>
 
 <?php if ( 'yes' === get_option( 'woocommerce_enable_myaccount_registration' ) ) : ?>
+	
+	<?php echo do_shortcode( '[miniorange_social_login shape="longbuttonwithtext" theme="default" space="8" width="180" height="35" color="000000"]' ); ?>
 
 	</div>
 

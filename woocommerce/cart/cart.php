@@ -160,14 +160,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 				
 				<?php if ( wc_coupons_enabled() ) { ?>
 					<div class="coupon">
-						<button type="submit" class="button uk-button uk-button-default uk-width-1-1" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply coupon', 'woocommerce'); ?></button>
+						<button type="submit" class="button uk-button uk-button-primary uk-width-1-1" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply coupon', 'woocommerce'); ?></button>
 						<?php do_action('woocommerce_cart_coupon'); ?>
 					</div>
 				<?php } ?>
 				
 			</div>
 			<div class="uk-width-1-1">
-				<button type="submit" class="button uk-button uk-button-default  uk-width-1-1" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
+				<button type="submit" class="button uk-button uk-button-primary  uk-width-1-1" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
 			</div>
 		</div>
 
