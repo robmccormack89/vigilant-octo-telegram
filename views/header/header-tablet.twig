@@ -1,0 +1,75 @@
+<div id="HeaderBottomTablet" class="uk-visible@s uk-hidden@m fat-border-bottom">
+  <div id="BottomNavTablet" class="">
+    <nav id="BottomNavWrapTablet" class="theme-dark-bg">
+      <div class="uk-container uk-container-expand container-wrap-10">
+        <div class="" uk-grid>
+          <div class="uk-width-auto">
+            <div class="uk-navbar" uk-navbar>
+              <div id="BottomNavLogoTablet" class="bottom_nav_logo bottom_nav_logo_tablet uk-navbar-left uk-light">
+                <a class="uk-navbar-item uk-logo uk-text-bold uk-text-emphasis" href="/"><img data-src="/wp-content/uploads/2020/02/sixstar-logo-red.png" uk-img=""
+                    src="/wp-content/uploads/2020/02/sixstar-logo-red.png"></a>
+              </div>
+            </div>
+          </div>
+          <div class="uk-width-expand">
+            <div class="uk-navbar" uk-navbar>
+              <div id="BottomNavRightTablet" class="bottom_nav_right bottom_nav_right_laptop uk-navbar-right search-tab">
+                <div id="SearchNavTablet" class="search_nav uk-navbar-item uk-light">
+                  <a href="#" class="nav-right-item lighten" uk-toggle="target: .search-tab; animation: uk-animation-fade"><i class="fas fa-search fa-lg"></i></a>
+                </div>
+
+                <div id="CartNavTablet" class="cart_nav cart_nav_mobile uk-navbar-item boundary-cart-tablet">
+                  <div class="uk-inline">
+                    <a href="/cart" class="cart-icon uk-icon nav-right-item uk-light lighten" aria-expanded="false"><i class="fas fa-shopping-cart fa-lg"></i></a>
+                    {% do action('cart_ajax_result_count') %}
+                    {% do action('cart_ajax_subtotal') %}
+                  </div>
+                </div>
+                <div id="CartNavDropdownTablet" class="uk-padding-remove" uk-dropdown="pos: bottom-right; boundary: .boundary-cart-tablet; boundary-align: true">
+                  <div class="widget_shopping_cart_content">{{ function('woocommerce_mini_cart') }}</div>
+                </div>
+                <div id="BottomNavRightDividerTablet" class="bottom_nav_right_divider uk-navbar-item uk-light">
+                  <hr class="uk-divider-vertical height-50 uk-margin-remove">
+                </div>
+                <div id="AccountNavTablet" class="account_nav uk-navbar-item boundary-account-tablet">
+                  <a href="{{dashboard_endpoint}}" class="nav-right-item uk-light lighten" aria-expanded="false"><i class="fas fa-user fa-lg"></i></a>
+                </div>
+                <div id="AccountNavDropdownTablet" uk-dropdown="pos: bottom-right; boundary: .boundary-account-tablet; boundary-align: true">
+                  {% if not user %}
+                  <ul id="LoginDropdownTablet" class="login_dropdown uk-nav uk-dropdown-nav">
+                    <li><a href="{{dashboard_endpoint}}" class="uk-text-uppercase grey-text font-600">Login/Register</a></li>
+                  </ul>
+                  {% else %}
+                  <ul id="AccountDropdownTablet" class="uk-nav uk-dropdown-nav">
+                    <li class="uk-nav-header uk-text-small uk-text-bold">YOUR ACCOUNT</li>
+                    <li><a href="{{dashboard_endpoint}}"><span data-uk-icon="icon: user" class="uk-icon"></span> Dashboard</a></li>
+                    <li><a href="{{address_endpoint}}"><span data-uk-icon="icon: location" class="uk-icon"></span> Change Address</a></li>
+                    <li><a href="{{edit_endpoint}}"><span data-uk-icon="icon: lock" class="uk-icon"></span> Change Password</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="{{orders_endpoint}}"><span data-uk-icon="icon: list" class="uk-icon"></span> Your Orders</a></li>
+                    <li><a href="/contact"><span data-uk-icon="icon: mail" class="uk-icon"></span> Contact us</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="{{logout_endpoint}}"><span data-uk-icon="icon: sign-out" class="uk-icon"></span> Logout</a></li>
+                  </ul>
+                  {% endif %}
+                </div>
+                <div id="BottomNavRightDividerTablet" class="bottom_nav_right_divider uk-navbar-item uk-light uk-hidden@m">
+                  <hr class="uk-divider-vertical height-50 uk-margin-remove">
+                </div>
+                <a class="uk-navbar-item uk-hidden@m lighten" uk-toggle="target: #offcanvas-nav"><i class="fas fa-bars fa-lg"></i></a>
+              </div>
+              <div class="bottom_nav_searchbar uk-navbar-right search-tab" hidden>
+                <div class="uk-navbar-item">
+                  <form class="uk-search uk-search-navbar" role="search" method="get" action="{{site.url}}">
+                    <input class="uk-search-input" type="search" placeholder="Start typing..." id="Search" name="s" autocomplete="off" autofocus>
+                  </form>
+                </div>
+                <a class="uk-navbar-toggle" uk-close uk-toggle="target: .search-tab; animation: uk-animation-fade" href="#"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

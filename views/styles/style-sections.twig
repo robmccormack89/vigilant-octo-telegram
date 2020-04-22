@@ -1,7 +1,7 @@
 <!-- header -->
 <style>
   /* main menu active item after effects */
-  #SiteHeader .bottom_nav_center .menu-item.current-menu-item:after {
+  /* #SiteHeader .bottom_nav_center .menu-item.current-menu-item:after {
     width: 33px;
     height: 65px;
     content: '';
@@ -12,25 +12,7 @@
     display: block;
     position: absolute;
     background: url(/wp-content/themes/sixstar-theme/assets/img/menuactive.png) no-repeat center center;
-  }
-  /* header cartnav ajax result count styling */ 
-  .cart_nav .header-cart-count {
-    text-align: center;
-    width: 20px;
-    height: 20px;
-    top: -5px;
-    left: 20px;
-    line-height: 20px;
-    border-radius: 20px;
-    position: absolute;
-    z-index: 1;
-  }
-  /* header cartnav ajax subtotal styling */ 
-  .cart_nav .subtotal-cart{
-    position: relative;
-    margin-left: 15px;
-    top: 5px;
-  }
+  } */
 </style>
   
 <!-- woo -->
@@ -45,7 +27,7 @@
       margin-bottom: 10px;
       color: {{dark_bg}};
       font-size: 1.3rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0px;
   }
   #ProductMedia img {
@@ -54,6 +36,13 @@
   
   .woocommerce-mini-cart__empty-message {
     padding: 20px;
+  }
+  .woocommerce-MyAccount-navigation a {
+      font-weight: 600;
+      color: #151c28;
+  }
+  .woocommerce #content div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce div.product div.images {
+      width: 100%;
   }
 </style>
 

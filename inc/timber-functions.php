@@ -36,6 +36,182 @@ class SixstarTheme extends TimberSite
 
     public function register_post_types()
     {
+      
+    	$labels = array(
+    		'name'                  => _x( 'Competition Winners', 'Post Type General Name', 'text_domain' ),
+    		'singular_name'         => _x( 'Competition Winner', 'Post Type Singular Name', 'text_domain' ),
+    		'menu_name'             => __( 'Competition Winners', 'text_domain' ),
+    		'name_admin_bar'        => __( 'Competition Winner', 'text_domain' ),
+    		'archives'              => __( 'Competition Winners', 'text_domain' ),
+    		'attributes'            => __( 'Winner Attributes', 'text_domain' ),
+    		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
+    		'all_items'             => __( 'All Winners', 'text_domain' ),
+    		'add_new_item'          => __( 'Add New Winner', 'text_domain' ),
+    		'add_new'               => __( 'Add New', 'text_domain' ),
+    		'new_item'              => __( 'New Item', 'text_domain' ),
+    		'edit_item'             => __( 'Edit Item', 'text_domain' ),
+    		'update_item'           => __( 'Update Item', 'text_domain' ),
+    		'view_item'             => __( 'View Item', 'text_domain' ),
+    		'view_items'            => __( 'View Items', 'text_domain' ),
+    		'search_items'          => __( 'Search Item', 'text_domain' ),
+    		'not_found'             => __( 'Not found', 'text_domain' ),
+    		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
+    		'featured_image'        => __( 'Featured Image', 'text_domain' ),
+    		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
+    		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
+    		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+    		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
+    		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+    		'items_list'            => __( 'Items list', 'text_domain' ),
+    		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+    		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+    	);
+    	$rewrite = array(
+    		'slug'                  => 'competition-winner',
+    		'with_front'            => true,
+    		'pages'                 => true,
+    		'feeds'                 => false,
+    	);
+    	$args = array(
+    		'label'                 => __( 'Winner', 'text_domain' ),
+    		'description'           => __( 'Winners content type', 'text_domain' ),
+    		'labels'                => $labels,
+    		'supports'              => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes' ),
+    		'hierarchical'          => false,
+    		'public'                => true,
+    		'show_ui'               => true,
+    		'show_in_menu'          => true,
+    		'menu_position'         => 5,
+    		'show_in_admin_bar'     => true,
+    		'show_in_nav_menus'     => true,
+    		'can_export'            => true,
+    		'has_archive'           => 'competition-winners',
+    		'exclude_from_search'   => true,
+    		'publicly_queryable'    => true,
+    		'query_var'             => 'winner',
+    		'rewrite'               => $rewrite,
+    		'capability_type'       => 'page',
+    		'show_in_rest'          => false,
+    	);
+    	register_post_type( 'winners', $args );
+      
+      
+      
+      
+
+      
+      	$labels = array(
+      		'name'                  => _x( 'Entry Lists', 'Post Type General Name', 'text_domain' ),
+      		'singular_name'         => _x( 'Entry List', 'Post Type Singular Name', 'text_domain' ),
+      		'menu_name'             => __( 'Entry Lists', 'text_domain' ),
+      		'name_admin_bar'        => __( 'Entry List', 'text_domain' ),
+      		'archives'              => __( 'Entry Lists', 'text_domain' ),
+      		'attributes'            => __( 'Entry List Attributes', 'text_domain' ),
+      		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
+      		'all_items'             => __( 'All Entry Lists', 'text_domain' ),
+      		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
+      		'add_new'               => __( 'Add New', 'text_domain' ),
+      		'new_item'              => __( 'New Item', 'text_domain' ),
+      		'edit_item'             => __( 'Edit Item', 'text_domain' ),
+      		'update_item'           => __( 'Update Item', 'text_domain' ),
+      		'view_item'             => __( 'View Item', 'text_domain' ),
+      		'view_items'            => __( 'View Items', 'text_domain' ),
+      		'search_items'          => __( 'Search Item', 'text_domain' ),
+      		'not_found'             => __( 'Not found', 'text_domain' ),
+      		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
+      		'featured_image'        => __( 'Featured Image', 'text_domain' ),
+      		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
+      		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
+      		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+      		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
+      		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+      		'items_list'            => __( 'Items list', 'text_domain' ),
+      		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+      		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+      	);
+      	$rewrite = array(
+      		'slug'                  => 'entry-list',
+      		'with_front'            => true,
+      		'pages'                 => true,
+      		'feeds'                 => false,
+      	);
+      	$args = array(
+      		'label'                 => __( 'Entry List', 'text_domain' ),
+      		'description'           => __( 'Entry List Description', 'text_domain' ),
+      		'labels'                => $labels,
+      		'supports'              => array( 'title', 'editor', 'revisions', 'custom-fields', 'page-attributes' ),
+      		'hierarchical'          => false,
+      		'public'                => true,
+      		'show_ui'               => true,
+      		'show_in_menu'          => true,
+      		'menu_position'         => 5,
+      		'show_in_admin_bar'     => true,
+      		'show_in_nav_menus'     => true,
+      		'can_export'            => true,
+      		'has_archive'           => 'entry-lists',
+      		'exclude_from_search'   => true,
+      		'publicly_queryable'    => true,
+      		'rewrite'               => $rewrite,
+      		'capability_type'       => 'page',
+      	);
+      	register_post_type( 'entry_lists', $args );
+        
+        	$labels = array(
+        		'name'                  => _x( 'Live Draws', 'Post Type General Name', 'text_domain' ),
+        		'singular_name'         => _x( 'Live Draw', 'Post Type Singular Name', 'text_domain' ),
+        		'menu_name'             => __( 'Live Draws', 'text_domain' ),
+        		'name_admin_bar'        => __( 'Live Draw', 'text_domain' ),
+        		'archives'              => __( 'Live Draws', 'text_domain' ),
+        		'attributes'            => __( 'Live Draw Attributes', 'text_domain' ),
+        		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
+        		'all_items'             => __( 'All Live Draws', 'text_domain' ),
+        		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
+        		'add_new'               => __( 'Add New', 'text_domain' ),
+        		'new_item'              => __( 'New Item', 'text_domain' ),
+        		'edit_item'             => __( 'Edit Item', 'text_domain' ),
+        		'update_item'           => __( 'Update Item', 'text_domain' ),
+        		'view_item'             => __( 'View Item', 'text_domain' ),
+        		'view_items'            => __( 'View Items', 'text_domain' ),
+        		'search_items'          => __( 'Search Item', 'text_domain' ),
+        		'not_found'             => __( 'Not found', 'text_domain' ),
+        		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
+        		'featured_image'        => __( 'Featured Image', 'text_domain' ),
+        		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
+        		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
+        		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+        		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
+        		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+        		'items_list'            => __( 'Items list', 'text_domain' ),
+        		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+        		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+        	);
+        	$rewrite = array(
+        		'slug'                  => 'live-draw',
+        		'with_front'            => true,
+        		'pages'                 => true,
+        		'feeds'                 => false,
+        	);
+        	$args = array(
+        		'label'                 => __( 'Live Draw', 'text_domain' ),
+        		'description'           => __( 'Live Draws Description', 'text_domain' ),
+        		'labels'                => $labels,
+        		'supports'              => array( 'title', 'editor', 'custom-fields' ),
+        		'hierarchical'          => false,
+        		'public'                => true,
+        		'show_ui'               => true,
+        		'show_in_menu'          => true,
+        		'menu_position'         => 5,
+        		'show_in_admin_bar'     => true,
+        		'show_in_nav_menus'     => true,
+        		'can_export'            => true,
+        		'has_archive'           => 'live-draws',
+        		'exclude_from_search'   => true,
+        		'publicly_queryable'    => true,
+        		'rewrite'               => $rewrite,
+        		'capability_type'       => 'page',
+        	);
+        	register_post_type( 'live_draws', $args );
+
     
     }
 
@@ -242,6 +418,8 @@ class SixstarTheme extends TimberSite
       /* send to twig */
       $context['product_term_id'] = $product_term_id;
       
+      $context['is_single_product'] = is_singular( 'product' );
+      
       /* get the blog categories */
       $context['blogcats'] = get_categories();
       /* get the blog category base */
@@ -273,6 +451,9 @@ class SixstarTheme extends TimberSite
       $context['has_menu_main'] = has_nav_menu( 'main' );
       $context['has_menu_mobile'] = has_nav_menu( 'mobile' );
       
+      $file = get_field('pdf_upload');
+      $context['pdf_upload_url'] = $file['url'];;
+      
       /* woo my account endpoints, for shop subnav */
       $context['dashboard_endpoint']   = wc_get_account_endpoint_url( 'dashboard' );
       $context['address_endpoint']   = wc_get_account_endpoint_url( 'edit-address' );
@@ -281,6 +462,9 @@ class SixstarTheme extends TimberSite
       $context['lost_endpoint']   = wc_get_account_endpoint_url( 'lost-password' );
       $context['orders_endpoint']   = wc_get_account_endpoint_url( 'orders' );
       $context['logout_endpoint']   = wc_get_account_endpoint_url( 'customer-logout' );
+      
+      $context['is_posts']   = is_blog();
+      $context['is_winners']   = is_post_type_archive( 'winners' );
       
       /* sidebar areas */
       $context['sidebar_cart']  = Timber::get_widgets('Woo Cart Area');
@@ -303,7 +487,7 @@ class SixstarTheme extends TimberSite
       if ( is_page_template( 'page-templates/no-sidebar-template.php' ) ) {
         $context['article_width_class'] = 'uk-width-1-1';
       } else {
-        $context['article_width_class'] = 'uk-width-2-3@s';
+        $context['article_width_class'] = 'uk-width-2-3@m';
       };
       $context['is_left_sidebar'] = is_page_template( 'page-templates/left-sidebar-template.php' );
       $context['is_right_sidebar'] = is_single() || is_page() && ! is_page_template( array( 'page-templates/left-sidebar-template.php', 'page-templates/no-sidebar-template.php' ) );

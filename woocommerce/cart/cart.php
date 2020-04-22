@@ -24,7 +24,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 	<div class="uk-overflow-auto">
 		
-	<table class="uk-table uk-table-justify test uk-table-divider shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+	<table class="uk-table uk-table-justify test uk-table-striped shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
 		<thead>
 			<tr>
 				<th class="product-remove">&nbsp;</th>
@@ -146,7 +146,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 	<div class="coupons-n-cart-actions-n-after-cart-shit">
 
-		<div class="uk-grid-small	product-coupon-shit" uk-grid>
+		<div class="uk-grid-small	product-coupon-shit uk-margin-small-top" uk-grid>
 			<div class="uk-width-1-1">
 				
 				<?php if ( wc_coupons_enabled() ) { ?>

@@ -164,7 +164,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 <script>
 	jQuery(function($){
 		$("div.cart-buttons-area .button:first-child").addClass("uk-button uk-button-primary uk-button-small uk-width-1-1");
-		$(".checkout").addClass("uk-button uk-button-link uk-width-1-1");
+		$(".button.checkout").addClass("uk-button uk-button-link uk-width-1-1");
 	});
 </script>
 

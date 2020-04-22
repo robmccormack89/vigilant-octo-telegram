@@ -1,0 +1,117 @@
+{% extends 'base.twig' %}
+
+{% block contentwrap %}
+
+{% if is_shop %}
+  {% set active_class = 'uk-active' %}
+{% else %}
+  {% set active_class = 'not-active' %}
+{% endif %}
+
+<div data-block="content-wrap" data-template="woo-archive.twig">
+  
+  <div>{% do action('woocommerce_before_main_content') %}</div>
+  
+  {% if not user %}
+  <p class="">You are not logged in. Please <a href="#modal-container" uk-toggle>log in here</a> before entering a competition.</p>
+  {% endif %}
+  
+  {# do action('woocommerce_before_shop_loop') #}
+  
+  <div class="shop-wrap">
+    
+    <div class="uk-margin-bottom">
+      <div class="uk-grid-collapse" uk-grid>
+        
+        <div class="uk-width-auto@m">
+          <h1 class="uk-text-bold uk-text-uppercase dark-text">
+            {{ title }}
+          </h1>
+        </div>
+        
+        <div class="page_nav uk-width-expand@m uk-inline">
+          
+          <div id="ShopNav" class="uk-position-center-right uk-visible@m">
+            <ul class="uk-subnav uk-margin-remove-bottom">
+              
+              <li class="{{active_class}}"><a href="{{shop_page_url}}" class="uk-text-uppercase font-600">All</a></li>
+              {% for item in shopcats %}
+              {% if product_term_id == item.term_id %}
+                {% set cat_active_class = 'uk-active' %}
+              {% else %}
+                {% set cat_active_class = 'not-active' %}
+              {% endif %}
+              <li id="{{ item.term_id }}" class="{{cat_active_class}}"><a href="{{product_category_base}}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a></li>
+              {% endfor %}
+              
+            </ul>
+          </div>
+          
+          <div class="uk-hidden@m uk-margin-small-top">
+            <ul class="uk-subnav uk-margin-remove-bottom">
+              
+              <li class="{{active_class}}"><a href="{{shop_page_url}}" class="uk-text-uppercase font-600">All</a></li>
+              {% for item in shopcats %}
+              {% if product_term_id == item.term_id %}
+                {% set cat_active_class = 'uk-active' %}
+              {% else %}
+                {% set cat_active_class = 'not-active' %}
+              {% endif %}
+              <li id="{{ item.term_id }}" class="{{cat_active_class}}"><a href="{{product_category_base}}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a></li>
+              {% endfor %}
+              
+            </ul>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+    
+    <div id="ShopArchiveDescription">
+      {% do action('woocommerce_archive_description') %}
+    </div>
+    
+    <div id="ProductsGrid" class="uk-child-width-1-2@s uk-child-width-1-4@m archive-posts margin-top-30" uk-grid="masonry: true">
+      
+      {% for post in products %}
+        {% include ['tease-product.twig'] %}
+      {% endfor %}
+      {% if products is empty %}
+        {% do action('woocommerce_no_products_found') %}
+      {% endif %}
+      
+    </div>
+    
+    <div id="ShopPagination">
+      
+      {% do action('woocommerce_after_shop_loop') %}
+      
+      {% if is_paginated %}
+      <div class="scroll-loaders uk-section uk-section-small">
+        
+        <div class="page-load-status">
+          <div class="loader-ellips infinite-scroll-request">
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+          </div>
+          <p class="infinite-scroll-last">No more Competitionss</p>
+          <p class="infinite-scroll-error">No competitions to load</p>
+        </div>
+        
+        <button class="view-more-button uk-button uk-button-primary uk-align-center">Load More Competitions</button>
+        
+      </div>
+      {% endif %}
+      
+    </div>
+    
+    {% do action('woocommerce_after_main_content') %}
+    
+  </div>
+  
+</div>
+
+{% endblock %}

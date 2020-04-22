@@ -15,6 +15,10 @@ if ( is_singular( 'product' ) ) {
     $product            = wc_get_product( $context['post']->ID );
     $context['product'] = $product;
     
+    // get the product gallery ids
+    $context['attachment_ids'] =  $product->get_gallery_image_ids();
+
+    
     // Restore the context and loop back to the main query loop.
     wp_reset_postdata();
 

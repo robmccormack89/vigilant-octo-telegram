@@ -1,0 +1,107 @@
+{% extends "base.twig" %}
+{% block content %}
+
+<div id="product-{{post.id}}" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }}">
+  <div class="content-area uk-section uk-section-small uk-section-muted">
+    <div class="uk-container uk-container-large">
+      <div class="uk-grid-large" uk-grid>
+        <div class="uk-width-1-2@s">
+          <div class="custom-product-images">
+            <ul id="lightSlider">
+              <li data-thumb="{{ post.thumbnail.src('thumbnail') }}">
+                <div uk-lightbox>
+                  <a href="{{ post.thumbnail.src('full') }}" data-caption="{{post.title}}">
+                    <img src="{{ post.thumbnail.src('sixstar-theme-product-main-image') }}" />
+                  </a>
+                </div>
+              </li>
+              {% for attachment_id in attachment_ids %}
+              {% set attach_main = function('wp_get_attachment_image_src', attachment_id, 'sixstar-theme-product-main-image') %}
+              {% set attach_thumb = function('wp_get_attachment_image_src', attachment_id, 'thumbnail') %}
+              {% set attach_full = function('wp_get_attachment_image_src', attachment_id, 'full') %}
+              <li data-thumb="{{attach_thumb[0]}}">
+                <div uk-lightbox>
+                  <a href="{{attach_full[0]}}" data-caption="{{post.title}}">
+                    <img src="{{attach_main[0]}}" />
+                  </a>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {# do action('woocommerce_before_single_product_summary') #}
+        </div>
+        <div class="uk-width-1-2@s">
+          <span class="uk-text-uppercase uk-text-bold uk-text-large uk-text-primary">Enter now for a chance to win</span>
+          {% do action('woocommerce_single_product_summary') %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="uk-section uk-section-default">
+    <div class="uk-container uk-container-large">
+      content
+    </div>
+  </div>
+      
+</div>
+
+<script>
+  jQuery('#lightSlider').lightSlider({
+      gallery: true,
+      item: 1,
+      loop: true,
+      pager: true,
+      slideMargin: 0,
+      thumbItem: 6,
+      controls: true,
+      galleryMargin: 10,
+      thumbMargin: 10,
+      currentPagerPosition: 'middle',
+      prevHtml: '<i class="fas fa-angle-left fa-2x"></i>',
+      nextHtml: '<i class="fas fa-angle-right fa-2x"></i>',
+  });
+</script>
+
+<!-- <div class="uk-card uk-card-default uk-card-body" data-template="woo-single.twig">
+    
+    <div class="">
+      {% do action('woocommerce_before_main_content') %}
+    </div>
+    
+    {% if not user %}
+    <p class="">You are not logged in. Please <a href="#modal-container" uk-toggle>log in here</a> before entering a competition.</p>
+    {% endif %}
+
+    <div class="product-notices-section">
+      {% do action('woocommerce_before_single_product') %}
+    </div>
+
+
+    <div id="TheProduct" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }} uk-grid-divider" uk-grid>
+
+      <div class="uk-width-1-2@m">
+        {% do action('woocommerce_before_single_product_summary') %}
+        {% do action('woocommerce_single_product_summary') %}
+      </div>
+
+      <div class="entry-images uk-width-1-2@m">
+        <div>
+          {% do action('woocommerce_after_single_product_summary') %}
+        </div>
+      </div>
+
+    </div>
+    
+    <meta itemprop="url" content="{{ post.link }}" />
+
+    <div class="after-product-section uk-margin-large-top">
+      {% do action('woocommerce_after_single_product') %}
+    </div>
+  
+</div> -->
+
+{% endblock %}
+
+
+

@@ -5,7 +5,14 @@
   <meta charset="{{site.charset}}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{ function('wp_head') }}
+  <link rel="stylesheet" href="/wp-content/themes/sixstar-theme/node_modules/@fortawesome/fontawesome-free/css/all.css">
+  {% if is_single_product %}
+  <link rel="stylesheet" href="/wp-content/themes/sixstar-theme/assets/css/lightslider.css" />
+  <script src="/wp-content/themes/sixstar-theme/assets/js/lightslider.js"></script> 
+  {% endif %}
 </head>
+
+{% block bodywrap %}
 
 {% include 'styles.twig' %}
 
@@ -19,15 +26,17 @@
     
     <main role="main" id="MainContent">
       {% block content %}
-      <div id="SiteContent" class="">
-        {% include 'breads.twig' %}
-        <div id="ContentArea" class="uk-section uk-section-small uk-section-muted">
-          <div id="ContentWrap" class="uk-container">
+      <div class="">
+        <div class="breads_area uk-container uk-container-large">
+          {% include 'breads.twig' %}
+        </div>
+        <div class="content-area uk-section uk-section-small uk-section-muted">
+          <div class="uk-container uk-container-large">
             {% block contentwrap %}
-            <div id="MainTitle" class="">
+            <div class="">
               <h1 class="uk-heading-line uk-text-bold"><span>{{ title }}</span></h1>
             </div>
-            <div id="MainContent" class="uk-card uk-card-default uk-card-body">
+            <div class="uk-card uk-card-default uk-card-body">
               {% block contentonly %}
               <p>Sorry, Nothing to Display!!</p>
               {% endblock %}
@@ -50,7 +59,24 @@
   {% if is_paginated %}
   <script src="/wp-content/themes/sixstar-theme/assets/js/main/scroll.js"></script>
   {% endif %}
+  
+  <script>
+    jQuery(function($) {
+      $("#loginform").addClass("uk-form-stacked");
+      $("label").addClass("uk-form-label");
+      $("#loginform .input").addClass("uk-input");
+      $("#loginform [ type=checkbox ]").addClass("uk-checkbox");
+      $("#loginform .button.button-primary").addClass("uk-button uk-button-default");
+      $(".wpcf7-form").addClass("uk-form-stacked");
+      $(".current-menu-item").addClass("uk-active");
+      $(".is-active").addClass("uk-active");
+      $(".wc-item-meta").addClass("uk-list uk-list-divider");
+    });
+  </script>
+  
 </body>
 <!-- /body -->
+
+{% endblock %}
 
 </html>

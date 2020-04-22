@@ -1,0 +1,56 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div data-block="content" data-template="faqs.twig">
+  <div class="dark-title-wrap uk-section uk-section-secondary uk-padding-remove-vertical uk-position-relative">
+    <h1 class="dark-title uk-position-relative">Live Draws</h1>
+  </div>
+  <div class="uk-section uk-section-secondary">
+    <div class="uk-container uk-container-large uk-light">
+      <h3>Live Streams of Draws can be listed here...</h3>
+    </div>
+  </div>
+  
+  
+  <div class="uk-section uk-section-small uk-section-muted">
+    <div class="uk-container uk-container-large">
+      <div uk-grid>
+        <div class="uk-width-auto@s">
+          <h2 class="uk-text-bold uk-text-uppercase dark-text">Previous Draws</h2>
+        </div>
+      </div>
+      <div class="uk-child-width-1-2@s uk-child-width-1-3@m archive-posts margin-top-30" uk-grid="masonry: true">
+        {% for post in posts %}
+          {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+        {% endfor %}
+        {% if posts is empty %}
+          <p class="uk-text-emphasis">No posts found.</p>
+        {% endif %}
+      </div>
+      {% if posts > 6 %}
+        {% include 'pagination.twig' %}
+      {% endif %} 
+      {% if is_paginated %}
+      <div class="scroll-loaders uk-section uk-section-small">
+        <div class="page-load-status">
+          <div class="loader-ellips infinite-scroll-request">
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+          </div>
+          <p class="infinite-scroll-last">No more Draws</p>
+          <p class="infinite-scroll-error">No posts to Draws</p>
+        </div>
+        <button class="view-more-button uk-button uk-button-primary uk-align-center">Load More {{ArchivePluralName}}</button>
+      </div>
+      {% endif %}
+    </div>
+      
+  </div>
+  
+  
+  
+</div>
+{% endblock %}
