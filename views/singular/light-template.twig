@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="light-template-page" data-block="content" data-template="light-template.twig">
+  <div class="dark-title-wrap uk-section uk-section-default uk-padding-remove-vertical uk-position-relative">
+    <h1 class="dark-title uk-position-relative" style="color:#fff;">{{post.title}}</h1>
+  </div>
+  
+  <div class="uk-section uk-section-default">
+    <div class="uk-container uk-container-small">
+      
+      <div class="light-template-content uk-card uk-card-body uk-section-muted">
+        {{post.content}}
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

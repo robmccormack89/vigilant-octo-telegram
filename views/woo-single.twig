@@ -40,7 +40,7 @@
   </div>
   <div class="uk-section uk-section-default">
     <div class="uk-container uk-container-large">
-      content
+      {% do action('woocommerce_after_single_product_summary') %}
     </div>
   </div>
       
@@ -63,43 +63,7 @@
   });
 </script>
 
-<!-- <div class="uk-card uk-card-default uk-card-body" data-template="woo-single.twig">
-    
-    <div class="">
-      {% do action('woocommerce_before_main_content') %}
-    </div>
-    
-    {% if not user %}
-    <p class="">You are not logged in. Please <a href="#modal-container" uk-toggle>log in here</a> before entering a competition.</p>
-    {% endif %}
 
-    <div class="product-notices-section">
-      {% do action('woocommerce_before_single_product') %}
-    </div>
-
-
-    <div id="TheProduct" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }} uk-grid-divider" uk-grid>
-
-      <div class="uk-width-1-2@m">
-        {% do action('woocommerce_before_single_product_summary') %}
-        {% do action('woocommerce_single_product_summary') %}
-      </div>
-
-      <div class="entry-images uk-width-1-2@m">
-        <div>
-          {% do action('woocommerce_after_single_product_summary') %}
-        </div>
-      </div>
-
-    </div>
-    
-    <meta itemprop="url" content="{{ post.link }}" />
-
-    <div class="after-product-section uk-margin-large-top">
-      {% do action('woocommerce_after_single_product') %}
-    </div>
-  
-</div> -->
 
 {% endblock %}
 

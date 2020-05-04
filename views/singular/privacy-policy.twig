@@ -4,51 +4,19 @@
 
 <div class="" data-block="content" data-template="privacy-policy.twig">
   <div class="dark-title-wrap uk-section uk-section-secondary uk-padding-remove-vertical uk-position-relative">
-    <h1 class="dark-title uk-position-relative">Privacy Policy</h1>
+    <h1 class="dark-title uk-position-relative">{{post.title}}</h1>
   </div>
-  <div class="uk-section uk-section-small uk-section-secondary">
+  <div class="uk-section uk-section-secondary">
     <div class="uk-container uk-container-large uk-light">
       <div class="privacy-content">
-        <h2>WHO WE ARE</h2>
-        <p>Our website address is: https://dreamcargiveaways.co.uk.</p>
-        <h2>WHAT PERSONAL DATA WE COLLECT AND WHY WE COLLECT IT</h2>
-        <h3>COMMENTS</h3>
-        <p>When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor’s IP address and browser user agent string to help spam detection.</p>
-        <p>An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.</p>
-        <h3>MEDIA</h3>
-        <p>If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.</p>
-        <h3>CONTACT FORMS</h3>
-        <h3>COOKIES</h3>
-        <p>If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p>
-        <p>If you have an account and you log in to this site, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p>
-        <p>When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select “Remember Me”, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p>
-        <p>If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.</p>
-        <h3>EMBEDDED CONTENT FROM OTHER WEBSITES</h3>
-        <p>Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p>
-        <p>These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p>
-        <h3>ANALYTICS</h3>
-        <h2>WHO WE SHARE YOUR DATA WITH</h2>
-        <h2>HOW LONG WE RETAIN YOUR DATA</h2>
-        <p>If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.</p>
-        <p>For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p>
-        <h2>WHAT RIGHTS YOU HAVE OVER YOUR DATA</h2>
-        <p>If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p>
-        <h2>WHERE WE SEND YOUR DATA</h2>
-        <p>Visitor comments may be checked through an automated spam detection service.</p>
-        <h2>YOUR CONTACT INFORMATION</h2>
-        <h2>ADDITIONAL INFORMATION</h2>
-        <h3>HOW WE PROTECT YOUR DATA</h3>
-        <h3>WHAT DATA BREACH PROCEDURES WE HAVE IN PLACE</h3>
-        <h3>WHAT THIRD PARTIES WE RECEIVE DATA FROM</h3>
-        <h3>WHAT AUTOMATED DECISION MAKING AND/OR PROFILING WE DO WITH USER DATA</h3>
-        <h3>INDUSTRY REGULATORY DISCLOSURE REQUIREMENTS</h3>
+        {{post.content}}
       </div>
     </div>
   </div>
   <div class="uk-section uk-section-default fat-border-top">
     <div class="uk-container">
       <h2 class="uk-text-center uk-margin-medium-bottom">Can't find what you're looking for?</h2>
-      <p class="uk-text-center"><a class="uk-button uk-button-primary uk-button-large" href="#">Contact us</a></p>
+      <p class="uk-text-center"><a class="uk-button uk-button-primary uk-button-large" href="/contact">Contact us</a></p>
     </div>
   </div>
 </div>

@@ -258,7 +258,7 @@ class SixstarTheme extends TimberSite
                 'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
-                'before_title' => '<h4 class="uk-text-bold widget-title">',
+                'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
                 'after_title' => '</h4>'
             ));
             register_sidebar(array(
@@ -267,7 +267,7 @@ class SixstarTheme extends TimberSite
                 'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
-                'before_title' => '<h4 class="uk-text-bold widget-title">',
+                'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
                 'after_title' => '</h4>'
             ));
             register_sidebar(array(
@@ -276,7 +276,7 @@ class SixstarTheme extends TimberSite
                 'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
-                'before_title' => '<h4 class="uk-text-bold widget-title">',
+                'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
                 'after_title' => '</h4>'
             ));
             register_sidebar(array(
@@ -285,7 +285,7 @@ class SixstarTheme extends TimberSite
                 'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
                 'before_widget' => '',
                 'after_widget' => '',
-                'before_title' => '<h4 class="uk-text-bold widget-title">',
+                'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
                 'after_title' => '</h4>'
             ));
             register_sidebar(array(
@@ -462,6 +462,9 @@ class SixstarTheme extends TimberSite
       $context['lost_endpoint']   = wc_get_account_endpoint_url( 'lost-password' );
       $context['orders_endpoint']   = wc_get_account_endpoint_url( 'orders' );
       $context['logout_endpoint']   = wc_get_account_endpoint_url( 'customer-logout' );
+      
+      global $woocommerce;
+      $context['cart_url'] = $woocommerce->cart->get_cart_url();
       
       $context['is_posts']   = is_blog();
       $context['is_winners']   = is_post_type_archive( 'winners' );

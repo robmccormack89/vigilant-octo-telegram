@@ -26,6 +26,77 @@
 
 <style>
 
+  .uk-tooltip {
+      background: #ec6624;
+  }
+
+  #BottomSocials i {
+      background-color: #ffffff;
+      border: 6px solid #ec6624;
+      color: #ec6624;
+      padding: 15px;
+      border-radius: 100%;
+  }
+
+  .footer_top .widget-title {
+    display: inline-block;
+    margin-top: 0;
+  }
+
+  .yikes-custom-woo-tab-title {
+    display: none;
+  }
+
+  .uk-tile-muted {
+      background: #f3f5f9;
+  }
+
+  html {
+      color: #181f25;
+  }
+
+  .cart .quantity {
+    display: inline-block;
+    width: 10%;
+  }
+
+  .uk-tab {
+      margin-left: 0;
+      margin-bottom: 0;
+      padding: 0;
+  }
+
+  .uk-tab>* {
+      padding-left: 0;
+  }
+
+  .uk-tab:before {
+      content: none;
+  }
+
+  .uk-tab>*>a:focus, .uk-tab>*>a:hover {
+      color: #838d96;
+  }
+
+  .uk-tab>*>a {
+      font-family: Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      padding: 20px 40px;
+      background-color: #dddfe2;
+      color: #838d96;
+      border-bottom: none;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+  }
+
+  .uk-tab>.uk-active>a {
+      color: #181f25;
+      background-color: #f3f5f9;
+      border: none;
+  }
+
+
+
   .contact-page form {
       font-size: 1.2rem;
   }
@@ -44,91 +115,6 @@
       width: 30px;
       color: #fff;
   }
-
-
-  .main-lottery {
-    color: {{dark_bg}}!important;
-    padding-top: 10px;
-  }
-  .wcl-progress-meter .zero {
-    display: inline-block;
-    position: relative;
-    top: auto;
-  }
-  .wcl-progress-meter .max {
-    display: inline-block;
-    position: absolute;
-    top: auto;
-    right: 0;
-  }
-  progress[value] {
-    height: 8px;
-    margin-top: 10px;
-  }
-  progress[value]::-webkit-progress-bar {
-    background-color: #efbfa8;
-    border-radius: 2px;
-  }
-  progress[value]::-webkit-progress-value {
-    background-color: {{orange_primary}};
-  }
-  .cureent-participating {
-    display: inline-block;
-    position: relative;
-    margin-left: 41%;
-    font-weight: 800;
-    color: {{dark_bg}};
-  }
-  .lottery-time, .comp-close-msg {
-    font-weight: 800;
-    color: {{dark_bg}};
-  }
-  .pick-number .uk-subnav>.uk-active>a, .pick-number .uk-subnav>*>a:focus, .pick-number .uk-subnav>*>a:hover, .pick-number a.ticket-tab-active {
-    color: {{grey_text}}!important;
-  }
-  .pick-number .uk-subnav>*>:first-child {
-    color: {{dark_text}};
-  }
-  ul.tickets_numbers li.tn, ul.lottery-pn-answers li {
-      background-color: #ffffff;
-      border: 1px solid #d4d4d4;
-      color: #1d262d;
-      border-radius: 5px;
-      line-height: unset;
-      font-size: 0.9rem;
-      font-weight: 600;
-  }
-  ul.tickets_numbers li.tn {
-    padding: 5px 25px;
-    width: auto;
-    height: auto;
-    margin: 0 5px 5px 0;
-  }
-  ul.tickets_numbers li.taken {
-    background: #ececec!important;
-    border: 1px solid #dedede!important;
-    color: #777!important;
-  }
-  ul.tickets_numbers li.selected {
-    background: #4CAF50!important;
-    border: 1px solid #4caf50;
-    color: #fff!important;
-  }
-
-  ul.lottery-pn-answers li {
-    padding: 10px 15px;
-    width: 90%;
-    margin: 0 0 4px 0;
-  }
-  ul.lottery-pn-answers li.selected {
-    background: #4CAF50;
-    color: #fff;
-  }
-  ul.lottery-pn-answers li.selected.false {
-    background: #c71717;
-  }
-
-
 
   .custom-product-images {
     width:100%;
@@ -183,6 +169,14 @@
   /* general elements */
   html {
     font-size: {{base_font_size}};
+  }
+  @media (min-width: 1920px) {
+    html {
+        font-size: 16px;
+    }
+    #MainContent {
+        font-size: 17px;
+    }
   }
   body {
     font-family: {{base_font_style}};
@@ -299,8 +293,7 @@
     padding: 50px 0;
   }
   .footer_bottom_wrap {
-    padding-top: 30px;
-    padding-bottom: 30px;
+
   }
   .breads_area {
     padding-top: 10px;
@@ -310,7 +303,7 @@
     padding: 10px 0;
   }
   .bottom_nav_logo_laptop img {
-    padding: 5px 0;
+      padding: 12px 0;
   }
   .bottom_nav_logo_tablet img {
     padding: 0;
@@ -454,7 +447,7 @@
     font-weight: 600;
   }
   .uk-button {
-    border-radius: 5px;
+    /* border-radius: 5px; */
     font-weight: 800;
   }
   .uk-button-large {
@@ -538,6 +531,17 @@
   }
   
   
+
+    
+    #BottomSocials {
+      margin-top: -75px;
+    } 
+  
+
+  
+
+  
+  
   @media only screen and (max-width:479px) {
     
     .dark-title {
@@ -552,12 +556,20 @@
         padding: 30px 0;
     }
     
+    #BottomSocials {
+      margin-top: -61px;
+    }
+    
   }
 
   @media only screen and (min-device-width:480px) and (max-device-width:767px) {
     
     .dark-title {
       font-size: 1.5rem;
+    }
+    
+    #BottomSocials {
+      margin-top: -77px;
     }
     
   }
@@ -567,14 +579,30 @@
     .dark-title {
       font-size: 1.8rem;
     }
+    
+    #BottomSocials {
+      margin-top: -80px;
+    }
 
   }
 
   @media only screen and (min-device-width:960px) and (max-device-width:1199px) {
     
+    .dark-title {
+      font-size: 2.1rem;
+    }
+    
+    #BottomSocials {
+      margin-top: -80px;
+    }
+    
   }
 
   @media only screen and (min-width:1200px) {
+    
+    #BottomSocials {
+      margin-top: -80px;
+    }
     
   }
 
@@ -602,7 +630,7 @@
   .dark-title {
     background-color: {{orange_primary}};
     width: fit-content;
-    padding: 5px 10px;
+    padding: 10px 25px;
   }
   .content-area {
     border-top: 2px solid #d6d6d666;
@@ -642,10 +670,10 @@
   #HeaderBottomMobile .cart_nav .header-cart-count, #HeaderBottomLaptop .cart_nav .header-cart-count, #HeaderBottomTablet .cart_nav .header-cart-count {
     background-color: {{orange_primary}};
   }
-  #FooterTopRight .uk-icon {
+  .footer_top_right .uk-icon {
     color: {{orange_primary}};
   }
-  #FooterTopRight i.far.fa-star {
+  .footer_top_right i.far.fa-star {
     color: {{orange_primary}};
   }
   #FooterTop a {

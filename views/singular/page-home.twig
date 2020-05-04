@@ -1,21 +1,121 @@
 {% extends "base.twig" %}
 
 {% block content %}
-
+<style>
+  .slider-image {
+      max-height: 500px;
+      min-height: 370px;
+      width: 100%;
+      object-fit: cover;
+  }
+  .slider-section .uk-button-primary  {
+      background-color: #ec6624;
+      color: #fff;
+  }
+  .slider-section .uk-button-primary:focus, .slider-section .uk-button-primary:hover {
+      background-color: #e34402;
+      color: #fff;
+  }
+  .slider-section .uk-overlay-primary {
+      background: rgba(24, 31, 37, 0.62);
+  }
+</style>
 <div data-block="content" data-template="faqs.twig">
-  <div class="dark-title-wrap uk-section uk-section-secondary uk-padding-remove-vertical uk-position-relative">
+  <!-- <div class="dark-title-wrap uk-section uk-section-secondary uk-padding-remove-vertical uk-position-relative">
     <h1 class="dark-title uk-position-relative">Homepage Placeholder</h1>
-  </div>
-  <div class="uk-section uk-section-secondary">
-    <div class="uk-container uk-container-large uk-light">
-      <h2>Homepage Layout to be discussed</h2>
+  </div> -->
+  <div class="slider-section ">
+    
+    <div class="">
+        
+      <div class="home-slider uk-position-relative uk-visible-toggle uk-light uk-animation-slide-right" tabindex="-1" uk-slider>
+      
+          <ul class="uk-slider-items uk-grid uk-grid-match uk-grid-collapse">
+              <li class="uk-width-1-1">
+                  <div class="uk-inline">
+                         
+                    <img class="slider-image" data-src="https://6starcompetitions.ie/wp-content/themes/sixstar-theme/assets/img/shopping_mall.jpg" alt="" uk-img>
+                    
+                    <div class="uk-overlay uk-overlay-primary uk-light uk-position-bottom uk-text-center uk-animation-fade">
+                      <div class="uk-container uk-container-small">
+                        <h2>Win €1000 Shopping Vouchers for Harrod's Department Store</h2>
+                        <p>Competition closes 1st June 202 so get your ticket fast!!!</p>
+                        <!-- <p class="uk-text-emphasis">Healthy Fields ➜ Healthy Foods ➜ Healthy Families</p> -->
+                        <a href="/shop" class="uk-button uk-button-primary">Enter this Competition</a>
+                      </div>
+                    </div>
+                  </div>
+              </li>
+
+          </ul>
+      
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+      
+      </div>
+      
     </div>
+
   </div>
+  
+  <div class="uk-section uk-section-muted fat-border-top">
+
+    <div class="uk-container">
+      
+      <h2 class="uk-text-center uk-margin-bottom">How to Play</h2>
+      
+      <div class="uk-child-width-1-3@s uk-text-center" uk-grid>
+        
+        <div>
+          <div class="uk-card uk-card-body uk-background-default uk-text-center">
+            <h4>Choose your Competition</h4>
+            <p>Choose a Competition from our <a href="/competitions">Competitions page</a>, or choose one of our Latest Competitions below</p>
+          </div>
+        </div>
+        
+        <div>
+          <div class="uk-card uk-card-body uk-background-default uk-text-center">
+            <h4>Pick your Ticket Number/s</h4>
+            <p>Pick the Ticket numbers you want to play in the draw (Maximum 10 per user)</p>
+          </div>
+        </div>
+        
+        <div>
+          <div class="uk-card uk-card-body uk-background-default uk-text-center">
+            <h4>Wait for the Live Draw on Facebook</h4>
+            <p>Upon countdown of competition timer, the Live draw will take place on Facebook with 48hours.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+      
+      <hr class="uk-divider-icon uk-margin-large-top uk-margin-large-bottom">
+      
+      <h2 class="uk-text-center uk-margin-bottom">Latest Competitions</h2>
+        
+      <div uk-slider>
+        <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
+          <div class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid uk-grid-small">
+            {% for post in slider_products %}
+              {% include 'tease-product.twig' %}
+            {% endfor %}
+          </div>
+          <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+          <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+        </div>
+        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+      </div>
+      
+    </div>
+
+  </div>
+  
   <div class="uk-section uk-section-default fat-border-top">
     <div class="uk-container">
       <h2 class="uk-text-center uk-margin-medium-bottom">Can't find what you're looking for?</h2>
 
-      <p class="uk-text-center"><a class="uk-button uk-button-primary uk-button-large" href="#">Contact us</a></p>
+      <p class="uk-text-center"><a class="uk-button uk-button-primary uk-button-large" href="/contact">Contact us</a></p>
 
     </div>
   </div>

@@ -3,19 +3,38 @@
 {% block content %}
 
 <div class="contact-page" data-block="content" data-template="contact.twig">
-  <div class="dark-title-wrap uk-section uk-section-secondary uk-padding-remove-vertical uk-position-relative">
-    <h1 class="dark-title uk-position-relative">Contact us</h1>
+  <div class="dark-title-wrap uk-section uk-section-default uk-padding-remove-vertical uk-position-relative">
+    <h1 class="dark-title uk-position-relative" style="color:#fff;">Contact us</h1>
   </div>
-  <div class="uk-section uk-section-secondary">
-    <div class="uk-container uk-container-large uk-light contact-info">
-
-        <h2>Contact page copy can go here...</h2>
-
-    </div>
-  </div>
-  <div class="uk-section uk-section-muted fat-border-top">
+  
+  <div class="uk-section uk-section-default uk-section-small">
     <div class="uk-container uk-container-small">
-      {{ function('do_shortcode', '[contact-form-7 id="223" title="Current Customers"]') }}
+      
+      
+      <ul class="uk-tab" data-uk-tab="{connect:'#my-id'}">
+        <li><a href="">General Enquiries</a></li>
+        <li><a href="">Current Customers</a></li>
+        <li><a href="">Support</a></li>
+      </ul>
+      
+      <ul id="my-id" class="uk-switcher">
+		    <li class="tab_id_">
+					<div class="tab-content uk-tile uk-tile-small uk-tile-muted">
+            {{ function('do_shortcode', '[contact-form-7 id="221" title="General Enquiries"]') }}
+					</div>
+				</li>
+        <li class="tab_id_">
+					<div class="tab-content uk-tile uk-tile-small uk-tile-muted">
+            {{ function('do_shortcode', '[contact-form-7 id="223" title="Current Customers"]') }}
+					</div>
+				</li>
+        <li class="tab_id_">
+					<div class="tab-content uk-tile uk-tile-small uk-tile-muted">
+            {{ function('do_shortcode', '[contact-form-7 id="222" title="Support"]') }}
+					</div>
+				</li>
+		  </ul>
+
     </div>
   </div>
 </div>

@@ -12,12 +12,6 @@
   
   <div>{% do action('woocommerce_before_main_content') %}</div>
   
-  {% if not user %}
-  <p class="">You are not logged in. Please <a href="#modal-container" uk-toggle>log in here</a> before entering a competition.</p>
-  {% endif %}
-  
-  {# do action('woocommerce_before_shop_loop') #}
-  
   <div class="shop-wrap">
     
     <div class="uk-margin-bottom">
@@ -72,7 +66,7 @@
       {% do action('woocommerce_archive_description') %}
     </div>
     
-    <div id="ProductsGrid" class="uk-child-width-1-2@s uk-child-width-1-4@m archive-posts margin-top-30" uk-grid="masonry: true">
+    <div id="ProductsGrid" class="uk-child-width-1-2@s uk-child-width-1-3@m archive-posts margin-top-30" uk-grid="masonry: true">
       
       {% for post in products %}
         {% include ['tease-product.twig'] %}

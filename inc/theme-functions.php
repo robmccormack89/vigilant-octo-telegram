@@ -64,6 +64,21 @@ function sixstar_theme_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'sixstar_theme_enqueue_assets'); 
 
+
+/* add options page in backend via acf */;
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Site Settings',
+		'menu_title'	=> 'Site Settings',
+		'menu_slug' 	=> 'site-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+}
+
+
 function is_paginated() {
     global $wp_query;
     if ( $wp_query->max_num_pages > 1 ) {

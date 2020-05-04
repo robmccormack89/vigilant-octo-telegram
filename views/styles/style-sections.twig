@@ -1,7 +1,7 @@
 <!-- header -->
 <style>
   /* main menu active item after effects */
-  /* #SiteHeader .bottom_nav_center .menu-item.current-menu-item:after {
+  #SiteHeader .bottom_nav_desktop .menu-item-197:after {
     width: 33px;
     height: 65px;
     content: '';
@@ -12,7 +12,7 @@
     display: block;
     position: absolute;
     background: url(/wp-content/themes/sixstar-theme/assets/img/menuactive.png) no-repeat center center;
-  } */
+  }
 </style>
   
 <!-- woo -->
@@ -44,6 +44,126 @@
   .woocommerce #content div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images, .woocommerce div.product div.images {
       width: 100%;
   }
+</style>
+
+<!-- lottery -->
+
+<style>
+
+  .main-lottery {
+    color: {{dark_bg}}!important;
+    padding-top: 10px;
+  }
+  .wcl-progress-meter .zero {
+    display: inline-block;
+    position: relative;
+    top: auto;
+  }
+  .wcl-progress-meter .max {
+    display: inline-block;
+    position: absolute;
+    top: auto;
+    right: 0;
+  }
+  progress[value] {
+    height: 8px;
+    margin-top: 10px;
+  }
+  progress[value]::-webkit-progress-bar {
+    background-color: #efbfa8;
+    border-radius: 2px;
+  }
+  progress[value]::-webkit-progress-value {
+    background-color: {{orange_primary}};
+  }
+  
+  .cureent-participating {
+    /* display: inline-block;
+    position: relative;
+    margin-left: 41%; */
+    font-weight: 800;
+    color: {{dark_bg}};
+  }
+  .lottery-time, .comp-close-msg {
+    font-weight: 800;
+    color: {{dark_bg}};
+  }
+  .pick-number .uk-subnav>*>:first-child {
+    color: {{dark_text}}!important;
+  }
+  .pick-number .uk-subnav>.uk-active>a, .pick-number .uk-subnav>*>a:focus, .pick-number .uk-subnav>*>a:hover, .pick-number a.ticket-tab-active {
+    color: {{grey_text}}!important;
+  }
+
+</style>
+
+<style>
+
+  ul.lottery-pn-answers {
+      margin: 0 0 2em -10px;
+  }
+  ul.lottery-pn-answers li {
+      border: none;
+      padding: 0 0 0 10px;
+      font-size: unset;
+      width: unset;
+      margin: unset;
+      cursor: unset;
+      font-weight: unset;
+  }
+  ul.lottery-pn-answers li a {
+      background-color: #ffffff!important;
+      border: 1px solid #e5e5e5;
+      text-transform: capitalize!important;
+      font-size: 1rem!important;
+      padding: 7px 30px!important;
+      color: #1d262d!important;
+      font-weight: 800;
+  }
+  ul.lottery-pn-answers li.selected {
+      background: none;
+  }
+  ul.lottery-pn-answers li.selected.false {
+      background: none;
+  }
+  .pick-number ul.lottery-pn-answers li.selected a {
+      border-color: #4CAF50;
+      background-color: #4CAF50!important;
+      color: #fff!important;
+  }
+  ul.lottery-pn-answers li.selected.false a {
+      border-color: #c71717;
+      color: #fff!important;
+      background-color: #c71717!important;
+  }
+  
+
+  
+  ul.tickets_numbers li.tn {
+    padding: 5px 25px;
+    width: auto;
+    height: auto;
+    margin: 0 5px 5px 0;
+    
+    background-color: #ffffff!important;
+    border: 1px solid #e5e5e5;
+    text-transform: capitalize!important;
+    font-size: 1rem!important;
+    /* padding: 7px 30px!important; */
+    color: #1d262d!important;
+    
+  }
+  ul.tickets_numbers li.taken {
+    background: #ececec!important;
+    border: 1px solid #dedede!important;
+    color: #777!important;
+  }
+  ul.tickets_numbers li.selected {
+    background: #4CAF50!important;
+    border: 1px solid #4caf50;
+    color: #fff!important;
+  }
+
 </style>
 
 <!-- post -->  

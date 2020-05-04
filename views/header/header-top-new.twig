@@ -1,0 +1,22 @@
+<div id="HeaderTop" class="">
+  <div id="TopNav" class="">
+    <nav id="TopNavWrap" class="top_nav_wrap" style="padding: 5px 0;box-shadow: inset 0px -1px 10px #1d262dcf">
+      <div class="uk-container uk-container-expand">
+
+        <!-- <ul id="TopNavRightSocials" class="uk-grid uk-grid-small uk-flex uk-flex-center" uk-grid="">
+          <li><a href="#"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram-square fa-2x"></i></a></li>
+          <li uk-tooltip="title: Find us on Snapchat: 6starCompetitions; pos: right"><a><i class="fab fa-snapchat-square fa-2x"></i></a></li>
+        </ul> -->
+        
+        {% if sidebar_header_left %}
+        {{ sidebar_header_left }}
+        {% else %}
+        <h3 class="uk-text-bold uk-text-muted widget-title">Footer 1</h3>
+        <p>Add some widgets to the Footer Widget Area 2</p>
+        {% endif %}
+
+      </div>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{% extends "base.twig" %}
+
+{% block bodywrap %}
+
+{% include 'styles.twig' %}
+
+{% include 'header.twig' %}
+
+{% endblock %}

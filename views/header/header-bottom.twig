@@ -7,7 +7,7 @@
             <a class="uk-navbar-item uk-logo uk-text-bold uk-text-emphasis" href="/"><img data-src="/wp-content/uploads/2020/02/sixstar-logo-red.png" uk-img=""
                 src="/wp-content/uploads/2020/02/sixstar-logo-red.png"></a>
           </div>
-          <div id="BottomNavCenter" class="bottom_nav_center uk-navbar-center uk-light">
+          <div id="BottomNavCenter" class="bottom_nav_center bottom_nav_desktop uk-navbar-center uk-light">
             <ul class="uk-navbar-nav">
               {% if has_menu_main %}
               {% for item in menu_main.get_items %}
@@ -46,7 +46,7 @@
             </div>
             <div id="CartNav" class="cart_nav uk-navbar-item boundary-cart">
               <div class="uk-inline">
-                <a href="/cart" class="cart-icon nav-right-item" aria-expanded="false"><i class="fas fa-shopping-cart fa-2x"></i></a>
+                <a href="{{cart_url}}" class="cart-icon nav-right-item" aria-expanded="false"><i class="fas fa-shopping-cart fa-2x"></i></a>
                 {% do action('cart_ajax_result_count') %}
                 {% do action('cart_ajax_subtotal') %}
               </div>
