@@ -17,12 +17,18 @@
   {% endblock %}
   <!-- /styles per template -->
   
+  <style>
+    .uk-overlay-primary {
+        background: rgb(10 10 10 / 80%);
+    }
+  </style>
+  
 </head>
 
 {% block bodywrap %}
 
-<body class="{{ body_class }} no-overflow" data-template="base.twig">
-  <div class="theme-preload"></div>
+<body class="{{ body_class }} no-overflow-off" data-template="base.twig">
+  <div class="theme-preload-off"></div>
 
   <div id="SiteWrapper" class="site-wrapper">
 
@@ -74,6 +80,17 @@
   {% block spec_scripts %}
   {% endblock %}
   <!-- /styles per template -->
+  
+  <script>
+    // jQuery(function($) {
+        
+    //     window.addEventListener("pageshow", function() {
+    //         $('.theme-preload').hide('fast');
+    //         $('body').removeClass('no-overflow');
+    //     }, false);
+      
+    // });
+  </script>
   
 </body>
 <!-- /body -->

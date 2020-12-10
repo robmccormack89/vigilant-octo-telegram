@@ -18,17 +18,10 @@ $args = array(
 );
 $context['slider_products'] = new Timber\PostQuery($args);
 
-
-
-
-
-
 // get some slides
 $slides_args = array(
    'post_type' => 'slide',
    'post_status' => 'publish',
-   'orderby' => 'date',
-   'order' => 'asc',
 );
 $context['home_slides'] = new Timber\PostQuery($slides_args);
 
@@ -36,8 +29,6 @@ $context['home_slides'] = new Timber\PostQuery($slides_args);
 $info_slides_args = array(
    'post_type' => 'info_slide',
    'post_status' => 'publish',
-   'orderby' => 'date',
-   'order' => 'asc',
 );
 $context['info_home_slides'] = new Timber\PostQuery($info_slides_args);
 

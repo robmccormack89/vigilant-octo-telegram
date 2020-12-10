@@ -37,3 +37,6 @@
   background-color: #fc4c02;
   color: #fff;
 }
+#slideshow_info div.uk-margin-remove.uk-text-small>p {
+  margin: 0;
+}

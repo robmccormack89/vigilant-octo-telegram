@@ -1,11 +1,5 @@
 jQuery(function($) {
   
-  // website preloader animation
-  $(window).load(function() {
-    $(".theme-preload").fadeOut("slow");
-    $('body').removeClass('no-overflow');
-  });
-  
   $("#loginform").addClass("uk-form-stacked");
   $("label").addClass("uk-form-label");
   $("#loginform .input").addClass("uk-input");
@@ -20,7 +14,3 @@ jQuery(function($) {
   $(".button.checkout").addClass("uk-button uk-button-link uk-width-1-1");
   
 });
-
-
-
-

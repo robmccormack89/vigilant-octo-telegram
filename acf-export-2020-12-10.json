@@ -254,8 +254,8 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "<i class=\"fas fa-home\"><\/i>",
-                "placeholder": "<i class=\"fas fa-home\"><\/i>",
+                "default_value": "<i class=\"far fa-star\"><\/i>",
+                "placeholder": "<i class=\"far fa-star\"><\/i>",
                 "prepend": "",
                 "append": "",
                 "maxlength": ""
