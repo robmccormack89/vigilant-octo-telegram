@@ -5,62 +5,15 @@
   <!-- load in swiper-js css -->
   <link rel="stylesheet" href="/wp-content/themes/sixstar-theme/assets/css/swiper-bundle.min.css" />
   
-  <style>
-    /* swiper-js css */
-
-    /* general swiper css */
-    .swiper-container {
-      width: 100%;
-      height: 100%;
-    }
-    /* banner slider */
-    :root {
-      --swiper-theme-color: #fc4c026e;
-    }
-    .swiper-slide .uk-section.uk-secton-large {
-      padding: 80px 0;
-    }
-    @media only screen and (max-device-width:767px) {
-      .swiper-slide .uk-section.uk-secton-large {
-        padding: 50px 0;
-      }
-    }
-    /* info slider */
-    #slideshow_info .uk-h5 {
-      font-size: 18px;
-    }
-    
-    .dotted-grey-border-top {
-      border-top: 5px dashed #f3f5f9;
-    }
-    .dotted-grey-border-bottom {
-      border-bottom: 5px dashed #f3f5f9;
-    }
-    
-    @media only screen and (max-width:959px) {
-
-    }
-    
-    .featured-products-section .swiper-container-horizontal>.swiper-pagination-bullets, .featured-products-section .swiper-pagination-custom, .swiper-pagination-fraction, .home-info-section .swiper-container-horizontal>.swiper-pagination-bullets, .home-info-section .swiper-pagination-custom, .swiper-pagination-fraction {
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      position: relative;
-    }
-    
-    .uk-light .uk-button-primary {
-      background-color: #fc4c02;
-      color: #fff;
-    }
-  </style>
+  <link rel="stylesheet" href="/wp-content/themes/sixstar-theme/assets/css/front.css" />
 
 {% endblock %}
 
 {% block content %}
 
-{% set how_to_group = options.homepage_how_to_play_blocks %}
-{% set featured_comps_group = options.homepage_featured_competitions %}
-{% set cta_group = options.homepage_cta_block %}
+  {% set how_to_group = options.homepage_how_to_play_blocks %}
+  {% set featured_comps_group = options.homepage_featured_competitions %}
+  {% set cta_group = options.homepage_cta_block %}
 
   <div id="single-{{post.ID}}" class="front-page {{post.class}}" data-template="front-page.twig">
 
@@ -285,95 +238,6 @@
   <!-- load in swiper-js js -->
   <script src="/wp-content/themes/sixstar-theme/assets/js/swiper-bundle.min.js"></script>
 
-  <script>
-    jQuery(function(){
-      
-      // first swiper
-      var slider_swiper = new Swiper('#slideshow_banner', {
-        centeredSlides: true,
-        autoplay: {
-          delay: 4000,
-          disableOnInteraction: true,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'progressbar',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      });
-      
-      // second swiper
-      var info_swiper = new Swiper('#slideshow_info', {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        // autoplay: {
-        //   delay: 4000,
-        //   disableOnInteraction: true,
-        // },
-        // init: false,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 30,
-          },
-          960: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-          1200: {
-            slidesPerView: 4,
-            spaceBetween: 40,
-          },
-        }
-      });
-      
-      var featured_swiper = new Swiper('#slideshow_featured', {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          960: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-        }
-      });
-      
-      var featured_swiper = new Swiper('#slideshow_howto', {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          960: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-        }
-      });
-      
-    });
-  </script>
+  <script src="/wp-content/themes/sixstar-theme/assets/js/front.js"></script>
 
 {% endblock %}

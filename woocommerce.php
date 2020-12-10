@@ -7,8 +7,8 @@
 
 // make sure timber is activated first
 if ( ! class_exists( 'Timber' ) ) {
-    echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
-    return;
+  echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
+  return;
 }
 // get the main context
 $context = Timber::context();
@@ -26,7 +26,7 @@ if ( is_singular( 'product' ) ) {
   // Restore the context and loop back to the main query loop.
   wp_reset_postdata();
   // render the woo single template
-  Timber::render( 'woo-single.twig', $context );
+  Timber::render( 'single-product.twig', $context );
 } 
 // else (if is woo archive)
 else {
@@ -37,8 +37,8 @@ else {
   
   /* get product cats */
   $context['shopcats'] = get_terms( array(
-      'taxonomy' => 'product_cat',
-      'hide_empty' => true,
+    'taxonomy' => 'product_cat',
+    'hide_empty' => true,
   ) );
   /* get product category base */
   $wc_options = get_option('woocommerce_permalinks');
@@ -67,5 +67,5 @@ else {
     $context['title'] = 'Our Competitions';
   };
   //  render the woo archive template with the context
-  Timber::render( 'woo-archive.twig', $context );
+  Timber::render( 'shop-archive.twig', $context );
 }

@@ -1,62 +1,36 @@
 {% extends "base.twig" %}
 
-{% block spec_styles %}
-  <!-- contact page -->
-  <!-- <style>
-    .contact-page form {
-      font-size: 1.2rem;
-    }
-    .contact-page .uk-form-label {
-      color: #333;
-      font-size: 1.1rem;
-    }
-    .contact-page .uk-input {
-      height: 50px;
-    }
-    .contact-info .fas,
-    .contact-info .far {
-      border: 3px solid #fc4c02;
-      padding: 12px 0 2px 12px;
-      border-radius: 100%;
-      height: 30px;
-      width: 30px;
-      color: #fff;
-    }
-  </style> -->
-{% endblock %}
-
 {% block content %}
-
-<div class="contact-page" data-block="content" data-template="contact.twig">
-  <div class="content-area uk-section uk-section-muted">
-    <div class="uk-container uk-container-small">
-      <div uk-grid>
-        <article id="post-{{post.ID}}" class="uk-article uk-width-1-1 {{post.class}}">
-          <div id="MainTitle">
-            <h1 class="uk-text-bold dark-text uk-text-center uk-margin-bottom"><span>Contact us</span></h1>
-          </div>
-          <div id="MainContent" class="uk-card uk-card-body uk-background-default uk-margin-bottom">
-            <ul class="uk-subnav uk-subnav-pill font-600" uk-switcher>
-                <li><a href="#">General Enquiries</a></li>
-                <li><a href="#">Current Customers</a></li>
-                <li><a href="#">Support</a></li>
-            </ul>
-            <hr>
-            <ul class="uk-switcher uk-margin">
-                <li>
-                  {{ function('do_shortcode', '[contact-form-7 id="221" title="General Enquiries"]') }}
-                </li>
-                <li>
-                  {{ function('do_shortcode', '[contact-form-7 id="223" title="Current Customers"]') }}
-                </li>
-                <li>
-                  {{ function('do_shortcode', '[contact-form-7 id="222" title="Support"]') }}
-                </li>
-            </ul>
-          </div>
-        </article>
+  <div class="contact-page" data-block="content" data-template="contact.twig">
+    <div class="content-area uk-section uk-section-muted">
+      <div class="uk-container uk-container-small">
+        <div uk-grid>
+          <article id="post-{{post.ID}}" class="uk-article uk-width-1-1 {{post.class}}">
+            <div id="MainTitle">
+              <h1 class="uk-text-bold dark-text uk-text-center uk-margin-bottom"><span>Contact us</span></h1>
+            </div>
+            <div id="MainContent" class="uk-card uk-card-body uk-background-default uk-margin-bottom">
+              <ul class="uk-subnav uk-subnav-pill font-600" uk-switcher>
+                  <li><a href="#">General Enquiries</a></li>
+                  <li><a href="#">Current Customers</a></li>
+                  <li><a href="#">Support</a></li>
+              </ul>
+              <hr>
+              <ul class="uk-switcher uk-margin">
+                  <li>
+                    {{ function('do_shortcode', '[contact-form-7 id="221" title="General Enquiries"]') }}
+                  </li>
+                  <li>
+                    {{ function('do_shortcode', '[contact-form-7 id="223" title="Current Customers"]') }}
+                  </li>
+                  <li>
+                    {{ function('do_shortcode', '[contact-form-7 id="222" title="Support"]') }}
+                  </li>
+              </ul>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>
-</div>
 {% endblock %}

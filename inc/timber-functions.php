@@ -206,7 +206,6 @@ class SixstarTheme extends Timber\Site
   	);
   	register_post_type( 'live_draws', $args );
     
-    
     $labels_one = array(
   		'name'                  => _x( 'Banner Slides', 'Post Type General Name', 'text_domain' ),
   		'singular_name'         => _x( 'Banner Slide', 'Post Type Singular Name', 'text_domain' ),

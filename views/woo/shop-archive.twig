@@ -10,7 +10,9 @@
 
   <div data-block="content-wrap" data-template="woo-archive.twig">
     
-    <div>{% do action('woocommerce_before_main_content') %}</div>
+    <div>
+      {% do action('woocommerce_before_main_content') %}
+    </div>
     
     <div class="shop-wrap">
       
@@ -30,12 +32,14 @@
                 
                 <li class="{{active_class}}"><a href="{{shop_page_url}}" class="uk-text-uppercase font-600">All</a></li>
                 {% for item in shopcats %}
-                {% if product_term_id == item.term_id %}
-                  {% set cat_active_class = 'uk-active' %}
-                {% else %}
-                  {% set cat_active_class = 'not-active' %}
-                {% endif %}
-                <li id="{{ item.term_id }}" class="{{cat_active_class}}"><a href="{{product_category_base}}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a></li>
+                  {% if product_term_id == item.term_id %}
+                    {% set cat_active_class = 'uk-active' %}
+                  {% else %}
+                    {% set cat_active_class = 'not-active' %}
+                  {% endif %}
+                  <li id="{{ item.term_id }}" class="{{cat_active_class}}">
+                    <a href="{{product_category_base}}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a>
+                  </li>
                 {% endfor %}
                 
               </ul>
@@ -46,12 +50,14 @@
                 
                 <li class="{{active_class}}"><a href="{{shop_page_url}}" class="uk-text-uppercase font-600">All</a></li>
                 {% for item in shopcats %}
-                {% if product_term_id == item.term_id %}
-                  {% set cat_active_class = 'uk-active' %}
-                {% else %}
-                  {% set cat_active_class = 'not-active' %}
-                {% endif %}
-                <li id="{{ item.term_id }}" class="{{cat_active_class}}"><a href="{{product_category_base}}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a></li>
+                  {% if product_term_id == item.term_id %}
+                    {% set cat_active_class = 'uk-active' %}
+                  {% else %}
+                    {% set cat_active_class = 'not-active' %}
+                  {% endif %}
+                  <li id="{{ item.term_id }}" class="{{cat_active_class}}">
+                    <a href="{{product_category_base}}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a>
+                  </li>
                 {% endfor %}
                 
               </ul>
@@ -63,9 +69,9 @@
       </div>
       
       {% if is_product_category %}
-      <div id="ShopArchiveDescription" class="uk-margin-top">
-        {% do action('woocommerce_archive_description') %}
-      </div>
+        <div id="ShopArchiveDescription" class="uk-margin-top">
+          {% do action('woocommerce_archive_description') %}
+        </div>
       {% endif %}
       
       <div id="ProductsGrid" class="uk-child-width-1-2@s uk-child-width-1-3@m archive-posts margin-top-30" uk-grid="masonry: true">
@@ -73,7 +79,7 @@
         {% if posts is not empty %}
           {% for post in products %}
             {% include ['tease-product.twig'] %}
-            {% endfor %}
+          {% endfor %}
         {% else %}
           <p class="uk-text-emphasis">No Competitions found. Add some competitions!</p>
           {# do action('woocommerce_no_products_found') #}
@@ -82,9 +88,9 @@
       </div>
       
       {% if is_paginated %}
-      <div id="ShopPagination">
-        {% do action('woocommerce_after_shop_loop') %}
-      </div>
+        <div id="ShopPagination">
+          {% do action('woocommerce_after_shop_loop') %}
+        </div>
       {% endif %}
       
       {% do action('woocommerce_after_main_content') %}

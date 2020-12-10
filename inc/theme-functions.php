@@ -22,7 +22,7 @@ function is_paginated() {
 
 // change the seperator for yoast's breadcrumb
 function filter_wpseo_breadcrumb_separator($this_options_breadcrumbs_sep) {
-    return '<i class="fas fa-angle-right fa-sm"></i>';
+  return '<i class="fas fa-angle-right fa-sm"></i>';
 };
 add_filter('wpseo_breadcrumb_separator', 'filter_wpseo_breadcrumb_separator', 10, 1);
 
@@ -33,6 +33,7 @@ function nk_custom_post_type_label_woo( $args ){
   return $args;
 }
 add_filter( 'woocommerce_register_post_type_product', 'nk_custom_post_type_label_woo' );
+
 function nk_get_cpt_labels($single,$plural){
    $arr = array(
       'name' => $plural,
@@ -826,7 +827,7 @@ endif;
 
 // stuff to say we need timber activated!! see TGM Plugin activation library for php
 require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
-add_action('tgmpa_register', 'sixstar_theme_register_required_plugins');
+
 function sixstar_theme_register_required_plugins()
 {
     $plugins = array(
@@ -850,3 +851,4 @@ function sixstar_theme_register_required_plugins()
     );
     tgmpa($plugins, $config);
 }
+add_action('tgmpa_register', 'sixstar_theme_register_required_plugins');
