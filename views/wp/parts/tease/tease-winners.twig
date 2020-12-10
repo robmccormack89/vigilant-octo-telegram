@@ -2,7 +2,9 @@
   <div class="uk-card uk-card-default">
     <div class="uk-card-media-top fat-border-bottom">
       {% if post.get_thumbnail %}
-      <a title="{{ post.thumbnail.title }}" uk-toggle="target: #modal-post-{{post.ID}}"><img data-src="{{ post.thumbnail.src }}" width="800" height="300" alt="{{ post.thumbnail.alt }}" uk-img></a>
+      <a title="{{ post.thumbnail.title }}" uk-toggle="target: #modal-post-{{post.ID}}">
+        <img data-src="{{ post.thumbnail.src }}" width="800" height="300" alt="{{ post.thumbnail.alt }}" uk-img>
+      </a>
       {% endif %}
     </div>
     <div class="uk-card-body uk-padding-small">
