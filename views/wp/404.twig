@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="" data-block="content" data-template="404.twig">
+  <div class="content-area uk-section uk-section-muted">
+    <div class="uk-container uk-container-small">
+      <div uk-grid>
+        <article class="uk-article uk-width-1-1">
+          <div id="MainTitle">
+            <h1 class="uk-text-bold dark-text uk-text-center uk-margin-bottom"><span>{{ title }}</span></h1>
+          </div>
+          <div id="MainContent" class="uk-card uk-card-body uk-background-default uk-margin-bottom">
+            <p>Oops, nothing here...</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

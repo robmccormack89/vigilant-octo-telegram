@@ -1,0 +1,58 @@
+<div id="NavControls" class="" uk-grid>
+  
+  <div>
+
+    <div id="SearchNav" class="search_nav">
+      <a href="#" class="nav-right-item" uk-toggle="target: .search-overlay; animation: uk-animation-fade"><i class="fas fa-search fa-2x"></i></a>
+    </div>
+    
+  </div>
+    
+  <div>
+      
+    <div id="CartNav" class="cart_nav boundary-cart">
+      <div class="uk-inline">
+        <a href="{{cart_url}}" class="cart-icon nav-right-item" aria-expanded="false"><i class="fas fa-shopping-cart fa-2x"></i></a>
+        {% do action('cart_ajax_result_count') %}
+        {% do action('cart_ajax_subtotal') %}
+      </div>
+    </div>
+    <div id="CartNavDropdown" class="uk-padding-remove" uk-dropdown="pos: bottom-right; boundary: .boundary-cart; boundary-align: true">
+      <div class="widget_shopping_cart_content">{{ function('woocommerce_mini_cart') }}</div>
+    </div>
+    
+  </div>
+  
+  <div>
+    
+    <div id="AccountNav" class="account_nav boundary-account">
+      {% if is_user_logged_in %}
+      <a href="{{dashboard_endpoint}}" class="nav-right-item" aria-expanded="false"><i class="fas fa-user fa-2x"></i></a>
+      {% else %}
+      <a href="{{dashboard_endpoint}}" class="nav-right-item" aria-expanded="false"><i class="fas fa-user fa-2x"></i> <span class="sign-up-text uk-margin-small-left">Sign up Now</span></a>
+      {% endif %}
+    </div>
+    <div id="AccountNavDropdown" uk-dropdown="pos: bottom-right; boundary: .boundary-account; boundary-align: true">
+      {% if not user %}
+      <ul id="LoginDropdown" class="login_dropdown uk-nav uk-dropdown-nav">
+        <li><a href="{{dashboard_endpoint}}" class="uk-text-uppercase grey-text font-600">Login/Register</a></li>
+      </ul>
+      {% else %}
+      <ul id="AccountDropdown" class="uk-nav uk-dropdown-nav">
+        <li class="uk-nav-header uk-text-small uk-text-bold">YOUR ACCOUNT</li>
+        <li class="uk-nav-divider"></li>
+        <li><a href="{{dashboard_endpoint}}"><i class="far fa-user"></i> Dashboard</a></li>
+        <li><a href="{{address_endpoint}}"><i class="fas fa-map-pin"></i> Change Address</a></li>
+        <li><a href="{{edit_endpoint}}"><i class="fas fa-key"></i> Change Password</a></li>
+        <li class="uk-nav-divider"></li>
+        <li><a href="{{orders_endpoint}}"><i class="fas fa-list-ul"></i> Your Orders</a></li>
+        <li><a href="/contact"><i class="far fa-envelope"></i> Contact us</a></li>
+        <li class="uk-nav-divider"></li>
+        <li><a href="{{logout_endpoint}}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+      {% endif %}
+    </div>
+    
+  </div>
+  
+</div>

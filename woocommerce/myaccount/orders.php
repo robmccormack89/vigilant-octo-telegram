@@ -25,7 +25,8 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 	
 	<h3 class="uk-margin-remove-top">Your orders</h3>
 
-	<table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table uk-table uk-table-striped">
+	<div class="uk-overflow-auto">
+		<table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table uk-table uk-table-striped">
 		<thead>
 			<tr>
 				<?php foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) : ?>
@@ -82,7 +83,8 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
 			?>
 		</tbody>
 	</table>
-
+	</div>
+	
 	<?php do_action( 'woocommerce_before_account_orders_pagination' ); ?>
 
 	<?php if ( 1 < $customer_orders->max_num_pages ) : ?>

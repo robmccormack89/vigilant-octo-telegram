@@ -1,0 +1,286 @@
+<header id="SiteHeader" class="site_header">
+  
+  <div id="HeaderTop" class="uk-visible@m">
+    <nav class="top_nav_wrap theme-darker-bg uk-light">
+      <div class="uk-container">
+        <nav class="navbar-height-30" uk-navbar>
+          
+          <div class="uk-navbar-left">
+            
+            {% if sidebar_header_left %}
+              {{ sidebar_header_left }}
+            {% else %}
+              <span class="uk-text-emphasis uk-text-lead">Header Left Sidebar</span>
+            {% endif %}
+            
+          </div>
+          
+          <div class="uk-navbar-right pull-right-25">
+            {% if sidebar_header_right %}
+              {{ sidebar_header_right }}
+            {% else %}
+              <span class="uk-text-emphasis uk-text-lead">Header Right Sidebar</span>
+            {% endif %}
+          </div>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+  
+  <div id="HeaderBottomDesktop" class="header_bottom_full">
+    
+    <div class="uk-visible@m fat-border-bottom">
+      <nav class="theme-dark-bg">
+        <div class="uk-container">
+          <div class="uk-navbar" uk-navbar>
+            
+            <div class="bottom_nav_logo uk-navbar-left uk-light pull-left-15">
+              <a class="uk-navbar-item uk-logo uk-text-bold uk-text-emphasis" href="/">
+                <img data-src="/wp-content/uploads/2020/02/sixstar-logo-red.png" uk-img="" src="/wp-content/uploads/2020/02/sixstar-logo-red.png">
+              </a>
+            </div>
+            
+            <div class="bottom_nav_right bottom_nav_right_desktop uk-navbar-right pull-right-25 navbar-height-full">
+              
+              <div class="search_nav uk-navbar-item">
+                <a class="nav-right-item" uk-toggle="target: #modal-search; animation: uk-animation-fade"><i class="fas fa-search fa-2x"></i></a>
+              </div>
+              
+              <div class="cart_nav uk-navbar-item boundary-cart">
+                <div class="uk-inline">
+                  <a href="{{cart_url}}" class="cart-icon nav-right-item" aria-expanded="false"><i class="fas fa-shopping-cart fa-2x"></i>
+                    {% do action('cart_ajax_result_count') %}
+                    {% do action('cart_ajax_subtotal') %}
+                  </a>
+                </div>
+              </div>
+              
+              <div class="account_nav uk-navbar-item boundary-account">
+                <a href="{{dashboard_endpoint}}" class="nav-right-item" aria-expanded="false">
+                  <i class="fas fa-user fa-2x"></i> <span class="sign-up-text">{% if is_user_logged_in %}My Account{% else %}Sign up/Login{% endif %}</span>
+                </a>
+              </div>
+              
+              <div class="bottom_nav_right_divider uk-navbar-item uk-light uk-hidden@xl">
+                <hr class="uk-divider-vertical height-50 uk-margin-remove">
+              </div>
+              
+              <a class="uk-navbar-item lighten uk-hidden@xl" uk-toggle="target: #modal-offcanvas-nav"><i class="fas fa-bars fa-lg"></i></a>
+              
+            </div>
+            
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <div class="uk-container bottom_bar_nav uk-visible@m">
+      <nav class="navbar-height-60" uk-navbar>
+        <div class="uk-navbar-left bottom-big-nav font-600 pull-left-20">
+          <ul class="uk-navbar-nav">
+            {% if has_menu_main %}
+              {% for item in menu_main.get_items %}
+                {% if item.get_children %}
+                  <li class="{{ item.classes | join(' ') }}"><a href="{{ item.link }}">{{ item.title }}<span data-uk-icon="icon: triangle-down"></span></a>
+                    <div class="uk-navbar-dropdown">
+                      <ul class="uk-nav uk-navbar-dropdown-nav">
+                        {% for child in item.get_children %}
+                          <li><a href="{{ child.get_link }}">{{ child.title }}</a>
+                            {% if child.children %}
+                              <ul class="uk-nav-sub">
+                                {% for third in child.children %}
+                                  <li>
+                                    <a href="{{ third.get_link }}">{{ third.title }}</a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </li>
+                {% else %}
+                  <li class="{{ item.classes | join(' ') }} uk-inline"><a href="{{ item.get_link }}">{{ item.title }}</a></li>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <li>Add a menu to the Main Menu slot in Appearance > Menus.</li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+    
+  </div>
+  
+  <div id="HeaderBottomMobile" class="uk-hidden@m">
+    
+    <nav class="top_nav_wrap_mobile uk-padding-remove theme-darker-bg">
+      <div class="uk-container uk-container-expand">
+        <div class="uk-navbar" uk-navbar>
+          
+          <div class="bottom_nav_right bottom_nav_right_mobile uk-navbar-left navbar-height-full search-overlay-mobile">
+            <div class="search_nav uk-navbar-item">
+              <a class="nav-right-item" uk-toggle="target: #modal-search; animation: uk-animation-fade"><i class="fas fa-search fa-2x"></i></a>
+            </div>
+          </div>
+          
+          <div class="top_nav_right_mobile bottom_nav_right uk-navbar-right navbar-height-full search-overlay-mobile">
+            
+            <div class="cart_nav uk-navbar-item boundary-cart">
+              <div class="uk-inline">
+                <a href="{{cart_url}}" class="cart-icon nav-right-item" aria-expanded="false">
+                  <i class="fas fa-shopping-cart fa-2x"></i>
+                  {% do action('cart_ajax_result_count') %}
+                  {% do action('cart_ajax_subtotal') %}
+                </a>
+              </div>
+            </div>
+            
+            <div class="bottom_nav_right_divider uk-navbar-item uk-light">
+              <hr class="uk-divider-vertical height-50 uk-margin-remove">
+            </div>
+            
+            <div class="account_nav uk-navbar-item boundary-account">
+              <a href="{{dashboard_endpoint}}" class="nav-right-item" aria-expanded="false">
+                <i class="fas fa-user fa-2x"></i> <span class="sign-up-text">{% if is_user_logged_in %}My Account{% else %}Sign up/Login{% endif %}</span>
+              </a>
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>
+    </nav>
+    
+    <nav class="theme-dark-bg">
+      <div class="uk-container uk-container-expand uk-padding-remove">
+        <div class="" uk-grid>
+          
+          <div class="uk-width-auto">
+            <div class="uk-navbar" uk-navbar>
+              <div class="bottom_nav_logo bottom_nav_logo_mobile uk-navbar-left navbar-height-55 uk-light">
+                <a class="uk-navbar-item uk-logo uk-text-bold uk-text-emphasis" href="/">
+                  <img data-src="/wp-content/uploads/2020/02/sixstar-logo-red.png" uk-img="" src="/wp-content/uploads/2020/02/sixstar-logo-red.png">
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="uk-width-expand">
+            <div class="uk-navbar" uk-navbar>
+              <div class="bottom_nav_right uk-navbar-right navbar-height-60 search-overlay-tablet">
+                <a class="uk-navbar-item lighten uk-hidden@xl" uk-toggle="target: #offcanvas-overlay">
+                  <i class="fas fa-bars fa-lg"></i>
+                </a>
+                
+                <div id="offcanvas-overlay" uk-offcanvas="overlay: true">
+                  <div class="uk-offcanvas-bar theme-sidepanel uk-light">
+                        
+                    <div class="left-user-section left-content-box">
+                      <div class="" uk-grid>
+                        <div class="uk-width-expand">
+                          <a class="uk-logo" href="/">
+                            <img data-src="/wp-content/uploads/2020/02/sixstar-logo-red.png" uk-img="" src="/wp-content/uploads/2020/02/sixstar-logo-red.png">
+                          </a>
+                        </div>
+                        <div class="uk-width-auto uk-inline">
+                          <a class="uk-offcanvas-close" type="button">
+                            <i class="fas fa-times fa-lg"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                        
+                    <div class="left-nav-section">
+                      
+                      <ul class="uk-nav uk-nav-default" uk-nav="" hidden>
+                        <li class="uk-nav-header uk-text-bold uk-margin-small-bottom">MENU</li>
+                        <li><a href="#"><span class="uk-margin-small-right"><i class="fas fa-home first"></i></span>Home</a></li>
+                        <li><a href="#"><span class="uk-margin-small-right"><i class="fas fa-address-card first"></i></span>About</a></li>
+                        <li><a href="#"><span class="uk-margin-small-right"><i class="fas fa-check-square first"></i></span>Skills</a></li>
+                        <li><a href="#"><span class="uk-margin-small-right"><i class="fas fa-graduation-cap first"></i></span>Education</a></li>
+                        <li><a href="#"><span class="uk-margin-small-right"><i class="fas fa-briefcase first"></i></span>Experience</a></li>
+                        <li class="uk-parent"><a href="#"><span class="uk-margin-small-right"><i class="fas fa-layer-group first"></i></span>Portfolio<i class="fas fa-angle-down uk-align-right"></i></a>
+                          <ul class="uk-nav-sub" hidden="">
+                            <li><a title="Article" href="#">Article</a></li>
+                            <li><a title="Album" href="#">Album</a></li>
+                            <li><a title="Cover" href="#">Cover</a></li>
+                            <li><a title="Cards" href="#">Cards</a></li>
+                            <li><a title="News Blog" href="#">News Blog</a></li>
+                            <li><a title="Price" href="#">Price</a></li>
+                            <li><a title="Login" href="#">Login</a></li>
+                            <li><a title="Login-Dark" href="#">Login - Dark</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="#"><span class="uk-margin-small-right"><i class="fas fa-book-open first"></i></span>Blog</a></li>
+                        <li class="uk-parent">
+                          <a href="#"><span class="uk-margin-small-right"><i class="fas fa-envelope first"></i></span>Contact<i class="fas fa-angle-down uk-align-right"></i></a>
+                          <ul class="uk-nav-sub" hidden="">
+                            <li><a href="#">Sub item</a></li>
+                            <li><a href="#">Sub item</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                      
+                      <ul class="uk-nav uk-nav-default" uk-nav="">
+                        <li class="uk-nav-header uk-text-bold uk-margin-small-bottom">MENU</li>
+                        {% for item in menu_mobile.get_items %}
+                          {% if item.get_children %}
+                            <li class="uk-parent">
+                              <a href="{{ item.get_link }}"><span class="uk-margin-small-right">{{item.menu_item_icon}}</span>{{ item.title }}<i class="fas fa-angle-down uk-align-right uk-margin-remove"></i></a>
+                              <ul class="uk-nav-sub">
+                                {% for child in item.get_children %}
+                                  <li>
+                                    <a href="{{ child.get_link }}">{{ child.title }}</a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            </li>
+                          {% else %}
+                            <li class="{{ item.classes | join(' ') }}">
+                              <a href="{{ item.get_link }}"><span class="uk-margin-small-right">{{item.menu_item_icon}}</span>{{ item.title }}</a>
+                            </li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                      
+                      <div class="left-content-box uk-margin-top">
+                        <h5 hidden>Widget Area</h5>
+                      </div>
+                      
+                    </div>
+                        
+                    <div class="left-bottom-bar">
+                      <p class="uk-text-small uk-margin-remove uk-padding-small uk-padding-remove-vertical uk-text-center">
+                        © {{current_year}} {{site.title}}. All Rights Reserved
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </nav>
+    
+  </div>
+  
+</header>
+
+<div id="modal-search" class="uk-modal-full uk-modal" uk-modal>
+  <div class="uk-modal-dialog uk-flex uk-flex-center uk-flex-middle theme-dark-bg uk-light" uk-height-viewport>
+    <a class="uk-modal-close-full theme-darker-bg uk-close" type="button">
+      <i class="fas fa-times fa-lg"></i>
+    </a>
+    <form class="uk-search uk-search-large" role="search" method="get" action="{{site.url}}">
+        <input class="uk-search-input uk-text-center" type="search" placeholder="Start typing..." id="Search" name="s" autocomplete="off" autofocus>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div id="post-{{post.ID}}" class="the-post item {{ post.class }}" data-template="tease-live_draws.twig">
+  <div class="uk-card uk-card-default">
+    <div class="uk-card-body uk-padding-small fat-border-top">
+      <span class="uk-label home-featured-label uk-margin-small-bottom">{{ post.terms('status')|join(', ') }}</span>
+      <h3 class="uk-card-title uk-margin-small-top">{{post.title}}</h3>
+      <a class="uk-button uk-button-primary uk-margin-small-top" href="#video-modal-{{post.ID}}" uk-toggle>View Draw</a>
+      <div id="video-modal-{{post.ID}}" class="uk-flex-top" uk-modal>
+        <div class="uk-modal-dialog uk-width-auto uk-margin-auto-vertical">
+          <button class="uk-modal-close-outside" type="button" uk-close></button>
+          {{post.live_draw_link}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

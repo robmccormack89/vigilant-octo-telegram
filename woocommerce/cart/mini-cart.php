@@ -22,43 +22,6 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_mini_cart' ); ?>
 
 <?php if ( ! WC()->cart->is_empty() ) : ?>
-	
-	<style>
-	
-	.cart_list, .total {
-	    font-size: 13px;
-	}
-	
-	.mini-cart-link a.uk-link-reset, .total strong {
-	    font-weight: 700;
-	    color: #18202e!important;
-	}
-	
-	.remove {
-	    font-weight: 700;
-			font-size: 1.5em;
-	    height: 1em;
-	    width: 1em;
-			text-align: center;
-	    line-height: 1;
-	    color: red!important;
-	}
-	.woocommerce-mini-cart img {
-      width: 50px;
-      padding: 1px;
-      border-radius: 100%;
-      border: 1px solid #c5c5c5;
-  }
-	.checkout.uk-button-link {
-	    line-height: 28px;
-			color: #18202e;
-	}
-	.buttons .uk-button {
-		font-weight: 700;
-	} 
-
-
-	</style>
 
 	<div class="cart-list-box theme-border-btm">
 		<div class="cart-list-area padding-15">
@@ -116,9 +79,9 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 								</div>
 							</div>
 							<?php endif; ?>
-							<!-- <div class="mini-cart-variation-data uk-hidden">
+							<div class="mini-cart-variation-data uk-hidden">
 								<?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-							</div> -->
+							</div>
 						</li>
 						<?php
 					}
@@ -160,12 +123,5 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 	</div>
 
 <?php endif; ?>
-
-<script>
-	jQuery(function($){
-		$("div.cart-buttons-area .button:first-child").addClass("uk-button uk-button-primary uk-button-small uk-width-1-1");
-		$(".button.checkout").addClass("uk-button uk-button-link uk-width-1-1");
-	});
-</script>
 
 <?php do_action( 'woocommerce_after_mini_cart' ); ?>

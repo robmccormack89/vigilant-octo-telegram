@@ -1,0 +1,12 @@
+<?php
+/**
+ * The custom template for page with slug 'home'
+ *
+ * @package Sixstar_Theme
+ */
+
+$context = Timber::get_context();
+$post = Timber::query_post();
+$context['post'] = $post;
+
+Timber::render(  'about.twig' , $context );

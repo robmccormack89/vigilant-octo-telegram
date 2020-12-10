@@ -1,0 +1,380 @@
+{% extends "base.twig" %}
+
+{% block spec_styles %}
+
+  <link rel="stylesheet" href="/wp-content/themes/sixstar-theme/assets/css/lightslider.css" />
+  <script src="/wp-content/themes/sixstar-theme/assets/js/lightslider.js"></script> 
+  
+  <!-- lottery custom styles -->
+  <style>
+    .main-lottery {
+      color: #1d262d !important;
+      padding-top: 10px;
+    }
+
+    .wcl-progress-meter .zero {
+      display: inline-block;
+      position: relative;
+      top: auto;
+    }
+
+    .wcl-progress-meter .max {
+      display: inline-block;
+      position: absolute;
+      top: auto;
+      right: 0;
+    }
+
+    progress[value] {
+      height: 8px;
+      margin-top: 10px;
+    }
+
+    progress[value]::-webkit-progress-bar {
+      background-color: #efbfa8;
+      border-radius: 2px;
+    }
+
+    progress[value]::-webkit-progress-value {
+      background-color: #fc4c02;
+    }
+
+    ul.tickets_numbers {
+      padding-left: 0;
+    }
+
+    ul.tickets_numbers_tab {
+      margin-left: -5px;
+      margin-top: 15px;
+    }
+
+    .ticket-tab-bar .ticket-tab-bar-item {
+      width: 60px;
+      margin-right: 3px;
+    }
+
+    ul.tickets_numbers li.tn {
+      display: block;
+      list-style: none;
+      border: none;
+      background-color: #fff;
+      padding: 0.7em;
+      float: left;
+      width: 70px;
+      height: auto;
+      text-align: center;
+      margin: 0.2em;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    ul.lottery-pn-answers {
+      padding-left: 0;
+    }
+
+    ul.lottery-pn-answers {
+      margin: 0 0 40px 0;
+    }
+
+    ul.lottery-pn-answers li {
+      border: none;
+      background-color: #fff;
+      padding: 0.5em;
+      width: 100%;
+      margin: 0 0 5px 0;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+
+    ul.tickets_numbers li.in_cart {
+      background: #f2c84cbd !important;
+    }
+
+    ul.tickets_numbers li.selected {
+      background: #4CAF50 !important;
+      color: #fff;
+    }
+
+    ul.tickets_numbers li.in_cart {
+      background: #ffd400 !important;
+    }
+
+    .lottery-pn-answers .uk-button-default:focus, .lottery-pn-answers .uk-button-default:hover {
+      background-color: #fff;
+      color: #333;
+      border-color: #b2b2b2;
+    }
+
+    ul.lottery-pn-answers li.selected {
+      background: #4caf50 !important;
+      color: #fff !important;
+    }
+
+    form.buy-now {
+      margin-bottom: 20px;
+    }
+
+    .main-lottery.lottery-time-countdown {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    form.cart.pick-number {
+      margin-bottom: 20px;
+    }
+
+    .button .woocommerce-Price-amount {
+      color: #fff;
+    }
+
+    .cart_nav .uk-dropdown {
+      min-width: 320px;
+    }
+
+    .main-lottery {
+      font-weight: 600;
+    }
+
+    .contact-page .uk-tab>*>a {
+      font-size: 17px;
+    }
+
+    input.wpcf7-form-control.wpcf7-submit.uk-button.uk-button-primary.uk-input {
+      width: auto;
+    }
+
+    ul#TopNavRightSocials i:hover {
+      color: #fff !important;
+    }
+
+    .alertable-ok, .alertable-ok:hover {
+      background: #fc4c02;
+      border: solid 1px #fc4c02;
+    }
+
+    .cart_list, .total {
+      font-size: 13px;
+    }
+
+    .mini-cart-link a.uk-link-reset, .total strong {
+      font-weight: 700;
+      color: #18202e !important;
+    }
+
+    .remove {
+      font-weight: 700;
+      font-size: 1.5em;
+      height: 1em;
+      width: 1em;
+      text-align: center;
+      line-height: 1;
+      color: red !important;
+    }
+
+    .woocommerce-mini-cart img {
+      width: 50px;
+      padding: 1px;
+      border-radius: 100%;
+      border: 1px solid #c5c5c5;
+    }
+
+    .checkout.uk-button-link {
+      line-height: 28px;
+      color: #18202e;
+    }
+
+    .buttons .uk-button {
+      font-weight: 700;
+    }
+
+    .uk-light .uk-icon-button {
+      background-color: hsl(206deg 22% 15%) !important;
+      color: hsl(0deg 0% 100%) !important;
+    }
+
+    .uk-subnav-pill>.uk-active>a .uk-label {
+      border-radius: 3px;
+    }
+
+    a.uk-icon-button.uk-icon:hover {
+      text-decoration: none;
+    }
+    
+    /* .cureent-participating {
+      font-weight: 800;
+      color: #1d262d;
+    }
+
+    .lottery-time,
+    .comp-close-msg {
+      font-weight: 800;
+      color: #1d262d;
+    }
+
+    .pick-number .uk-subnav>*>:first-child {
+      color: #232323!important;
+    }
+
+    .pick-number .uk-subnav>.uk-active>a,
+    .pick-number .uk-subnav>*>a:focus,
+    .pick-number .uk-subnav>*>a:hover,
+    .pick-number a.ticket-tab-active {
+      color: #b1b1b1!important;
+    }
+
+    ul.lottery-pn-answers {
+      margin: 0 0 2em -10px;
+    }
+
+    ul.lottery-pn-answers li {
+      border: none;
+      padding: 0 0 0 10px;
+      font-size: unset;
+      width: unset;
+      margin: unset;
+      cursor: unset;
+      font-weight: unset;
+    }
+
+    ul.lottery-pn-answers li a {
+      background-color: #ffffff!important;
+      border: 1px solid #e5e5e5;
+      text-transform: capitalize!important;
+      font-size: 1rem!important;
+      padding: 7px 30px!important;
+      color: #1d262d!important;
+      font-weight: 800;
+    }
+
+    ul.lottery-pn-answers li.selected {
+      background: none;
+    }
+
+    ul.lottery-pn-answers li.selected.false {
+      background: none;
+    }
+
+    .pick-number ul.lottery-pn-answers li.selected a {
+      border-color: #4CAF50;
+      background-color: #4CAF50!important;
+      color: #fff!important;
+    }
+
+    ul.lottery-pn-answers li.selected.false a {
+      border-color: #c71717;
+      color: #fff!important;
+      background-color: #c71717!important;
+    }
+
+    ul.tickets_numbers li.tn {
+      margin: 0 10px 10px 0;
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
+      font-size: 0.8rem;
+    }
+
+    ul.tickets_numbers li.taken {
+      background: #ececec!important;
+      border: 1px solid #dedede!important;
+      color: #777!important;
+    }
+
+    ul.tickets_numbers li.selected {
+      background: #4CAF50!important;
+      border: 1px solid #4caf50;
+      color: #fff!important;
+    } */
+  </style>
+
+{% endblock %}
+
+{% block content %}
+
+  <div id="product-{{post.id}}" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }}">
+    <div class="content-area uk-section uk-section-small uk-section-muted">
+      <div class="uk-container">
+        
+        <div class="" uk-grid="masonry: true;">
+          <div class="uk-width-1-2@m">
+            <div class="custom-product-images">
+              <ul id="lightSlider">
+                <li data-thumb="{{ post.thumbnail.src('thumbnail') }}">
+                  <div uk-lightbox>
+                    <a href="{{ post.thumbnail.src('full') }}" data-caption="{{post.title}}">
+                      <img src="{{ post.thumbnail.src('sixstar-theme-product-main-image') }}" />
+                    </a>
+                  </div>
+                </li>
+                {% for attachment_id in attachment_ids %}
+                {% set attach_main = function('wp_get_attachment_image_src', attachment_id, 'sixstar-theme-product-main-image') %}
+                {% set attach_thumb = function('wp_get_attachment_image_src', attachment_id, 'thumbnail') %}
+                {% set attach_full = function('wp_get_attachment_image_src', attachment_id, 'full') %}
+                <li data-thumb="{{attach_thumb[0]}}">
+                  <div uk-lightbox>
+                    <a href="{{attach_full[0]}}" data-caption="{{post.title}}">
+                      <img src="{{attach_main[0]}}" />
+                    </a>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {# do action('woocommerce_before_single_product_summary') #}
+          </div>
+          <div class="uk-width-1-2@m">
+            <span class="uk-text-bold uk-text-large uk-text-primary">Enter now for a chance to win</span>
+            {% do action('woocommerce_single_product_summary') %}
+          </div>
+          <div class="uk-width-1-2@m">
+            {% do action('woocommerce_after_single_product_summary') %}
+        </div>
+        
+        
+      </div>
+    </div>
+        
+  </div>
+
+{% block spec_scripts %}
+  
+  <!-- for the product image gallery -->
+  <script>
+    jQuery('#lightSlider').lightSlider({
+      gallery: true,
+      item: 1,
+      loop: true,
+      slideMargin: 0,
+      thumbItem: 6,
+      galleryMargin: 10,
+      thumbMargin: 10,
+    });
+  </script>
+  
+  <!-- adding classes to comp stuff -->
+  <script>
+    jQuery(function($) {
+      $("form.buy-now.cart button.single_add_to_cart_button").addClass("uk-button uk-button-default");
+      $(".ticket-tab-bar .ticket-tab-bar-item").addClass("uk-button uk-button-primary");
+      $(".tickets_numbers_tab .tn").addClass("uk-button uk-button-default");
+      $(".lottery-pn-answers li").addClass("uk-button uk-button-default");
+      $("p.lottery-end").addClass("uk-hidden");
+      $("p.min-pariticipants").addClass("uk-hidden");
+      $("p.max-pariticipants").addClass("uk-hidden");
+      $("progress").addClass("uk-progress");
+      $("input").addClass("uk-input");
+      $("form.cart.pick-number button.single_add_to_cart_button").addClass("uk-button uk-button-primary uk-button-large");
+    });
+  </script>
+
+{% endblock %}
+
+
+
+{% endblock %}
+
+
+

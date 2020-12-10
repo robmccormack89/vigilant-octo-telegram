@@ -5,7 +5,14 @@
  * @package Sixstar_Theme
  */
 
-$context = Timber::get_context();
-$post = new TimberPost();
-$context['post'] = $post;
-Timber::render( array( 'page-' . $post->post_name . '.twig', 'page.twig' ), $context );
+// get the main context
+$context = Timber::context();
+
+// get the singular page object
+$timber_post = new Timber\Post();
+
+// set the page object as a variable
+$context['post'] = $timber_post;
+ 
+// render template hierarchy with context: custom page templates take precedence over page.twig
+Timber::render( array( 'page-' . $timber_post->post_name . '.twig', 'page.twig' ), $context );

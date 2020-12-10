@@ -5,5 +5,5 @@
  * @package Sixstar_Theme
  */
  
-$GLOBALS['timberContext'] = Timber::get_context();
-ob_start();
+ $GLOBALS['timberContext'] = Timber::context();
+ ob_start();

@@ -1,0 +1,11 @@
+<div id="CartNav" class="cart_nav uk-navbar-item boundary-cart">
+  <div class="uk-inline">
+    <a href="{{cart_url}}" class="cart-icon nav-right-item" aria-expanded="false"><i class="fas fa-shopping-cart fa-2x"></i>
+      {% do action('cart_ajax_result_count') %}
+      {% do action('cart_ajax_subtotal') %}
+    </a>
+    <div id="CartNavDropdown" class="uk-padding-remove" uk-dropdown="pos: bottom-right; boundary: .boundary-cart; boundary-align: true">
+      <div class="widget_shopping_cart_content">{{ function('woocommerce_mini_cart') }}</div>
+    </div>
+  </div>
+</div>

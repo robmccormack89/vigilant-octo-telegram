@@ -1,0 +1,10 @@
+<div id="post-{{post.ID}}" class="the-post item {{ post.class }}" data-template="tease-entry_lists.twig">
+  <div class="uk-card uk-card-default">
+    <div class="uk-card-body uk-padding-small fat-border-top">
+      <h3 class="uk-card-title uk-margin-small-top">{{post.title}}</h3>
+      <p>Published Date: {{post.date | date}}</p>
+      <p>Draw Date: {{ post.draw_date }}</p>
+      <a href="{{ pdf_upload_url }}" class="uk-button uk-button-primary" download>Download</a>
+    </div>
+  </div>
+</div>
