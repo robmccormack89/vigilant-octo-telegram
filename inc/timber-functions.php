@@ -568,9 +568,46 @@ class SixstarTheme extends Timber\Site
   
   public function sixstar_theme_enqueue_assets()
   {
-    wp_enqueue_style('sixstar-theme-css', get_template_directory_uri() . '/assets/css/base.css');
-    wp_enqueue_script('sixstar-theme-js', get_template_directory_uri() . '/assets/js/main/main.js', '', '', false);
-    wp_enqueue_style('sixstar-theme-styles', get_stylesheet_uri());
+    
+    // theme base scripts; not jquery dependent
+    wp_enqueue_script(
+      'sixstar-theme',
+      get_template_directory_uri() . '/assets/js/main/main.js',
+      '',
+      '',
+      true
+    );
+    
+    // enqueue wp jquery
+    wp_enqueue_script( 'jquery' );
+    
+    // global (site wide) scripts; uses jquery
+    wp_enqueue_script(
+      'global',
+      get_template_directory_uri() . '/assets/js/global.js',
+      'jquery',
+      '1.0.0',
+      true
+    );
+    
+    // font awesome
+    wp_enqueue_style(
+      'fontawesome-theme',
+      get_template_directory_uri() . '/assets/css/all.min.css'
+    );
+    // theme base css
+    wp_enqueue_style(
+      'sixstar-theme',
+      get_template_directory_uri() . '/assets/css/base.css'
+    );
+    // theme stylesheet; used for globals (site wide)
+    wp_enqueue_style(
+      'sixstar-theme-styles', get_stylesheet_uri()
+    );
+    wp_enqueue_style(
+      'global-theme',
+      get_template_directory_uri() . '/assets/css/global.css'
+    );
   }
   
   public function sixstar_custom_uikit_widgets_init()
