@@ -2,9 +2,9 @@
 
 {% block spec_styles %}
 
-  <link rel="stylesheet" href="/wp-content/themes/sixstar-theme/assets/css/lightslider.css" />
-  <script type="text/javascript" src="/wp-content/themes/sixstar-theme/assets/js/lightslider.js"></script> 
-  <link rel="stylesheet" href="/wp-content/themes/sixstar-theme/assets/css/single-product.css" />
+  <link rel="stylesheet" href="/wp-content/themes/rmcc-woo-theme/assets/css/lightslider.css" />
+  <script type="text/javascript" src="/wp-content/themes/rmcc-woo-theme/assets/js/lightslider.js"></script> 
+  <link rel="stylesheet" href="/wp-content/themes/rmcc-woo-theme/assets/css/single-product.css" />
 
 {% endblock %}
 
@@ -21,12 +21,12 @@
                 <li data-thumb="{{ post.thumbnail.src('thumbnail') }}">
                   <div uk-lightbox>
                     <a href="{{ post.thumbnail.src('full') }}" data-caption="{{post.title}}">
-                      <img src="{{ post.thumbnail.src('sixstar-theme-product-main-image') }}" />
+                      <img src="{{ post.thumbnail.src('rmcc-woo-theme-product-main-image') }}" />
                     </a>
                   </div>
                 </li>
                 {% for attachment_id in attachment_ids %}
-                {% set attach_main = function('wp_get_attachment_image_src', attachment_id, 'sixstar-theme-product-main-image') %}
+                {% set attach_main = function('wp_get_attachment_image_src', attachment_id, 'rmcc-woo-theme-product-main-image') %}
                 {% set attach_thumb = function('wp_get_attachment_image_src', attachment_id, 'thumbnail') %}
                 {% set attach_full = function('wp_get_attachment_image_src', attachment_id, 'full') %}
                 <li data-thumb="{{attach_thumb[0]}}">
@@ -59,6 +59,6 @@
 
 {% block spec_scripts %}
   
-  <script type="text/javascript" src="/wp-content/themes/sixstar-theme/assets/js/single-product.js"></script>
+  <script type="text/javascript" src="/wp-content/themes/rmcc-woo-theme/assets/js/single-product.js"></script>
 
 {% endblock %}

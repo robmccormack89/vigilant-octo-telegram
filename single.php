@@ -2,7 +2,7 @@
 /**
  * The default template for displaying all single posts
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 // get the main context

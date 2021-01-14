@@ -2,7 +2,7 @@
 /**
  * The 404 template
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 // get the main context

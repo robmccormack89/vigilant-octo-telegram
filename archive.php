@@ -2,7 +2,7 @@
 /**
  * The template for displaying general archive pages
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 // sets the template hierarchy

@@ -2,7 +2,7 @@
 /**
  * The custom template for page with slug 'home'
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 $context = Timber::context();

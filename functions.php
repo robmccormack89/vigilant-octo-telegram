@@ -1,8 +1,8 @@
 <?php
 /**
- * Sixstar Theme functions and definitions
+ * RMcC Woo Theme functions and definitions
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 /**

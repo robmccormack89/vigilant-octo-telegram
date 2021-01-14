@@ -2,7 +2,7 @@
 /**
  * The search
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 // render the template hierarchy with search.twig first

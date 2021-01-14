@@ -2,7 +2,7 @@
 /**
  * Timber theme class & other functions for Twig.
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 // Define paths to Twig templates
@@ -19,8 +19,8 @@ Timber::$dirname = array(
 // set the $autoescape value
 Timber::$autoescape = false;
 
-// Define Sixstar_Theme Child Class
-class SixstarTheme extends Timber\Site
+// Define Rmcc_Woo_Theme Child Class
+class RmccWooTheme extends Timber\Site
 {
   public function __construct()
   {
@@ -29,8 +29,8 @@ class SixstarTheme extends Timber\Site
     add_filter('get_twig', array( $this, 'add_to_twig' ));
     add_filter( 'pre_get_posts', array($this, 'add_custom_types_to_tax') );
     add_action('after_setup_theme', array( $this, 'theme_supports' ));
-    add_action('wp_enqueue_scripts', array( $this, 'sixstar_theme_enqueue_assets'));
-    add_action('widgets_init', array( $this, 'sixstar_custom_uikit_widgets_init'));
+    add_action('wp_enqueue_scripts', array( $this, 'rmcc_woo_theme_enqueue_assets'));
+    add_action('widgets_init', array( $this, 'rmcc_woo_custom_uikit_widgets_init'));
     add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
     add_filter( 'timber/context', array( $this, 'add_to_context' ) );
     add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
@@ -354,81 +354,81 @@ class SixstarTheme extends Timber\Site
     // Register widget areas
     if (function_exists('register_sidebar')) {
       register_sidebar(array(
-        'name' => esc_html__('Main Footer Area', 'sixstar-theme'),
+        'name' => esc_html__('Main Footer Area', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h4 class="widget-title" hidden>',
         'after_title' => '</h4>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Footer Area 1', 'sixstar-theme'),
+        'name' => esc_html__('Footer Area 1', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer-1',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
         'after_title' => '</h4>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Footer Area 2', 'sixstar-theme'),
+        'name' => esc_html__('Footer Area 2', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer-2',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
         'after_title' => '</h4>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Footer Area 3', 'sixstar-theme'),
+        'name' => esc_html__('Footer Area 3', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer-3',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
         'after_title' => '</h4>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Footer Area 4', 'sixstar-theme'),
+        'name' => esc_html__('Footer Area 4', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer-4',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
         'after_title' => '</h4>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Footer Bottom Left Area', 'sixstar-theme'),
+        'name' => esc_html__('Footer Bottom Left Area', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer-bottom-left',
-        'description' => esc_html__('Footer Bottom Left Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Footer Bottom Left Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h4 class="widget-title" hidden>',
         'after_title' => '</h4>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Footer Bottom Right Area', 'sixstar-theme'),
+        'name' => esc_html__('Footer Bottom Right Area', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer-bottom-right',
-        'description' => esc_html__('Footer Bottom Right Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Footer Bottom Right Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h4 class="widget-title" hidden>',
         'after_title' => '</h4>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Header Top Left Area', 'sixstar-theme'),
+        'name' => esc_html__('Header Top Left Area', 'rmcc-woo-theme'),
         'id' => 'sidebar-header-left',
-        'description' => esc_html__('Main Header Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Main Header Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h4 class="widget-title" hidden>',
         'after_title' => '</h4>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Header Top Right Area', 'sixstar-theme'),
+        'name' => esc_html__('Header Top Right Area', 'rmcc-woo-theme'),
         'id' => 'sidebar-header-right',
-        'description' => esc_html__('Main Header Widget Area; works best with the current widget only.', 'sixstar-theme'),
+        'description' => esc_html__('Main Header Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<h4 class="widget-title" hidden>',
@@ -441,8 +441,8 @@ class SixstarTheme extends Timber\Site
   {
     // This theme uses wp_nav_menu() in one locations.
     register_nav_menus(array(
-      'main' => __('Main Menu', 'sixstar-theme'),
-      'mobile' => __('Mobile Menu', 'sixstar-theme'),
+      'main' => __('Main Menu', 'rmcc-woo-theme'),
+      'mobile' => __('Mobile Menu', 'rmcc-woo-theme'),
     ));
   }
 
@@ -560,18 +560,18 @@ class SixstarTheme extends Timber\Site
     add_theme_support( 'wc-product-gallery-slider' );
   
     // add custom thumbs sizes.
-    add_image_size('sixstar-theme-featured-image-archive', 800, 300, true);
-    add_image_size('sixstar-theme-featured-image-single-post', 1200, 450, true);
-    add_image_size('sixstar-theme-product-main-image', 1200, 700, true);
-    add_image_size('sixstar-theme-cart-image', 80, 80, true);
+    add_image_size('rmcc-woo-theme-featured-image-archive', 800, 300, true);
+    add_image_size('rmcc-woo-theme-featured-image-single-post', 1200, 450, true);
+    add_image_size('rmcc-woo-theme-product-main-image', 1200, 700, true);
+    add_image_size('rmcc-woo-theme-cart-image', 80, 80, true);
   }
   
-  public function sixstar_theme_enqueue_assets()
+  public function rmcc_woo_theme_enqueue_assets()
   {
     
     // theme base scripts; not jquery dependent
     wp_enqueue_script(
-      'sixstar-theme',
+      'rmcc-woo-theme',
       get_template_directory_uri() . '/assets/js/main/main.js',
       '',
       '',
@@ -597,12 +597,12 @@ class SixstarTheme extends Timber\Site
     );
     // theme base css
     wp_enqueue_style(
-      'sixstar-theme',
+      'rmcc-woo-theme',
       get_template_directory_uri() . '/assets/css/base.css'
     );
     // theme stylesheet; used for globals (site wide)
     wp_enqueue_style(
-      'sixstar-theme-styles', get_stylesheet_uri()
+      'rmcc-woo-theme-styles', get_stylesheet_uri()
     );
     wp_enqueue_style(
       'global-theme',
@@ -610,9 +610,9 @@ class SixstarTheme extends Timber\Site
     );
   }
   
-  public function sixstar_custom_uikit_widgets_init()
+  public function rmcc_woo_custom_uikit_widgets_init()
   {
-    register_widget("Sixstar_Theme_Custom_UIKIT_Widget_Class");
+    register_widget("Rmcc_Woo_Theme_Custom_UIKIT_Widget_Class");
   }
 
   public function add_to_twig($twig)
@@ -624,4 +624,4 @@ class SixstarTheme extends Timber\Site
   
 }
 
-new SixstarTheme();
+new RmccWooTheme();

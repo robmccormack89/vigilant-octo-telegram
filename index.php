@@ -2,7 +2,7 @@
 /**
  * The main index template file, functions at the main archive
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 // get the main context

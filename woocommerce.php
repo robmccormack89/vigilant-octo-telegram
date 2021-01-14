@@ -2,7 +2,7 @@
 /**
  * The template for making woocommerce work with timber/twig. sets the templates & context for woo's archive & singular views
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 // make sure timber is activated first

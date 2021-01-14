@@ -2,7 +2,7 @@
 /**
  * Theme functions & bits
  *
- * @package Sixstar_Theme
+ * @package Rmcc_Woo_Theme
  */
 
 // check if is blog or post
@@ -694,7 +694,7 @@ endif;
 // stuff to say we need timber activated!! see TGM Plugin activation library for php
 require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
 
-function sixstar_theme_register_required_plugins()
+function rmcc_woo_theme_register_required_plugins()
 {
   $plugins = array(
     array(
@@ -717,4 +717,4 @@ function sixstar_theme_register_required_plugins()
   );
   tgmpa($plugins, $config);
 }
-add_action('tgmpa_register', 'sixstar_theme_register_required_plugins');
+add_action('tgmpa_register', 'rmcc_woo_theme_register_required_plugins');

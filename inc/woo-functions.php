@@ -2,7 +2,7 @@
 /**
 * Woo functions
 *
-* @package Sixstar_Theme
+* @package Rmcc_Woo_Theme
 */
 
 // if woocommerce is activated, do this stuff, or not
