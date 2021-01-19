@@ -2,24 +2,244 @@
 <html {{site.language_attributes}}>
 
 <head>
+  
   <meta charset="{{site.charset}}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   {{ function('wp_head') }}
-
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Open+Sans:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
   
-  {{options.header_embed_codes}}
-  
-  <!-- styles per template -->
   {% block spec_styles %}
   {% endblock %}
-  <!-- /styles per template -->
   
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+  <!-- front page -->
   <style>
-    .uk-overlay-primary {
-        background: rgb(10 10 10 / 80%);
+    html {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+    }
+    .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge,
+    h1, h2, h3, h4, h5, h6,
+    .oswald {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.1rem;
+    }
+    #PrimaryHeader .uk-navbar-item, #PrimaryHeader .uk-navbar-nav>li>a, #PrimaryHeader .uk-navbar-toggle {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 400;
+      text-transform: capitalize;
+      font-size: 1.1rem;
+    }
+    .uk-container {
+      max-width: 1120px;
+    }
+    .uk-container-expand {
+      max-width: none;
+    }
+    .uk-container-large {
+      max-width: 1400px;
+    }
+    @media (min-width: 960px) {
+    .uk-container {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+    .uk-container-small {
+      max-width: 900px;
+    }
+    .uk-background-secondary, .uk-section-secondary {
+      background-color: #111;
+    }
+    .uk-background-secondary.uk-background-secondary-muted {
+      background-color: #242424;
+    }
+    .uk-background-secondary-muted.uk-background-secondary-muted-lighter {
+      background-color: #3d3d3d;
+    }
+    .uk-light .uk-text-muted {
+      color: #979797!important;
+    }
+    .uk-background-muted .uk-text-muted {
+      color: #6c6c6c!important;
+    }
+    footer .uk-light .uk-nav-default>li>a {
+        color: #fff;
+    }
+    footer .uk-light .uk-nav-default>li.uk-active>a, footer .uk-light .uk-nav-default>li.current-menu-item>a {
+      color: #979797;
+    }
+    .uk-text-underline {
+      text-decoration: underline;
+    }
+    .uk-light .uk-nav-default>li>a:hover, .uk-light .uk-nav-default>li>a:focus {
+      color: #979797;
+    }
+    #PrimaryHeader.uk-section-small {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    #PrimaryHeader .uk-width-medium {
+      width: 265px;
+    }
+    .uk-search-large {
+      width: 100%;
+    }
+    .uk-search-large .uk-search-icon {
+      width: 25px;
+      margin-right: 20px;
+    }
+    .uk-search-large .uk-search-icon:not(.uk-search-icon-flip)~.uk-search-input {
+      padding-left: 70px;
+    }
+    .uk-search-large .uk-search-input {
+      height: 55px;
+      font-size: 1.1rem;
+      padding-left: 20px;
+    }
+    .uk-search-default .uk-search-input:focus {
+      border-color: #999;
+    }
+    .uk-search-icon-flip:hover {
+      text-decoration: none;
+    }
+    .uk-text-emphasis {
+      color: #3d3d3d!important;
+    }
+    #PrimaryHeader .uk-navbar-nav a {
+      color: #3d3d3d;
+    }
+    #PrimaryHeader .uk-search-icon-flip {
+      transition: .1s ease-in-out;
+      transition-property: color,background-color;
+    }
+    #PrimaryHeader .uk-navbar-nav a:hover, #PrimaryHeader .uk-navbar-nav a:focus {
+      color: #111;
+    }
+    #PrimaryHeader .uk-search-icon-flip:hover, #PrimaryHeader .uk-search-icon-flip:focus {
+      color: #444;
+    }
+    a.dont-underline:hover, a.dont-underline:focus {
+      text-decoration: none;
+    }
+    #SecondaryHeader.uk-section-small {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    #SecondaryHeader .uk-search-default {
+      width: 100%;
+    }
+    .uk-search-default .uk-search-input {
+      padding-left: 12px;
+    }
+    #SecondaryHeader .uk-search-default .uk-search-input {
+      background-color: #0000001c!important;
+      border-color: hsl(0deg 0% 100% / 0%)!important;
+      box-shadow: inset 2px 2px 0px 1px #1515151a;
+    }
+    #SecondaryHeader .uk-search-default .uk-search-input {
+      font-size: 0.9rem;
+    }
+    .header-cart-count {
+      display: inline-block;
+      text-align: center;
+      background-color: #1e87f0;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 13px;
+      min-width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border-radius: 20px;
+      position: absolute;
+      top: 17px;
+      left: 26px;
+    }
+    span.subtotal-cart .woocommerce-Price-amount {
+      color: #1e87f0;
+      margin-left: -5px;
+    }
+    #SecondaryHeader.uk-sticky-below {
+      box-shadow: 0px 5px 5px 0px #00000040;
+    }
+  </style>
+  
+  <!-- utility -->
+  <style>
+    .font-500 {
+      font-weight: 500;
+    }
+    .font-600 {
+      font-weight: 600;
+    }
+    .font-700 {
+      font-weight: 700;
+    }
+    .font-800 {
+      font-weight: 800;
+    }
+    .font-900 {
+      font-weight: 900;
+    }
+    .container-wrap-10 {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .height-50 {
+      height: 50px;
+    }
+    .padding-10 {
+      padding: 10px;
+    }
+    .padding-15 {
+      padding: 15px;
+    }
+    .pull-right-20 {
+      margin-right: -20px;
+    }
+    .margin-top-30 {
+      margin-top: 30px !important;
+    }
+    .pull-right-25 {
+      margin-right: -25px;
+    }
+    .pull-left-20 {
+      margin-left: -20px;
+    }
+    .pull-left-25 {
+      margin-left: -25px;
+    }
+    .pull-left-15 {
+      margin-left: -15px;
+    }
+    .pull-up-3 {
+      margin-top: -3px;
+    }
+    .pull-down-6 {
+      margin-bottom: -6px;
+    }
+    .pull-right-40 {
+      margin-right: -40px;
+    }
+  </style>
+  
+  <!-- new woo -->
+  <style>
+    .woocommerce-MyAccount-navigation a {
+      font-weight: 400!important;
+    }
+    @media (max-width: 959px) {
+      #SecondaryHeader a.uk-h4.dont-underline {
+        font-size: 1rem;
+      }
+    }
+    /* my account dashboard subnav */
+    .uk-subnav-pill>.uk-active>a, .uk-subnav-pill>.is-active>a {
+      background-color: #1e87f0;
+      color: #fff;
     }
   </style>
   
@@ -27,73 +247,47 @@
 
 {% block bodywrap %}
 
-<body class="{{ body_class }} no-overflow-off" data-template="base.twig">
-  <div class="theme-preload-off"></div>
+  <body class="{{ body_class }}" data-template="base.twig">
 
-  <div id="SiteWrapper" class="site-wrapper">
+    <div id="SiteWrapper">
 
-    {% block header %}
-      {% include 'header.twig' %}
-    {% endblock %}
-    
-    <main role="main" id="MainContent" class="main_content">
-      {% block content %}
-        <div class="">
-          <div class="uk-background-muted">
-            <div class="breads_area uk-container">
-              {% include 'breads.twig' %}
-            </div>
-          </div>
-          <div class="content-area uk-section uk-section-small uk-section-muted">
-            <div class="uk-container uk-margin-large-bottom">
-              {% block contentwrap %}
-                <div class="">
-                  <h1 class="uk-heading-line uk-text-bold">
-                    <span>{{ title }}</span>
-                  </h1>
-                </div>
-                <div class="uk-card uk-card-default uk-card-body">
-                  {% block contentonly %}
-                    <p>Sorry, Nothing to Display!!</p>
-                  {% endblock %}
-                </div>
-              {% endblock %}
-            </div>
-          </div>
-        </div>
+      {% block header %}
+        {% include 'header.twig' %}
       {% endblock %}
-    </main>
-    
-    {% block footer %}
-      {% include 'footer.twig' %}
-    {% endblock %}
-
-  </div>
-  
-  {{ function('wp_footer') }}
-
-  {% if is_paginated %}
-    <script type="text/javascript" src="/wp-content/themes/rmcc-woo-theme/assets/js/main/scroll.js"></script>
-  {% endif %}
-  
-  <!-- scripts per template -->
-  {% block spec_scripts %}
-  {% endblock %}
-  <!-- /styles per template -->
-  
-  <script>
-    // jQuery(function($) {
-        
-    //     window.addEventListener("pageshow", function() {
-    //         $('.theme-preload').hide('fast');
-    //         $('body').removeClass('no-overflow');
-    //     }, false);
       
-    // });
-  </script>
-  
-</body>
-<!-- /body -->
+      <main role="main" id="MainContent">
+        {% block content %}
+        
+          {% block pageheader %}
+          {% endblock %}
+          
+          <section id="ContentSection" class="uk-section uk-background-default">
+            {% block contentwrap %}
+              {% block contentonly %}
+                <p>Sorry, Nothing to Display!!</p>
+              {% endblock %}
+            {% endblock %}
+          </section>
+          
+        {% endblock %}
+        
+        {% block abovefooter %}
+        {% endblock %}
+        
+      </main>
+      
+      {% block footer %}
+        {% include 'footer.twig' %}
+      {% endblock %}
+
+    </div>
+    
+    {{ function('wp_footer') }}
+    
+    {% block spec_scripts %}
+    {% endblock %}
+    
+  </body>
 
 {% endblock %}
 

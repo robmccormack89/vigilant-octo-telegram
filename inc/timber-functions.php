@@ -54,299 +54,12 @@ class RmccWooTheme extends Timber\Site
 
   public function register_post_types()
   {
-  	$labels = array(
-  		'name'                  => _x( 'Competition Winners', 'Post Type General Name', 'text_domain' ),
-  		'singular_name'         => _x( 'Competition Winner', 'Post Type Singular Name', 'text_domain' ),
-  		'menu_name'             => __( 'Competition Winners', 'text_domain' ),
-  		'name_admin_bar'        => __( 'Competition Winner', 'text_domain' ),
-  		'archives'              => __( 'Competition Winners', 'text_domain' ),
-  		'attributes'            => __( 'Winner Attributes', 'text_domain' ),
-  		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-  		'all_items'             => __( 'All Winners', 'text_domain' ),
-  		'add_new_item'          => __( 'Add New Winner', 'text_domain' ),
-  		'add_new'               => __( 'Add New', 'text_domain' ),
-  		'new_item'              => __( 'New Item', 'text_domain' ),
-  		'edit_item'             => __( 'Edit Item', 'text_domain' ),
-  		'update_item'           => __( 'Update Item', 'text_domain' ),
-  		'view_item'             => __( 'View Item', 'text_domain' ),
-  		'view_items'            => __( 'View Items', 'text_domain' ),
-  		'search_items'          => __( 'Search Item', 'text_domain' ),
-  		'not_found'             => __( 'Not found', 'text_domain' ),
-  		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-  		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-  		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-  		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-  		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-  		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-  		'items_list'            => __( 'Items list', 'text_domain' ),
-  		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-  		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
-  	);
-  	$args = array(
-  		'label'                 => __( 'Winner', 'text_domain' ),
-  		'description'           => __( 'Winners content type', 'text_domain' ),
-  		'labels'                => $labels,
-  		'supports'              => array( 'title', 'editor', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes' ),
-  		'hierarchical'          => false,
-  		'public'                => true,
-  		'show_ui'               => true,
-  		'show_in_menu'          => true,
-  		'menu_position'         => 3,
-  		'show_in_admin_bar'     => true,
-  		'show_in_nav_menus'     => true,
-  		'can_export'            => true,
-  		'has_archive'           => 'competition-winners',
-  		'exclude_from_search'   => true,
-  		'publicly_queryable'    => true,
-  		'query_var'             => false,
-  		'capability_type'       => 'page',
-  		'show_in_rest'          => false,
-  	);
-  	register_post_type( 'winners', $args );
 
-  	$labels = array(
-  		'name'                  => _x( 'Entry Lists', 'Post Type General Name', 'text_domain' ),
-  		'singular_name'         => _x( 'Entry List', 'Post Type Singular Name', 'text_domain' ),
-  		'menu_name'             => __( 'Entry Lists', 'text_domain' ),
-  		'name_admin_bar'        => __( 'Entry List', 'text_domain' ),
-  		'archives'              => __( 'Entry Lists', 'text_domain' ),
-  		'attributes'            => __( 'Entry List Attributes', 'text_domain' ),
-  		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-  		'all_items'             => __( 'All Entry Lists', 'text_domain' ),
-  		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-  		'add_new'               => __( 'Add New', 'text_domain' ),
-  		'new_item'              => __( 'New Item', 'text_domain' ),
-  		'edit_item'             => __( 'Edit Item', 'text_domain' ),
-  		'update_item'           => __( 'Update Item', 'text_domain' ),
-  		'view_item'             => __( 'View Item', 'text_domain' ),
-  		'view_items'            => __( 'View Items', 'text_domain' ),
-  		'search_items'          => __( 'Search Item', 'text_domain' ),
-  		'not_found'             => __( 'Not found', 'text_domain' ),
-  		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-  		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-  		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-  		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-  		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-  		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-  		'items_list'            => __( 'Items list', 'text_domain' ),
-  		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-  		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
-  	);
-  	$args = array(
-  		'label'                 => __( 'Entry List', 'text_domain' ),
-  		'description'           => __( 'Entry List Description', 'text_domain' ),
-  		'labels'                => $labels,
-  		'supports'              => array( 'title', 'editor', 'revisions', 'custom-fields', 'page-attributes' ),
-  		'hierarchical'          => false,
-  		'public'                => true,
-  		'show_ui'               => true,
-  		'show_in_menu'          => true,
-  		'menu_position'         => 4,
-  		'show_in_admin_bar'     => true,
-  		'show_in_nav_menus'     => true,
-  		'can_export'            => true,
-  		'has_archive'           => 'entry-lists',
-  		'exclude_from_search'   => true,
-  		'publicly_queryable'    => true,
-      'query_var'             => false,
-
-  		'capability_type'       => 'page',
-  	);
-  	register_post_type( 'entry_lists', $args );
-      
-  	$labels = array(
-  		'name'                  => _x( 'Competition Draws', 'Post Type General Name', 'text_domain' ),
-  		'singular_name'         => _x( 'Competition Draw', 'Post Type Singular Name', 'text_domain' ),
-  		'menu_name'             => __( 'Competition Draws', 'text_domain' ),
-  		'name_admin_bar'        => __( 'Competition Draw', 'text_domain' ),
-  		'archives'              => __( 'Competition Draws', 'text_domain' ),
-  		'attributes'            => __( 'Competition Draw Attributes', 'text_domain' ),
-  		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-  		'all_items'             => __( 'All Live Draws', 'text_domain' ),
-  		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-  		'add_new'               => __( 'Add New', 'text_domain' ),
-  		'new_item'              => __( 'New Item', 'text_domain' ),
-  		'edit_item'             => __( 'Edit Item', 'text_domain' ),
-  		'update_item'           => __( 'Update Item', 'text_domain' ),
-  		'view_item'             => __( 'View Item', 'text_domain' ),
-  		'view_items'            => __( 'View Items', 'text_domain' ),
-  		'search_items'          => __( 'Search Item', 'text_domain' ),
-  		'not_found'             => __( 'Not found', 'text_domain' ),
-  		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-  		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-  		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-  		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-  		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-  		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-  		'items_list'            => __( 'Items list', 'text_domain' ),
-  		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-  		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
-  	);
-  	$args = array(
-  		'label'                 => __( 'Competition Draw', 'text_domain' ),
-  		'description'           => __( 'Competition Draws Description', 'text_domain' ),
-  		'labels'                => $labels,
-  		'supports'              => array( 'title', 'editor', 'custom-fields' ),
-  		'hierarchical'          => false,
-  		'public'                => true,
-  		'show_ui'               => true,
-  		'show_in_menu'          => true,
-  		'menu_position'         => 5,
-  		'show_in_admin_bar'     => true,
-  		'show_in_nav_menus'     => true,
-  		'can_export'            => true,
-  		'has_archive'           => 'competition-draws',
-  		'exclude_from_search'   => true,
-      'publicly_queryable'    => true,
-      'query_var'             => true,
-  		'capability_type'       => 'page',
-  	);
-  	register_post_type( 'live_draws', $args );
-    
-    $labels_one = array(
-  		'name'                  => _x( 'Banner Slides', 'Post Type General Name', 'text_domain' ),
-  		'singular_name'         => _x( 'Banner Slide', 'Post Type Singular Name', 'text_domain' ),
-  		'menu_name'             => __( 'Home Banner Slides', 'text_domain' ),
-  		'name_admin_bar'        => __( 'Banner Slide', 'text_domain' ),
-  		'archives'              => __( 'Banner Slide Archives', 'text_domain' ),
-  		'attributes'            => __( 'Item Attributes', 'text_domain' ),
-  		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-  		'all_items'             => __( 'All Slides', 'text_domain' ),
-  		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-  		'add_new'               => __( 'Add New', 'text_domain' ),
-  		'new_item'              => __( 'New Item', 'text_domain' ),
-  		'edit_item'             => __( 'Edit Item', 'text_domain' ),
-  		'update_item'           => __( 'Update Item', 'text_domain' ),
-  		'view_item'             => __( 'View Item', 'text_domain' ),
-  		'view_items'            => __( 'View Items', 'text_domain' ),
-  		'search_items'          => __( 'Search Item', 'text_domain' ),
-  		'not_found'             => __( 'Not found', 'text_domain' ),
-  		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-  		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-  		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-  		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-  		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-  		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-  		'items_list'            => __( 'Items list', 'text_domain' ),
-  		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-  		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
-  	);
-  	$args_one = array(
-  		'label'                 => __( 'Banner Slide', 'text_domain' ),
-  		'description'           => __( 'Banner Slides for the Home Page Banner', 'text_domain' ),
-  		'labels'                => $labels_one,
-  		'supports'              => array( 'title', 'editor', 'thumbnail' ),
-  		'hierarchical'          => false,
-  		'public'                => true,
-  		'show_ui'               => true,
-  		'show_in_menu'          => true,
-  		'menu_position'         => 2,
-  		'show_in_admin_bar'     => true,
-  		'show_in_nav_menus'     => false,
-  		'can_export'            => true,
-  		'has_archive'           => false,
-  		'exclude_from_search'   => true,
-  		'publicly_queryable'    => false,
-  		'capability_type'       => 'page',
-  		'show_in_rest'          => false,
-  	);
-  	register_post_type( 'slide', $args_one );
-    
-    $labels_three = array(
-  		'name'                  => _x( 'Info Slides', 'Post Type General Name', 'text_domain' ),
-  		'singular_name'         => _x( 'Info Slide', 'Post Type Singular Name', 'text_domain' ),
-  		'menu_name'             => __( 'Home Info Slides', 'text_domain' ),
-  		'name_admin_bar'        => __( 'Info Slide', 'text_domain' ),
-  		'archives'              => __( 'Info Slides Archives', 'text_domain' ),
-  		'attributes'            => __( 'Item Attributes', 'text_domain' ),
-  		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-  		'all_items'             => __( 'All Items', 'text_domain' ),
-  		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-  		'add_new'               => __( 'Add New', 'text_domain' ),
-  		'new_item'              => __( 'New Item', 'text_domain' ),
-  		'edit_item'             => __( 'Edit Item', 'text_domain' ),
-  		'update_item'           => __( 'Update Item', 'text_domain' ),
-  		'view_item'             => __( 'View Item', 'text_domain' ),
-  		'view_items'            => __( 'View Items', 'text_domain' ),
-  		'search_items'          => __( 'Search Item', 'text_domain' ),
-  		'not_found'             => __( 'Not found', 'text_domain' ),
-  		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-  		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-  		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-  		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-  		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-  		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-  		'items_list'            => __( 'Items list', 'text_domain' ),
-  		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-  		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
-  	);
-  	$args_three = array(
-  		'label'                 => __( 'Home Info Slide', 'text_domain' ),
-  		'description'           => __( 'Home Info Slides for Homepage (under banner)', 'text_domain' ),
-  		'labels'                => $labels_three,
-  		'supports'              => array( 'title', 'editor' ),
-  		'hierarchical'          => false,
-  		'public'                => true,
-  		'show_ui'               => true,
-  		'show_in_menu'          => true,
-  		'menu_position'         => 2,
-  		'show_in_admin_bar'     => true,
-  		'show_in_nav_menus'     => false,
-  		'can_export'            => true,
-  		'has_archive'           => false,
-  		'exclude_from_search'   => true,
-  		'publicly_queryable'    => false,
-  		'capability_type'       => 'page',
-  		'show_in_rest'          => false,
-  	);
-  	register_post_type( 'info_slide', $args_three );
   }
 
   public function register_taxonomies()
   {
-    $labels = array(
-      'name'                       => _x( 'Draw Status', 'Taxonomy General Name', 'text_domain' ),
-      'singular_name'              => _x( 'Draw Status', 'Taxonomy Singular Name', 'text_domain' ),
-      'menu_name'                  => __( 'Draw Status', 'text_domain' ),
-      'all_items'                  => __( 'All Items', 'text_domain' ),
-      'parent_item'                => __( 'Parent Item', 'text_domain' ),
-      'parent_item_colon'          => __( 'Parent Item:', 'text_domain' ),
-      'new_item_name'              => __( 'New Item Name', 'text_domain' ),
-      'add_new_item'               => __( 'Add New Item', 'text_domain' ),
-      'edit_item'                  => __( 'Edit Item', 'text_domain' ),
-      'update_item'                => __( 'Update Item', 'text_domain' ),
-      'view_item'                  => __( 'View Item', 'text_domain' ),
-      'separate_items_with_commas' => __( 'Separate items with commas', 'text_domain' ),
-      'add_or_remove_items'        => __( 'Add or remove items', 'text_domain' ),
-      'choose_from_most_used'      => __( 'Choose from the most used', 'text_domain' ),
-      'popular_items'              => __( 'Popular Items', 'text_domain' ),
-      'search_items'               => __( 'Search Items', 'text_domain' ),
-      'not_found'                  => __( 'Not Found', 'text_domain' ),
-      'no_terms'                   => __( 'No items', 'text_domain' ),
-      'items_list'                 => __( 'Items list', 'text_domain' ),
-      'items_list_navigation'      => __( 'Items list navigation', 'text_domain' ),
-    );
-    $rewrite = array(
-  		'slug'                       => 'competition-draws/status',
-  		'with_front'                 => true,
-  		'hierarchical'               => false,
-  	);
-  	$args = array(
-  		'labels'                     => $labels,
-  		'hierarchical'               => true,
-  		'public'                     => true,
-  		'show_ui'                    => true,
-  		'show_admin_column'          => true,
-  		'show_in_nav_menus'          => true,
-  		'show_tagcloud'              => false,
-  		'rewrite'                    => $rewrite,
-  	);
-  	register_taxonomy( 'status', array( 'live_draws' ), $args );
+
   }
 
   public function register_widget_areas()
@@ -354,85 +67,22 @@ class RmccWooTheme extends Timber\Site
     // Register widget areas
     if (function_exists('register_sidebar')) {
       register_sidebar(array(
-        'name' => esc_html__('Main Footer Area', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer',
+        'name' => esc_html__('Footer Top Left Area', 'sixstar-theme'),
+        'id' => 'sidebar-footer-top-left',
         'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
-        'before_title' => '<h4 class="widget-title" hidden>',
-        'after_title' => '</h4>'
+        'before_title' => '<span hidden>',
+        'after_title' => '</span>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Footer Area 1', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer-1',
+        'name' => esc_html__('Footer Top Right Area', 'sixstar-theme'),
+        'id' => 'sidebar-footer-top-right',
         'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
-        'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
-        'after_title' => '</h4>'
-      ));
-      register_sidebar(array(
-        'name' => esc_html__('Footer Area 2', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer-2',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
-        'after_title' => '</h4>'
-      ));
-      register_sidebar(array(
-        'name' => esc_html__('Footer Area 3', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer-3',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
-        'after_title' => '</h4>'
-      ));
-      register_sidebar(array(
-        'name' => esc_html__('Footer Area 4', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer-4',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<i class="far fa-star"></i> <h4 class="uk-text-bold widget-title">',
-        'after_title' => '</h4>'
-      ));
-      register_sidebar(array(
-        'name' => esc_html__('Footer Bottom Left Area', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer-bottom-left',
-        'description' => esc_html__('Footer Bottom Left Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<h4 class="widget-title" hidden>',
-        'after_title' => '</h4>'
-      ));
-      register_sidebar(array(
-        'name' => esc_html__('Footer Bottom Right Area', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer-bottom-right',
-        'description' => esc_html__('Footer Bottom Right Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<h4 class="widget-title" hidden>',
-        'after_title' => '</h4>'
-      ));
-      register_sidebar(array(
-        'name' => esc_html__('Header Top Left Area', 'rmcc-woo-theme'),
-        'id' => 'sidebar-header-left',
-        'description' => esc_html__('Main Header Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<h4 class="widget-title" hidden>',
-        'after_title' => '</h4>'
-      ));
-      register_sidebar(array(
-        'name' => esc_html__('Header Top Right Area', 'rmcc-woo-theme'),
-        'id' => 'sidebar-header-right',
-        'description' => esc_html__('Main Header Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<h4 class="widget-title" hidden>',
-        'after_title' => '</h4>'
+        'before_title' => '<h3 class="uk-text-uppercase uk-h4 widget-title">',
+        'after_title' => '</h3>'
       ));
     }
   }
@@ -441,8 +91,15 @@ class RmccWooTheme extends Timber\Site
   {
     // This theme uses wp_nav_menu() in one locations.
     register_nav_menus(array(
-      'main' => __('Main Menu', 'rmcc-woo-theme'),
-      'mobile' => __('Mobile Menu', 'rmcc-woo-theme'),
+      // 'main_menu' => __('Main Menu', 'rmcc-woo-theme'),
+      'help_menu' => __('Help Menu', 'rmcc-woo-theme'),
+      'trade_menu' => __('Trade Menu', 'rmcc-woo-theme'),
+      'account_menu' => __('Account Menu', 'rmcc-woo-theme'),
+      'accessories_menu' => __('Accessories Menu', 'rmcc-woo-theme'),
+      'parts_menu' => __('Parts Menu', 'rmcc-woo-theme'),
+      'mobile_menu' => __('Mobile Menu', 'rmcc-woo-theme'),
+      'footer_nav_menu' => __('Footer Nav Menu', 'rmcc-woo-theme'),
+      'footer_customers_menu' => __('Footer Customers Menu', 'rmcc-woo-theme'),
     ));
   }
 
@@ -454,19 +111,12 @@ class RmccWooTheme extends Timber\Site
     $siteurl = get_site_url();
     // check is user logged in
     $context['is_user_logged_in'] = is_user_logged_in();
-    // check is page paginated
-    $context['is_paginated'] = is_paginated();
     // check is shop page
     $context['is_shop'] = is_shop();
     // check if is catgeory page
     $context['is_category'] = is_category();
     // check if is status page
     $context['is_status'] = is_tax('status');
-    /* check is post types */
-    $context['is_posts']   = is_blog();
-    $context['is_winners']   = is_post_type_archive( 'winners' );
-    $context['is_entry_lists']   = is_post_type_archive( 'entry_lists' );
-    $context['is_live_draws']   = is_post_type_archive( 'live_draws' );
     /* check if is single product page */
     $context['is_single_product'] = is_singular( 'product' );
     /* if is product category */
@@ -484,23 +134,24 @@ class RmccWooTheme extends Timber\Site
     $context['has_menu_main'] = has_nav_menu( 'main' );
     $context['has_menu_mobile'] = has_nav_menu( 'mobile' );
     
+    $context['footer_nav_menu'] = new Timber\Menu( 'footer_nav_menu' );
+    $context['has_footer_nav_menu'] = has_nav_menu( 'footer_nav_menu' );
+    
+    $context['footer_customers_menu'] = new Timber\Menu( 'footer_customers_menu' );
+    $context['has_footer_customers_menu'] = has_nav_menu( 'footer_customers_menu' );
+    
+    $context['help_menu'] = new Timber\Menu( 'help_menu' );
+    $context['has_help_menu'] = has_nav_menu( 'help_menu' );
+    
+    $context['trade_menu'] = new Timber\Menu( 'trade_menu' );
+    $context['has_trade_menu'] = has_nav_menu( 'trade_menu' );
+    
+    $context['account_menu'] = new Timber\Menu( 'account_menu' );
+    $context['has_account_menu'] = has_nav_menu( 'account_menu' );
+    
     /* sidebar areas */
-    $context['sidebar_footer_1']   = Timber::get_widgets('Footer Area 1');
-    $context['sidebar_footer_2']   = Timber::get_widgets('Footer Area 2');
-    $context['sidebar_footer_3']   = Timber::get_widgets('Footer Area 3');
-    $context['sidebar_footer_4']   = Timber::get_widgets('Footer Area 4');
-    $context['sidebar_footer_bottom_left']   = Timber::get_widgets('Footer Bottom Left Area');
-    $context['sidebar_footer_bottom_right']   = Timber::get_widgets('Footer Bottom Right Area');
-    $context['sidebar_header_left']   = Timber::get_widgets('Header Top Left Area');
-    $context['sidebar_header_right']   = Timber::get_widgets('Header Top Right Area');
-    $context['sidebar_footer']   = Timber::get_widgets('Main Footer Area');
-    
-    /* get acf options data */
-    $context['options'] = get_fields('option');
-    
-    /* get pdf upload field - entry lists */
-    $file = get_field('pdf_upload');
-    $context['pdf_upload_url'] = $file['url'];
+    $context['sidebar_footer_top_left']   = Timber::get_widgets('Footer Top Left Area');
+    $context['sidebar_footer_top_right']   = Timber::get_widgets('Footer Top Right Area');
 
     /* woo my account endpoints, for shop subnav */
     $context['dashboard_endpoint']   = wc_get_account_endpoint_url( 'dashboard' );
@@ -575,20 +226,11 @@ class RmccWooTheme extends Timber\Site
       get_template_directory_uri() . '/assets/js/main/main.js',
       '',
       '',
-      true
+      false
     );
     
     // enqueue wp jquery
     wp_enqueue_script( 'jquery' );
-    
-    // global (site wide) scripts; uses jquery
-    wp_enqueue_script(
-      'global',
-      get_template_directory_uri() . '/assets/js/global.js',
-      'jquery',
-      '1.0.0',
-      true
-    );
     
     // font awesome
     wp_enqueue_style(
@@ -603,10 +245,6 @@ class RmccWooTheme extends Timber\Site
     // theme stylesheet; used for globals (site wide)
     wp_enqueue_style(
       'rmcc-woo-theme-styles', get_stylesheet_uri()
-    );
-    wp_enqueue_style(
-      'global-theme',
-      get_template_directory_uri() . '/assets/css/global.css'
     );
   }
   

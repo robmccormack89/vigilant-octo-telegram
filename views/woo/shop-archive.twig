@@ -1,5 +1,13 @@
 {% extends 'base.twig' %}
 
+{% block pageheader %}
+  <section id="PageTitleSection" class="uk-section uk-background-muted">
+    <div class="uk-container uk-text-center">
+      <h1 class="uk-text-uppercase uk-h2 uk-text-muted">{{ title }}</h1>
+    </div>
+  </section>
+{% endblock %}
+
 {% block contentwrap %}
 
   {% if is_shop %}
@@ -80,12 +88,14 @@
           {% for post in products %}
             {% include ['tease-product.twig'] %}
           {% endfor %}
-        {% else %}
-          <p class="uk-text-emphasis">No Competitions found. Add some competitions!</p>
-          {# do action('woocommerce_no_products_found') #}
         {% endif %}
         
       </div>
+      
+      {% if posts is empty %}
+        <p class="uk-text-emphasis">No Parts found. Add some tractor parts....</p>
+        {# do action('woocommerce_no_products_found') #}
+      {% endif %}
       
       {% if is_paginated %}
         <div id="ShopPagination">

@@ -64,7 +64,7 @@ else {
   };
   // if is main shop page, set the title
   if ( is_shop() ) {
-    $context['title'] = 'Our Competitions';
+    $context['title'] = 'Shop';
   };
   //  render the woo archive template with the context
   Timber::render( 'shop-archive.twig', $context );
