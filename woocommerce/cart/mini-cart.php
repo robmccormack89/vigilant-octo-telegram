@@ -23,7 +23,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
 <?php if ( ! WC()->cart->is_empty() ) : ?>
 
-	<div class="cart-list-box theme-border-btm">
+	<div class="cart-list-box theme-border-bottom">
 		<div class="cart-list-area padding-15">
 			<ul class="woocommerce-mini-cart cart_list product_list_widget uk-list uk-margin-remove <?php echo esc_attr( $args['list_class'] ); ?>">
 				<?php
@@ -93,25 +93,21 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 		</div>
 	</div>
 
-	<div class="woocommerce-mini-cart__total total theme-border-btm">
-		<div class="cart-subtotal-area padding-15">
-			<?php
-			/**
-			 * Hook: woocommerce_widget_shopping_cart_total.
-			 *
-			 * @hooked woocommerce_widget_shopping_cart_subtotal - 10
-			 */
-			do_action( 'woocommerce_widget_shopping_cart_total' );
-			?>
-		</div>
+	<div class="woocommerce-mini-cart__total total theme-border-bottom padding-15">
+		<?php
+		/**
+		 * Hook: woocommerce_widget_shopping_cart_total.
+		 *
+		 * @hooked woocommerce_widget_shopping_cart_subtotal - 10
+		 */
+		do_action( 'woocommerce_widget_shopping_cart_total' );
+		?>
 	</div>
 
 	<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
 
-	<div class="woocommerce-mini-cart__buttons buttons">
-		<div class="cart-buttons-area padding-15">
-			<?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?>
-		</div>
+	<div class="woocommerce-mini-cart__buttons buttons padding-15">
+		<?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?>
 	</div>
 
 	<?php do_action( 'woocommerce_widget_shopping_cart_after_buttons' ); ?>

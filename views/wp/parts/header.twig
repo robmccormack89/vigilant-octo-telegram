@@ -87,7 +87,7 @@
               {% endif %}
             </li>
             <li class="uk-inline">
-              <a href="{{cart_url}}">
+              <a href="#MiniCartModal" uk-toggle>
                 <i class="fas fa-shopping-basket fa-2x uk-margin-small-right"></i>
                 Basket
                 <span class="uk-margin-small-left">
@@ -168,3 +168,13 @@
   </div>
   
 </header>
+
+<div id="MiniCartModal" class="minicart-modal" uk-modal>
+  <div class="uk-modal-dialog">
+    <div class="uk-modal-body height-content uk-padding-remove" uk-overflow-auto>
+      <div class="widget_shopping_cart_content">
+        {{fn('woocommerce_mini_cart')}}
+      </div>
+    </div>
+  </div>
+</div>

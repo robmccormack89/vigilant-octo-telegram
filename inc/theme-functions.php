@@ -21,6 +21,11 @@ function rmcc_woo_theme_register_required_plugins()
       'name' => 'Timber',
       'slug' => 'timber-library',
       'required' => true
+    ),
+    array(
+      'name' => 'WooCommerce',
+      'slug' => 'woocommerce',
+      'required' => true
     )
   );
   $config  = array(

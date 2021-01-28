@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+
+{% block spec_styles %}
+  <style>
+    /* my account dashboard subnav */
+    .uk-subnav-pill>.uk-active>a, .uk-subnav-pill>.is-active>a {
+      background-color: #1e87f0;
+      color: #fff;
+    }
+  </style>
+{% endblock %}
+
+{% block pageheader %}
+  <section id="PageTitleSection" class="uk-section uk-background-muted">
+    <div class="uk-container uk-text-center">
+      <h1 class="uk-text-uppercase uk-h2 uk-text-muted">{{ post.title }}</h1>
+    </div>
+  </section>
+{% endblock %}
+
+{% block contentwrap %}
+  <div class="uk-container" data-template="account.twig" data-block="contentwrap">
+    {{ post.content }}
+  </div>
+{% endblock %}
+
+{% block abovefooter %}
+  <section id="AboveFooterSection" class="uk-section uk-background-muted">
+    <div class="uk-container uk-container-large uk-text-center">
+      <p class="uk-margin-remove-bottom">Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Phasellus viverra nulla ut metus varius laoreet. Viverra quis feugiat a. Phasellus viverra nulla ut metus</p>
+    </div>
+  </section>
+{% endblock %}
+
+{% block spec_scripts %}
+  <script type='text/javascript' src='{{theme.link}}/assets/js/my-account.js'></script>
+{% endblock %}

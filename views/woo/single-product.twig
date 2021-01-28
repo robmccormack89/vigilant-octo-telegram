@@ -1,58 +1,127 @@
 {% extends "base.twig" %}
 
 {% block spec_styles %}
-
-  <link rel="stylesheet" href="/wp-content/themes/rmcc-woo-theme/assets/css/lightslider.css" />
-  <script type="text/javascript" src="/wp-content/themes/rmcc-woo-theme/assets/js/lightslider.js"></script> 
-  <link rel="stylesheet" href="/wp-content/themes/rmcc-woo-theme/assets/css/single-product.css" />
-
+  <style>
+    .onsale.uk-card-badge {
+      top: 15px;
+      left: 55px;
+      right: auto;
+    }
+    .woocommerce #content div.product div.images,
+    .woocommerce-page #content div.product div.images,
+    .woocommerce-page div.product div.images,
+    .woocommerce div.product div.images {
+      width: 100%;
+    }
+    .product_meta {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .reset_variations {
+      position: absolute;
+      right: 15px;
+      bottom: -20px;
+    }
+    .single_add_to_cart_button {
+      display: inline-block;
+    }
+    .quantity {
+      width: fit-content;
+      display: inline-block;
+    }
+    .pswp__caption__center {
+      text-align: center;
+      font-size: 14px;
+      padding: 10px;
+      line-height: 20px;
+      color: #ccc;
+    }
+    .woocommerce-variation-price {
+      margin-bottom: 20px;
+    }
+    .comment-form-rating {
+      margin-top: 20px;
+    }
+    #RelatedGrid span.onsale.uk-card-badge.uk-label,
+    #UpsellsGrid span.onsale.uk-card-badge.uk-label {
+      left: 15px;
+    }
+    .uk-tab>*>a {
+      font-size: 1rem;
+      text-transform: capitalize;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
 
   <div id="product-{{post.id}}" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }}">
-    <div class="content-area uk-section uk-section-small uk-section-muted">
+    <div class="content-area uk-section uk-section-small uk-section-default">
       <div class="uk-container">
+        {% do action('woocommerce_before_single_product') %}
         
-        <div class="" uk-grid="masonry: true;">
-          <div class="uk-width-1-2@m">
-            <div class="custom-product-images">
-              <ul id="lightSlider">
-                <li data-thumb="{{ post.thumbnail.src('thumbnail') }}">
-                  <div uk-lightbox>
-                    <a href="{{ post.thumbnail.src('full') }}" data-caption="{{post.title}}">
-                      <img src="{{ post.thumbnail.src('rmcc-woo-theme-product-main-image') }}" />
-                    </a>
-                  </div>
-                </li>
-                {% for attachment_id in attachment_ids %}
-                {% set attach_main = function('wp_get_attachment_image_src', attachment_id, 'rmcc-woo-theme-product-main-image') %}
-                {% set attach_thumb = function('wp_get_attachment_image_src', attachment_id, 'thumbnail') %}
-                {% set attach_full = function('wp_get_attachment_image_src', attachment_id, 'full') %}
-                <li data-thumb="{{attach_thumb[0]}}">
-                  <div uk-lightbox>
-                    <a href="{{attach_full[0]}}" data-caption="{{post.title}}">
-                      <img src="{{attach_main[0]}}" />
-                    </a>
-                  </div>
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
-            {# do action('woocommerce_before_single_product_summary') #}
+        <div class="uk-child-width-1-2@m" uk-grid="masonry: true;">
+          
+          <div class="product-left">
+            {% do action('woocommerce_before_single_product_summary') %}
           </div>
-          <div class="uk-width-1-2@m">
-            <span class="uk-text-bold uk-text-large uk-text-primary">Enter now for a chance to win</span>
+          
+          <div class="product-right">
             {% do action('woocommerce_single_product_summary') %}
           </div>
-          <div class="uk-width-1-2@m">
-            {% do action('woocommerce_after_single_product_summary') %}
+        
         </div>
         
+        <div class="tabs-related-upsells uk-margin-top">
+          {% do action('woocommerce_after_single_product_summary') %}
+          
+          <meta itemprop="url" content="{{ post.link }}" />
+          
+          {% if not related_products is empty %}
+            <h2>{{related_products_title}}</h2>
+            <div uk-slider="velocity: 5">
+              <div class="uk-position-relative">
+                <div class="uk-slider-container">
+                  <ul class="uk-slider-items uk-child-width-1-4@m uk-grid uk-grid-small">
+                    {% for post in related_products %}
+                      {% include 'tease-product.twig' %}
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="uk-visible@xl">
+                  <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                  <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+              </div>
+              <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+            </div>
+          {% endif %}
+          
+          {% if not up_sells is empty %}
+            <h2>{{up_sells_title}}</h2>
+            <div uk-slider="velocity: 5">
+              <div class="uk-position-relative">
+                <div class="uk-slider-container">
+                  <ul class="uk-slider-items uk-child-width-1-4@m uk-grid uk-grid-small">
+                    {% for post in up_sells %}
+                      {% include 'tease-product.twig' %}
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="uk-visible@xl">
+                  <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                  <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                </div>
+              </div>
+              <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+            </div>
+          {% endif %}
+          
+        </div>
         
+        {% do action('woocommerce_after_single_product') %}
       </div>
-    </div>
-        
+    </div>  
   </div>
 
 {% endblock %}

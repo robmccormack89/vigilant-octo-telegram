@@ -18,12 +18,14 @@ if( class_exists( 'Timber' ) ) {
 /**
 * Woocommerce - set the global product object variable
 */
-function timber_set_product( $post ) {
-	 global $product;
-	 $product = wc_get_product( $post->ID );
+if ( class_exists( 'WooCommerce' ) ) {
+	function timber_set_product( $post ) {
+		global $product;
+		$product = wc_get_product( $post->ID );
+	}
+	require get_template_directory() . '/inc/woo-filters.php';
+	require get_template_directory() . '/inc/woo-functions.php';
 }
-require get_template_directory() . '/inc/woo-custom.php';
-require get_template_directory() . '/inc/woo-functions.php';
 /**
 * Load our Custom Widget
 */

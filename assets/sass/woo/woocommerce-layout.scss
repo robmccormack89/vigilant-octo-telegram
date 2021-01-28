@@ -25,19 +25,19 @@
 	/**
 	 * General layout styles
 	 */
-	.col2-set {
-		@include clearfix();
-		width: 100%;
-
-		.col-1 {
-			float: left;
-			width: 48%;
-		}
-		.col-2 {
-			float: right;
-			width: 48%;
-		}
-	}
+	// .col2-set {
+	// 	@include clearfix();
+	// 	width: 100%;
+	// 
+	// 	.col-1 {
+	// 		float: left;
+	// 		width: 48%;
+	// 	}
+	// 	.col-2 {
+	// 		float: right;
+	// 		width: 48%;
+	// 	}
+	// }
 
 	img {
 		height: auto;

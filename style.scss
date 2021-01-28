@@ -1,13 +1,12 @@
 /* Global Custom Variables. What ever u want to use across the partialized files below */
 // $dark_style_colour: #101010;
 
-// import your custom sass styles. you can partialize it how u like
-@import "assets/sass/partials/fonts.scss";
-@import "assets/sass/partials/general.scss";
-@import "assets/sass/partials/preloader.scss";
-@import "assets/sass/partials/tease.scss";
-@import "assets/sass/partials/scroll.scss";
-@import "assets/sass/partials/woo.scss";
+$theme_border_color: #e5e5e5;
+$theme_border_accent_color: #e5e5e5;
 
+// import your custom sass styles. you can partialize it how u like
+// @import "assets/sass/partials/woo.scss";
+@import "assets/sass/partials/fonts.scss";
+@import "assets/sass/partials/borders.scss";
 @import "assets/sass/woo/woocommerce.scss";
 @import "assets/sass/woo/woocommerce-layout.scss";
