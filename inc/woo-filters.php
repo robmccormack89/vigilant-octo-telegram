@@ -7,8 +7,8 @@
   
 function custom_filter_wc_cart_item_remove_link( $sprintf, $cart_item_key ) {
   if ( is_admin() && ! defined( 'DOING_AJAX' ) )
-      return $sprintf;
-  $sprintf = str_replace('&times;', '<span uk-icon="close"></span>', $sprintf);
+  return $sprintf;
+  $sprintf = str_replace('&times;', '<i class="fas fa-times"></i>', $sprintf);
   return $sprintf;
 };
 add_filter( 'woocommerce_cart_item_remove_link', 'custom_filter_wc_cart_item_remove_link', 10, 2 );

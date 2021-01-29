@@ -26,9 +26,6 @@
 }
 .woocommerce-mini-cart img {
   width: 50px;
-  padding: 1px;
-  border-radius: 100%;
-  border: 1px solid #c5c5c5;
 }
 .woocommerce-mini-cart__empty-message {
   padding: 20px;

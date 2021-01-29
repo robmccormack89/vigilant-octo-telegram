@@ -1,9 +1,12 @@
-// import uikit
+// require debounce & make available in window
+window._ = require('debounce');
+
+// import uikit & icons
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 
-// loads the Icon plugin
+// use the Icon plugin
 UIkit.use(Icons);
 
-// The following line makes it finally work (i use this when i want to be able load uikit in the head rather than body)
+// Make uikit available in window for inline scripts
 window.UIkit = UIkit;

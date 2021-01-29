@@ -43,7 +43,55 @@ class RmccWooTheme extends Timber\Site
 
   public function register_post_types()
   {
-
+    $labels_one = array(
+  		'name'                  => _x( 'Banner Slides', 'Post Type General Name', 'text_domain' ),
+  		'singular_name'         => _x( 'Banner Slide', 'Post Type Singular Name', 'text_domain' ),
+  		'menu_name'             => __( 'Home Banner Slides', 'text_domain' ),
+  		'name_admin_bar'        => __( 'Banner Slide', 'text_domain' ),
+  		'archives'              => __( 'Banner Slide Archives', 'text_domain' ),
+  		'attributes'            => __( 'Item Attributes', 'text_domain' ),
+  		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
+  		'all_items'             => __( 'All Slides', 'text_domain' ),
+  		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
+  		'add_new'               => __( 'Add New', 'text_domain' ),
+  		'new_item'              => __( 'New Item', 'text_domain' ),
+  		'edit_item'             => __( 'Edit Item', 'text_domain' ),
+  		'update_item'           => __( 'Update Item', 'text_domain' ),
+  		'view_item'             => __( 'View Item', 'text_domain' ),
+  		'view_items'            => __( 'View Items', 'text_domain' ),
+  		'search_items'          => __( 'Search Item', 'text_domain' ),
+  		'not_found'             => __( 'Not found', 'text_domain' ),
+  		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
+  		'featured_image'        => __( 'Featured Image', 'text_domain' ),
+  		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
+  		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
+  		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+  		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
+  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+  		'items_list'            => __( 'Items list', 'text_domain' ),
+  		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+  		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+  	);
+  	$args_one = array(
+  		'label'                 => __( 'Banner Slide', 'text_domain' ),
+  		'description'           => __( 'Banner Slides for the Home Page Banner', 'text_domain' ),
+  		'labels'                => $labels_one,
+  		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+  		'hierarchical'          => false,
+  		'public'                => true,
+  		'show_ui'               => true,
+  		'show_in_menu'          => true,
+  		'menu_position'         => 5,
+  		'show_in_admin_bar'     => true,
+  		'show_in_nav_menus'     => false,
+  		'can_export'            => true,
+  		'has_archive'           => false,
+  		'exclude_from_search'   => true,
+  		'publicly_queryable'    => false,
+  		'capability_type'       => 'page',
+  		'show_in_rest'          => false,
+  	);
+  	register_post_type( 'slide', $args_one );
   }
 
   public function register_taxonomies()
@@ -80,13 +128,13 @@ class RmccWooTheme extends Timber\Site
   {
     // This theme uses wp_nav_menu() in one locations.
     register_nav_menus(array(
-      // 'main_menu' => __('Main Menu', 'rmcc-woo-theme'),
+      'main_menu' => __('Main Menu', 'rmcc-woo-theme'),
+      'mobile_menu' => __('Mobile Menu', 'rmcc-woo-theme'),
       'help_menu' => __('Help Menu', 'rmcc-woo-theme'),
       'trade_menu' => __('Trade Menu', 'rmcc-woo-theme'),
       'account_menu' => __('Account Menu', 'rmcc-woo-theme'),
       'accessories_menu' => __('Accessories Menu', 'rmcc-woo-theme'),
       'parts_menu' => __('Parts Menu', 'rmcc-woo-theme'),
-      'mobile_menu' => __('Mobile Menu', 'rmcc-woo-theme'),
       'footer_nav_menu' => __('Footer Nav Menu', 'rmcc-woo-theme'),
       'footer_customers_menu' => __('Footer Customers Menu', 'rmcc-woo-theme'),
     ));
@@ -98,6 +146,7 @@ class RmccWooTheme extends Timber\Site
     $context['site'] = $this;
     // general conditionals
     $context['is_user_logged_in'] = is_user_logged_in();
+    $context['is_paginated'] = is_paginated();
     $context['is_shop'] = is_shop();
     $context['is_category'] = is_category();
     $context['is_single_product'] = is_singular( 'product' );
@@ -108,10 +157,10 @@ class RmccWooTheme extends Timber\Site
     $context['theme_logo_url'] = $theme_logo_url;
     // menu register & args
     $main_menu_args = array( 'depth' => 3 );
-    $context['menu_main'] = new Timber\Menu( 'main' );
-    $context['has_menu_main'] = has_nav_menu( 'main' );
-    $context['menu_mobile'] = new Timber\Menu('mobile');
-    $context['has_menu_mobile'] = has_nav_menu( 'mobile' );
+    $context['menu_main'] = new Timber\Menu( 'main_menu' );
+    $context['has_menu_main'] = has_nav_menu( 'main_menu' );
+    $context['menu_mobile'] = new Timber\Menu('mobile_menu');
+    $context['has_menu_mobile'] = has_nav_menu( 'mobile_menu' );
     $context['footer_nav_menu'] = new Timber\Menu( 'footer_nav_menu' );
     $context['has_footer_nav_menu'] = has_nav_menu( 'footer_nav_menu' );
     $context['footer_customers_menu'] = new Timber\Menu( 'footer_customers_menu' );
@@ -181,6 +230,9 @@ class RmccWooTheme extends Timber\Site
     add_image_size('rmcc-woo-theme-featured-image-single-post', 1200, 450, true);
     add_image_size('rmcc-woo-theme-product-main-image', 1200, 700, true);
     add_image_size('rmcc-woo-theme-cart-image', 80, 80, true);
+    // stop the br tag madness in the content editor
+    remove_filter( 'the_content', 'wpautop' );
+    remove_filter( 'the_excerpt', 'wpautop' );
   }
   
   public function rmcc_woo_theme_enqueue_assets()
@@ -193,6 +245,27 @@ class RmccWooTheme extends Timber\Site
       '',
       false
     );
+    
+    // enqueue wp jquery
+    wp_enqueue_script( 'jquery' );
+    
+    // global (site wide) scripts; uses jquery
+    wp_enqueue_script(
+      'theme-woo',
+      get_template_directory_uri() . '/assets/js/woo.js',
+      'jquery',
+      '1.0.0',
+      true
+    );
+    // localize theme scripts for ajax
+    wp_localize_script(
+      'theme-woo',
+      'myAjax',
+      array(
+        'ajaxurl' => admin_url( 'admin-ajax.php')
+      )
+    );
+    
     // theme base css
     wp_enqueue_style(
       'rmcc-woo-theme',

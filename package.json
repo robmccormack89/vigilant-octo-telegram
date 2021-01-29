@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "debounce": "^1.2.0",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "infinite-scroll": "^3.0.6",
-    "uikit": "^3.5.4"
+    "uikit": "^3.5.9"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",

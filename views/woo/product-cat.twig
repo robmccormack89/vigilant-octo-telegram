@@ -1,29 +1,8 @@
-{% extends 'base.twig' %}
-
-{% block spec_styles %}
-  <style>
-    .onsale.uk-card-badge {
-      top: 15px;
-      right: 15px;
-    }
-    .term-description>p {
-      margin: 0;
-    }
-  </style>
-{% endblock %}
-
-{% block pageheader %}
-  <section id="PageTitleSection" class="uk-section uk-background-muted">
-    <div class="uk-container uk-container-small uk-text-center">
-      <h1 class="uk-text-uppercase uk-h2 uk-text-muted">{{title}}</h1>
-      {% do action('woocommerce_archive_description') %}
-    </div>
-  </section>
-{% endblock %}
+{% extends 'shop.twig' %}
 
 {% block contentwrap %}
 
-  <div class="uk-container uk-container-large" data-block="content-wrap" data-template="shop.twig">
+  <div class="uk-container" data-block="content-wrap" data-template="product-cat.twig">
     
     {% do action('woocommerce_before_main_content') %}
     
@@ -46,15 +25,8 @@
             {% endif %}
             
             <div>
-              <a class="dont-underline" href="{{fn('get_term_link', sub_cat.term_id)}}">
-                <div class="uk-card uk-card-hover uk-card-small uk-text-center">
-                  <div class="uk-card-media-top">
-                    <img data-src="{{ thumb_url }}" data-width data-height alt="" uk-img>
-                  </div>
-                  <div class="uk-card-body">
-                    <div class="uk-text-emphasis uk-margin-small-top uk-margin-remove">{{ sub_cat.name }}</div>
-                  </div>
-                </div>
+              <a href="{{fn('get_term_link', sub_cat.term_id)}}">
+                <img data-src="{{ thumb_url }}" data-width data-height alt="" uk-img>
               </a>
             </div> 
              
@@ -87,8 +59,4 @@
     
   </div>
 
-{% endblock %}
-
-{% block spec_scripts %}
-  <script type='text/javascript' src='{{theme.link}}/assets/js/shop.js'></script>
 {% endblock %}

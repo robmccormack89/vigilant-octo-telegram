@@ -1,30 +1,26 @@
 jQuery(function($) {
   // checkout
-  function WooCheckout() {
-    // terms
-    $(".input-checkbox").addClass("uk-checkbox");
-    // review-order
-    $(".woocommerce-checkout-review-order-table").addClass("uk-table uk-table-striped");
-    // form-pay
-    $("#order_review button").addClass("uk-button uk-button-primary");
-    // form-billing
+  function CheckoutRestyleAfterAjax() {
+
     $(".woocommerce-billing-fields__field-wrapper").attr("uk-grid");
     $(".woocommerce-billing-fields__field-wrapper").addClass("uk-grid-small");
-    // payment
+
+    $(".woocommerce-checkout-review-order-table").addClass("uk-table uk-table-divider");
+
     $(".wc_payment_methods").addClass("uk-list uk-list-large uk-list-divider");
-    // payment-method
+
     $(".input-radio").addClass("uk-radio");
-    $("label").addClass("uk-form-label");
-    // form-shipping
-    // form-login
-    // form-coupon
     $(".input-text").addClass("uk-input");
-    $(".checkout_coupon button").addClass("uk-button uk-button-default");
-    // form-checkout
-    // general
+    $(".input-checkbox").addClass("uk-checkbox");
+    
+    $("label").addClass("uk-form-label");
+
     $("select").addClass("uk-select");
+    
+    $(".checkout_coupon button").addClass("uk-button uk-button-default");
+    $("#order_review button").addClass("uk-button uk-button-primary");
   };
   // events
-  $("form.checkout").load(WooCheckout());
-  $("body").on('DOMSubtreeModified', "form.checkout", WooCheckout);
+  $("form.checkout").load(CheckoutRestyleAfterAjax());
+  $("body").on('DOMSubtreeModified', "form.checkout", CheckoutRestyleAfterAjax);
 });

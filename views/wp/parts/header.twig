@@ -18,12 +18,7 @@
         </div>
         <div class="uk-width-expand uk-visible@m">
         
-          <form class="uk-search uk-search-default uk-search-large">
-            <a href="#" title="Submit search" class="uk-search-icon-flip uk-icon uk-search-icon">
-              <i class="fas fa-search fa-2x"></i>
-            </a>
-            <input class="uk-search-input uk-input" type="search" placeholder="Search for tractor parts...">
-          </form>
+          {{function ('get_product_search_form')}}
         
         </div>
         <div class="uk-width-auto uk-visible@m">
@@ -103,66 +98,69 @@
     </div>
   </div>
   
-  <div id="SecondaryHeader" class="uk-section uk-section-small uk-section-primary" uk-sticky="animation: uk-animation-slide-top">
-    <div class="uk-container uk-container-expand">
-      <div class="uk-grid-collapse uk-grid-divider uk-flex uk-flex-middle" uk-grid>
-        
-        <div class="uk-width-1-2 uk-width-1-4@m uk-text-center">
-          <a uk-toggle="target: #AccessoriesModal"  class="uk-h4 dont-underline uk-light">Categories <i class="fas fa-plus uk-visible@m"></i></a>
-          <div id="AccessoriesModal" class="uk-flex-top" uk-modal>
-            <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
-              <h2 class="uk-modal-title">Categories</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p class="">
-                <button class="uk-button uk-button-primary" type="button">View all Categories</button>
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="uk-width-1-2 uk-width-1-4@m uk-text-center uk-visible@m">
-          <a uk-toggle="target: #PartsModal" class="uk-h4 dont-underline">Parts <i class="fas fa-plus"></i></a>
-          <div id="PartsModal" class="uk-flex-top" uk-modal>
-            <div class="uk-modal-dialog uk-margin-auto-vertical uk-modal-body">
-              <h2 class="uk-modal-title">Parts</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p class="">
-                <button class="uk-button uk-button-primary" type="button">View all Parts</button>
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="uk-width-1-2 uk-width-1-2@m uk-text-center uk-text-left@m">
-          <div class="uk-flex uk-flex-middle" uk-grid>
-            <div class="uk-width-auto@m">
-              <a class="uk-h4 dont-underline">Series/Model</a>
-            </div>
-            <div class="uk-width-expand uk-visible@m">
-              <form class="uk-search uk-search-default">
-              <a href="#" title="Submit search" class="uk-icon uk-search-icon uk-search-icon-flip">
-                <i class="fas fa-search fa-lg"></i>
-              </a>
-              <input class="uk-search-input uk-input" type="search" placeholder="Search by series or model...">
-            </form>
-            </div>
-          </div>  
-        </div>
-        
-      </div>
-    </div>
-  </div>
+  <div id="TertiaryHeader" class="" uk-sticky="animation: uk-animation-slide-top">
+    
+    <div class="uk-grid-collapse uk-grid-middle" uk-grid>
+      <div class="uk-width-expand uk-background-secondary uk-light uk-padding-small">
+        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+          <div class="uk-navbar-left uk-light">
+            
+            <a class="uk-navbar-toggle uk-navbar-item uk-text-emphasis uk-padding-remove uk-text-bold uk-hidden@s" href="#">
+              <i class="fas fa-bars fa-lg"></i><span class="uk-flex-last uk-margin-small-left">Menu</span>
+            </a>
+            
+            {% if has_menu_main %}
+              <ul class="uk-navbar-nav the-main-menu uk-visible@s">
+                {% for item in menu_main.get_items %}
+                
+                  {% if item.get_children %}
+                  
+                    <li class="uk-light {{ item.classes | join(' ') }}"><a class="uk-h5 dont-underline uk-margin-remove" href="{{ item.link }}">{{ item.title }}<i class="fas fa-angle-down menu-dropicon uk-margin-small-left"></i></a>
+                      <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                          {% for child in item.get_children %}
+                          <li>
+                            <a class="uk-h5 dont-underline uk-margin-remove" href="{{ child.get_link }}">{{ child.title }}</a>
+                              {% if child.children %}
+                              <ul class="uk-nav-sub">
+                                {% for third in child.children %}
+                                <li>
+                                  <a class="uk-h5 dont-underline uk-margin-remove" href="{{ third.get_link }}">{{ third.title }}</a>
+                                </li>
+                                {% endfor %}
+                              </ul>
+                              {% endif %}
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </li>
+                  
+                  {% else %}
+                    <li class=" {{ item.classes | join(' ') }}"><a class="uk-h5 dont-underline uk-margin-remove" title="{{ item.title }}" href="{{ item.get_link }}">{{ item.title }}</a></li>
+                  {% endif %}
+                
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p class="uk-margin-remove uk-light">Add a menu to the Main Menu slot in Appearance > Menus</p>
+            {% endif %}
   
-  <div id="TertiaryHeader" class="uk-padding-small uk-padding-remove-horizontal uk-background-secondary uk-light">
-    <div class="uk-child-width-1-3 uk-grid-collapse uk-grid-divider" uk-grid>
-      <div class="uk-text-center">
-        <a href="#" class="uk-h5 uk-text-uppercase dont-underline"><i class="fas fa-phone-alt"></i><span class="uk-margin-small-left uk-visible@m">Call us on <span class="uk-text-underline">01 123 4567</span></a>
+          </div>
+        </nav>
       </div>
-      <div class="uk-text-center">
-        <a href="#" class="uk-h5 uk-text-uppercase dont-underline"><i class="far fa-envelope"></i><span class="uk-margin-small-left uk-visible@m">Email us at <span class="uk-text-underline">info@nedmurphytractors.ie</span></a>
-      </div>
-      <div class="uk-text-center">
-        <a href="#" class="uk-h5 uk-text-uppercase dont-underline"><i class="fab fa-facebook-f"></i><span class="uk-margin-small-left uk-visible@m">Find us on <span class="uk-text-underline">Facebook</span></a>
+      <div class="uk-width-auto uk-section-primary uk-light uk-padding-small">
+        <div class="uk-child-width-auto" uk-grid>
+          <div class="">
+            <a href="#" class="uk-h5 dont-underline uk-margin-remove"><i class="fas fa-phone-alt"></i><span class="uk-margin-small-left uk-visible@xl">Call us on <span class="uk-text-underline">01 123 4567</span></a>
+          </div>
+          <div class="">
+            <a href="#" class="uk-h5 dont-underline uk-margin-remove"><i class="far fa-envelope"></i><span class="uk-margin-small-left uk-visible@xl">Email us at <span class="uk-text-underline">info@nedmurphytractors.ie</span></a>
+          </div>
+          <div class="">
+            <a href="#" class="uk-h5 dont-underline uk-margin-remove"><i class="fab fa-facebook-f"></i><span class="uk-margin-small-left uk-visible@xl">Find us on <span class="uk-text-underline">Facebook</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -175,6 +173,17 @@
       <div class="widget_shopping_cart_content">
         {{fn('woocommerce_mini_cart')}}
       </div>
+      
+      <script>
+      jQuery(function($) {
+        function WooMiniCart() {
+          $(".woocommerce-mini-cart__buttons .button:first-child").addClass("uk-button uk-button-primary uk-button-small uk-width-1-1");
+          $(".woocommerce-mini-cart__buttons .button.checkout").addClass("uk-button uk-button-link uk-width-1-1 dont-underline");
+        };
+        $(".widget_shopping_cart_content").load(WooMiniCart());
+        $("body").on('DOMSubtreeModified', ".minicart-modal", WooMiniCart);
+      });
+      </script>
     </div>
   </div>
 </div>

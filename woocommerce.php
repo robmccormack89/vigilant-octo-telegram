@@ -32,15 +32,18 @@ if ( is_singular( 'product' ) ) {
   $context['up_sells'] =  Timber::get_posts( $upsell_ids );
   
   wp_reset_postdata();
+  
   Timber::render( 'single-product.twig', $context );
   
 } else {
   
   $posts = new Timber\PostQuery();
   $context['products'] = $posts;
-  
   // set the woo archive columns setting
   $context['columns'] = wc_get_loop_prop('columns');
+  $context['title'] = 'Shop';
+  
+  $templates = array( 'shop.twig' );
 
   if ( is_product_category() ) {
     
@@ -48,15 +51,18 @@ if ( is_singular( 'product' ) ) {
     $term_id = $queried_object->term_id;
     $context['product_term_id'] = $term_id;
     $context['category'] = get_term( $term_id, 'product_cat' );
+    
+    // Get subcategories of the current category
+    $context['sub_cats'] = get_terms([
+      'taxonomy'    => 'product_cat',
+      'hide_empty'  => true,
+      'parent'      => $term_id,
+    ]);
+    
     $context['title'] = single_term_title( '', false );
     
   };
   
-  if ( is_shop() ) {
-    
-    $context['title'] = 'Shop';
-    
-  };
+  Timber::render( $templates, $context );
   
-  Timber::render( 'shop.twig', $context );
 }

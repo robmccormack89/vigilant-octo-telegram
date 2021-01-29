@@ -12,7 +12,7 @@
   {% endblock %}
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <!-- font awesome icons -->
   <link rel="stylesheet" href="{{theme.link}}/assets/css/all.min.css" />
@@ -41,13 +41,15 @@
           {% block pageheader %}
           {% endblock %}
           
-          <section id="ContentSection" class="uk-section uk-background-default">
-            {% block contentwrap %}
-              {% block contentonly %}
-                <p>Sorry, Nothing to Display!!</p>
+          {% block contentbefore %}
+            <section id="ContentSection" class="uk-section uk-background-default">
+              {% block contentwrap %}
+                {% block contentonly %}
+                  <p>Sorry, Nothing to Display!!</p>
+                {% endblock %}
               {% endblock %}
-            {% endblock %}
-          </section>
+            </section>
+          {% endblock %}
           
         {% endblock %}
         
@@ -63,8 +65,6 @@
     </div>
     
     {{ function('wp_footer') }}
-
-  	<script type='text/javascript' src='{{theme.link}}/assets/js/woo.js'></script>
     
     {% block spec_scripts %}
     {% endblock %}
