@@ -19,7 +19,9 @@ jQuery(function($) {
     
     $(".checkout_coupon button").addClass("uk-button uk-button-default");
     $("#order_review button").addClass("uk-button uk-button-primary");
-  };
+    
+    $("#shipping_method").addClass("uk-list");
+  }
   // events
   $("form.checkout").load(CheckoutRestyleAfterAjax());
   $("body").on('DOMSubtreeModified', "form.checkout", CheckoutRestyleAfterAjax);

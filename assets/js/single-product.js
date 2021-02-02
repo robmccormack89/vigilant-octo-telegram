@@ -7,5 +7,9 @@ jQuery(function($) {
   // additional info tab
   $(".woocommerce-product-attributes").addClass("uk-table-small uk-table-divider uk-table-middle uk-table-justify");
   // add-to-cart
+  $(".product-right .button").addClass("uk-button-primary");
   $("#ProductButtons .button").addClass("uk-button-primary");
+  // stock
+  $(".in-stock").addClass("uk-text-success");
+  $(".out-of-stock").addClass("uk-text-danger");
 });
