@@ -4,6 +4,25 @@
  *
  * @package Rmcc_Woo_Theme
  */
+
+
+function ecs_add_post_state( $post_states, $post ) {
+  
+  if( get_post_meta($post->ID,'_wp_page_template',true) == 'page-templates/contact-template.php' ) {
+		$post_states[] = 'Contact page';
+	};
+  
+  if( get_post_meta($post->ID,'_wp_page_template',true) == 'page-templates/categories-template.php' ) {
+		$post_states[] = 'Parts by Category page';
+	};
+  
+  if( get_post_meta($post->ID,'_wp_page_template',true) == 'page-templates/series-template.php' ) {
+		$post_states[] = 'Parts by Series/Model page';
+	};
+
+	return $post_states;
+}
+add_filter( 'display_post_states', 'ecs_add_post_state', 10, 2 );
  
  if( function_exists('acf_add_local_field_group') ):
  
