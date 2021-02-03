@@ -1,3 +1,7 @@
+.tab-content h2 {
+  margin-bottom: 10px!important;
+}
+
 .uk-light .uk-button-primary {
   background-color: #ee3131;
   color: #fff;

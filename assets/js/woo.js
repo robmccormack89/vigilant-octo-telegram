@@ -111,6 +111,9 @@ jQuery(function($) {
   //
   $(".onsale").addClass("uk-card-badge uk-label");
   
+  $("ul.woocommerce-error").addClass("uk-list");
+  $("ul.woocommerce-error .uk-button").addClass("uk-button-primary");
+  
   // login/register
   $(".col2-set").attr("uk-grid", "");
   $(".col2-set").addClass("uk-child-width-1-2@m");

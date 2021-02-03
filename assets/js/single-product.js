@@ -12,4 +12,6 @@ jQuery(function($) {
   // stock
   $(".in-stock").addClass("uk-text-success");
   $(".out-of-stock").addClass("uk-text-danger");
+  
+  $(".tab-content h2").addClass("uk-card-title");
 });
