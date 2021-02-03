@@ -31,32 +31,13 @@
 
       {% do action('woocommerce_before_shop_loop') %}
 
-      {% if sub_cats is not empty %} 
+      {% if term_subs is not empty %} 
       
         <div class="uk-child-width-1-{{columns}}@m uk-grid-small" uk-grid>
       
-          {% for sub_cat in sub_cats %}
+          {% for term in term_subs %}
           
-            {% set thumb_id = fn('get_term_meta', sub_cat.term_id, 'thumbnail_id', true ) %}
-            {% set thumb_link = fn('wp_get_attachment_url', thumb_id) %}
-            {% if thumb_link is not empty %}
-              {% set thumb_url = thumb_link %}
-            {% else %}
-              {% set thumb_url = 'https://via.placeholder.com/500x500.png?text=+' %}
-            {% endif %}
-            
-            <div>
-              <a class="dont-underline" href="{{fn('get_term_link', sub_cat.term_id)}}">
-                <div class="uk-card uk-card-hover uk-card-small uk-text-center">
-                  <div class="uk-card-media-top">
-                    <img data-src="{{ thumb_url }}" data-width data-height alt="" uk-img>
-                  </div>
-                  <div class="uk-card-body">
-                    <div class="uk-text-emphasis uk-margin-small-top uk-margin-remove">{{ sub_cat.name }}</div>
-                  </div>
-                </div>
-              </a>
-            </div> 
+            {% include ['tease-term.twig'] %}
              
           {% endfor %}
           

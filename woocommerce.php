@@ -42,26 +42,40 @@ if ( is_singular( 'product' ) ) {
   // set the woo archive columns setting
   $context['columns'] = wc_get_loop_prop('columns');
   $context['title'] = 'Shop';
-  
-  $templates = array( 'shop.twig' );
 
   if ( is_product_category() ) {
     
     $queried_object = get_queried_object();
     $term_id = $queried_object->term_id;
-    $context['product_term_id'] = $term_id;
-    $context['category'] = get_term( $term_id, 'product_cat' );
-    
+    $context['term_id'] = $term_id;
     // Get subcategories of the current category
-    $context['sub_cats'] = get_terms([
+    $context['term_subs'] = get_terms([
       'taxonomy'    => 'product_cat',
       'hide_empty'  => true,
       'parent'      => $term_id,
     ]);
-    
+    // get title
     $context['title'] = single_term_title( '', false );
     
   };
+  
+  if ( is_tax('product_series') ) {
+    
+    $queried_object = get_queried_object();
+    $term_id = $queried_object->term_id;
+    $context['term_id'] = $term_id;
+    // Get subcategories of the current category
+    $context['term_subs'] = get_terms([
+      'taxonomy'    => 'product_series',
+      'hide_empty'  => true,
+      'parent'      => $term_id,
+    ]);
+    // get title
+    $context['title'] = single_term_title( '', false );
+    
+  };
+  
+  $templates = array( 'shop.twig' );
   
   Timber::render( $templates, $context );
   

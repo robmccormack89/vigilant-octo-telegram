@@ -1,0 +1,49 @@
+{% extends 'base.twig' %}
+
+{% block spec_styles %}
+  <style>
+
+  </style>
+{% endblock %}
+
+{% block pageheader %}
+  <section id="PageTitleSection" class="uk-section uk-background-muted">
+    <div class="uk-container uk-container-small uk-text-center">
+      <h1 class="uk-text-uppercase uk-h2 uk-text-muted">{{title}}</h1>
+    </div>
+  </section>
+{% endblock %}
+
+{% block contentwrap %}
+
+  <div class="uk-container uk-container-large" data-block="content-wrap" data-template="collection.twig">
+    
+    <div class="collection-wrap">
+
+      {% if all_terms is not empty %} 
+      
+        <div class="uk-child-width-1-5@m uk-grid-small" uk-grid>
+      
+          {% for term in all_terms %}
+          
+            {% include ['tease-term.twig'] %}
+             
+          {% endfor %}
+          
+        </div>
+        
+      {% else %}
+      
+        No collection items added...
+      
+      {% endif %}
+      
+    </div>
+    
+  </div>
+
+{% endblock %}
+
+{% block spec_scripts %}
+
+{% endblock %}

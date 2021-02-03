@@ -96,7 +96,47 @@ class RmccWooTheme extends Timber\Site
 
   public function register_taxonomies()
   {
-
+  	$labels_series = array(
+  		'name'                       => _x( 'Series/Models', 'Taxonomy General Name', 'rmcc-woo-theme' ),
+  		'singular_name'              => _x( 'Series/Model', 'Taxonomy Singular Name', 'rmcc-woo-theme' ),
+  		'menu_name'                  => __( 'Series/Models', 'rmcc-woo-theme' ),
+  		'all_items'                  => __( 'All Series/Models', 'rmcc-woo-theme' ),
+  		'parent_item'                => __( 'Parent (Series)', 'rmcc-woo-theme' ),
+  		'parent_item_colon'          => __( 'Parent (Series):', 'rmcc-woo-theme' ),
+  		'new_item_name'              => __( 'New Series/Model Name', 'rmcc-woo-theme' ),
+  		'add_new_item'               => __( 'Add New Series/Model', 'rmcc-woo-theme' ),
+  		'edit_item'                  => __( 'Edit Series/Model', 'rmcc-woo-theme' ),
+  		'update_item'                => __( 'Update Series/Model', 'rmcc-woo-theme' ),
+  		'view_item'                  => __( 'View Series/Model', 'rmcc-woo-theme' ),
+  		'separate_items_with_commas' => __( 'Separate items with commas', 'rmcc-woo-theme' ),
+  		'add_or_remove_items'        => __( 'Add or remove Series/Model', 'rmcc-woo-theme' ),
+  		'choose_from_most_used'      => __( 'Choose from the most used', 'rmcc-woo-theme' ),
+  		'popular_items'              => __( 'Popular Series/Models', 'rmcc-woo-theme' ),
+  		'search_items'               => __( 'Search Series/Models', 'rmcc-woo-theme' ),
+  		'not_found'                  => __( 'Not Found', 'rmcc-woo-theme' ),
+  		'no_terms'                   => __( 'No items', 'rmcc-woo-theme' ),
+  		'items_list'                 => __( 'Items list', 'rmcc-woo-theme' ),
+  		'items_list_navigation'      => __( 'Items list navigation', 'rmcc-woo-theme' ),
+  	);
+  	$rewrite_series = array(
+  		'slug'                       => 'product-series-model',
+  		'with_front'                 => true,
+  		'hierarchical'               => true,
+  	);
+  	$args_series = array(
+  		'labels'                     => $labels_series,
+  		'hierarchical'               => true,
+  		'public'                     => true,
+  		'show_ui'                    => true,
+  		'show_admin_column'          => true,
+  		'show_in_nav_menus'          => true,
+  		'show_tagcloud'              => true,
+  		'rewrite'                    => $rewrite_series,
+  		'update_count_callback'      => 'count_product_series',
+  		'show_in_rest'               => true,
+      'update_count_callback' => '_update_post_term_count',
+  	);
+  	register_taxonomy( 'product_series', array( 'product' ), $args_series );
   }
 
   public function register_widget_areas()
@@ -104,7 +144,7 @@ class RmccWooTheme extends Timber\Site
     // Register widget areas
     if (function_exists('register_sidebar')) {
       register_sidebar(array(
-        'name' => esc_html__('Footer Top Left Area', 'sixstar-theme'),
+        'name' => esc_html__('Footer Top Left Area', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer-top-left',
         'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
@@ -113,7 +153,7 @@ class RmccWooTheme extends Timber\Site
         'after_title' => '</span>'
       ));
       register_sidebar(array(
-        'name' => esc_html__('Footer Top Right Area', 'sixstar-theme'),
+        'name' => esc_html__('Footer Top Right Area', 'rmcc-woo-theme'),
         'id' => 'sidebar-footer-top-right',
         'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
