@@ -37,11 +37,30 @@ if ( is_singular( 'product' ) ) {
   
 } else {
   
+  // get the main posts query
   $posts = new Timber\PostQuery();
+  // set main query as products cariable 
   $context['products'] = $posts;
+  // main template for woo archives is woo-archive
+  $templates = array( 'shop.twig' );
+  // main tease template
+  $tease_template = array('tease-product.twig');
   // set the woo archive columns setting
-  $context['columns'] = wc_get_loop_prop('columns');
-  $context['title'] = 'Shop';
+  $context['products_grid_columns'] = wc_get_loop_prop('columns');
+  
+  $term_slug = get_query_var('product_cat');
+  $context['the_term'] = get_term_by('slug', $term_slug, 'product_cat');
+  
+  // if is list-view
+  if ( get_query_var('grid_list') == 'list-view' ) {
+    // reset the woo archive columns setting
+    $context['products_grid_columns'] = '1';
+    // unshit the tease template variable with the new list tease template
+  	array_unshift( $tease_template, 'tease-product-list.twig' );
+    // then Restore the context and loop back to the main query loop.
+    wp_reset_postdata();
+  };
+  $context['tease_template'] = $tease_template; 
 
   if ( is_product_category() ) {
     
@@ -54,8 +73,21 @@ if ( is_singular( 'product' ) ) {
       'hide_empty'  => true,
       'parent'      => $term_id,
     ]);
-    // get title
+
+    // get the category & set variable with get_term using the term id
+    $context['category'] = get_term( $term_id, 'product_cat' );
+    // set the archive title
     $context['title'] = single_term_title( '', false );
+    // get product category thumbnail
+    $thumbnail_id = get_term_meta( $term_id, 'thumbnail_id', true );
+    $archive_header_bg = wp_get_attachment_url( $thumbnail_id );
+    if (!empty($archive_header_bg)) {
+      $context['archive_header_bg'] = $archive_header_bg;
+    } else {
+      $context['archive_header_bg'] = get_template_directory_uri() . '/assets/images/field.jpg';
+    }
+    // then Restore the context and loop back to the main query loop.
+    wp_reset_postdata();
     
   };
   
@@ -63,6 +95,7 @@ if ( is_singular( 'product' ) ) {
     
     $queried_object = get_queried_object();
     $term_id = $queried_object->term_id;
+    $context['term_slug'] = $queried_object->slug;
     $context['term_id'] = $term_id;
     // Get subcategories of the current category
     $context['term_subs'] = get_terms([
@@ -70,12 +103,51 @@ if ( is_singular( 'product' ) ) {
       'hide_empty'  => true,
       'parent'      => $term_id,
     ]);
-    // get title
-    $context['title'] = single_term_title( '', false );
     
+    $context['new_terms'] = '';
+    
+    if (empty($context['term_subs'])) {
+      
+      $the_term_id = array();
+      foreach($context['products'] as $item) {
+        $product_cats = get_the_terms( $item->get_id(), 'product_cat' );
+        foreach($product_cats as $product_cat) {
+          $the_term_id[] .= $product_cat->term_id;
+        }
+        $sep = $the_term_id;
+      };
+
+      $context['prod_ids'] = $sep;
+      $context['new_terms'] = get_terms([
+        'taxonomy'    => 'product_cat',
+        'hide_empty'  => true,
+        'include' => $sep,
+      ]);
+
+    }
+    
+    // set the archive title
+    $context['title'] = single_term_title( '', false );
+    // get product category thumbnail
+    $thumbnail_id = get_term_meta( $term_id, 'thumbnail_id', true );
+    $archive_header_bg = wp_get_attachment_url( $thumbnail_id );
+    if (!empty($archive_header_bg)) {
+      $context['archive_header_bg'] = $archive_header_bg;
+    } else {
+      $context['archive_header_bg'] = get_template_directory_uri() . '/assets/images/field.jpg';
+    }
+    // then Restore the context and loop back to the main query loop.
+    wp_reset_postdata();
   };
   
-  $templates = array( 'shop.twig' );
+  // if is main shop archive page
+  if ( is_shop() ) {
+    // set shop page archive title
+    $context['title'] = 'Shop';
+    $context['archive_header_bg'] = get_template_directory_uri() . '/assets/images/field.jpg';
+    // then Restore the context and loop back to the main query loop.
+    wp_reset_postdata();
+  };
   
   Timber::render( $templates, $context );
   

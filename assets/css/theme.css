@@ -74,8 +74,7 @@
 .search-results-ajax ul li a, .search-results-ajax ul li a:hover {
   text-decoration: none;
 }
-.search-results-ajax ul li a span.uk-text-meta.ajax-search-meta {
-  float: right;
+.search-results-ajax .ajax-search-meta {
   font-size: 11px;
 }
 

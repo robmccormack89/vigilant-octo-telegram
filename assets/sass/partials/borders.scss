@@ -14,6 +14,12 @@
 .theme-border-left {
   border-left: 1px solid $theme_border_color;
 }
+.uk-light .theme-border-left {
+  border-left: 1px solid #ffffff40;
+}
+.uk-light .theme-border-right {
+  border-right: 1px solid #ffffff40;
+}
 // theme divider
 .theme-divider {
   display: flex;

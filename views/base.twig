@@ -11,11 +11,10 @@
   {% block spec_styles %}
   {% endblock %}
   
+  <script src="{{theme.link}}/assets/js/lib/infinite-scroll.pkgd.min.js"></script>
+  
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- font awesome icons -->
-  <link rel="stylesheet" href="{{theme.link}}/assets/css/all.min.css" />
   
   <!-- global woocommerce theme styles -->
   <link rel="stylesheet" href="{{theme.link}}/assets/css/woo.css" />
@@ -23,26 +22,244 @@
   <!-- theme styles -->
   <link rel="stylesheet" href="{{theme.link}}/assets/css/theme.css" />
   
+  <!-- new styles -->
+  <style>
+    /* ajax loader anim */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .ajax-loader::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 20vh;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80px;
+      height: 80px;
+      border: 2px solid #f3f3f3;
+      border-top: 3px solid #525252;
+      border-radius: 100%;
+      will-change: transform;
+      animation: spin 1s infinite linear;
+      z-index: 1;
+    }
+    .ajax-loader::after {
+      content: '';
+      position: absolute;
+      background-color: #b5b5b554;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    /* site loader anim */
+    .site-loader::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 45vh;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80px;
+      height: 80px;
+      border: 2px solid #f3f3f3;
+      border-top: 3px solid #525252;
+      border-radius: 100%;
+      will-change: transform;
+      animation: spin 1s infinite linear;
+      z-index: 2;
+    }
+    .site-loader::after {
+      content: '';
+      position: absolute;
+      background-color: #ffffff;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .site-loader::before, .site-loader::after {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.4s linear;
+    }
+    .site-loader.hidden::before, .site-loader.hidden::after {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s 0.4s, opacity 0.4s linear;
+    }
+    .onsale.uk-card-badge {
+      top: 15px;
+      right: 15px;
+    }
+    .term-description>p {
+      margin: 0;
+    }
+    /* badge close icon */
+    .icon::before {
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* badge close icon */
+    .close-icon::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f00d";
+      margin-right: 5px;
+    }
+    /* badge close icon */
+    .grid-icon::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f00a";
+    }
+    /* badge close icon */
+    .list-icon::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f03a";
+    }
+    /* tease list badge fix */
+    .list-item .onsale.uk-card-badge {
+      position: initial;
+    }
+    .list-item .uk-article-title {
+      max-width: 80%;
+    }
+    /* cats menu */
+    #TertiaryHeader .cats-menu-main.uk-navbar-nav>li>a {
+      color: #fff;
+    }
+    .uk-dropdown {
+      min-width: 100%;
+      padding: 0px;
+    }
+    .uk-dropdown-right-center {
+      top: -1px!important;
+    }
+    .uk-dropdown-nav.uk-nav>li {
+      transition: .1s ease-in-out;
+      transition-property: background-color;
+    }
+    .uk-dropdown-nav.uk-nav>li:hover {
+      background-color: #f7f7f7;
+    }
+    .uk-dropdown-nav.uk-nav>li>a {
+      padding: 10px 10px;
+      transition: .1s ease-in-out;
+      transition-property: color;
+    }
+    /* mobile menu */
+    #HeaderMobile .uk-offcanvas-bar {
+      padding: 0;
+      width: 80%;
+    }
+    #HeaderMobile .uk-offcanvas-bar .uk-nav-default>li.current-menu-item>a {
+      color: #ff0000;
+    }
+    #HeaderMobile .uk-offcanvas-bar .uk-nav>li>a {
+      padding: 10px 10px;
+    }
+    #HeaderMobile .uk-offcanvas-bar ul.uk-nav-sub {
+      padding: 0;
+    }
+    #HeaderMobile .uk-offcanvas-bar .uk-nav-sub a {
+      padding: 10px 10px;
+    }
+    #mobile-offcanvas-nav .uk-nav-default .menu-item.uk-open {
+      background-color: #f7f7f7;
+    }
+    #HeaderMobile .uk-offcanvas-bar .uk-subnav {
+      margin: 0;
+      padding: 0;
+    }
+    #HeaderMobile .uk-offcanvas-bar .uk-subnav>* {
+      padding-left: 0;
+      width: 50%;
+    }
+    #HeaderMobile .uk-offcanvas-bar .uk-subnav-pill>*>:first-child {
+      background-color: #f7f7f7;
+      border-bottom: 3px solid #;
+    }
+    #HeaderMobile .uk-offcanvas-bar .uk-subnav-pill>.uk-active>a {
+      background-color: #ccc;
+      color: #000;
+      border-bottom: 3px solid #ff0000;
+    }
+    #response_search_results_mobile.search-results-ajax {
+      position: relative;
+      width: 100%;
+      background-color: #fff;
+      border-left: none;
+      border-right: none;
+      z-index: 9999999;
+      box-shadow: none;
+      margin-top: 0;
+    }
+    #response_search_results_mobile .uk-link-text
+    #response_search_results_mobile.search-results-ajax::-webkit-scrollbar {
+      width: 2px;
+      background-color: #f7f7f7;
+    }
+    #response_search_results_mobile.search-results-ajax::-webkit-scrollbar-thumb {
+      border-radius: 0;
+      background-color: #ff0000;
+    }
+    #response_search_results_mobile.search-results-ajax::-webkit-scrollbar-track {
+      box-shadow: none;
+      background-color: #f7f7f7;
+      border-radius: 0;
+    }
+    .top-search-bar-mobile .uk-search-input {
+      font-size: 0.8rem;
+      border: none;
+      padding-left: 15px;
+    }
+    .top-search-bar-mobile  .uk-search-icon-flip {
+      background-color: #fff;
+      color: #f7f7f7!important;
+    }
+    /* mobile header */
+    #HeaderMobile .uk-logo {
+      font-size: 1.3rem;
+    }
+    .uk-overlay-primary {
+      background: rgb(45 45 45 / 76%);
+    }
+  </style>
+  
 </head>
 
 {% block bodywrap %}
 
-  <body class="{{ body_class }}" data-template="base.twig">
+  <body class="{{ body_class }} no-overflow" data-template="base.twig">
 
-    <div id="SiteWrapper">
-
-      {% block header %}
-        {% include 'header.twig' %}
-      {% endblock %}
+    {% block header %}
+      {% include 'header.twig' %}
+    {% endblock %}
+    
+    <main role="main" id="MainContent">
+      {% block content %}
+        <div id="BlockContent" class="block-content_wrap site-loader">
       
-      <main role="main" id="MainContent">
-        {% block content %}
-        
           {% block pageheader %}
           {% endblock %}
           
           {% block contentbefore %}
-            <section id="ContentSection" class="uk-section uk-background-default">
+            {% include 'breads.twig' %}
+            <section id="ContentSection" class="uk-section uk-section-small uk-background-default">
               {% block contentwrap %}
                 {% block contentonly %}
                   <p>Sorry, Nothing to Display!!</p>
@@ -51,20 +268,21 @@
             </section>
           {% endblock %}
           
-        {% endblock %}
+          {% block abovefooter %}
+          {% endblock %}
         
-        {% block abovefooter %}
-        {% endblock %}
-        
-      </main>
-      
-      {% block footer %}
-        {% include 'footer.twig' %}
+        </div>
       {% endblock %}
-
-    </div>
+    </main>
+    
+    {% block footer %}
+      {% include 'footer.twig' %}
+    {% endblock %}
     
     {{ function('wp_footer') }}
+    
+    <script type='text/javascript' src='{{theme.link}}/assets/js/woo/woo.js'></script>
+    <script type='text/javascript' src='{{theme.link}}/assets/js/quickload.js'></script>
     
     {% block spec_scripts %}
     {% endblock %}

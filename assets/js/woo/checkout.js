@@ -1,4 +1,5 @@
 jQuery(function($) {
+  
   // checkout
   function CheckoutRestyleAfterAjax() {
 
@@ -12,9 +13,7 @@ jQuery(function($) {
     $(".input-radio").addClass("uk-radio");
     $(".input-text").addClass("uk-input");
     $(".input-checkbox").addClass("uk-checkbox");
-    
     $("label").addClass("uk-form-label");
-
     $("select").addClass("uk-select");
     
     $(".checkout_coupon button").addClass("uk-button uk-button-default");
@@ -22,7 +21,9 @@ jQuery(function($) {
     
     $("#shipping_method").addClass("uk-list");
   }
-  // events
+  // on load
   $("form.checkout").load(CheckoutRestyleAfterAjax());
+  // on dom modified
   $("body").on('DOMSubtreeModified', "form.checkout", CheckoutRestyleAfterAjax);
+  
 });

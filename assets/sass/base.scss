@@ -1,8 +1,14 @@
 // 1. Customizing variables from uikit. These will overwrite the UIKIT imports below. 
-// $global-primary-background: #c7000c !default;
-// $global-link-color: #c7000c !default;
-// $global-link-hover-color: #c7000c !default;
-// $global-font-family: inherit;
+$global-primary-background: #EE3131;
+$global-secondary-background: #D6A83C;
+$global-link-color: #EE3131;
+$global-link-hover-color: #EE3131;
+$global-muted-background: #f8f8f8;
+$global-muted-color: #5c5c5c;
+$global-darker-bg-primary: #6abe52;
+$global-dark-bg-black: #6abe52;
+$offcanvas-bar-background: #fff;
+$offcanvas-bar-color-mode: none;
 
 // 2. Import variables & mixins froim uikit. You can also use the default styling scss files, I have used the theme ones.
 @import "node_modules/uikit/src/scss/variables-theme.scss";

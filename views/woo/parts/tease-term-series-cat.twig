@@ -1,4 +1,4 @@
-{% set thumb_id = fn('get_term_meta', term.term_id, 'thumbnail_id', true ) %}
+{% set thumb_id = fn('get_term_meta', new_term.term_id, 'thumbnail_id', true ) %}
 {% set thumb_link = fn('wp_get_attachment_url', thumb_id) %}
 {% if thumb_link is not empty %}
   {% set thumb_url = thumb_link %}
@@ -13,8 +13,12 @@
     </div>
     <div class="uk-card-body">
       <div class="uk-text-emphasis uk-margin-small-top uk-margin-remove">
-        <a class="dont-underline uk-link-text" data-link="{{fn('get_term_link', term.term_id)}}" onclick="quickLoad(event);">{{ term.name }}</a>
-      </div>
+        <a 
+        class="dont-underline uk-link-text" 
+        data-link="{{fn('get_term_link', new_term.term_id)}}?product_series={{term_slug}}" 
+        onclick="quickLoad(event);"
+        >
+        {{ new_term.name }}</a></div>
     </div>
   </div>
 </div> 

@@ -8,6 +8,7 @@
 // Define paths to Twig templates
 Timber::$dirname = array(
   'views',
+  'views/templates',
   'views/wp',
   'views/wp/archive',
   'views/wp/parts',
@@ -34,6 +35,8 @@ class RmccWooTheme extends Timber\Site
     add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
     add_filter( 'timber/context', array( $this, 'add_to_context' ) );
     add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
+    add_filter( 'query_vars', array( $this, 'rmcc_gridlist_query_vars_filter'));
+    // add_filter( 'query_vars', array( $this, 'rmcc_series_query_vars_filter'));
     add_action( 'init', array( $this, 'register_post_types' ) );
     add_action( 'init', array( $this, 'register_taxonomies' ) );
     add_action('init', array( $this, 'register_widget_areas' ));
@@ -168,6 +171,7 @@ class RmccWooTheme extends Timber\Site
   {
     // This theme uses wp_nav_menu() in one locations.
     register_nav_menus(array(
+      'categories' => __('Categories Menu', 'rmcc-woo-theme'),
       'main_menu' => __('Main Menu', 'rmcc-woo-theme'),
       'mobile_menu' => __('Mobile Menu', 'rmcc-woo-theme'),
       'help_menu' => __('Help Menu', 'rmcc-woo-theme'),
@@ -186,7 +190,6 @@ class RmccWooTheme extends Timber\Site
     $context['site'] = $this;
     // general conditionals
     $context['is_user_logged_in'] = is_user_logged_in();
-    $context['is_paginated'] = is_paginated();
     $context['is_shop'] = is_shop();
     $context['is_category'] = is_category();
     $context['is_single_product'] = is_singular( 'product' );
@@ -197,6 +200,8 @@ class RmccWooTheme extends Timber\Site
     $context['theme_logo_url'] = $theme_logo_url;
     // menu register & args
     $main_menu_args = array( 'depth' => 3 );
+    $context['menu_cats'] = new \Timber\Menu( 'categories' );
+    $context['has_menu_cats'] = has_nav_menu( 'categories' );
     $context['menu_main'] = new Timber\Menu( 'main_menu' );
     $context['has_menu_main'] = has_nav_menu( 'main_menu' );
     $context['menu_mobile'] = new Timber\Menu('mobile_menu');
@@ -275,12 +280,19 @@ class RmccWooTheme extends Timber\Site
     remove_filter( 'the_excerpt', 'wpautop' );
   }
   
+  // add grid-list url paramater key
+  public function rmcc_gridlist_query_vars_filter($vars)
+  {
+    $vars[] .= 'grid_list';
+    return $vars;
+  }
+  
   public function rmcc_woo_theme_enqueue_assets()
   {
     // theme base scripts
     wp_enqueue_script(
       'rmcc-woo-theme',
-      get_template_directory_uri() . '/assets/js/main/global.js',
+      get_template_directory_uri() . '/assets/js/base.js',
       '',
       '',
       false
@@ -291,21 +303,27 @@ class RmccWooTheme extends Timber\Site
     
     // global (site wide) scripts; uses jquery
     wp_enqueue_script(
-      'theme-woo',
-      get_template_directory_uri() . '/assets/js/woo.js',
+      'global',
+      get_template_directory_uri() . '/assets/js/global.js',
       'jquery',
       '1.0.0',
       true
     );
     // localize theme scripts for ajax
     wp_localize_script(
-      'theme-woo',
+      'global',
       'myAjax',
       array(
         'ajaxurl' => admin_url( 'admin-ajax.php')
       )
     );
     
+    
+    // font awesome
+    wp_enqueue_style(
+      'fontawesome-theme',
+      get_template_directory_uri() . '/assets/css/lib/all.min.css'
+    );
     // theme base css
     wp_enqueue_style(
       'rmcc-woo-theme',
