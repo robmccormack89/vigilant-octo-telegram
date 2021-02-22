@@ -6,8 +6,8 @@ jQuery(function($) {
     $(".onsale").addClass("uk-card-badge uk-label");
   };
   // on load
-  $("#MainProductArchive").load(WooShop());
+  $("#MainContent").load(WooShop());
   // on dom modified
-  $("body").on('DOMSubtreeModified', "#MainProductArchive", WooShop);
+  $("body").on('DOMSubtreeModified', "main", WooShop);
   
 });

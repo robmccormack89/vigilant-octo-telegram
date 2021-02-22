@@ -9,82 +9,6 @@
     .term-description>p {
       margin: 0;
     }
-    /* // page ajax loader */
-    .the-loader::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 20vh;
-      margin-left: auto;
-      margin-right: auto;
-      width: 80px;
-      height: 80px;
-      border: 2px solid #f3f3f3;
-      border-top: 3px solid #525252;
-      border-radius: 100%;
-      will-change: transform;
-      animation: spin 1s infinite linear;
-      z-index: 1;
-    }
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-    .the-loader::after {
-      content: '';
-      position: absolute;
-      background-color: #b5b5b554;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    
-    /* badge close icon */
-    .icon::before {
-      display: inline-block;
-      font-style: normal;
-      font-variant: normal;
-      text-rendering: auto;
-      -webkit-font-smoothing: antialiased;
-    }
-    
-    /* badge close icon */
-    .close-icon::before {
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      content: "\f00d";
-      margin-right: 5px;
-    }
-    
-    /* badge close icon */
-    .grid-icon::before {
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      content: "\f00a";
-      /* margin-right: 5px; */
-    }
-    
-    /* badge close icon */
-    .list-icon::before {
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      content: "\f03a";
-      /* margin-right: 5px; */
-    }
-
-    /* tease list badge fix */
-    .list-item .onsale.uk-card-badge {
-      position: initial;
-    }
-    .list-item .uk-article-title {
-      max-width: 80%;
-    }
   </style>
 {% endblock %}
 
@@ -97,66 +21,74 @@
   </section>
 {% endblock %}
 
+{% block breads %}
+{% endblock %}
+
 {% block contentonly %}
 
-  <div class="uk-position-relative content-container" data-block="content-wrap" data-template="shop.twig">
-    
-    <div class="uk-container content-container">
+  <div class="" data-block="content-wrap" data-template="shop.twig">
+    <div class="uk-container">
       
       {% do action('woocommerce_before_main_content') %}
+    
+      {% if term_subs is not empty and function('current_product_cat_var') == false and function('current_product_series_var') == false %} 
       
-      <div id="ajax-filters-container" class="shop-wrap uk-container uk-container-small">
-        <div id="MainProductArchive" uk-grid>
-      		<div class="uk-width-1-1">
-
-            {% if term_subs is not empty and function('current_product_cat_var') == false and function('current_product_series_var') == false %} 
-            
-              <div class="uk-child-width-1-{{products_grid_columns}}@m uk-grid-small uk-flex uk-flex-center" uk-grid>
-            
-                {% for term in term_subs %}
-                
-                  {% include ['tease-term.twig'] %}
-                   
-                {% endfor %}
-                
-              </div>
-
-            {% elseif term_subs is empty and function('current_product_series_var') == false and function('is_tax', 'product_series') and new_terms is not empty %}
-                
-              <div class="uk-child-width-1-{{products_grid_columns}}@m uk-grid-small uk-flex uk-flex-center" uk-grid>
-              
-                {% for new_term in new_terms %}
-                  {% include ['tease-term-series-cat.twig'] %}
-                {% endfor %}
-                
-              </div>
-              
-            {% else %}
-            
-              {% include 'shop-toolbar.twig' %}
-
-              <div id="ProductsGrid" class="archive-posts products uk-child-width-1-1 uk-child-width-1-{{products_grid_columns}}@m uk-grid-small archive-posts" uk-grid="masonry: true">
-                {% for post in products %}
-                 {% include tease_template %}
-                {% endfor %}
-                {% if products is empty %}
-                  {% do action('woocommerce_no_products_found') %}
-                {% endif %}
-              </div>
-              {% include 'pagination.twig' with { pagination : products.pagination( { show_all: true, mid_size: 3, end_size: 2 } ) } %}
-              
-            {% endif %}
-
-            {% do action('woocommerce_after_shop_loop') %}
-
-            {% do action('woocommerce_after_main_content') %}
-                
-          </div>
+        <div class="uk-child-width-1-{{products_grid_columns}}@m uk-grid-small uk-flex uk-flex-center" uk-grid>
+      
+          {% for term in term_subs %}
+          
+            {% include ['tease-term.twig'] %}
+             
+          {% endfor %}
+          
         </div>
-      </div>
+
+      {% elseif term_subs is empty and function('current_product_series_var') == false and function('is_tax', 'product_series') and new_terms is not empty %}
+          
+        <div class="uk-child-width-1-{{products_grid_columns}}@m uk-grid-small uk-flex uk-flex-center" uk-grid>
+        
+          {% for new_term in new_terms %}
+            {% include ['tease-term-series-cat.twig'] %}
+          {% endfor %}
+          
+        </div>
+        
+      {% else %}
+      
+        <div class="" uk-grid>
+          
+          <div class="uk-width-1-4@m uk-visible@m">
+          
+            {% include 'shop-filters.twig' %}
+            
+          </div>
+          
+          <div class="uk-width-3-4@m">
+            
+            {% include 'shop-toolbar.twig' %}
+
+            <div id="ProductsGrid" class="archive-posts products uk-child-width-1-2 uk-child-width-1-{{products_grid_columns}}@m uk-grid-small archive-posts" uk-grid="masonry: true">
+              {% for post in products %}
+               {% include tease_template %}
+              {% endfor %}
+            </div>
+            {% if products is empty %}
+              {% do action('woocommerce_no_products_found') %}
+            {% endif %}
+            {% include 'pagination.twig' with { pagination : products.pagination( { show_all: true, mid_size: 3, end_size: 2 } ) } %}
+          
+          </div>
+          
+        </div>
+
+      {% endif %}
+
+      {% do action('woocommerce_after_shop_loop') %}
+
+      {% do action('woocommerce_after_main_content') %}
+
     </div>
   </div>
-
 {% endblock %}
 
 {% block spec_scripts %}

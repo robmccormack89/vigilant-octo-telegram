@@ -1,0 +1,36 @@
+{{ fn('timber_set_product', post) }}
+
+<div id="ProductItem{{ post.id }}" class="entry item grid-item product-grid-item {{ post.class }}" data-product-id="{{ post.id }}">
+  
+  {% do action('woocommerce_before_shop_loop_item') %}
+  
+  <div id="ProductImg">
+    <a class="single-product-image-link" href="{{ post.link }}">
+      {% do action('woocommerce_before_shop_loop_item_title') %}
+      <img data-src="{{ post.thumbnail.src|resize(400) }}" class="single-product-image" alt="{{ post.thumbnail.alt }}" uk-img>
+    </a>
+  </div>
+  
+  <div id="ProductDetails" class="uk-margin-small-top">
+  
+    <div id="ProductMeta" class="uk-article-meta push-down-5">
+      {{ post.terms( {query:{taxonomy:'product_cat', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ') }}
+      {# post.terms( {query:{taxonomy:'product_series', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ') #}
+    </div>
+    
+    <div id="ProductTitle">
+      {% do action('woocommerce_shop_loop_item_title') %}
+      <h3 class="uk-h5 uk-margin-remove"><a class="uk-link-heading" href="{{ post.link }}">{{ post.title }}</a></h3>
+    </div>
+    
+    <div id="ProductPriceRating" class="push-down-5">
+      {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
+    </div>
+    
+    <div id="ProductButtons">
+      {% do action( 'woocommerce_after_shop_loop_item' ) %}
+    </div>
+    
+  </div>
+
+</div>

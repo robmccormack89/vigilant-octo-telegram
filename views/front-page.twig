@@ -1,12 +1,9 @@
 {% extends "base.twig" %}
 
 {% block spec_styles %}
-
   <!-- load in swiper-js css -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
   <link rel="stylesheet" href="{{theme.link}}/assets/css/front.css" />
-
 {% endblock %}
 
 {% block pageheader %}
@@ -73,27 +70,10 @@
 {% endblock %}
 
 {% block contentbefore %}
-  <div class="home-cats-section uk-section uk-section-small uk-padding-small uk-section-muted" hidden>
+  <div class="home-cats-section uk-section uk-section-small uk-padding-small uk-section-muted">
     <div class="uk-container uk-container-expand">
       <div id="slideshow_info" class="swiper-container">
         <div class="swiper-wrapper">
-          
-          <!-- {% for slide in info_home_slides %}
-            <div class="swiper-slide">
-              <a href="{{slide.info_slide_link_url}}" class="uk-link-reset">
-                <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
-                  <div class="uk-width-auto">
-                    {{slide.info_slide_icon_html}}
-                  </div>
-                  <div class="uk-width-expand">
-                    <h4 class="uk-h5 uk-margin-remove-bottom">{{slide.title}}</h4>
-                    <p class="uk-margin-remove uk-text-small">{{slide.content}}</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          {% endfor %} -->
-          
           {% for item in shopcats %}
           
             {% set thumbnail_id = function ('get_term_meta', item.term_id, 'thumbnail_id', true ) %}
@@ -106,57 +86,10 @@
             {% endif %}
           
             <div class="swiper-slide">
-              <div class="uk-tile uk-tile-default">One</div>
+              <div class="uk-tile uk-tile-default uk-text-center">One</div>
             </div>
+            
           {% endfor %}
-          
-          <!-- {% if info_home_slides is empty %}
-            <div class="swiper-slide">
-              <a href="#" class="uk-link-reset">
-                <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
-                  <div class="uk-width-auto"><i class="fas fa-hand-point-up fa-2x"></i></div>
-                  <div class="uk-width-expand">
-                    <h4 class="uk-h5 uk-margin-remove-bottom">Add some Slides</h4>
-                    <p class="uk-margin-remove uk-text-small">Add some Home Info Slides in the Dashboard</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="uk-link-reset">
-                <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
-                  <div class="uk-width-auto"><i class="fas fa-hand-point-up fa-2x"></i></div>
-                  <div class="uk-width-expand">
-                    <h4 class="uk-h5 uk-margin-remove-bottom">Add some Slides</h4>
-                    <p class="uk-margin-remove uk-text-small">Add some Home Info Slides in the Dashboard</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="uk-link-reset">
-                <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
-                  <div class="uk-width-auto"><i class="fas fa-hand-point-up fa-2x"></i></div>
-                  <div class="uk-width-expand">
-                    <h4 class="uk-h5 uk-margin-remove-bottom">Add some Slides</h4>
-                    <p class="uk-margin-remove uk-text-small">Add some Home Info Slides in the Dashboard</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide">
-              <a href="#" class="uk-link-reset">
-                <div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>
-                  <div class="uk-width-auto"><i class="fas fa-hand-point-up fa-2x"></i></div>
-                  <div class="uk-width-expand">
-                    <h4 class="uk-h5 uk-margin-remove-bottom">Add some Slides</h4>
-                    <p class="uk-margin-remove uk-text-small">Add some Home Info Slides in the Dashboard</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          {% endif %} -->
-          
         </div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>
@@ -179,10 +112,7 @@
 {% endblock %}
 
 {% block spec_scripts %}
-
   <!-- load in swiper-js js -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
   <script src="{{theme.link}}/assets/js/front.js"></script>
-
 {% endblock %}

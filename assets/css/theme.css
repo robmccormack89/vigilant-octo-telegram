@@ -36,7 +36,7 @@
 }
 #TertiaryHeader .uk-navbar-left .uk-navbar-nav>li>a {
   color: hsl(0deg 0% 100% / 98%);
-  text-transform: capitalize;
+  text-transform: revert;
 }
 #TertiaryHeader .uk-navbar-dropdown {
   background: #14191c;
@@ -108,7 +108,7 @@ html {
 }
 .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge,
 h1, h2, h3, h4, h5, h6,
-.oswald {
+.oswald, .uk-badge {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
@@ -174,8 +174,8 @@ h1, h2, h3, h4, h5, h6,
   line-height: 20px;
   border-radius: 20px;
   position: absolute;
-  top: 17px;
-  left: 24px;
+  top: 18px;
+  left: 38px;
 }
 span.subtotal-cart .woocommerce-Price-amount {
   color: #EE3131;

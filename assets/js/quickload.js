@@ -1,6 +1,8 @@
 // filters badge's titles
 jQuery(function($) {
+  
   quickloadRe = function() {
+    
     // get the data-name attreibute from the active/checked values of the various filters
     view_name = $('#GridList a.uk-active').attr('data-name'),
     cat_name = $('.cat-list a.active').attr('data-name'),
@@ -11,7 +13,8 @@ jQuery(function($) {
     $( ".badge-cat" ).text(cat_name);
     $( ".badge-series" ).text(series_name);
     $( ".badge-sort" ).text(sort_name);
-    // //re init pagination inf scroll
+    
+    // pagination
     if ($(".uk-pagination").length) {
       $('.archive-posts').infiniteScroll({
         path: '.next',
@@ -19,19 +22,26 @@ jQuery(function($) {
         status: '.page-load-status',
         hideNav: '.pagi',
         history: false,
+        // button: '.view-more-button',
+        // load pages on button click
+        // scrollThreshold: false,
+        // disable loading on scroll
       });
     };
+    
   };
+  
   $(window).bind("popstate", function() {
     window.location = location.href
   });
+  
 });
 
 function quickLoad(event) {
   // get the data-link value of the clicked link
   var the_link_href = event.target.getAttribute("data-link");
   // add a loader onclick; removed when node is replaced in successful fetch call
-  document.querySelector('.content-container').classList.add('ajax-loader');
+  document.querySelector('.content-container').classList.add('the-loader');
   // fetch request with the clicked llnk
   fetch(the_link_href).then(function (response) {
     // The API call was successful! retunr the repsonse text (html string)

@@ -16,6 +16,7 @@ Timber::$dirname = array(
   'views/wp/singular',
   'views/woo',
   'views/woo/parts',
+  'views/woo/parts/tease',
 );
 
 // set the $autoescape value
@@ -174,9 +175,6 @@ class RmccWooTheme extends Timber\Site
       'categories' => __('Categories Menu', 'rmcc-woo-theme'),
       'main_menu' => __('Main Menu', 'rmcc-woo-theme'),
       'mobile_menu' => __('Mobile Menu', 'rmcc-woo-theme'),
-      'help_menu' => __('Help Menu', 'rmcc-woo-theme'),
-      'trade_menu' => __('Trade Menu', 'rmcc-woo-theme'),
-      'account_menu' => __('Account Menu', 'rmcc-woo-theme'),
       'accessories_menu' => __('Accessories Menu', 'rmcc-woo-theme'),
       'parts_menu' => __('Parts Menu', 'rmcc-woo-theme'),
       'footer_nav_menu' => __('Footer Nav Menu', 'rmcc-woo-theme'),
@@ -210,12 +208,6 @@ class RmccWooTheme extends Timber\Site
     $context['has_footer_nav_menu'] = has_nav_menu( 'footer_nav_menu' );
     $context['footer_customers_menu'] = new Timber\Menu( 'footer_customers_menu' );
     $context['has_footer_customers_menu'] = has_nav_menu( 'footer_customers_menu' );
-    $context['help_menu'] = new Timber\Menu( 'help_menu' );
-    $context['has_help_menu'] = has_nav_menu( 'help_menu' );
-    $context['trade_menu'] = new Timber\Menu( 'trade_menu' );
-    $context['has_trade_menu'] = has_nav_menu( 'trade_menu' );
-    $context['account_menu'] = new Timber\Menu( 'account_menu' );
-    $context['has_account_menu'] = has_nav_menu( 'account_menu' );
     // sidebar areas
     $context['sidebar_footer_top_left'] = Timber::get_widgets('Footer Top Left Area');
     $context['sidebar_footer_top_right'] = Timber::get_widgets('Footer Top Right Area');
@@ -227,6 +219,8 @@ class RmccWooTheme extends Timber\Site
     $context['lost_endpoint'] = wc_get_account_endpoint_url( 'lost-password' );
     $context['orders_endpoint'] = wc_get_account_endpoint_url( 'orders' );
     $context['logout_endpoint'] = wc_get_account_endpoint_url( 'customer-logout' );
+    //woo endpoints
+    $context['shop_url'] = get_permalink(woocommerce_get_page_id('shop'));
     // get the woo cart url
     global $woocommerce;
     $context['cart_url'] = $woocommerce->cart->get_cart_url();

@@ -3,27 +3,27 @@
   <div class="desktop-toolbar">
     <nav id="ShopToolbar" class="uk-navbar-container uk-navbar-transparent" uk-navbar>
       
-      <div id="ShopToolbarLeft" class="uk-navbar-left">
-        {% if (function('current_product_orderby_var')) %}
+      <div id="ShopToolbarLeft" class="uk-navbar-left pull-left-15">
+        {% if (fn('current_product_orderby_var')) %}
           <div class="uk-navbar-item min-height-40">
-            <a class="uk-badge badge-sort close-icon" data-link="{{ function ('remove_query_arg', ['orderby'])|e('esc_url') }}" onclick="quickLoad(event);"></a>
+            <a class="uk-badge badge-sort close-icon" data-link="{{ fn('remove_query_arg', ['orderby'])|e('esc_url') }}" onclick="quickLoad(event);"></a>
           </div>
         {% endif %}
-        {% if function('current_product_cat_var') or (function('is_product_category')) %}
+        {% if fn('current_product_cat_var') or fn('is_product_category') %}
           <div class="uk-navbar-item min-height-40">
-            <a class="uk-badge badge-cat close-icon" data-link="{{ function ('remove_query_arg_product_cats_for_filters') }}" onclick="quickLoad(event);">
+            <a class="uk-badge badge-cat close-icon" data-link="{{ fn('remove_query_arg_product_cats_for_filters') }}" onclick="quickLoad(event);">
             </a>
           </div>
         {% endif %}
-        {% if function('current_product_series_var') %}
+        {% if fn('current_product_series_var') or fn('is_product_series') %}
           <div class="uk-navbar-item min-height-40">
-            <a class="uk-badge badge-series close-icon" data-link="{{ function ('remove_query_arg_product_series_for_filters') }}" onclick="quickLoad(event);">
+            <a class="uk-badge badge-series close-icon" data-link="{{ fn('remove_query_arg_product_series_for_filters') }}" onclick="quickLoad(event);">
             </a>
           </div>
         {% endif %}
-        {% if function('current_product_gridlist_var') %}
+        {% if fn('current_product_gridlist_var') %}
         <div class="uk-navbar-item min-height-40">
-          <a class="uk-badge badge-view close-icon" data-link="{{ function ('remove_query_arg', ['grid_list'])|e('esc_url') }}" onclick="quickLoad(event);">
+          <a class="uk-badge badge-view close-icon" data-link="{{ fn('remove_query_arg', ['grid_list'])|e('esc_url') }}" onclick="quickLoad(event);">
           </a>
         </div>
         {% endif %}
@@ -47,7 +47,7 @@
           class="uk-visible@s list-toggle icon list-icon uk-button uk-button-default uk-button-small padding-0-10 uk-margin-small-right {% if function('get_query_var', 'grid_list') == 'list-view' %}uk-active{% endif %}" 
           > 
           </a>
-          <a uk-toggle="target: #toggle-animation" class="uk-button uk-button-default uk-button-small padding-0-10">Filter</a>
+          <a uk-toggle="target: #toggle-animation" class="uk-button uk-button-default uk-button-small padding-0-10 uk-text-capitalize uk-hidden@m">Filter</a>
         </div>
       </div>
     </nav>

@@ -1,8 +1,8 @@
-<aside id="ProductFilters" uk-grid>
+<aside id="ProductFilters">
   
-  <div class="uk-width-1-3@m">
-    <h3 class="uk-h4">Categories:</h3>
-    <ul class="uk-nav uk-nav-default uk-height-medium uk-overflow-auto uk-margin-small-bottom cat-list">
+  <div>
+    <h3 class="uk-h5">Filter by Category</h3>
+    <ul class="uk-nav uk-nav-default uk-height-max-medium uk-overflow-auto uk-margin-small-bottom cat-list">
 
       {% for cat in function('product_cats_for_filters') %}
       
@@ -79,12 +79,14 @@
       {% endif %}
       
     </ul>
-    <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg', 'product_cat')|e('esc_url') }}" onclick="quickLoad(event);">Reset</a>
+    <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg_product_cats_for_filters') }}" onclick="quickLoad(event);">Reset</a>
   </div>
   
-  <div class="uk-width-1-3@m">
-    <h3 class="uk-h4">Series/Model:</h3>
-    <ul class="uk-nav uk-nav-default uk-height-medium uk-overflow-auto uk-margin-small-bottom series-list">
+  <hr>
+  
+  <div>
+    <h3 class="uk-h5">Filter by Series</h3>
+    <ul class="uk-nav uk-nav-default uk-height-max-medium uk-overflow-auto uk-margin-small-bottom series-list">
       {% for cat in function('product_series_for_filters') %}
       
         {% if function ('product_series_has_children', cat.term_id) %}
@@ -158,12 +160,14 @@
       {% if function('product_series_for_filters') is empty %}
         <li>Add some products to some series/models</li>
       {% endif %}
-    
+    <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg_product_series_for_filters') }}" onclick="quickLoad(event);">Reset</a>
     </ul>
   </div>
   
-  <div class="uk-width-1-3@m">
-    <h3 class="uk-h4">Sorting:</h3>
+  <hr>
+  
+  <div>
+    <h3 class="uk-h5">Sorting:</h3>
     {% do action('woocommerce_before_shop_loop') %}
   </div>
 

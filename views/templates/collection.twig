@@ -2,7 +2,13 @@
 
 {% block spec_styles %}
   <style>
-
+    .onsale.uk-card-badge {
+      top: 15px;
+      right: 15px;
+    }
+    .term-description>p {
+      margin: 0;
+    }
   </style>
 {% endblock %}
 
@@ -45,5 +51,5 @@
 {% endblock %}
 
 {% block spec_scripts %}
-
+  <script type='text/javascript' src='{{theme.link}}/assets/js/woo/shop.js'></script>
 {% endblock %}

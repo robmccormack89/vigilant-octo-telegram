@@ -5,7 +5,22 @@
 * @package Rmcc_Woo_Theme
 */
 
-// get the current product_cat query var; check if isset first -> woocommerce.php
+// helper function: finding strings; see below
+function strpos_recursive($haystack, $needle, $offset = 0, &$results = array()) {
+  $offset = strpos($haystack, $needle, $offset);
+  if($offset === false) {
+    return $results;           
+  } else {
+    $results[] = $offset;
+    return strpos_recursive($haystack, $needle, ($offset + 1), $results);
+  }
+}
+
+/**
+* Getting the current query var value/s with given key/s
+*
+*/
+
 function current_product_cat_var() {
   if (isset($_GET['product_cat'])) {
     return $_GET['product_cat'];
@@ -16,20 +31,23 @@ function current_product_series_var() {
     return $_GET['product_series'];
   }
 };
-// get the current product orderby query var; check if isset first -> woocommerce.php
 function current_product_orderby_var() {
   if (isset($_GET['orderby'])) {
     return $_GET['orderby'];
   }
 };
-// get the current grid_list query var; check if isset first -> woocommerce.php
 function current_product_gridlist_var() {
   if (isset($_GET['grid_list'])) {
     return $_GET['grid_list'];
   }
 };
 
-// get the product cat filters -> woocommerce.php
+/**
+* Getting the data for the product taxonomy filters (category & series),
+* then when subs exists, getting them
+*/
+
+// get the product cat filters
 function product_cats_for_filters() {
   $cats_args = array(
     'taxonomy' => 'product_cat',
@@ -57,8 +75,7 @@ function sub_cats_for_filters($term_id) {
   );
   return get_terms($subs_cats_args);
 }
-
-// get the product cat filters -> woocommerce.php
+// get the product series filters
 function product_series_for_filters() {
   $cats_args = array(
     'taxonomy' => 'product_series',
@@ -68,7 +85,7 @@ function product_series_for_filters() {
   );
   return get_terms($cats_args);
 }
-// check to see if product cat has children
+// check to see if product series has children
 function product_series_has_children($term_id) { 
   if ( count( get_term_children( $term_id, 'product_series' ) ) > 0 ) {
     return true;
@@ -76,7 +93,7 @@ function product_series_has_children($term_id) {
     return false;
   };
 };
-// get the sub product_cat filters based on parent term_id
+// get the sub series filters based on parent term_id
 function sub_series_for_filters($term_id) {
   $subs_cats_args = array(
     'taxonomy' => 'product_series',
@@ -87,19 +104,16 @@ function sub_series_for_filters($term_id) {
   return get_terms($subs_cats_args);
 }
 
-// helper function: finding strings; see below
-function strpos_recursive($haystack, $needle, $offset = 0, &$results = array()) {
-  $offset = strpos($haystack, $needle, $offset);
-  if($offset === false) {
-    return $results;           
-  } else {
-    $results[] = $offset;
-    return strpos_recursive($haystack, $needle, ($offset + 1), $results);
-  }
-}
+/**
+* Getting the links for the product filters using add_query_args/remove_query-args;
+* Checks whether current url is an archive for a taxonomy (category & series),
+* then when using filters, adds/removes the correct query-args, with the shop base, minus the taxonomy archive path,
+* e.g: /product-category/clothing/hoodies -> /shop/?product_cat=hoodies
+*/
+
 // add query arg link for product_cats in filters & escape the url
 function add_query_arg_product_cats_for_filters($cat_slug) {
-  // set the query arg url for product_cat from the product_cat->slug, removing _pjax
+  // set the query arg url for product_cat from the product_cat->slug
   $query_arg_product_cats_args = array(
     'product_cat' => $cat_slug,
   );
@@ -127,40 +141,32 @@ function add_query_arg_product_cats_for_filters($cat_slug) {
 }
 // add query arg link for product_cats in filters & escape the url
 function remove_query_arg_product_cats_for_filters() {
-  // get the current gloabl url with paths & parameters
-  global $wp;
-  $current_url = home_url( add_query_arg( array(), $wp->request ) );
-  // get the current page path
-  $current_url_page_path = $_SERVER['REQUEST_URI'];
-  // get the current query string
-  $current_url_query_string = $_SERVER['QUERY_STRING'];
-  // if query_string exists
-  if (!empty($current_url_query_string)) {
-    // set link for reset filters; removes product_cat & _pjax from link
-    $new_path = remove_query_arg($arr_params = array( 'product_cat'));
+  // paths
+  $current_uri = home_url( add_query_arg( NULL, NULL ) ); // full current url with params
+  $current_url_page_path = strtok($_SERVER["REQUEST_URI"], '?'); // with https & host
+  // $current_url_page_path = strtok($current_uri, '?'); // without https & host
+  $current_url_query_string = $_SERVER['QUERY_STRING']; // isolated query string: key=value
+  // shop base url
+  $shop_base = '/shop';
+  // key values
+  $query_key_value = 'product_cat';
+  $cat_key_value = 'product-category';
+  // check keys in paths
+  $found_in_query = strpos_recursive($current_url_query_string, $query_key_value);
+  $found_in_path = strpos_recursive($current_url_page_path, $cat_key_value);
+  // if query_string exists & contains product_cat, remove product_cat query value
+  if(($found_in_query)&&(!empty($current_url_query_string))) {
+    $output = remove_query_arg('product_cat');
   };
-  // if page path exists
-  if (!empty($current_url_page_path)) {
-    // current page path to be striped of last /
-    $fixed_path = $current_url_page_path;
-    // stripping last /
-    $fixed_path = substr_replace($fixed_path, '', strrpos($fixed_path, '/'), 1);
-    // 'category' is again our search key
-    $key_value = 'category'; 
-    // find 'category' string in the page path
-    $found = strpos_recursive($current_url_page_path, $key_value);
-    // if the 'category' exists in the current page path
-    if($found) {
-      // rebuild the remove query arg link removing product-category path from it
-      $new_path = str_replace($fixed_path,'/shop',$current_url);
-    } else {
-      $new_path = remove_query_arg($arr_params = array( 'product_cat'));
-    }   
+  // if page path exists & contains product-category
+  if(($found_in_path)&&(!empty($current_url_page_path))) {
+    $strp_path = substr_replace($current_url_page_path, '', strrpos($current_url_page_path, '/'), 1);
+    $output = str_replace($strp_path, $shop_base, $current_uri);
   };
-  // return the new path
-  return esc_url($new_path);  
+  // return url with esc
+  return esc_url($output);  
 }
-// add query arg link for product_cats in filters & escape the url
+// add query arg link for product_series in filters & escape the url
 function add_query_arg_product_series_for_filters($cat_slug) {
   // set the query arg url for product_cat from the product_cat->slug, removing _pjax
   $query_arg_product_cats_args = array(
@@ -172,7 +178,7 @@ function add_query_arg_product_series_for_filters($cat_slug) {
   // get the page path from the array
   $url_path = $parsed_url['path'];
   // the value we will use to search for in string
-  $key_value = 'series'; 
+  $key_value = 'product-series-model'; 
   // find key_value string in the page path
   $found = strpos_recursive($url_path, $key_value);
   // if the 'category' exists in the current page path
@@ -188,38 +194,39 @@ function add_query_arg_product_series_for_filters($cat_slug) {
   // return the new path
   return esc_url($new_path);
 }
-// add query arg link for product_cats in filters & escape the url
+// add query arg link for product_series in filters & escape the url
 function remove_query_arg_product_series_for_filters() {
-  // get the current gloabl url with paths & parameters
-  global $wp;
-  $current_url = home_url( add_query_arg( array(), $wp->request ) );
-  // get the current page path
-  $current_url_page_path = $_SERVER['REQUEST_URI'];
-  // get the current query string
-  $current_url_query_string = $_SERVER['QUERY_STRING'];
-  // if query_string exists
-  if (!empty($current_url_query_string)) {
-    // set link for reset filters; removes product_cat & _pjax from link
-    $new_path = remove_query_arg($arr_params = array( 'product_series'));
+  // paths
+  $current_uri = home_url( add_query_arg( NULL, NULL ) ); // full current url with params
+  $current_url_page_path = strtok($_SERVER["REQUEST_URI"], '?'); // with https & host
+  // $current_url_page_path = strtok($current_uri, '?'); // without https & host
+  $current_url_query_string = $_SERVER['QUERY_STRING']; // isolated query string: key=value
+  // shop base url
+  $shop_base = '/shop';
+  // key values
+  $query_key_value = 'product_series';
+  $cat_key_value = 'product-series-model';
+  // check keys in paths
+  $found_in_query = strpos_recursive($current_url_query_string, $query_key_value);
+  $found_in_path = strpos_recursive($current_url_page_path, $cat_key_value);
+  // if query_string exists & contains product_cat, remove product_cat query value
+  if(($found_in_query)&&(!empty($current_url_query_string))) {
+    $output = remove_query_arg('product_series');
   };
-  // if page path exists
-  if (!empty($current_url_page_path)) {
-    // current page path to be striped of last /
-    $fixed_path = $current_url_page_path;
-    // stripping last /
-    $fixed_path = substr_replace($fixed_path, '', strrpos($fixed_path, '/'), 1);
-    // 'category' is again our search key
-    $key_value = 'series'; 
-    // find 'category' string in the page path
-    $found = strpos_recursive($current_url_page_path, $key_value);
-    // if the 'category' exists in the current page path
-    if($found) {
-      // rebuild the remove query arg link removing product-category path from it
-      $new_path = str_replace($fixed_path,'/shop',$current_url);
-    } else {
-      $new_path = remove_query_arg($arr_params = array( 'product_series'));
-    }   
+  // if page path exists & contains product-category
+  if(($found_in_path)&&(!empty($current_url_page_path))) {
+    $strp_path = substr_replace($current_url_page_path, '', strrpos($current_url_page_path, '/'), 1);
+    $output = str_replace($strp_path, $shop_base, $current_uri);
   };
-  // return the new path
-  return esc_url($new_path);  
+  // return url with esc
+  return esc_url($output);  
+}
+// check if is product-series via uri paramaters
+function is_product_series() {
+  $current_url_page_path = strtok($_SERVER["REQUEST_URI"], '?'); 
+  $cat_key_value = 'product-series-model';
+  $found_in_path = strpos_recursive($current_url_page_path, $cat_key_value);
+  if($found_in_path) {
+    return true;
+  };
 }

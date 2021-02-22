@@ -1,10 +1,9 @@
 <header>
-  
   <div id="PrimaryHeader" class="uk-section uk-section-small">
     <div class="uk-container uk-container-expand">
       <div class="uk-flex uk-flex-middle" uk-grid>
-        <div class="uk-width-1-2 uk-width-medium@m">
-          
+        
+        <div class="uk-width-2-3 uk-width-medium@m">
           {% if theme_logo_url %}
             <a href="{{ site.url }}" title="{{ site.title }}">
               <img class="uk-logo" data-src="{{ theme_logo_url }}" width="225" height="82" alt="{{ site.title }} Logo" uk-img>
@@ -14,11 +13,10 @@
               <img class="uk-logo" data-src="https://via.placeholder.com/225x82.png?text=+" width="225" height="82" alt="" uk-img>
             </a>
           {% endif %}
-          
         </div>
-        <div class="uk-width-expand uk-visible@m">
         
-          <div class="top-search-bar">
+        <div class="uk-width-expand uk-visible@m">
+          <div class="top-search-bar uk-visible@l">
           	<form id="form_validate_search" class="form_search_main uk-width-1-1 uk-inline" role="search" method="get" action="{{site.url}}" accept-charset="utf-8" novalidate="novalidate">
           		<div class="uk-search uk-search-default uk-search-large">
           			<a href="#" title="Submit search" class="uk-search-icon-flip uk-icon uk-search-icon">
@@ -31,71 +29,31 @@
           		<div id="response_search_results" class="search-results-ajax uk-height-max-medium uk-overflow-auto"></div>
           	</form>
           </div>
-        
         </div>
-        <div class="uk-width-auto uk-visible@m">
         
-          <ul class="uk-navbar-nav pull-left-15">
-            {% if has_help_menu %}
-              <li class="uk-inline">
-                <a href="#">
-                  <i class="far fa-question-circle fa-2x uk-margin-small-right"></i>
-                  {{help_menu.title}}
-                </a>
-                <div uk-dropdown>
-                  <ul class="uk-nav uk-nav-default">
-                    <li class="uk-nav-header oswald">{{help_menu.title}}</li>
-                    <li class="uk-nav-divider"></li>
-                    {% for item in help_menu.get_items %}
-                      <li class="{{ item.classes | join(' ') }}">
-                        <a href="{{ item.get_link }}">{{ item.title }}</a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </li>
-            {% endif %}
-            {% if has_trade_menu %}
-              <li class="uk-inline">
-                <a href="#">
-                  <i class="fas fa-truck-loading fa-2x uk-margin-small-right"></i>
-                  {{trade_menu.title}}
-                </a>
-                <div uk-dropdown>
-                  <ul class="uk-nav uk-nav-default">
-                    <li class="uk-nav-header oswald">{{trade_menu.title}}</li>
-                    <li class="uk-nav-divider"></li>
-                    {% for item in trade_menu.get_items %}
-                      <li class="{{ item.classes | join(' ') }}">
-                        <a href="{{ item.get_link }}">{{ item.title }}</a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </li>
-            {% endif %}
-            <li class="uk-inline">
+        <div class="uk-width-auto uk-visible@m">
+          <ul class="uk-navbar-nav">
+            <li>
+              <a href="{{shop_url}}">
+                <i class="fas fa-tractor fa-2x uk-margin-small-right"></i>
+                Parts
+              </a>
+            </li>
+            <li>
+              <a href="/contact">
+                <i class="far fa-envelope fa-2x uk-margin-small-right"></i>
+                Contact
+              </a>
+            </li>
+            <li>
               <a href="{{dashboard_endpoint}}">
-                <i class="far fa-user-circle fa-2x uk-margin-small-right"></i>
+                <i class="far fa-user fa-2x uk-margin-small-right"></i>
                 {% if is_user_logged_in %}Account{% else %}Sign up/Login{% endif %}
               </a>
-              {% if has_account_menu %}
-                <div uk-dropdown>
-                  <ul class="uk-nav uk-nav-default">
-                    <li class="uk-nav-header oswald">{{account_menu.title}}</li>
-                    <li class="uk-nav-divider"></li>
-                    {% for item in account_menu.get_items %}
-                      <li class="{{ item.classes | join(' ') }}">
-                        <a href="{{ item.get_link }}">{{ item.title }}</a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              {% endif %}
             </li>
             <li class="uk-inline">
               <a href="#MiniCartModal" uk-toggle>
-                <i class="fas fa-shopping-basket fa-2x uk-margin-small-right"></i>
+                <i class="fas fa-shopping-cart fa-2x uk-margin-small-right"></i>
                 Basket
                 <span class="uk-margin-small-left">
                   {% do action('cart_ajax_result_count') %}
@@ -104,25 +62,26 @@
               </a>
             </li>
           </ul>
-
         </div>
+        
       </div>
     </div>
   </div>
   
   <div id="TertiaryHeader" class="" uk-sticky="animation: uk-animation-slide-top">
-    
     <div class="uk-grid-collapse uk-grid-middle" uk-grid>
+      
       <div class="uk-width-expand uk-background-secondary uk-light uk-padding-small">
         <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
           <div class="uk-navbar-left uk-light">
             
-            <a class="uk-navbar-toggle uk-navbar-item uk-text-emphasis uk-padding-remove uk-text-bold uk-hidden@s" uk-toggle href="#mobile-offcanvas-nav">
-              <i class="fas fa-bars fa-lg"></i><span class="uk-flex-last uk-margin-small-left">Menu</span>
+            <a class="uk-navbar-toggle uk-navbar-item uk-text-emphasis uk-padding-remove uk-text-bold uk-hidden@m" uk-toggle href="#mobile-offcanvas-nav">
+              <i class="fas fa-bars fa-lg"></i>
+              <span class="uk-flex-last uk-margin-small-left">Menu</span>
             </a>
             
             {% if has_menu_main %}
-              <ul class="uk-navbar-nav the-main-menu uk-visible@s">
+              <ul class="uk-navbar-nav the-main-menu uk-visible@m">
 
                 <li class="uk-inline cats-menu-main">
                   <a href="#" class="uk-h5 dont-underline uk-margin-remove">Browse Categories <i class="fas fa-angle-down menu-dropicon uk-margin-small-left"></i></a>
@@ -214,9 +173,7 @@
                 </li>
 
                 {% for item in menu_main.get_items %}
-                
                   {% if item.get_children %}
-                  
                     <li class="uk-light {{ item.classes | join(' ') }}"><a class="uk-h5 dont-underline uk-margin-remove" href="{{ item.link }}">{{ item.title }}<i class="fas fa-angle-down menu-dropicon uk-margin-small-left"></i></a>
                       <div class="uk-navbar-dropdown">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -237,12 +194,11 @@
                         </ul>
                       </div>
                     </li>
-                  
                   {% else %}
                     <li class=" {{ item.classes | join(' ') }}"><a class="uk-h5 dont-underline uk-margin-remove" title="{{ item.title }}" href="{{ item.get_link }}">{{ item.title }}</a></li>
                   {% endif %}
-                
                 {% endfor %}
+                
               </ul>
             {% else %}
               <p class="uk-margin-remove uk-light">Add a menu to the Main Menu slot in Appearance > Menus</p>
@@ -251,19 +207,30 @@
           </div>
         </nav>
       </div>
+      
       <div class="uk-width-auto uk-section-primary uk-light uk-padding-small">
         <div class="uk-child-width-auto" uk-grid>
           <div class="">
-            <a href="#" class="uk-h5 dont-underline uk-margin-remove"><i class="fas fa-phone-alt"></i><span class="uk-margin-small-left uk-visible@xl">Call us on <span class="uk-text-underline">01 123 4567</span></a>
+            <a href="#" class="uk-h5 dont-underline uk-margin-remove">
+              <i class="fas fa-phone-alt"></i>
+              <span class="uk-margin-small-left uk-visible@xl">Call us on <span class="uk-text-underline">01 123 4567</span></span>
+            </a>
           </div>
           <div class="">
-            <a href="#" class="uk-h5 dont-underline uk-margin-remove"><i class="far fa-envelope"></i><span class="uk-margin-small-left uk-visible@xl">Email us at <span class="uk-text-underline">info@nedmurphytractors.ie</span></a>
+            <a href="#" class="uk-h5 dont-underline uk-margin-remove">
+              <i class="far fa-envelope"></i>
+              <span class="uk-margin-small-left uk-visible@xl">Email us at <span class="uk-text-underline">info@nedmurphytractors.ie</span></span>
+            </a>
           </div>
           <div class="">
-            <a href="#" class="uk-h5 dont-underline uk-margin-remove"><i class="fab fa-facebook-f"></i><span class="uk-margin-small-left uk-visible@xl">Find us on <span class="uk-text-underline">Facebook</span></a>
+            <a href="#" class="uk-h5 dont-underline uk-margin-remove">
+              <i class="fab fa-facebook-f"></i>
+              <span class="uk-margin-small-left uk-visible@xl">Find us on <span class="uk-text-underline">Facebook</span></span>
+            </a>
           </div>
         </div>
       </div>
+      
     </div>
   </div>
   
@@ -310,13 +277,6 @@
                     <li class="theme-border-bottom {{ item.classes | join(' ') }}"><a title="{{ item.title }}" href="{{ item.get_link }}">{{ item.title }}</a></li>
                   {% endif %}
                 {% endfor %}
-                {% if not user %}
-                  <li class="theme-border-bottom"><a href="/my-account"><i class="far fa-user uk-margin-small-right"></i> Login / Register</a></li>
-                {% else %}
-                  <li class="theme-border-bottom"><a href="/my-account"><i class="far fa-user uk-margin-small-right"></i> My Account</a></li>
-                {% endif %}
-                <li class="theme-border-bottom"><a href="#"><i class="fas fa-plus uk-margin-small-right"></i> Buld your Product Box</a></li>
-                <li class="theme-border-bottom"><a href="#"><i class="fab fa-facebook-f uk-margin-small-right"></i> Find us on Facebook</a></li>
               {% endif %}
             </ul>
           </li>
@@ -349,7 +309,6 @@
       </div>
     </div>
   </div>
-  
 </header>
 
 <div id="MiniCartModal" class="minicart-modal" uk-modal>
@@ -358,16 +317,18 @@
       <div class="widget_shopping_cart_content">
         {{fn('woocommerce_mini_cart')}}
       </div>
-      
+      <!-- mini cart uikit custmizations -->
       <script>
-      jQuery(function($) {
-        function WooMiniCart() {
-          $(".woocommerce-mini-cart__buttons .button:first-child").addClass("uk-button uk-button-primary uk-button-small uk-width-1-1");
-          $(".woocommerce-mini-cart__buttons .button.checkout").addClass("uk-button uk-button-link uk-width-1-1 dont-underline");
-        };
-        $(".widget_shopping_cart_content").load(WooMiniCart());
-        $("body").on('DOMSubtreeModified', ".minicart-modal", WooMiniCart);
-      });
+        jQuery(function($) {
+          function WooMiniCart() {
+            $(".woocommerce-mini-cart__buttons .button:first-child").addClass("uk-button uk-button-primary uk-button-small uk-width-1-1");
+            $(".woocommerce-mini-cart__buttons .button.checkout").addClass("uk-button uk-button-link uk-width-1-1 dont-underline");
+          };
+          // on load
+          $(".widget_shopping_cart_content").load(WooMiniCart());
+          // on dom modified
+          $("body").on('DOMSubtreeModified', ".minicart-modal", WooMiniCart);
+        });
       </script>
     </div>
   </div>

@@ -51,5 +51,5 @@ jQuery(function($) {
   $(".woocommerce").load(DoAllWoo());
   $(".woocommerce").load(FilterBadgesRe());
   // on dom modified
-  $("body").on('DOMSubtreeModified', "#MainProductArchive", DoAllWoo);
+  $("body").on('DOMSubtreeModified', "#BlockContent", DoAllWoo);
 });

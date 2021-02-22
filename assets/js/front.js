@@ -12,13 +12,13 @@ jQuery(function(){
       type: 'progressbar',
       clickable: true,
     },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+    // navigation: {
+    //   nextEl: '.swiper-button-next',
+    //   prevEl: '.swiper-button-prev',
+    // },
   });
   
-  
+  // second swiper
   var info_swiper = new Swiper('#slideshow_info', {
     slidesPerView: 3,
     spaceBetween: 0,
