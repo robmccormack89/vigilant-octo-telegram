@@ -3,7 +3,7 @@
 
 <head>
   
-  <meta charset="{{site.charset}}" />
+  <meta charset="{{site.charset|e('html_attr')}}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   {{ function('wp_head') }}
@@ -11,16 +11,16 @@
   {% block spec_styles %}
   {% endblock %}
   
-  <script src="{{theme.link}}/assets/js/lib/infinite-scroll.pkgd.min.js"></script>
+  <script src="{{theme.link|e('esc_url')}}/assets/js/lib/infinite-scroll.pkgd.min.js"></script>
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <!-- global woocommerce theme styles -->
-  <link rel="stylesheet" href="{{theme.link}}/assets/css/woo.css" />
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/woo.css" />
   
   <!-- theme styles -->
-  <link rel="stylesheet" href="{{theme.link}}/assets/css/theme.css" />
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/theme.css" />
   
   <!-- new styles -->
   <style>
@@ -360,7 +360,7 @@
 
 {% block bodywrap %}
 
-  <body class="{{ body_class }} no-overflow" data-template="base.twig">
+  <body class="{{body_class|e('html_attr')}} no-overflow" data-template="base.twig">
     <div id="ThemePreload" class="theme-preload"></div>
 
     {% block header %}
@@ -404,7 +404,7 @@
       <div class="uk-container">
         <div class="uk-child-width-1-4 uk-grid-small" uk-grid>
           <div class="uk-text-center">
-            <a class="uk-link-text" href="{{shop_url}}">
+            <a class="uk-link-text" href="{{shop_url|e('esc_url')}}">
               <i class="fas fa-tractor fa-lg"></i>
               <div class="uk-text-small">Parts</div>
             </a>
@@ -416,7 +416,7 @@
             </a>
           </div>
           <div class="uk-text-center">
-            <a class="uk-link-text" href="{{dashboard_endpoint}}">
+            <a class="uk-link-text" href="{{dashboard_endpoint|e('esc_url')}}">
                 <i class="far fa-user fa-lg"></i>
               {% if not user %}
                 <div class="uk-text-small">Login/Signup</div>
@@ -440,8 +440,8 @@
     
     {{ function('wp_footer') }}
     
-    <script type='text/javascript' src='{{theme.link}}/assets/js/woo/woo.js'></script>
-    <script type='text/javascript' src='{{theme.link}}/assets/js/quickload.js'></script>
+    <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/woo.js'></script>
+    <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/quickload.js'></script>
     
     {% block spec_scripts %}
     {% endblock %}
