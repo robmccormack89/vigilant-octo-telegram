@@ -15,7 +15,6 @@
   
     <div id="ProductMeta" class="uk-article-meta push-down-5">
       {{ post.terms( {query:{taxonomy:'product_cat', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ')|e('esc_html') }}
-      {# post.terms( {query:{taxonomy:'product_series', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ') #}
     </div>
     
     <div id="ProductTitle">

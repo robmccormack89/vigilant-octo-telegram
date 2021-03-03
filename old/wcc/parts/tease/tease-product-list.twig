@@ -1,0 +1,62 @@
+{{ fn('timber_set_product', post) }}
+
+<article id="product-{{ post.id|e('html_attr') }}" class="entry item list-item product-list-item {{ post.class|e('html_attr') }}" data-product-id="{{ post.id|e('html_attr') }}">
+	<div class="uk-card uk-card-hover uk-card-body uk-padding-small theme-border uk-grid-match uk-grid-collapse" uk-grid>
+		
+		{% do action( 'woocommerce_before_shop_loop_item' ) %}
+		
+		<div id="ProductImg" class="uk-width-1-5">
+			<a class="single-product-image-link" href="{{ post.link|e('esc_url') }}">
+				{% do action('woocommerce_before_shop_loop_item_title') %}
+				<img data-src="{{ post.thumbnail.src|resize(300, 300)|e('esc_url')|default('https://via.placeholder.com/300x350.png?text=+') }}" class="tease-product-image" alt="{{ post.thumbnail.alt|e('html_attr') }}" uk-img>
+			</a>
+		</div>
+		
+		<div id="ProductDetails" class="uk-width-expand padding-15-15-15-30">
+      <div class="">
+  			<div class="uk-position-relative uk-inline uk-width-1-1 tease-list-content">
+
+  				{% do action( 'woocommerce_shop_loop_item_title' ) %}
+            
+          <div class="labels-wrap">
+            {% do action( 'woocommerce_before_shop_loop_item_title' ) %}
+          </div>
+					
+					<div id="ProductTitle" class="uk-position-top-left">
+			      {% do action('woocommerce_shop_loop_item_title') %}
+			      <h3 class="uk-card-title uk-margin-remove-bottom push-down-5">
+			        <a class="uk-link-heading" href="{{ post.link|e('esc_url') }}">{{ post.title|e('esc_html') }}</a>
+			      </h3>
+						<p class="uk-text-small uk-margin-remove">{% do action( 'custom_stock_quantity' ) %}</p>
+			    </div>
+          
+          <div id="ProductPriceRating" class="uk-text-right uk-position-top-right">
+            {% do action( 'woocommerce_after_shop_loop_item_title' ) %}
+          </div>
+					
+					<div id="ProductMeta" class="uk-article-meta uk-position-center-right uk-text-right">
+						<div>
+							<span class="uk-text-bold uk-text-emphasis">Category:</span> {{ post.terms( {query:{taxonomy:'product_cat', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ')|e('esc_html') }}
+						</div>
+						<div>
+							<span class="uk-text-bold uk-text-emphasis">Series:</span> {{ post.terms( {query:{taxonomy:'product_series', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0 }} )|join(', ') }}
+						</div>
+						<div>
+							<span class="uk-text-bold uk-text-emphasis">Model:</span> {{ post.terms( {query:{taxonomy:'product_series', orderby:'name', order: 'ASC', childless: true, hierarchical: false }} )|join(', ') }}
+						</div>
+					</div>
+
+  				<div id="ProductReadmore" class="uk-position-bottom-left">
+						<p class="uk-text-small uk-margin-remove">{{ post.preview.length(16).force }}</p>
+  				</div>
+          
+  				<div id="ProductButtons" class="tease-product-buttons uk-position-bottom-right">
+  					{% do	action( 'woocommerce_after_shop_loop_item' ) %}
+  				</div>
+          
+  			</div>
+    	</div>
+		</div>
+		
+	</div>
+</article>

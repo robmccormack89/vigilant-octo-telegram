@@ -67,4 +67,4 @@ if ( class_exists( 'ACF' ) ) {
 }
 
 // load the Custom Widget
-require get_template_directory() . '/widgets/uikit-html-widget.php';
+require get_template_directory() . '/inc/widgets/uikit-html-widget.php';

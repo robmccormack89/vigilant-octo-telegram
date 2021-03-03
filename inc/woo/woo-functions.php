@@ -5,6 +5,31 @@
 *
 * @package Rmcc_Woo_Theme
 */
+
+
+function bbloomer_remove_product_tabs( $tabs ) {
+    unset( $tabs['additional_information'] ); 
+    return $tabs;
+}
+add_filter( 'woocommerce_product_tabs', 'bbloomer_remove_product_tabs', 9999 );
+
+// custom data tab
+function parts_custom_tab( $tabs ) {
+ 
+	$tabs['parts_custom_tab'] = array(
+		'title'    => 'Parts Information',
+		'callback' => 'parts_custom_tab_content', // the function name, which is on line 15
+		'priority' => 50,
+	);
+ 
+	return $tabs;
+}
+add_filter( 'woocommerce_product_tabs', 'parts_custom_tab' );
+// custom data tab content
+function parts_custom_tab_content( $slug, $tab ) {
+  // get the additonal information tab template, a part of which has been modified in our theme; see wooocmmerce->single-product->product-attributes.php
+	wc_get_template('single-product/tabs/additional-information.php');
+}
   
 // remove woo scripts and styles selectively
 function theme_woo_script_styles() {
@@ -30,13 +55,29 @@ function cart_ajax_result_count() {
   echo '</span>';
 }
 add_action( 'cart_ajax_result_count', 'cart_ajax_result_count' );
-// ajax result count
+// ajax subtotal
 function cart_ajax_subtotal() {
   echo '<span class="subtotal-cart">';
   echo WC()->cart->get_cart_subtotal();
   echo '</span>';
 }
 add_action( 'cart_ajax_subtotal', 'cart_ajax_subtotal' );
+
+function custom_stock_quantity() {
+  global $product; 
+  $numleft  = $product->get_stock_quantity(); 
+  if($numleft==0) {
+     // out of stock
+      echo "<span class='uk-text-danger'>0 in stock.</span>"; 
+  }
+  else if($numleft==1) {
+      echo "<span class='uk-text-warning'>Just ".$numleft ." in stock.</span>";
+  }
+  else {
+      echo "<span class='uk-text-success'>".$numleft ." in stock.</span>";
+  }
+}
+add_action( 'custom_stock_quantity', 'custom_stock_quantity' );
 
 function custom_filter_wc_cart_item_remove_link( $sprintf, $cart_item_key ) {
   if ( is_admin() && ! defined( 'DOING_AJAX' ) )

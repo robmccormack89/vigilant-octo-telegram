@@ -221,10 +221,25 @@ function remove_query_arg_product_series_for_filters() {
   // return url with esc
   return esc_url($output);  
 }
+
+/**
+* Checks to see if we are on a taxonomy archive; as opposed to query var archive
+*
+*/
+
 // check if is product-series via uri paramaters
 function is_product_series() {
   $current_url_page_path = strtok($_SERVER["REQUEST_URI"], '?'); 
   $cat_key_value = 'product-series-model';
+  $found_in_path = strpos_recursive($current_url_page_path, $cat_key_value);
+  if($found_in_path) {
+    return true;
+  };
+}
+// check if is product-series via uri paramaters
+function is_product_cat() {
+  $current_url_page_path = strtok($_SERVER["REQUEST_URI"], '?'); 
+  $cat_key_value = 'product-category';
   $found_in_path = strpos_recursive($current_url_page_path, $cat_key_value);
   if($found_in_path) {
     return true;

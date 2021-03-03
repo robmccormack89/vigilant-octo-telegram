@@ -1,6 +1,6 @@
 jQuery(function($) {
 
-  // pagination
+  // site wide pagination with conditional
   if ($(".uk-pagination").length) {
     $('.archive-posts').infiniteScroll({
       path: '.next',
@@ -14,6 +14,12 @@ jQuery(function($) {
       // disable loading on scroll
     });
   };
+  
+  // add to cart button triggers modal when item is added to cart
+  $(document).on('added_to_cart', function(e, fragments, cart_hash, this_button) {
+    var modal = UIkit.modal("#MiniCartModal");
+    modal.show();
+  });
 
   // ajax search js
   $(document).on("input", "#input_search", _.debounce(function() {
@@ -62,7 +68,12 @@ jQuery(function($) {
 
     });
   }, 500));
-
+  // search results hide on additional click away
+  $(document).on('click', function(e) {
+    if ($(e.target).closest(".top-search-bar").length === 0) {
+      $("#response_search_results").hide();
+    }
+  });
   // ajax search mobile js
   $(document).on("input", "#input_search_mobile", _.debounce(function() {
 
@@ -110,21 +121,12 @@ jQuery(function($) {
 
     });
   }, 500));
-
-  // search results hide on additional click away
-  $(document).on('click', function(e) {
-    if ($(e.target).closest(".top-search-bar").length === 0) {
-      $("#response_search_results").hide();
-    }
-  });
-
   // search results hide on additional click away
   $(document).on('click', function(e) {
     if ($(e.target).closest(".top-search-bar-mobile").length === 0) {
       $("#response_search_results_mobile").hide();
     }
   });
-
   // helper function to highlight search results text
   $.fn.wrapInTag = function(opts) {
     function getText(obj) {
@@ -142,11 +144,5 @@ jQuery(function($) {
       }
     });
   };
-
-  // add to cart button triggers modal when item is added to cart
-  $(document).on('added_to_cart', function(e, fragments, cart_hash, this_button) {
-    var modal = UIkit.modal("#MiniCartModal");
-    modal.show();
-  });
 
 });

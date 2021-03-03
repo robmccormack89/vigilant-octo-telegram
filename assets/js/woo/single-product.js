@@ -15,3 +15,54 @@ jQuery(function($) {
   // tab heading
   $(".tab-content h2").addClass("uk-card-title");
 });
+
+jQuery(function(){
+  // related swiper
+  var related_swiper = new Swiper('#slideshow_related', {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: true,
+    // },
+    // init: false,
+    pagination: {
+      el: '.swiper-pagination',
+      dynamicBullets: true,
+    },
+    breakpoints: {
+      // 960: {
+      //   slidesPerView: 3,
+      //   spaceBetween: 15,
+      // },
+      1290: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    }
+  });
+  // upsells swiper
+  var upsells_swiper = new Swiper('#slideshow_upsells', {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: true,
+    // },
+    // init: false,
+    pagination: {
+      el: '.swiper-pagination',
+      dynamicBullets: true,
+    },
+    breakpoints: {
+      // 960: {
+      //   slidesPerView: 3,
+      //   spaceBetween: 15,
+      // },
+      1290: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    }
+  });
+});

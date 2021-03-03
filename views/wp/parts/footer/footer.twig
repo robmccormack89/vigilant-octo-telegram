@@ -1,0 +1,108 @@
+<footer>
+  
+  {% include 'footer-secondary.twig' %}
+  
+  <div id="FooterMain" class="uk-background-secondary uk-section uk-padding-remove-bottom uk-light">
+    <div class="uk-container uk-container-expand">
+      <div class=" uk-margin-bottom uk-grid-large" uk-grid>
+        
+        <div class="uk-width-1-3@m">
+          
+          <div class="footer-logo uk-margin-bottom">
+            {% if theme_logo_url %}
+              <a href="{{ site.url|e('esc_url') }}" title="{{ site.title|e('html_attr') }}">
+                <img class="uk-logo" data-src="{{ theme_logo_url|e('esc_url') }}" width="225" height="82" alt="{{ site.title|e('html_attr') }} Logo" uk-img>
+              </a>
+            {% else %}
+              <a href="{{ site.url|e('esc_url') }}">
+                <img class="uk-logo" data-src="https://via.placeholder.com/225x82.png?text=+" width="225" height="82" alt="" uk-img>
+              </a>
+            {% endif %}
+          </div>
+          
+          <div class="footer-left-content">
+            {% if sidebar_footer_top_left %}
+              {{ sidebar_footer_top_left }}
+            {% else %}
+              <p class="uk-text-emphasis">Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
+              <a href="#" class="uk-text-underline">Click here</a>
+            {% endif %}
+          </div>
+          
+        </div>
+        
+        <div class="uk-width-1-6@m">
+          {% if has_footer_nav_menu %}
+            <h3 class="uk-text-uppercase uk-h4">{{footer_nav_menu.title}}</h3>
+            <ul class="uk-nav-default" uk-nav>
+              {% for item in footer_nav_menu.get_items %}
+                <li class="{{ item.classes | join(' ')|e('html_attr') }}">
+                  <a href="{{ item.get_link|e('esc_url') }}">{{ item.title|e('esc_html') }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <h3 class="uk-text-uppercase uk-h4">Navigation</h3>
+            <ul class="uk-nav-default" uk-nav>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Shipping Information</a></li>
+              <li><a href="#">Request a Catalogue</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          {% endif %}
+        </div>
+        
+        <div class="uk-width-1-6@m">
+          {% if has_footer_customers_menu %}
+            <h3 class="uk-text-uppercase uk-h4">{{footer_customers_menu.title|e('esc_html')}}</h3>
+            <ul class="uk-nav-default" uk-nav>
+              {% for item in footer_customers_menu.get_items %}
+                <li class="{{ item.classes | join(' ')|e('html_attr') }}">
+                  <a href="{{ item.get_link|e('esc_url') }}">{{ item.title|e('esc_html') }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <h3 class="uk-text-uppercase uk-h4">Customers</h3>
+            <ul class="uk-nav-default" uk-nav>
+              <li><a href="#">Trade</a></li>
+              <li><a href="#">Create an Account</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Contact us</a></li>
+            </ul>
+          {% endif %}
+        </div>
+        
+        <div class="uk-width-1-3@m uk-text-left uk-text-right@m">
+          <h3 class="uk-text-uppercase uk-h4">Sales & Support</h3>
+          <div class="widget-content">
+            <p class="uk-margin-remove-bottom uk-text-emphasis">Call +44 (0)1527 579 111 or Email Us</p>
+            <p class="uk-margin-remove-top uk-text-muted">
+              Some Address, Some Town,<br>
+              Some County, Some Country,<br>
+              Eircode & RBN.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="uk-margin-medium-top uk-margin-medium-bottom uk-child-width-1-2@m uk-flex uk-flex-bottom" uk-grid>
+        <div class="uk-text-center uk-text-left@m">
+
+          {% include 'payment-icons.twig' %}
+
+        </div>
+        <div class="uk-text-center uk-text-small uk-text-right@m">
+          
+          <div class="footer-copyright">
+            © {{ now|date('Y')|e('esc_html') }} {{ bloginfo('name')|e('esc_html') }} | Website by <a href="https://github.com/robmccormack89" target="_blank">RMcCormack</a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</footer>

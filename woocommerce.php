@@ -96,13 +96,7 @@ if ( is_singular( 'product' ) ) {
       
       $thumb_id = get_term_meta($item->term_id, 'thumbnail_id', true);
       $context['thumb_link'] = wp_get_attachment_url($thumb_id);
-      
-      if (current_product_series_var()) {
-        $url_out = get_term_link($item->term_id) . '?product_series=' . get_query_var('product_series');
-      } else {
-        $url_out = get_term_link($item->term_id);
-      };
-      $context['url_out'] = $url_out;
+
     };
     // then Restore the context and loop back to the main query loop.
     wp_reset_postdata();
@@ -121,7 +115,7 @@ if ( is_singular( 'product' ) ) {
     foreach($context['term_subs'] as $item) {
       $thumb_id = get_term_meta($item->term_id, 'thumbnail_id', true);
       $context['thumb_link'] = wp_get_attachment_url($thumb_id);
-      $context['url_out'] = get_term_link($item->term_id);
+      // $context['url_out'] = get_term_link($item->term_id);
     };
     // set cats from series context as empty for now
     $context['cats_from_series'] = '';
@@ -152,7 +146,7 @@ if ( is_singular( 'product' ) ) {
       foreach($context['cats_from_series'] as $item) {
         $thumb_id = get_term_meta($item->term_id, 'thumbnail_id', true);
         $context['thumb_link'] = wp_get_attachment_url($thumb_id);
-        $context['url_out'] = get_term_link($item->term_id) . '?product_series=' . $context['term_slug'];
+        // $context['url_out'] = get_term_link($item->term_id) . '?product_series=' . $context['term_slug'];
       };
       // unshit the tease term template variable with the new term template where term_subs is empty
       array_unshift( $tease_term_template, 'tease-cat-from-series.twig' );
@@ -173,7 +167,28 @@ if ( is_singular( 'product' ) ) {
     wp_reset_postdata();
   };
   
+  // if is product category tax archive
+  if (is_product_cat()) {
+    $quer_obj = get_queried_object();
+    $context['product_cat_obj'] = $quer_obj->slug;
+  }
+  // if is product cat query var
+  elseif (current_product_cat_var() == true) {
+    $context['product_cat_obj'] = get_query_var('product_cat');
+  };
+  
+  // if is product series
+  if (is_product_series()) {
+    $quer_obj = get_queried_object();
+    $context['product_series_obj'] = $quer_obj->slug;
+  }
+  // if is product series query var
+  elseif (current_product_series_var() == true ) {
+    $context['product_series_obj'] = get_query_var('product_series');
+  };
+  
   $context['tease_template'] = $tease_template; 
   $context['tease_term_template'] = $tease_term_template; 
+  
   Timber::render( $templates, $context );
 }

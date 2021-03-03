@@ -1,0 +1,36 @@
+.onsale.uk-card-badge {
+  top: 15px;
+  right: 15px;
+}
+.term-description>p {
+  margin: 0;
+}
+/* badge close icon */
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+/* badge close icon */
+.close-icon::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00d";
+  margin-right: 5px;
+}
+/* badge close icon */
+.grid-icon::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00a";
+  /* font-size: 1.2rem; */
+}
+/* badge close icon */
+.list-icon::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f03a";
+  /* font-size: 1.2rem; */
+}

@@ -1,3 +1,17 @@
+jQuery(function($) {
+  
+  // shop stuff
+  function WooShop() {
+    $("#ProductButtons .button").addClass("uk-button-small uk-button-primary");
+    $(".onsale").addClass("uk-card-badge uk-label");
+  };
+  // on load
+  $("#MainContent").load(WooShop());
+  // on dom modified
+  $("body").on('DOMSubtreeModified', "main", WooShop);
+  
+});
+
 jQuery(function(){
   
   // first swiper
@@ -21,36 +35,36 @@ jQuery(function(){
   // second swiper
   var info_swiper = new Swiper('#slideshow_info', {
     slidesPerView: 3,
-    spaceBetween: 0,
+    spaceBetween: 10,
     // autoplay: {
     //   delay: 4000,
     //   disableOnInteraction: true,
     // },
     // init: false,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+    pagination: {
+      el: '.swiper-pagination',
+      dynamicBullets: true,
     },
     breakpoints: {
       640: {
         slidesPerView: 4,
-        spaceBetween: 30,
+        spaceBetween: 10,
       },
       768: {
         slidesPerView: 5,
-        spaceBetween: 30,
+        spaceBetween: 10,
       },
       960: {
         slidesPerView: 6,
-        spaceBetween: 30,
+        spaceBetween: 20,
       },
       1024: {
         slidesPerView: 7,
-        spaceBetween: 40,
+        spaceBetween: 20,
       },
       1290: {
         slidesPerView: 8,
-        spaceBetween: 40,
+        spaceBetween: 20,
       },
     }
   });

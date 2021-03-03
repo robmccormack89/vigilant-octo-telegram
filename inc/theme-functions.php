@@ -4,6 +4,19 @@
  *
  * @package Rmcc_Woo_Theme
  */
+ 
+add_filter( 'body_class','theme_body_classes' );
+function theme_body_classes( $classes ) {
+
+  if ( is_front_page() || is_page_template('page-templates/categories-template.php') || is_page_template('page-templates/series-template.php') ) {
+
+    $classes[] = 'woocommerce';
+    $classes[] = 'woo-custom';
+    
+  }
+    
+  return $classes;
+}
 
 function ecs_add_post_state( $post_states, $post ) {
  

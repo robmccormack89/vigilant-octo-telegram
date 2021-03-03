@@ -1,11 +1,7 @@
 {% extends "base.twig" %}
 
 {% block pageheader %}
-  <section id="PageTitleSection" class="uk-section uk-background-muted">
-    <div class="uk-container uk-text-center">
-      <h1 class="uk-text-uppercase uk-h2 uk-text-muted">{{ post.title }}</h1>
-    </div>
-  </section>
+  {% include 'header-page.twig' %}
 {% endblock %}
 
 {% block contentwrap %}
@@ -15,13 +11,9 @@
 {% endblock %}
 
 {% block abovefooter %}
-  <section id="AboveFooterSection" class="uk-section uk-background-muted">
-    <div class="uk-container uk-container-large uk-text-center">
-      <p class="uk-margin-remove-bottom">Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Phasellus viverra nulla ut metus varius laoreet. Viverra quis feugiat a. Phasellus viverra nulla ut metus</p>
-    </div>
-  </section>
+  {% include 'above-footer-page.twig' %}
 {% endblock %}
 
 {% block spec_scripts %}
-  <script type='text/javascript' src='{{theme.link}}/assets/js/woo/cart.js'></script>
+  <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/cart.js'></script>
 {% endblock %}

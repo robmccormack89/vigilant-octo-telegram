@@ -13,6 +13,8 @@ Timber::$dirname = array(
   'views/wp/archive',
   'views/wp/parts',
   'views/wp/parts/tease',
+  'views/wp/parts/footer',
+  'views/wp/parts/header',
   'views/wp/singular',
   'views/woo',
   'views/woo/parts',
@@ -312,6 +314,38 @@ class RmccWooTheme extends Timber\Site
       )
     );
     
+    // theme base scripts
+    wp_enqueue_script(
+      'inf-scroll',
+      get_template_directory_uri() . '/assets/js/lib/infinite-scroll.pkgd.min.js',
+      '',
+      '',
+      false
+    );
+    
+    // theme base scripts
+    wp_enqueue_script(
+      'theme-woo',
+      get_template_directory_uri() . '/assets/js/woo/woo.js',
+      '',
+      '',
+      true
+    );
+    
+    // theme base scripts
+    wp_enqueue_script(
+      'theme-quickload',
+      get_template_directory_uri() . '/assets/js/quickload.js',
+      '',
+      '',
+      true
+    );
+    
+    wp_enqueue_style(
+      'theme-google-fonts',
+      'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap',
+      false
+    );
     
     // font awesome
     wp_enqueue_style(

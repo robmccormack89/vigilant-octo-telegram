@@ -1,70 +1,14 @@
 {% extends "base.twig" %}
 
 {% block spec_styles %}
-  <style>
-    span.sku_wrapper {
-        display: block;
-    }
-    span.posted_in {
-        display: block;
-    }
-    span.tagged_as {
-        display: block;
-    }
-    .onsale.uk-card-badge {
-      top: 15px;
-      left: 55px;
-      right: auto;
-    }
-    .woocommerce #content div.product div.images,
-    .woocommerce-page #content div.product div.images,
-    .woocommerce-page div.product div.images,
-    .woocommerce div.product div.images {
-      width: 100%;
-    }
-    .product_meta {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .reset_variations {
-      position: absolute;
-      right: 15px;
-      bottom: -20px;
-    }
-    .single_add_to_cart_button {
-      display: inline-block;
-    }
-    .quantity {
-      width: fit-content;
-      display: inline-block;
-    }
-    .pswp__caption__center {
-      text-align: center;
-      font-size: 14px;
-      padding: 10px;
-      line-height: 20px;
-      color: #ccc;
-    }
-    .woocommerce-variation-price {
-      margin-bottom: 20px;
-    }
-    .comment-form-rating {
-      margin-top: 20px;
-    }
-    #RelatedGrid span.onsale.uk-card-badge.uk-label,
-    #UpsellsGrid span.onsale.uk-card-badge.uk-label {
-      left: 15px;
-    }
-    .uk-tab>*>a {
-      font-size: 1rem;
-      text-transform: capitalize;
-    }
-  </style>
+  <!-- load in swiper-js css -->
+  <link rel="stylesheet" href="{{theme.link}}/assets/css/lib/swiper-bundle.min.css" />
+  <!-- single product styles -->
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/single-product.css" />
 {% endblock %}
 
 {% block content %}
-
-  <div id="product-{{post.id}}" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class }}">
+  <div id="product-{{post.id|e('html_attr')}}" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class|e('html_attr') }}">
     <div class="content-area uk-section uk-section-small uk-section-default">
       <div class="uk-container">
         {% do action('woocommerce_before_single_product') %}
@@ -84,45 +28,39 @@
         <div class="tabs-related-upsells uk-margin-top">
           {% do action('woocommerce_after_single_product_summary') %}
           
-          <meta itemprop="url" content="{{ post.link }}" />
+          <meta itemprop="url" content="{{ post.link|e('esc_url') }}" />
           
           {% if not related_products is empty %}
-            <h2>{{related_products_title}}</h2>
-            <div uk-slider="velocity: 5">
-              <div class="uk-position-relative">
-                <div class="uk-slider-container">
-                  <ul class="uk-slider-items uk-child-width-1-4@m uk-grid uk-grid-small">
-                    {% for post in related_products %}
-                      {% include 'tease-product.twig' %}
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="uk-visible@xl">
-                  <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-                  <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
-                </div>
+            <h2>{{related_products_title|e('esc_html')}}</h2>
+            <div id="slideshow_related" class="swiper-container">
+              <div class="swiper-wrapper">
+                
+                {% for post in related_products %}
+                  <div class="swiper-slide">
+                    {% include 'tease-product.twig' %}
+                  </div>
+                {% endfor %}
+                
               </div>
-              <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
             </div>
           {% endif %}
           
           {% if not up_sells is empty %}
-            <h2>{{up_sells_title}}</h2>
-            <div uk-slider="velocity: 5">
-              <div class="uk-position-relative">
-                <div class="uk-slider-container">
-                  <ul class="uk-slider-items uk-child-width-1-4@m uk-grid uk-grid-small">
-                    {% for post in up_sells %}
-                      {% include 'tease-product.twig' %}
-                    {% endfor %}
-                  </ul>
-                </div>
-                <div class="uk-visible@xl">
-                  <a class="uk-position-center-left-out uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-                  <a class="uk-position-center-right-out uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
-                </div>
+            <h2>{{up_sells_title|e('esc_html')}}</h2>
+            <div id="slideshow_upsells" class="swiper-container">
+              <div class="swiper-wrapper">
+                
+                {% for post in up_sells %}
+                  <div class="swiper-slide">
+                    {% include 'tease-product.twig' %}
+                  </div>
+                {% endfor %}
+                
               </div>
-              <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"></div>
             </div>
           {% endif %}
           
@@ -132,11 +70,10 @@
       </div>
     </div>  
   </div>
-
 {% endblock %}
 
 {% block spec_scripts %}
-  
-  <script type="text/javascript" src="{{theme.link}}/assets/js/woo/single-product.js"></script>
-
+  <!-- load in swiper-js js -->
+  <script src="{{theme.link}}/assets/js/lib/swiper-bundle.min.js"></script>
+  <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/single-product.js'></script>
 {% endblock %}

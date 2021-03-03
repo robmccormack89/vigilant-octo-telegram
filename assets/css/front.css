@@ -32,3 +32,21 @@
   display: none;
 }
 
+
+.uk-divider-small:after {
+  border-top: 3px solid #f8f8f8;
+}
+
+
+#slideshow_info {
+  margin-bottom: -25px;
+}
+#slideshow_info .swiper-wrapper {
+  padding-bottom: 30px;
+}
+#slideshow_info .swiper-pagination {
+  z-index: 99999;
+  bottom: 16px!important;
+  /* left: 49.7%!important; */
+}
+

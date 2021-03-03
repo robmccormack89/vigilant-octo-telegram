@@ -38,6 +38,120 @@
   width: 100%;
   z-index: 9999;
 }
+/* // page ajax loader */
+.the-loader::before {
+  /* content: ""; */
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 40vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #525252;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear;
+  z-index: 1;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.the-loader::after {
+  content: '';
+  position: absolute;
+  background-color: #bdbdbd94;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.theme-preload::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 45vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #525252;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear;
+  z-index: 3;
+}
+.theme-preload::after {
+  content: '';
+  position: absolute;
+  background-color: #ffffff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.no-overflow {
+  overflow: hidden;
+}
+/* preload animation new */
+.theme-preload {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.4s linear;
+}
+.theme-preload.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+/* site loader anim */
+.site-loader::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 45vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #f3f3f3;
+  border-top: 3px solid #525252;
+  border-radius: 100%;
+  will-change: transform;
+  animation: spin 1s infinite linear;
+  z-index: 2;
+}
+.site-loader::after {
+  content: '';
+  position: absolute;
+  background-color: #ffffff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.site-loader::before, .site-loader::after {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.4s linear;
+}
+.site-loader.ldr-hidden::before, .site-loader.ldr-hidden::after {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
 // scroll loader
 .page-load-status {
   display: none;

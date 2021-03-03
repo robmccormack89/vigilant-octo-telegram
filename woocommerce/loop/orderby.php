@@ -32,15 +32,19 @@ if (isset($_GET['orderby'])) {
 <ul class="uk-nav uk-nav-default uk-margin-small-bottom ajax-ordering">
 <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
 	<li>
-		<a 
-		data-link="<?php echo esc_url(add_query_arg(array('orderby' => esc_attr($id)))); ?>" 
-		class="<?php if ($orderby_sort == esc_attr($id)) { echo 'active'; } ?>" 
-		onclick="quickLoad(event);" 
-		data-type="orderby" 
-		data-name="<?php echo esc_html( $name );?>"
-		>
-			<input class="uk-radio " type="radio" <?php if ($orderby_sort == esc_attr($id)) { echo 'checked'; } ?>>
-			<?php echo esc_html( $name ); ?>
+		<a>
+			<label>
+				<input 
+				class="uk-radio <?php if ($orderby_sort == esc_attr($id)) { echo 'here'; } ?>" 
+				type="radio" 
+				data-link="<?php echo esc_url(add_query_arg(array('orderby' => esc_attr($id)))); ?>" 
+				onclick="quickLoad(event);" 
+				data-type="orderby" 
+				data-name="<?php echo esc_html( $name );?>"
+				<?php if ($orderby_sort == esc_attr($id)) { echo 'checked'; } ?>
+				>
+				<?php echo esc_html( $name ); ?>
+			</label>
 		</a>
 	</li>
 <?php endforeach; ?>

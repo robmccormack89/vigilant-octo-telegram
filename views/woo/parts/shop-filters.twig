@@ -1,174 +1,167 @@
 <aside id="ProductFilters">
   
   <div>
+    <h3 class="uk-h5">Sorting:</h3>
+    <div class="uk-panel uk-panel-scrollable uk-margin-small-bottom">
+      {% do action('woocommerce_before_shop_loop') %}
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div>
     <h3 class="uk-h5">Filter by Category</h3>
-    <ul class="uk-nav uk-nav-default uk-height-max-medium uk-overflow-auto uk-margin-small-bottom cat-list">
+    <div class="uk-panel uk-panel-scrollable uk-margin-small-bottom cat-list-panel">
+      <ul class="uk-nav uk-nav-default uk-margin-small-bottom cat-list">
 
-      {% for cat in function('product_cats_for_filters') %}
-      
-        {% if function ('product_cat_has_children', cat.term_id) %}
+        {% for cat in function('product_cats_for_filters') %}
         
-          <li class="uk-parent">
-            
-            <a 
-            data-link="{{ function ('add_query_arg_product_cats_for_filters', cat.slug) }}" 
-            onclick="quickLoad(event);"  
-            class="{% if function('get_query_var', 'product_cat') == cat.slug %}active{% endif %}" 
-            data-type="product_cat" 
-            data-name="{{ cat.name }}" 
-            >
-              
-              <input 
-              class="uk-radio" 
-              type="radio" 
-              {% if function('get_query_var', 'product_cat') == cat.slug %}checked{% endif %}
-              >
-              
-              {{ cat.name }}
-              
-              <ul class="uk-nav-sub">
-                
-                {% for sub_cat in function ('sub_cats_for_filters', cat.term_id) %}
-                  <li>
-                    <a 
-                    data-link="{{ function ('add_query_arg_product_cats_for_filters', sub_cat.slug) }}" 
-                    onclick="quickLoad(event);" 
-                    class="{% if function('get_query_var', 'product_cat') == sub_cat.slug %}active{% endif %}" 
-                    data-name="{{ sub_cat.name }}" 
+          {% if function ('product_cat_has_children', cat.term_id) %}
+          
+            <li id="{{ cat.slug }}" class="uk-parent">
+              <a>
+                <label>
+                  <input 
+                    data-link="{{ function ('add_query_arg_product_cats_for_filters', cat.slug)|e('esc_url') }}" 
+                    onclick="quickLoad(event);"  
                     data-type="product_cat" 
-                    >
-                      <input 
-                      class="uk-radio" 
-                      type="radio" 
-                      {% if function('get_query_var', 'product_cat') == sub_cat.slug %}checked{% endif %}
-                      > {{ sub_cat.name }}
-                    </a>
-                  </li>
-                {% endfor %}
-                
-              </ul>
-              
-            </a>
+                    data-name="{{ cat.name }}" 
+                    class="uk-radio {% if function('get_query_var', 'product_cat') == cat.slug %}here{% endif %}" 
+                    type="radio" 
+                    {% if function('get_query_var', 'product_cat') == cat.slug %}checked{% endif %}
+                  > 
+                  {{ cat.name }}
+                </label>
+              </a>
+              <ul class="uk-nav-sub">
+                  
+                  {% for sub_cat in function ('sub_cats_for_filters', cat.term_id) %}
+                    <li id="{{ sub_cat.slug }}">
+                      <a>
+                        <label>
+                          <input 
+                            data-link="{{ function ('add_query_arg_product_cats_for_filters', sub_cat.slug)|e('esc_url') }}" 
+                            onclick="quickLoad(event);" 
+                            data-name="{{ sub_cat.name }}" 
+                            data-type="product_cat" 
+                            class="uk-radio {% if function('get_query_var', 'product_cat') == sub_cat.slug %}here{% endif %}" 
+                            type="radio" 
+                            {% if function('get_query_var', 'product_cat') == sub_cat.slug %}checked{% endif %}
+                          > {{ sub_cat.name }}
+                        </label>
+                      </a>
+                    </li>
+                  {% endfor %}
+                  
+                </ul>
+            </li>
             
-          </li>
+          {% else %}
           
-        {% else %}
+            <li id="{{ cat.slug }}" >
+              <a>
+                <label>
+                  <input 
+                    data-link="{{ function ('add_query_arg_product_cats_for_filters', cat.slug)|e('esc_url') }}" 
+                    onclick="quickLoad(event);" 
+                    data-type="product_cat" 
+                    data-name="{{ cat.name }}" 
+                    class="uk-radio {% if function('get_query_var', 'product_cat') == cat.slug %}here{% endif %}" 
+                    type="radio" 
+                    {% if function('get_query_var', 'product_cat') == cat.slug %}checked{% endif %}
+                  > {{ cat.name }}
+                </label>
+              </a>
+            </li>
+            
+          {% endif %}
+          
+        {% endfor %}
         
-          <li>
-            <a 
-            data-link="{{ function ('add_query_arg_product_cats_for_filters', cat.slug) }}" 
-            onclick="quickLoad(event);" 
-            class="{% if function('get_query_var', 'product_cat') == cat.slug %}active{% endif %}" 
-            data-type="product_cat" 
-            data-name="{{ cat.name }}" 
-            >
-              <input 
-              class="uk-radio" 
-              type="radio" 
-              {% if function('get_query_var', 'product_cat') == cat.slug %}checked{% endif %}
-              > {{ cat.name }}
-            </a>
-          </li>
-          
+        {% if function('product_cats_for_filters') is empty %}
+          <li>Add some products to some categories</li>
         {% endif %}
         
-      {% endfor %}
-      
-      {% if function('product_cats_for_filters') is empty %}
-        <li>Add some products to some categories</li>
-      {% endif %}
-      
-    </ul>
-    <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg_product_cats_for_filters') }}" onclick="quickLoad(event);">Reset</a>
+      </ul>
+    </div>
+    <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg_product_cats_for_filters')|e('esc_url') }}" onclick="quickLoad(event);">Reset</a>
   </div>
   
   <hr>
   
   <div>
     <h3 class="uk-h5">Filter by Series</h3>
-    <ul class="uk-nav uk-nav-default uk-height-max-medium uk-overflow-auto uk-margin-small-bottom series-list">
-      {% for cat in function('product_series_for_filters') %}
-      
-        {% if function ('product_series_has_children', cat.term_id) %}
+    <div class="uk-panel uk-panel-scrollable uk-margin-small-bottom series-list-panel">
+      <ul class="uk-nav uk-nav-default uk-margin-small-bottom series-list">
+        {% for cat in function('product_series_for_filters') %}
         
-          <li class="uk-parent">
-            
-            <a 
-            data-link="{{ function ('add_query_arg_product_series_for_filters', cat.slug) }}" 
-            onclick="quickLoad(event);"  
-            class="{% if function('get_query_var', 'product_series') == cat.slug %}active{% endif %}" 
-            data-type="product_series" 
-            data-name="{{ cat.name }}" 
-            >
-              
-              <input 
-              class="uk-radio" 
-              type="radio" 
-              {% if function('get_query_var', 'product_series') == cat.slug %}checked{% endif %}
-              >
-              
-              {{ cat.name }}
-              
-              <ul class="uk-nav-sub">
-                
-                {% for sub_cat in function ('sub_series_for_filters', cat.term_id) %}
-                  <li>
-                    <a 
-                    data-link="{{ function ('add_query_arg_product_series_for_filters', sub_cat.slug) }}" 
-                    onclick="quickLoad(event);" 
-                    class="{% if function('get_query_var', 'product_series') == sub_cat.slug %}active{% endif %}" 
-                    data-name="{{ sub_cat.name }}" 
+          {% if function ('product_series_has_children', cat.term_id) %}
+          
+            <li id="{{cat.slug}}" class="uk-parent">
+              <a>
+                <label>
+                  <input 
+                    data-link="{{ function ('add_query_arg_product_series_for_filters', cat.slug)|e('esc_url') }}" 
+                    onclick="quickLoad(event);"  
                     data-type="product_series" 
-                    >
-                      <input 
-                      class="uk-radio" 
-                      type="radio" 
-                      {% if function('get_query_var', 'product_series') == sub_cat.slug %}checked{% endif %}
-                      > {{ sub_cat.name }}
-                    </a>
-                  </li>
-                {% endfor %}
-                
-              </ul>
-              
-            </a>
+                    data-name="{{ cat.name }}" 
+                    class="uk-radio {% if function('get_query_var', 'product_series') == cat.slug %}here{% endif %}" 
+                    type="radio" 
+                    {% if function('get_query_var', 'product_series') == cat.slug %}checked{% endif %}
+                  >  {{ cat.name }}
+                </label>
+              </a>
+              <ul class="uk-nav-sub">
+                  
+                  {% for sub_cat in function ('sub_series_for_filters', cat.term_id) %}
+                    <li id="{{sub_cat.slug}}">
+                      <a>
+                        <label>
+                          <input 
+                            data-link="{{ function ('add_query_arg_product_series_for_filters', sub_cat.slug)|e('esc_url') }}" 
+                            onclick="quickLoad(event);" 
+                            data-name="{{ sub_cat.name }}" 
+                            data-type="product_series" 
+                            class="uk-radio {% if function('get_query_var', 'product_series') == sub_cat.slug %}active{% endif %}" 
+                            type="radio" 
+                            {% if function('get_query_var', 'product_series') == sub_cat.slug %}checked{% endif %}
+                          > {{ sub_cat.name }}
+                        </label>
+                      </a>
+                    </li>
+                  {% endfor %}
+                  
+                </ul>
+            </li>
             
-          </li>
+          {% else %}
           
-        {% else %}
+            <li id="{{cat.slug}}">
+              <a>
+                <label>
+                  <input 
+                    data-link="{{ function ('add_query_arg_product_series_for_filters', cat.slug)|e('esc_url') }}" 
+                    onclick="quickLoad(event);" 
+                    data-type="product_series" 
+                    data-name="{{ cat.name }}" 
+                    class="uk-radio {% if function('get_query_var', 'product_series') == cat.slug %}here{% endif %}" 
+                    type="radio" 
+                    {% if function('get_query_var', 'product_series') == cat.slug %}checked{% endif %}
+                  > {{ cat.name }}}
+                </label>
+              </a>
+            </li>
+            
+          {% endif %}
+          
+        {% endfor %}
         
-          <li>
-            <a 
-            data-link="{{ function ('add_query_arg_product_series_for_filters', cat.slug) }}" 
-            onclick="quickLoad(event);" 
-            class="{% if function('get_query_var', 'product_series') == cat.slug %}active{% endif %}" 
-            data-type="product_series" 
-            data-name="{{ cat.name }}" 
-            >
-              <input 
-              class="uk-radio" 
-              type="radio" 
-              {% if function('get_query_var', 'product_series') == cat.slug %}checked{% endif %}
-              > {{ cat.name }}
-            </a>
-          </li>
-          
+        {% if function('product_series_for_filters') is empty %}
+          <li>Add some products to some series/models</li>
         {% endif %}
-        
-      {% endfor %}
-      
-      {% if function('product_series_for_filters') is empty %}
-        <li>Add some products to some series/models</li>
-      {% endif %}
-    <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg_product_series_for_filters') }}" onclick="quickLoad(event);">Reset</a>
+    </div>
+    <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg_product_series_for_filters')|e('esc_url') }}" onclick="quickLoad(event);">Reset</a>
     </ul>
-  </div>
-  
-  <hr>
-  
-  <div>
-    <h3 class="uk-h5">Sorting:</h3>
-    {% do action('woocommerce_before_shop_loop') %}
   </div>
 
 </aside>

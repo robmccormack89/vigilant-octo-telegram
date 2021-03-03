@@ -2,7 +2,7 @@
   <nav id="BreadsNav" class="breads-nav uk-navbar-container uk-navbar-transparent" uk-navbar>
     <div class="uk-navbar-left">
       <div class="uk-navbar-item min-height-40 pull-left-15">
-        {{ function('yoast_breadcrumb', '<div id="breadcrumbs">','</div>') }}
+        {{ function('yoast_breadcrumb', '<div id="breadcrumbs">','</div>')|e('esc_html') }}
       </div>
     </div>
   </nav>

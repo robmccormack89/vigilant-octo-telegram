@@ -16,17 +16,17 @@
   text-decoration: underline!important;
 }
 #ProductFilters .uk-nav-default a {
-  font-size: .75rem;
+  font-size: .8rem;
   font-weight: 600;
 }
-#ProductFilters .uk-overflow-auto::-webkit-scrollbar {
+#ProductFilters .uk-panel-scrollable::-webkit-scrollbar {
   width: 3px;
 }
-#ProductFilters .uk-overflow-auto::-webkit-scrollbar-thumb {
+#ProductFilters .uk-panel-scrollable::-webkit-scrollbar-thumb {
   border-radius: 0;
   background-color: $global-primary-background;
 }
-#ProductFilters .uk-overflow-auto::-webkit-scrollbar-track {
+#ProductFilters .uk-panel-scrollable::-webkit-scrollbar-track {
   background-color: $global-muted-background;
   border-radius: 0;
 }
@@ -40,7 +40,7 @@
     height: 20px;
     padding: 0 10px;
     font-weight: 600;
-    border-radius: 0;
+    // border-radius: 0;
     vertical-align: middle;
     background: $global-primary-background;
     color: #fff;
