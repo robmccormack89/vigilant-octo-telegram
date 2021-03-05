@@ -11,13 +11,8 @@
     <div class="swiper-wrapper">
       
       {% for slide in home_slides %}
-        {% if slide.thumbnail %}
-          {% set thumb = slide.thumbnail.src|resize(1920, 370) %}
-        {% else %}
-          {% set thumb = 'https://via.placeholder.com/1920x370.png?text=Add+a+featured+image' %}
-        {% endif %}
         
-        <div class="swiper-slide" style="background-position: center;background-image: url('{{ thumb }}');background-size: cover;background-repeat: no-repeat;">
+        <div class="swiper-slide" style="background-position: center;background-image: url('{{ slide.thumbnail.src|resize(1920, 370)|default('https://via.placeholder.com/1920x370.png?text=Add+a+featured+image') }}');background-size: cover;background-repeat: no-repeat;">
           <div class="uk-overlay-primary uk-light uk-width-1-1">
             <div class="uk-section uk-secton-large">
               <div class="uk-container uk-container-expand uk-text-left">
@@ -70,47 +65,107 @@
 {% endblock %}
 
 {% block contentbefore %}
-  <div class="home-cats-section uk-section uk-section-small uk-padding-small uk-section-muted">
-    <div class="">
-      <div id="slideshow_info" class="swiper-container">
-        <div class="swiper-wrapper">
-          {% for item in shopcats %}
-          
-            {% set thumbnail_id = function ('get_term_meta', item.term_id, 'thumbnail_id', true ) %}
-            {% set cat_thumb = function ('wp_get_attachment_url', thumbnail_id) %}
-            
-            {% if cat_thumb %}
-              {% set cat_thumb_url = cat_thumb|resize(650, 360) %}
-            {% else %}
-              {% set cat_thumb_url = 'https://via.placeholder.com/100x100' %}
-            {% endif %}
-          
-            <div class="swiper-slide">
-              <div class="uk-tile uk-tile-default uk-tile-small uk-text-center uk-text-bold uk-text-uppercase">One</div>
+
+  <div class="home-series-section uk-section uk-section-small uk-padding-small uk-section-muted">
+    <div id="slideshow_info" class="swiper-container">
+      <div class="swiper-wrapper">
+        
+        {% for term in product_series %}
+          {% set thumbnail_id = function ('get_term_meta', term.term_id, 'series_thumbnail', true ) %}
+          {% set series_thumb = function ('wp_get_attachment_url', thumbnail_id) %}
+          <div class="swiper-slide">
+            <a href="{{fn('get_term_link', term.slug, 'product_series')}}" class="uk-link-reset">
+              <div class="uk-text-center">
+                <div>
+                  <img data-src="{{ series_thumb|resize(215, 150)|default(theme.link ~ '/assets/images/stock-series.png') }}" width="215" height="150" alt="" uk-img>
+                </div>
+                <span class="uk-text-bold">{{term.name}}</span>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+        
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  
+  <div class="home-cats-wrap">
+    <div class="home-cats uk-panel uk-panel-scrollable uk-height-max-large">
+      <div class="uk-grid-collapse uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-child-width-1-5@xl theme-border-left uk-grid-match" uk-grid>
+        
+        {% for term in product_cats %}
+          {% set cat_thumbnail_id = function ('get_term_meta', term.term_id, 'thumbnail_id', true ) %}
+          {% set cat_thumb = function ('wp_get_attachment_url', cat_thumbnail_id) %}
+          <div>
+            <div class="theme-border-bottom theme-border-right">
+              <a href="{{fn('get_term_link', term.slug, 'product_cat')}}" class="uk-link-reset">
+                <div class="cat-box uk-flex uk-flex-middle uk-grid-small" uk-grid>
+                  <div class="left cat-img uk-width-1-5 uk-width-1-3@m">
+                    <div class="uk-padding-small">
+                      <img src="{{cat_thumb|resize(86, 86)|default(theme.link ~ '/assets/images/stock-cat.jpg')}}" height="86" width="86" alt="">
+                    </div>
+                  </div>
+                  <div class="right cat-details uk-width-4-5 uk-width-2-3@m push-right-15">
+                    <h5 class="uk-margin-remove">{{term.name}}</h5>
+                  </div>
+                </div>
+              </a>
             </div>
-            
-          {% endfor %}
+          </div>
+        {% endfor %}
+        
+        <div>
+          <div class="theme-border-bottom theme-border-right uk-height-1-1">
+            <a href="{{shop_url}}" class="uk-link-reset">
+              <div class="cat-box uk-flex uk-flex-middle uk-grid-small uk-height-1-1" uk-grid>
+                <div class="left cat-img uk-width-1-5 uk-width-1-3@m">
+                  <div class="uk-padding-small">
+                    <img src="{{theme.link}}/assets/images/stock-cat.jpg" height="86" width="86" alt="">
+                  </div>
+                </div>
+                <div class="right cat-details uk-width-4-5 uk-width-2-3@m push-right-15">
+                  <h5 class="uk-margin-remove">View all Categories</h5>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+        
       </div>
     </div>
   </div>
   
-  <div class="uk-section uk-section-default uk-container">
-    <div class="uk-text-center uk-container uk-container-small uk-margin-bottom">
-      <p class="uk-text-meta uk-text-uppercase uk-margin-small-bottom">{{site.title}}</p>
-      <h2 class="uk-margin-remove">Recently Added Parts</h2>
-      <p class="uk-text-meta uk-margin-small-top">{{site.description}}</p>
-      <hr class="uk-divider-small">
-    </div>
-    <div id="ProductsGrid" class="uk-child-width-1-2 uk-child-width-1-4@m uk-grid-small uk-grid-match" uk-grid>
-      {% for post in recent_products %}
-       {% include 'tease-product.twig' %}
-      {% endfor %}
-    </div>
-    <a href="" class="uk-button uk-button-primary uk-align-center uk-margin-remove" hidden>View All Parts</a>
+  <div class="home-featured-tabs uk-section uk-section-small uk-container uk-container-expand">
+    <ul uk-tab uk-switcher>
+      <li class="uk-active"><a href="#">Featured Parts</a></li>
+    </ul>
+    
+    <ul class="uk-switcher uk-margin">
+      <li>
+        <div>
+          <div id="slideshow_featured" class="swiper-container">
+            <div class="swiper-wrapper">
+              
+              {% for post in featured_products %}
+                <div class="swiper-slide">
+                  {% include 'tease-product.twig' %}
+                </div>
+              {% endfor %}
+              
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    
+    <a href="{{shop_url}}" class="uk-button uk-button-default uk-align-center uk-width-small uk-margin-small-top">View All</a>
+    
   </div>
+
 {% endblock %}
 
 {% block abovefooter %}

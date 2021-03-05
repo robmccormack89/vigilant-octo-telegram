@@ -1,41 +1,36 @@
 <?php
 /**
- * The front page template (when backend settings for front page display are set to static or latest posts)
- *
- * @package Rmcc_CV_Theme
- */
+* The front page template (when backend settings for front page display are set to static or latest posts)
+* @package Rmcc_Woo_Theme
+*/
 
+// get the context
 $context = Timber::context();
-$templates = array('front-page.twig');
+
+// get the post object (singular)
 $post = Timber::query_post();
 $context['post'] = $post;
 
+// get the posts object (archive)
+$context['posts'] = new Timber\PostQuery();
+
+// get & set the title. if is blog & home, use site.title, else post.title 
 if ( is_home() && is_front_page() ) {
 	$context['title'] =  get_bloginfo( 'name' );
 } else {
 	$context['title'] =  get_the_title( $post->ID );
 };
 
-$context['posts'] = new Timber\PostQuery();
+$featured_ids = get_field('homepage_product_selection', 'option');
+$featured_args = array(
+   'post_type'             => 'product',
+   'post_status'           => 'publish',
+	 'post__in'      				 => $featured_ids,
+   'posts_per_page'        => '12',
+);
+$context['featured_products'] = new Timber\PostQuery($featured_args);
 
-// homepage product cats to show via acf options page
-$home_product_categories_select_ids = get_field('homepage_product_category_selection', 'option');
-// get product cats
-$shopcats = get_terms( array(
-    'taxonomy' => 'product_cat',
-    'include' => $home_product_categories_select_ids,
-));
-$context['shopcats'] = $shopcats;
-
-$context['homepage_product_category_columns'] = get_field('homepage_product_category_columns', 'option');
-$context['homepage_product_category_section_title'] = get_field('homepage_product_category_section_title', 'option');
-
-$wc_options = get_option('woocommerce_permalinks');
-$product_category_base = $wc_options['category_base'];
-// join the site url to product cat base
-$context['product_category_base'] = '/' . $product_category_base . '';
-
-// get some slides
+// get & set home_slides
 $slides_args = array(
    'post_type' => 'slide',
    'post_status' => 'publish',
@@ -44,19 +39,7 @@ $slides_args = array(
 );
 $context['home_slides'] = new Timber\PostQuery($slides_args);
 
-// homepage product to show via acf options page
-$home_product_select_id = get_field('homepage_product_selection', 'option');
-$context['product_select_shortcode_id'] = '[product_page id="'.$home_product_select_id.'"]';
-
-// get some slides
-$info_slides_args = array(
-   'post_type' => 'info_slide',
-   'post_status' => 'publish',
-   'orderby' => 'date',
-   'order' => 'asc',
-);
-$context['info_home_slides'] = new Timber\PostQuery($info_slides_args);
-
+// get & set recent_products
 $args = array(
    'post_type'             => 'product',
    'post_status'           => 'publish',
@@ -64,4 +47,19 @@ $args = array(
 );
 $context['recent_products'] = new Timber\PostQuery($args);
 
-Timber::render( $templates, $context );
+$context['product_series'] = get_terms([
+	'taxonomy'    => 'product_series',
+	'hide_empty'  => false,
+	'parent'   => 0
+]);
+
+$context['product_cats'] = get_terms([
+	'taxonomy'    => 'product_cat',
+	'hide_empty'  => true,
+	'parent'   => 0,
+	'number' => 9,
+	'exclude' => '15', // excludes uncategorized
+]);
+
+// render the context with template
+Timber::render( array('front-page.twig'), $context );
