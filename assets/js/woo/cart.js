@@ -15,27 +15,27 @@ jQuery(function($) {
     $(".woocommerce-cart-form .coupon .button").addClass("uk-button-primary uk-margin-small-top uk-margin-small-bottom");
     $(".woocommerce-cart-form .coupon label").hide();
     $(".woocommerce-cart-form .quantity .screen-reader-text").hide();
-  };
+  }
   // cart shipping
   function WooCartShip() {
     $("#shipping_method").addClass("uk-list");
-  };
+  }
   // cart totals
   function WooCartTot() {
     $(".cart_totals h2").addClass("uk-h3 uk-margin-top");
     $(".cart_totals .shop_table").addClass("uk-table uk-table-striped");
-  };
+  }
   // cart checkout
   function WooCartCheck() {
     $(".checkout-button").addClass("uk-button uk-button-primary");
-  };
+  }
   // cart shipping calc
   function WooShipCalc() {
     $(".shipping-calculator-form").addClass("uk-margin-top");
     $(".woocommerce-shipping-calculator .button").addClass("uk-button uk-button-default uk-button-small");
     $(".woocommerce-shipping-calculator select").addClass("uk-select");
     $(".woocommerce-shipping-calculator .input-text").addClass("uk-input");
-  };
+  }
   // on load
   $(".woocommerce").load(WooCart());
   $(".woocommerce").load(WooCartShip());

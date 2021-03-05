@@ -2,9 +2,9 @@ jQuery(function($) {
   
   // general shop stuff
   function WooShop() {
-    $("#ProductButtons .button").addClass("uk-button-small uk-button-primary");
+    $("#ProductButtons .button").addClass("uk-button uk-button-small uk-button-primary");
     $(".onsale").addClass("uk-card-badge uk-label");
-  };
+  }
   // shop filters scroll-to-selected with animation
   function WooShopFilters() {
       cat_obj = $('.shop-container').attr('data-product-cat-obj');
@@ -17,7 +17,7 @@ jQuery(function($) {
               scrollTop: scrollPos1 // to the position of the target 
           }, 100); 
         });
-      };
+      }
       if (series_obj) {
         scrollPos2 = $('#' + series_obj).position().top; // use the text of the span to create an ID and get the top position of that element
         $(document).ready(function(){
@@ -25,8 +25,8 @@ jQuery(function($) {
               scrollTop: scrollPos2 // to the position of the target 
           }, 100); 
         });
-      };
-    };
+      }
+    }
   // filter badges
   function WooShopFiltersBadges() {
     // get the data-name attreibute from the active/checked values of the various filters
@@ -39,11 +39,13 @@ jQuery(function($) {
     $( ".badge-cat" ).text(cat_name);
     $( ".badge-series" ).text(series_name);
     $( ".badge-sort" ).text(sort_name);
-  };
+  }
   
   // on load
   $("#MainContent").load(WooShop());
   $("#MainContent").load(WooShopFilters());
   $("#MainContent").load(WooShopFiltersBadges());
+  // dom modified
+  $("body").on('DOMSubtreeModified', ".shop-container", WooShop);
   
 });

@@ -9,15 +9,9 @@
         <div class="uk-width-1-3@m">
           
           <div class="footer-logo uk-margin-bottom">
-            {% if theme_logo_url %}
-              <a href="{{ site.url|e('esc_url') }}" title="{{ site.title|e('html_attr') }}">
-                <img class="uk-logo" data-src="{{ theme_logo_url|e('esc_url') }}" width="225" height="82" alt="{{ site.title|e('html_attr') }} Logo" uk-img>
-              </a>
-            {% else %}
-              <a href="{{ site.url|e('esc_url') }}">
-                <img class="uk-logo" data-src="https://via.placeholder.com/225x82.png?text=+" width="225" height="82" alt="" uk-img>
-              </a>
-            {% endif %}
+            <a href="{{ site.url|e('esc_url') }}" title="{{ site.title|e('html_attr') }}">
+              <img class="uk-logo" data-src="{{ theme_logo_url|resize(250)|e('esc_url')|default('https://via.placeholder.com/250x82.png?text=+') }}" width="250" height="82" alt="{{ site.title|e('esc_html') }} Logo" uk-img>
+            </a>
           </div>
           
           <div class="footer-left-content">

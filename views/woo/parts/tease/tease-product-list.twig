@@ -38,10 +38,10 @@
 						<div>
 							<span class="uk-text-bold uk-text-emphasis">Category:</span> {{ post.terms( {query:{taxonomy:'product_cat', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ')|e('esc_html') }}
 						</div>
-						<div>
+						<div hidden>
 							<span class="uk-text-bold uk-text-emphasis">Series:</span> {{ post.terms( {query:{taxonomy:'product_series', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0 }} )|join(', ')|e('esc_html') }}
 						</div>
-						<div>
+						<div hidden>
 							<span class="uk-text-bold uk-text-emphasis">Model:</span> {{ post.terms( {query:{taxonomy:'product_series', orderby:'name', order: 'ASC', childless: true, hierarchical: false }} )|join(', ')|e('esc_html') }}
 						</div>
 					</div>

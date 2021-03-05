@@ -3,14 +3,12 @@ jQuery(function($) {
   
   // push history on page load; for working with pushState after fetch call
   $(window).bind("popstate", function() {
-    window.location = location.href
+    window.location = location.href;
   });
   
   // define functions to be re-fired after quickload (inf-scroll pagination, WooShop, scroll-tp-selected filter animations & filtering badges data)
   reShop = function() {
-    $(".button").addClass("uk-button");
-    $("#ProductButtons .button").addClass("uk-button-small uk-button-primary");
-    $(".onsale").addClass("uk-card-badge uk-label");
+
   };
   
   reFilterAnims = function() {
@@ -25,7 +23,7 @@ jQuery(function($) {
             scrollTop: scrollPos1
         }, 100); 
       });
-    };
+    }
   
     if (series_obj) {
       scrollPos2 = $('#' + series_obj).position().top;
@@ -34,7 +32,7 @@ jQuery(function($) {
             scrollTop: scrollPos2
         }, 100); 
       });
-    };
+    }
   
   };
   
@@ -52,16 +50,7 @@ jQuery(function($) {
   };
   
   rePage = function() {
-      // pagination
-    if ($(".uk-pagination").length) {
-      $('.archive-posts').infiniteScroll({
-        path: '.next',
-        append: '.item',
-        status: '.page-load-status',
-        hideNav: '.pagi',
-        history: false,
-      });
-    };
+
   };
   
 });
@@ -90,7 +79,22 @@ function quickLoad(event) {
     reShop();
     reFilterAnims();
     reBadges();
-    rePage();
+    jQuery(function($) {
+        // shop shit
+        $(".button").addClass("uk-button");
+        $("#ProductButtons .button").addClass("uk-button-small uk-button-primary");
+        $(".onsale").addClass("uk-card-badge uk-label");
+        // pagination
+        if ($(".uk-pagination").length) {
+          $('.archive-posts').infiniteScroll({
+            path: '.next',
+            append: '.item',
+            status: '.page-load-status',
+            hideNav: '.pagi',
+            history: false,
+          });
+        }
+    });
   }).catch(function (error) {
     // There was an error
     console.warn('Something went wrong.', error);

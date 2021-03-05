@@ -33,7 +33,7 @@ jQuery(function($) {
     // login/register
     $(".col2-set").attr("uk-grid", "");
     $(".col2-set").addClass("uk-child-width-1-2@m");
-  };
+  }
   // on load
   $(".woocommerce").load(DoAllWoo());
 });
