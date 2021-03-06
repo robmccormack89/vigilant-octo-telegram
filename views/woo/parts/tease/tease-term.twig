@@ -3,7 +3,7 @@
 {% else %}
   {% set url_out = function('get_term_link', term.term_id) %}
 {% endif %}
-<div id="{{term.term_id}}">
+<div id="{{term.term_id|e('html_attr')}}">
   <div class="uk-card uk-card-hover uk-card-small uk-text-center uk-position-relative">
     <div class="uk-card-media-top">
       <img data-src="{{ thumb_link|e('esc_url')|default('https://via.placeholder.com/500x500.png?text=+') }}" data-width data-height alt="" uk-img>

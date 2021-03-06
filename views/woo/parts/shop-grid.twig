@@ -14,8 +14,8 @@
   <div 
   class="shop-container" 
   uk-grid 
-  data-product-cat-obj="{{product_cat_obj}}" 
-  data-product-series-obj="{{product_series_obj}}" 
+  data-product-cat-obj="{{product_cat_obj|e('html_attr')}}" 
+  data-product-series-obj="{{product_series_obj|e('html_attr')}}" 
   >
     
     <div class="uk-width-1-4@m uk-visible@m">

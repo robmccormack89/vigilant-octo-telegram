@@ -150,22 +150,13 @@ class RmccWooTheme extends Timber\Site
     // Register widget areas
     if (function_exists('register_sidebar')) {
       register_sidebar(array(
-        'name' => esc_html__('Footer Top Left Area', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer-top-left',
+        'name' => esc_html__('Footer Left Area', 'rmcc-woo-theme'),
+        'id' => 'sidebar-footer-left',
         'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<span hidden>',
         'after_title' => '</span>'
-      ));
-      register_sidebar(array(
-        'name' => esc_html__('Footer Top Right Area', 'rmcc-woo-theme'),
-        'id' => 'sidebar-footer-top-right',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
-        'before_widget' => '',
-        'after_widget' => '',
-        'before_title' => '<h3 class="uk-text-uppercase uk-h4 widget-title">',
-        'after_title' => '</h3>'
       ));
     }
   }
@@ -211,8 +202,7 @@ class RmccWooTheme extends Timber\Site
     $context['footer_customers_menu'] = new Timber\Menu( 'footer_customers_menu' );
     $context['has_footer_customers_menu'] = has_nav_menu( 'footer_customers_menu' );
     // sidebar areas
-    $context['sidebar_footer_top_left'] = Timber::get_widgets('Footer Top Left Area');
-    $context['sidebar_footer_top_right'] = Timber::get_widgets('Footer Top Right Area');
+    $context['sidebar_footer_left'] = Timber::get_widgets('Footer Left Area');
     // woo my account endpoints
     $context['dashboard_endpoint'] = wc_get_account_endpoint_url( 'dashboard' );
     $context['address_endpoint'] = wc_get_account_endpoint_url( 'edit-address' );
@@ -223,6 +213,19 @@ class RmccWooTheme extends Timber\Site
     $context['logout_endpoint'] = wc_get_account_endpoint_url( 'customer-logout' );
     //woo endpoints
     $context['shop_url'] = get_permalink(woocommerce_get_page_id('shop'));
+    // the backend address
+    $context['base_address'] = WC()->countries->get_base_address();
+    $context['base_address_2'] = WC()->countries->get_base_address_2();
+    $context['base_city'] = WC()->countries->get_base_city();
+    $context['base_eircode'] = WC()->countries->get_base_postcode();
+    $context['base_county'] = WC()->countries->get_base_state();
+    $context['base_country'] = WC()->countries->get_base_country();
+    // acf data globals
+    $context['company_phone_number'] = get_field('company_phone_number', 'option');
+    $context['facebook_link'] = get_field('facebook_link', 'option');
+    $context['display_email'] = get_field('display_email', 'option');
+    $context['above_footer_text'] = get_field('above_footer_text', 'option');
+    
     // get the woo cart url
     global $woocommerce;
     $context['cart_url'] = $woocommerce->cart->get_cart_url();

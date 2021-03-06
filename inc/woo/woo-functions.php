@@ -6,7 +6,6 @@
 * @package Rmcc_Woo_Theme
 */
 
-
 function bbloomer_remove_product_tabs( $tabs ) {
     unset( $tabs['additional_information'] ); 
     return $tabs;

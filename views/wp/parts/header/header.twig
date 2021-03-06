@@ -205,19 +205,19 @@
       <div class="uk-width-auto uk-section-primary uk-light uk-padding-small">
         <div class="uk-child-width-auto" uk-grid>
           <div class="">
-            <a href="#" class="uk-h5 dont-underline uk-margin-remove">
+            <a href="tel:{{company_phone_number|e('esc_html')}}" class="uk-h5 dont-underline uk-margin-remove">
               <i class="fas fa-phone-alt"></i>
-              <span class="uk-margin-small-left uk-visible@xl">Call us on <span class="uk-text-underline">01 123 4567</span></span>
+              <span class="uk-margin-small-left uk-visible@xl">Call us on <span class="uk-text-underline">{{company_phone_number|e('esc_html')}}</span></span>
             </a>
           </div>
           <div class="">
-            <a href="#" class="uk-h5 dont-underline uk-margin-remove">
+            <a href="mailto:{{display_email|e('esc_html')}}" class="uk-h5 dont-underline uk-margin-remove">
               <i class="far fa-envelope"></i>
-              <span class="uk-margin-small-left uk-visible@xl">Email us at <span class="uk-text-underline">info@nedmurphytractors.ie</span></span>
+              <span class="uk-margin-small-left uk-visible@xl">Email us at <span class="uk-text-underline">{{display_email|e('esc_html')}}</span></span>
             </a>
           </div>
           <div class="">
-            <a href="#" class="uk-h5 dont-underline uk-margin-remove">
+            <a href="{{facebook_link|e('esc_url')}}" target="_blank" class="uk-h5 dont-underline uk-margin-remove">
               <i class="fab fa-facebook-f"></i>
               <span class="uk-margin-small-left uk-visible@xl">Find us on <span class="uk-text-underline">Facebook</span></span>
             </a>

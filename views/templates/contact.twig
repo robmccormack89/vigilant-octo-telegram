@@ -8,7 +8,7 @@
   <div class="uk-container" data-template="contact.twig">
     <div class="content-area uk-section uk-section-small">
       <div class="uk-container uk-container-small">
-        <article id="page-{{post.ID}}" class=" uk-article {{post.class}}">
+        <article id="page-{{post.id|e('html_attr')}}" class=" uk-article {{post.class|e('html_attr')}}">
 
           <div class="article-content">
             
@@ -37,15 +37,15 @@
                 <h4>Our Office:</h4>
               
                 <p>
-                  Some Address, Some Town,,<br>
-                  Some County, Some Country,<br>
-                  Eircode & RBN.
+                  {{base_address|e('esc_html')}}, {{base_address_2|e('esc_html')}},<br>
+                  {{base_city|e('esc_html')}}, {{base_county|e('esc_html')}},<br>
+                  {{base_eircode|e('esc_html')}}.
                 </p>
                 
                 <h4>Contact Info:</h4>
               
                 <p>
-                  <a href="#">info@masseyfergusontractors.ie</a>
+                  <a href="mailto:{{display_email|e('html_attr')}}">{{display_email|e('html_attr')}}</a>
                 </p>
               
               </div>

@@ -2,7 +2,7 @@
 
 {% block spec_styles %}
   <!-- load in swiper-js css -->
-  <link rel="stylesheet" href="{{theme.link}}/assets/css/lib/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/lib/swiper-bundle.min.css" />
   <!-- single product styles -->
   <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/single-product.css" />
 {% endblock %}
@@ -74,6 +74,6 @@
 
 {% block spec_scripts %}
   <!-- load in swiper-js js -->
-  <script src="{{theme.link}}/assets/js/lib/swiper-bundle.min.js"></script>
+  <script src="{{theme.link|e('esc_url')}}/assets/js/lib/swiper-bundle.min.js"></script>
   <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/single-product.js'></script>
 {% endblock %}
