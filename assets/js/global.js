@@ -1,9 +1,7 @@
 jQuery(function($) {
-  
 	$(window).bind("popstate", function() {
 		window.location = location.href;
 	});
-  
 	// global shop stuff; to be used fired again after filtering
 	window.themePagination = function() {
 		// site wide pagination with conditional
@@ -15,15 +13,13 @@ jQuery(function($) {
 				hideNav: '.pagi',
 				history: false,
 			});
-		};
-	}
-  
+		}
+	};
 	// add to cart button triggers modal when item is added to cart
 	$(document).on('added_to_cart', function(e, fragments, cart_hash, this_button) {
 		var modal = UIkit.modal("#MiniCartModal");
 		modal.show();
 	});
-  
 	// ajax search js
 	$(document).on("input", "#input_search", _.debounce(function() {
 		var input_value = $(this).val();
@@ -33,7 +29,7 @@ jQuery(function($) {
 			$('#response_search_results').hide();
 			return false;
 		}
-		if (req != null) req.abort();
+		if (req !== null) req.abort();
 		req = $.ajax({
 			type: 'post',
 			url: myAjax.ajaxurl,
@@ -67,7 +63,6 @@ jQuery(function($) {
 			$("#response_search_results").hide();
 		}
 	});
-  
 	// ajax search mobile js
 	$(document).on("input", "#input_search_mobile", _.debounce(function() {
 		var input_value = $(this).val();
@@ -77,7 +72,7 @@ jQuery(function($) {
 			$('#response_search_results_mobile').hide();
 			return false;
 		}
-		if (req != null) req.abort();
+		if (req !== null) req.abort();
 		req = $.ajax({
 			type: 'post',
 			url: myAjax.ajaxurl,
@@ -111,7 +106,6 @@ jQuery(function($) {
 			$("#response_search_results_mobile").hide();
 		}
 	});
-  
 	// helper function to highlight search results text
 	$.fn.wrapInTag = function(opts) {
 		function getText(obj) {
