@@ -1,20 +1,3 @@
-// shop filters scroll-to-selected with animation
-window.ShopFilterScrollTo = function() {
-	var cat_obj = $('.shop-container').attr('data-product-cat-obj');
-	var series_obj = $('.shop-container').attr('data-product-series-obj');
-	if (cat_obj) {
-		var scrollPos1 = $('#' + cat_obj).position().top; // use the text of the span to create an ID and get the top position of that element
-		$('.cat-list-panel').animate({ // animate your right div
-			scrollTop: scrollPos1 // to the position of the target 
-		}, 100);
-	}
-	if (series_obj) {
-		var scrollPos2 = $('#' + series_obj).position().top; // use the text of the span to create an ID and get the top position of that element
-		$('.series-list-panel').animate({ // animate your right div
-			scrollTop: scrollPos2 // to the position of the target 
-		}, 100);
-	}
-};
 // listen for click event in the main, & if target of click has data-link attr, do the shop filtering
 document.querySelector('main').addEventListener('click', function(event) {
 	if (event.target.hasAttribute('data-link'))
