@@ -1,0 +1,16 @@
+{% extends "page.twig" %}
+
+{% block styles %}
+  <!-- checkout styles -->
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/checkout.css" />
+{% endblock %}
+
+{% block page_content %}
+  <section class="checkout-content-section uk-section uk-section-small uk-container" data-template="checkout.twig">
+    {{ post.content }}
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/checkout.js'></script>
+{% endblock %}

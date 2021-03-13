@@ -2,7 +2,7 @@
 /**
  * Live Search
  *
- * @package Rmcc_Woo_Theme
+ * @package Vigilant_Octo_Telegram
  */
  
 // support 's' -> 'search_term' matching; for ajax_live_search
@@ -89,7 +89,9 @@ function ajax_live_search() {
                    ' . $product_cateory->name . ' 
                  </div>
                  <div clas="uk-width-auto">
-                   <div class="uk-text-meta ajax-search-meta uk-text-right">Category</div>
+                   <div class="uk-text-meta ajax-search-meta uk-text-right">
+                    ' . __( 'Category', 'urban-carnival-theme' ) . '
+                   </div>
                  </div>
                </div>
              </a>
@@ -109,7 +111,9 @@ function ajax_live_search() {
                    ' . $product->name . ' 
                  </div>
                  <div clas="uk-width-auto">
-                   <div class="uk-text-meta ajax-search-meta uk-text-right">Product</div>
+                   <div class="uk-text-meta ajax-search-meta uk-text-right">
+                      ' . __( 'Part', 'urban-carnival-theme' ) . '
+                   </div>
                  </div>
                </div>
              </a>
@@ -129,7 +133,9 @@ function ajax_live_search() {
                    ' . $product_in_cat->title . ' ('.$query_string_upper.') 
                  </div>
                  <div clas="uk-width-auto">
-                   <div class="uk-text-meta ajax-search-meta uk-text-right">Product</div>
+                   <div class="uk-text-meta ajax-search-meta uk-text-right">
+                    ' . __( 'Part', 'urban-carnival-theme' ) . '
+                   </div>
                  </div>
                </div>
              </a>
@@ -227,7 +233,9 @@ function ajax_live_search_mobile() {
                     ' . $product_cateory->name . ' 
                   </div>
                   <div clas="uk-width-auto">
-                    <div class="uk-text-meta ajax-search-meta uk-text-right">Category</div>
+                    <div class="uk-text-meta ajax-search-meta uk-text-right">
+                      ' . __( 'Category', 'urban-carnival-theme' ) . '
+                    </div>
                   </div>
                 </div>
               </a>
@@ -247,7 +255,9 @@ function ajax_live_search_mobile() {
                   ' . $product->name . ' 
                 </div>
                 <div clas="uk-width-auto">
-                  <div class="uk-text-meta ajax-search-meta uk-text-right">Product</div>
+                  <div class="uk-text-meta ajax-search-meta uk-text-right">
+                    ' . __( 'Part', 'urban-carnival-theme' ) . '
+                  </div>
                 </div>
               </div>
             </a>
@@ -267,7 +277,9 @@ function ajax_live_search_mobile() {
                   ' . $product_in_cat->title . ' ('.$query_string_upper.') 
                 </div>
                 <div clas="uk-width-auto">
-                  <div class="uk-text-meta ajax-search-meta uk-text-right">Product</div>
+                  <div class="uk-text-meta ajax-search-meta uk-text-right">
+                    ' . __( 'Part', 'urban-carnival-theme' ) . '
+                  </div>
                 </div>
               </div>
             </a>

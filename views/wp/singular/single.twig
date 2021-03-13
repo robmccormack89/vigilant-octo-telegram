@@ -1,50 +1,105 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
-{% block content %}
-  <div class="" data-block="content" data-template="single.twig">
-    <div class="content-area uk-section uk-section-muted">
-      <div class="uk-container uk-container-small">
-        <div uk-grid>
-          <article id="post-{{post.ID}}" class="uk-article uk-width-1-1 {{post.class}}">
-            
-            {% if post.thumbnail %}
-            <div class="uk-margin-bottom">
-              <div class="uk-inline">
-                <img src="{{ post.thumbnail.src('rmcc-woo-theme-featured-image-single-post') }}" alt="">
-                <div class="uk-overlay-primary uk-position-cover">
-                  <div class="uk-text-center uk-position-center">
-                    <h1 class="uk-text-bold">{{ post.title }}</h1>
-                    <p class="uk-article-meta">
-                      Written on {{post.date | date}}.
-                      Posted in 
-                      {% for category in post.categories %}
-                        {% if not loop.last %}
-                          <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>,
-                        {% endif %}
-                        {% if loop.last %}
-                          <a title="{{ category }}" href="{{ category.link }}">{{ category }}</a>
-                        {% endif %}
-                      {% endfor %}
-                  </div>
-                  </p>
-                </div>
+{% block styles %}
+  <!-- single post styles -->
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/post.css" />
+{% endblock %}
+
+{% block article %}
+  <article id="post-{{post.id|e('html_attr')}}" class="uk-article {{post.class|e('html_attr')}}" data-template="single.twig">
+    
+    {% block post_header %}
+      {% if post.thumbnail %}
+        <figure class="single-post-featured uk-position-relative">
+          <img class="article-img" data-src="{{ post.thumbnail.src|e('esc_url')|resize(1920, 300) }}" width="1920" height="300" alt="{{ post.thumbnail.alt|e('html_attr') }}" uk-img>
+          {% if post.thumbnail.caption %}
+            <figcaption class="uk-text-center uk-position-bottom-center">{{ post.thumbnail.caption|e('esc_html') }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+    {% endblock %}
+  
+    {% block post_content %}
+      <section class="single-post-content uk-article uk-section uk-section-small uk-container uk-container-xsmall">
+          
+        <h1 class="uk-article-title uk-h2 uk-margin-remove-top">
+          {{post.title|e('esc_html')}}
+        </h1>
+        
+        <p class="uk-article-meta uk-margin-small-bottom">
+          {{post.date|e('esc_html')}} | {{ post.terms( {query:{taxonomy:'category', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ')|e('esc_html') }}
+        </p>
+        
+        {% if fn('has_excerpt') %}
+          <p class="uk-text-lead">{{ post.preview.read_more('')|e('esc_html') }}</p>
+        {% endif %}
+        
+        {{ post.content|e('wp_kses_post') }}
+          
+      </section>
+    {% endblock %}
+    
+    {% block post_footer %}
+      <footer class="single-post-footer uk-section uk-section-small uk-container uk-container-xsmall padding-remove-top">
+          
+        {% if post.post_type == 'post' %}
+          <p class="uk-article-meta uk-margin-remove-top uk-margin-medium-bottom">
+            {{ __('Posted in:', 'vigilant-octo-telegram') }}
+            {% for category in post.categories %}
+              {% if not loop.last %}
+                <a title="{{ category|e('html_attr') }}" href="{{ category.link|e('esc_url') }}">{{ category|e('esc_html') }}</a>,
+              {% else %}
+                <a title="{{ category|e('html_attr') }}" href="{{ category.link|e('esc_url') }}">{{ category|e('esc_html') }}</a>
+              {% endif %}
+            {% endfor %}
+          </p>
+        {% endif %}
+    
+        {% if post.post_type == 'post' and function('comments_open') %}
+          <div class="article-comments uk-margin-medium-bottom">
+            <div id="CommentBox">
+              
+              {% if post.comments|length > 0 %}
+                <ul class="uk-comment-list uk-margin-medium-bottom">
+                  {% for comment in post.comments %}
+                    {% include "comments.twig" %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
+    
+              <div id="CommentForm">
+                <h4>{{ __('Leave a new comment', 'vigilant-octo-telegram') }}</h4>
+                {% include "comment-form.twig" %}
               </div>
+    
             </div>
-
-            {% else %}
-            
-            <div id="MainTitle" class="uk-margin-bottom">
-              <h1 class="uk-text-bold dark-text uk-text-center"><span>{{ post.title }}</span></h1>
-            </div>
-            
+          </div>
+        {% endif %}
+        
+        <div class="article-pagination uk-child-width-1-2" uk-grid>
+          
+          <div class="prev-article uk-text-left">
+            {% if post.next %}
+              <a href="{{ post.next.link|e('esc_url') }}" class="uk-link-reset">
+                <div class="uk-text-primary uk-text-bold"><span uk-icon="icon: arrow-left"></span> {{ __('Previous Article', 'vigilant-octo-telegram') }}</div>
+                <div class="uk-text-italic uk-width-large uk-visible@m">{{ post.next.title|e('esc_html') }}</div>
+              </a>
             {% endif %}
-            
-            <div id="MainContent" class="uk-card uk-card-body uk-background-default uk-margin-bottom">
-              {{ post.content }}
-            </div>
-          </article>
+          </div>
+          
+          <div class="next-article uk-text-right">
+            {% if post.prev %}
+              <a href="{{ post.prev.link|e('esc_url') }}" class="uk-link-reset">
+                <div class="uk-text-primary uk-text-bold">{{ __('Next Article', 'vigilant-octo-telegram') }} <span uk-icon="icon: arrow-right"></span></div>
+                <div class="uk-text-italic uk-width-large uk-visible@m">{{ post.prev.title|e('esc_html') }}</div>
+              </a>
+            {% endif %}
+          </div>
+    
         </div>
-      </div>
-    </div>
-  </div>
+        
+      </footer>
+    {% endblock %}
+    
+  </article>
 {% endblock %}

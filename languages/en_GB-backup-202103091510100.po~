@@ -1,0 +1,296 @@
+# Copyright (C) 2021 vigilant-octo-telegram
+# This file is distributed under the same license as the vigilant-octo-telegram package.
+msgid ""
+msgstr ""
+"Project-Id-Version: vigilant-octo-telegram\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:"
+"1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
+"esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-09 15:09+0000\n"
+"PO-Revision-Date: 2021-03-09 15:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: English (UK)\n"
+"Language: en_GB\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.1; wp-5.6.2"
+
+#: inc/timber-functions.php:52
+msgctxt "Post Type General Name"
+msgid "Banner Slides"
+msgstr ""
+
+#: inc/timber-functions.php:53
+msgctxt "Post Type Singular Name"
+msgid "Banner Slide"
+msgstr ""
+
+#: inc/timber-functions.php:54
+msgid "Home Banner Slides"
+msgstr ""
+
+#: inc/timber-functions.php:55, inc/timber-functions.php:81
+msgid "Banner Slide"
+msgstr ""
+
+#: inc/timber-functions.php:56
+msgid "Banner Slide Archives"
+msgstr ""
+
+#: inc/timber-functions.php:57
+msgid "Item Attributes"
+msgstr ""
+
+#: inc/timber-functions.php:58
+msgid "Parent Item:"
+msgstr ""
+
+#: inc/timber-functions.php:59
+msgid "All Slides"
+msgstr ""
+
+#: inc/timber-functions.php:60
+msgid "Add New Item"
+msgstr ""
+
+#: inc/timber-functions.php:61
+msgid "Add New"
+msgstr ""
+
+#: inc/timber-functions.php:62
+msgid "New Item"
+msgstr ""
+
+#: inc/timber-functions.php:63
+msgid "Edit Item"
+msgstr ""
+
+#: inc/timber-functions.php:64
+msgid "Update Item"
+msgstr ""
+
+#: inc/timber-functions.php:65
+msgid "View Item"
+msgstr ""
+
+#: inc/timber-functions.php:66
+msgid "View Items"
+msgstr ""
+
+#: inc/timber-functions.php:67
+msgid "Search Item"
+msgstr ""
+
+#: inc/timber-functions.php:68
+msgid "Not found"
+msgstr ""
+
+#: inc/timber-functions.php:69
+msgid "Not found in Trash"
+msgstr ""
+
+#: inc/timber-functions.php:70
+msgid "Featured Image"
+msgstr ""
+
+#: inc/timber-functions.php:71
+msgid "Set featured image"
+msgstr ""
+
+#: inc/timber-functions.php:72
+msgid "Remove featured image"
+msgstr ""
+
+#: inc/timber-functions.php:73
+msgid "Use as featured image"
+msgstr ""
+
+#: inc/timber-functions.php:74
+msgid "Insert into item"
+msgstr ""
+
+#: inc/timber-functions.php:75
+msgid "Uploaded to this item"
+msgstr ""
+
+#: inc/timber-functions.php:76, inc/timber-functions.php:123
+msgid "Items list"
+msgstr ""
+
+#: inc/timber-functions.php:77, inc/timber-functions.php:124
+msgid "Items list navigation"
+msgstr ""
+
+#: inc/timber-functions.php:78
+msgid "Filter items list"
+msgstr ""
+
+#: inc/timber-functions.php:82
+msgid "Banner Slides for the Home Page Banner"
+msgstr ""
+
+#: inc/timber-functions.php:105
+msgctxt "Taxonomy General Name"
+msgid "Series/Models"
+msgstr ""
+
+#: inc/timber-functions.php:106
+msgctxt "Taxonomy Singular Name"
+msgid "Series/Model"
+msgstr ""
+
+#: inc/timber-functions.php:107
+msgid "Series/Models"
+msgstr ""
+
+#: inc/timber-functions.php:108
+msgid "All Series/Models"
+msgstr ""
+
+#: inc/timber-functions.php:109
+msgid "Parent (Series)"
+msgstr ""
+
+#: inc/timber-functions.php:110
+msgid "Parent (Series):"
+msgstr ""
+
+#: inc/timber-functions.php:111
+msgid "New Series/Model Name"
+msgstr ""
+
+#: inc/timber-functions.php:112
+msgid "Add New Series/Model"
+msgstr ""
+
+#: inc/timber-functions.php:113
+msgid "Edit Series/Model"
+msgstr ""
+
+#: inc/timber-functions.php:114
+msgid "Update Series/Model"
+msgstr ""
+
+#: inc/timber-functions.php:115
+msgid "View Series/Model"
+msgstr ""
+
+#: inc/timber-functions.php:116
+msgid "Separate items with commas"
+msgstr ""
+
+#: inc/timber-functions.php:117
+msgid "Add or remove Series/Model"
+msgstr ""
+
+#: inc/timber-functions.php:118
+msgid "Choose from the most used"
+msgstr ""
+
+#: inc/timber-functions.php:119
+msgid "Popular Series/Models"
+msgstr ""
+
+#: inc/timber-functions.php:120
+msgid "Search Series/Models"
+msgstr ""
+
+#: inc/timber-functions.php:121
+msgid "Not Found"
+msgstr ""
+
+#: inc/timber-functions.php:122
+msgid "No items"
+msgstr ""
+
+#: inc/timber-functions.php:152
+msgid "Footer Left Area"
+msgstr ""
+
+#: inc/timber-functions.php:154
+msgid "Main Footer Widget Area; works best with the current widget only."
+msgstr ""
+
+#: inc/timber-functions.php:167
+msgid "Categories Menu"
+msgstr ""
+
+#: inc/timber-functions.php:168
+msgid "Main Menu"
+msgstr ""
+
+#: inc/timber-functions.php:169
+msgid "Mobile Menu"
+msgstr ""
+
+#: inc/timber-functions.php:170
+msgid "Accessories Menu"
+msgstr ""
+
+#: inc/timber-functions.php:171
+msgid "Parts Menu"
+msgstr ""
+
+#: inc/timber-functions.php:172
+msgid "Footer Nav Menu"
+msgstr ""
+
+#: inc/timber-functions.php:173
+msgid "Footer Customers Menu"
+msgstr ""
+
+#: page-templates/account-template.php:3
+msgid "My Account Template"
+msgstr ""
+
+#: page-templates/basket-template.php:3
+msgid "Basket Template"
+msgstr ""
+
+#: page-templates/categories-template.php:3
+msgid "Parts by Category Template"
+msgstr ""
+
+#: page-templates/checkout-template.php:3
+msgid "Checkout Template"
+msgstr ""
+
+#: page-templates/contact-template.php:3
+msgid "Contact Page Template"
+msgstr ""
+
+#: page-templates/expand-template.php:3
+msgid "Expanded Width Template"
+msgstr ""
+
+#: page-templates/full-width-template.php:3
+msgid "Full Width Template"
+msgstr ""
+
+#: page-templates/narrow-template.php:3
+msgid "Narrow Template"
+msgstr ""
+
+#: page-templates/series-template.php:3
+msgid "Parts by Series/Model Template"
+msgstr ""
+
+#: page-templates/wide-template.php:3
+msgid "Wide Template"
+msgstr ""
+
+#: views/temp/base.php:261
+msgid "Sorry, nothing to display here.."
+msgstr ""
+
+#: views/temp/front-page.php:37
+msgid "Slide One"
+msgstr "Swipe One"

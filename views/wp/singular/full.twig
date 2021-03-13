@@ -1,0 +1,13 @@
+{% extends 'page.twig' %}
+
+{% block breads %}
+  <div class="breads-container">
+    {% include 'breads.twig' %} 
+  </div>
+{% endblock %}
+
+{% block page_content %}
+  <section class="page-content-section uk-section uk-section-small" data-template="full.twig">
+    {{ post.content|e('wp_kses_post') }}
+  </section>
+{% endblock %}

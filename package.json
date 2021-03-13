@@ -1,5 +1,5 @@
 {
-  "name": "project-rmcc-woo",
+  "name": "vigilant-octo-telegram",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
@@ -9,18 +9,24 @@
     "uikit": "^3.5.9"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
+    "gulp": "^4.0.2",
+    "gulp-if": "^2.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-wp-pot": "^2.2.0",
+    "del": "^3.0.0",
+    "autoprefixer": "^9.8.4",
     "cssnano": "^4.1.10",
     "expose-loader": "^1.0.0",
-    "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "node-sass": "^4.14.1",
-    "webpack": "^4.44.1",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "gulp": "./node_modules/.bin/gulp"
+    "gulp": "./node_modules/.bin/gulp",
+    "twig-pot": "gulp pot"
   }
 }

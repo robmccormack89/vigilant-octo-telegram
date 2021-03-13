@@ -2,7 +2,7 @@
 /**
  * The template for making woocommerce work with timber/twig. sets the templates & context for woo's archive & singular views
  *
- * @package Rmcc_Woo_Theme
+ * @package Vigilant_Octo_Telegram
  */
 
 // make sure timber is activated first
@@ -48,6 +48,9 @@ if ( is_singular( 'product' ) ) {
   
   // gets the woocommerce columns per row setting
   $context['products_grid_columns'] = wc_get_loop_prop('columns');
+  
+  $context['pagination'] = Timber::get_pagination();
+  $context['paged'] = $paged;
   
   // if is list-view
   if (get_query_var('grid_list') == 'list-view') {

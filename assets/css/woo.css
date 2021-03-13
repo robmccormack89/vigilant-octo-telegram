@@ -1,0 +1,116 @@
+/* demo store notice */
+.woocommerce-store-notice {
+    text-align: center;
+}
+.store-notice-wrap {
+    position: relative;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* prices */
+del {
+  font-size: 0.9rem;
+}
+ins {
+  background: transparent;
+}
+bdi {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ee3131;
+}
+
+/* turn offs */
+.added_to_cart, .screen-reader-text, label[for=coupon_code] {
+  display: none!important;
+}
+
+/* mini cart */
+.woocommerce-mini-cart img {
+  width: 50px;
+}
+.woocommerce-mini-cart .checkout.uk-button-link {
+  line-height: 28px;
+}
+.woocommerce-mini-cart__total bdi {
+  color: #ee3131;
+}
+.woocommerce-mini-cart__empty-message {
+  padding: 20px;
+}
+li.woocommerce-mini-cart-item:before {
+  content: none;
+}
+.mini-cart-quantity bdi {
+  color: #1f2529;
+}
+
+/* quantity input */
+.qty.uk-input {
+  max-width: 80px;
+}
+
+/* add to cart button loader */
+.woocommerce #respond input#submit.loading,
+.woocommerce a.button.loading,
+.woocommerce button.button.loading,
+.woocommerce input.button.loading {
+  padding-left: 1em;
+}
+
+/* woo message */
+.woocommerce-message {
+  margin-bottom: 20px;
+}
+
+/* star rating colour */
+.woocommerce .star-rating span:before {
+  color: #d6c63e;
+}
+
+/* tease product title */
+#ProductTitle .uk-card-title {
+  margin-bottom: 10px;
+  letter-spacing: 0px;
+}
+
+/* shop toolbar */
+.shop-fixednav {
+  display: none;
+  height: 53px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 350;
+  background-color: #FFF;
+  box-shadow: 0 0 9px rgb(0 0 0 / 12%);
+}
+.shop-fixednav .uk-container {
+  padding: 8px 0 0px 0;
+}
+.shop-fixednav .header-cart-count {
+  top: 5px;
+  left: auto;
+  right: 22px;
+  font-size: 11px;
+  line-height: 15px;
+  min-width: 15px;
+  height: 15px;
+  border-radius: 15px;
+}
+@media only screen and (max-width:959px) {
+  .shop-fixednav {
+    display: block;
+  }
+  footer {
+    padding-bottom: 53px;
+  }
+}
+@media (min-width: 960px) {
+  .uk-width-medium\@m {
+      width: 250px;
+  }
+}

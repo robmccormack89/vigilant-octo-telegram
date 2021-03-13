@@ -1,13 +1,12 @@
 <?php
 /**
- * The 404 template
- *
- * @package Rmcc_Woo_Theme
- */
+* The 404 wrror template
+*
+* @package Vigilant_Octo_Telegram
+*/
 
-// get the main context
 $context = Timber::context();
-// set the title variable
+
 $context['title'] =  'Page not found';
-// render the template in 404.twig with the above context
+
 Timber::render( '404.twig', $context );

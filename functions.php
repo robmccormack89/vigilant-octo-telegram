@@ -1,15 +1,15 @@
 <?php
 /**
- * RMcC Woo Theme functions and definitions
+ * Vigilant_Octo_Telegram functions and definitions
  *
- * @package Rmcc_Woo_Theme
+ * @package Vigilant_Octo_Telegram
  */
  
 // stuff to say we need timber activated!! see TGM Plugin activation library for php
 require_once get_template_directory() . '/inc/lib/class-tgm-plugin-activation.php';
 
 // register the required plugins(Timber) see TGM Plugin activation library for php
-function rmcc_woo_theme_register_required_plugins()
+function vigilant_octo_telegram_register_required_plugins()
 {
  $plugins = array(
    array(
@@ -37,7 +37,7 @@ function rmcc_woo_theme_register_required_plugins()
  );
  tgmpa($plugins, $config);
 }
-add_action('tgmpa_register', 'rmcc_woo_theme_register_required_plugins');
+add_action('tgmpa_register', 'vigilant_octo_telegram_register_required_plugins');
 
 // load Theme functions
 require get_template_directory() . '/inc/theme-functions.php';

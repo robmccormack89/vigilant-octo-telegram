@@ -1,0 +1,30 @@
+.uk-article-title {
+  font-size: 2rem;
+}
+.article-footer .uk-article-meta a {
+  color: #949494;
+  font-weight: 500;
+}
+.article-pagination a {
+  font-weight: 500;
+}
+.article-img {
+  height:300px;
+  object-fit:cover;
+}
+
+@media (min-width: 960px) {
+  .uk-comment-list .uk-comment~ul {
+    padding-left: 50px;
+  }
+}
+.uk-comment-list .uk-comment~ul {
+  margin: 30px 0 0;
+}
+.uk-comment-list>:nth-child(n+2) {
+  margin-top: 30px;
+}
+.uk-comment-primary {
+  padding: 20px;
+  background-color: #f8f8f8;
+}

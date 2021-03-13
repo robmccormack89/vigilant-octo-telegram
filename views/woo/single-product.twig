@@ -1,78 +1,99 @@
-{% extends "base.twig" %}
+{% extends "page.twig" %}
 
-{% block spec_styles %}
+{% block styles %}
   <!-- load in swiper-js css -->
   <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/lib/swiper-bundle.min.css" />
   <!-- single product styles -->
-  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/single-product.css" />
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/product.css" />
 {% endblock %}
 
-{% block content %}
-  <div id="product-{{post.id|e('html_attr')}}" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class|e('html_attr') }}">
-    <div class="content-area uk-section uk-section-small uk-section-default">
-      <div class="uk-container">
-        {% do action('woocommerce_before_single_product') %}
-        
-        <div class="uk-child-width-1-2@m" uk-grid="masonry: true;">
+{% block article %}
+  <article class="uk-article" data-template="single-product.twig">
+    <div id="product-{{post.id|e('html_attr')}}" itemscope itemtype="http://schema.org/Product" class="single-product-details {{ post.class|e('html_attr') }}">
+    
+      {% block product_header %}
+        <header class="product-header">
+          {% block breads %}
+            <div class="breads-container uk-container">
+              {% include 'breads.twig' %} 
+            </div>
+          {% endblock %}
+        </header>
+      {% endblock %}
+      
+      {% do action('woocommerce_before_single_product') %}
+      
+      <section class="product-content-section uk-section uk-section-small uk-container">
           
-          <div class="product-left">
+        <div class="" uk-grid="masonry: true;">
+          
+          <div class="product-left uk-width-2-5@m">
             {% do action('woocommerce_before_single_product_summary') %}
           </div>
           
-          <div class="product-right">
+          <div class="product-right uk-width-3-5@m">
             {% do action('woocommerce_single_product_summary') %}
           </div>
         
         </div>
+          
+      </section>
+      
+      <section class="product-tabs-section uk-container">
+        {% do action('woocommerce_after_single_product_summary') %}
+      </section>
+      
+      <meta itemprop="url" content="{{ post.link|e('esc_url') }}" />
+      
+      <section class="product-related-upsells-section uk-section uk-section-small uk-container padding-remove-top">
         
-        <div class="tabs-related-upsells uk-margin-top">
-          {% do action('woocommerce_after_single_product_summary') %}
-          
-          <meta itemprop="url" content="{{ post.link|e('esc_url') }}" />
-          
-          {% if not related_products is empty %}
-            <h2>{{related_products_title|e('esc_html')}}</h2>
-            <div id="slideshow_related" class="swiper-container">
-              <div class="swiper-wrapper">
-                
-                {% for post in related_products %}
-                  <div class="swiper-slide">
-                    {% include 'tease-product.twig' %}
-                  </div>
-                {% endfor %}
-                
-              </div>
+        {% if not related_products is empty %}
+          <h2 class="uk-h3">{{related_products_title|e('esc_html')}}</h2>
+          <div id="slideshow_related" class="swiper-container">
+            <div class="swiper-wrapper">
+              
+              {% for post in related_products %}
+                <div class="swiper-slide">
+                  {% include 'tease-product.twig' %}
+                </div>
+              {% endfor %}
+              
+            </div>
+            {% if not related_products > 4 %}
               <!-- Add Pagination -->
               <div class="swiper-pagination"></div>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        {% if not up_sells is empty %}
+          <h2 class="uk-h3">{{up_sells_title|e('esc_html')}}</h2>
+          <div id="slideshow_upsells" class="swiper-container">
+            <div class="swiper-wrapper">
+              
+              {% for post in up_sells %}
+                <div class="swiper-slide">
+                  {% include 'tease-product.twig' %}
+                </div>
+              {% endfor %}
+              
             </div>
-          {% endif %}
-          
-          {% if not up_sells is empty %}
-            <h2>{{up_sells_title|e('esc_html')}}</h2>
-            <div id="slideshow_upsells" class="swiper-container">
-              <div class="swiper-wrapper">
-                
-                {% for post in up_sells %}
-                  <div class="swiper-slide">
-                    {% include 'tease-product.twig' %}
-                  </div>
-                {% endfor %}
-                
-              </div>
+            {% if not up_sells > 4 %}
               <!-- Add Pagination -->
               <div class="swiper-pagination"></div>
-            </div>
-          {% endif %}
-          
-        </div>
+            {% endif %}
+          </div>
+        {% endif %}
         
-        {% do action('woocommerce_after_single_product') %}
-      </div>
-    </div>  
-  </div>
+      </section>
+      
+      {% do action('woocommerce_after_single_product') %}
+    
+    </div>
+  </article>
 {% endblock %}
 
-{% block spec_scripts %}
+{% block scripts %}
   <!-- load in swiper-js js -->
   <script src="{{theme.link|e('esc_url')}}/assets/js/lib/swiper-bundle.min.js"></script>
   <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/single-product.js'></script>

@@ -1,26 +1,16 @@
 <?php
 /**
-* The front page template (when backend settings for front page display are set to static or latest posts)
-* @package Rmcc_Woo_Theme
+* The Front Page template. Will appy where Reading Settings is Latest Posts or Static Page->Homepage
+*
+* @package Vigilant_Octo_Telegram
 */
 
-// get the context
 $context = Timber::context();
 
-// get the post object (singular)
-$post = Timber::query_post();
-$context['post'] = $post;
+$timber_post = Timber::get_post();
+$context['post'] = $timber_post;
 
-// get the posts object (archive)
-$context['posts'] = new Timber\PostQuery();
-
-// get & set the title. if is blog & home, use site.title, else post.title 
-if ( is_home() && is_front_page() ) {
-	$context['title'] =  get_bloginfo( 'name' );
-} else {
-	$context['title'] =  get_the_title( $post->ID );
-};
-
+//featured products 
 $featured_ids = get_field('homepage_product_selection', 'option');
 $featured_args = array(
    'post_type'             => 'product',
@@ -29,8 +19,7 @@ $featured_args = array(
    'posts_per_page'        => '12',
 );
 $context['featured_products'] = new Timber\PostQuery($featured_args);
-
-// get & set home_slides
+// home slides
 $slides_args = array(
    'post_type' => 'slide',
    'post_status' => 'publish',
@@ -38,21 +27,21 @@ $slides_args = array(
    'order' => 'asc',
 );
 $context['home_slides'] = new Timber\PostQuery($slides_args);
-
-// get & set recent_products
+// recent products
 $args = array(
    'post_type'             => 'product',
    'post_status'           => 'publish',
    'posts_per_page'        => '8',
 );
 $context['recent_products'] = new Timber\PostQuery($args);
-
+// product series
 $context['product_series'] = get_terms([
 	'taxonomy'    => 'product_series',
 	'hide_empty'  => false,
-	'parent'   => 0
+	'parent'   => 0,
+	'orderby' => 'meta_value_num', 
 ]);
-
+// product categories
 $context['product_cats'] = get_terms([
 	'taxonomy'    => 'product_cat',
 	'hide_empty'  => true,
@@ -61,5 +50,4 @@ $context['product_cats'] = get_terms([
 	'exclude' => '15', // excludes uncategorized
 ]);
 
-// render the context with template
-Timber::render( array('front-page.twig'), $context );
+Timber::render( array( 'front-page.twig' ), $context );

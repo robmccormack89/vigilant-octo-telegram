@@ -1,0 +1,36 @@
+<div id="post-{{post.id|e('html_attr')}}" class="tease-post item {{post.class|e('html_attr')}}" data-template="tease-post.twig">
+    
+  {% if post.thumbnail %}
+    <a title="{{ post.thumbnail.title|e('html_attr') }}" href="{{post.link|e('esc_url')}}">
+      <img class="tease-post-img" data-src="{{ post.thumbnail.src|e('esc_url')|resize(400, 300) }}" width="400" height="300" alt="{{ post.thumbnail.alt|e('html_attr') }}" uk-img>
+    </a>
+  {% endif %}
+
+  <div class="tease-post-content uk-margin-small-top uk-text-left">
+    
+    <div class="tease-post-meta uk-text-meta uk-margin-small-bottom">
+      <span class="tease-post-date">
+        {{post.date|e('esc_html')}}
+      </span>
+      <span class="tease-post-cat uk-align-right uk-margin-remove">
+        {{ post.terms( {query:{taxonomy:'category', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ')|e('esc_html') }}
+      </span>
+    </div>
+    
+    <h4 class="tease-post-title uk-h4 uk-margin-remove">
+      <a title="{{post.title|e('html_attr')}}" class="uk-link-reset" href="{{post.link|e('esc_url')}}">
+        {{post.title|e('esc_html')}}
+      </a>
+    </h4>
+    
+    <p class="tease-post-preview uk-margin-small-top uk-margin-small-bottom uk-text-small">
+      {{ post.preview.length(10).force.read_more('')|e('esc_html') }}
+    </p>
+    
+    <a class="tease-post-link" href="{{post.link|e('esc_url')}}" class="uk-button uk-button-small uk-button-primary">
+      {{ __('Read more', 'vigilant-octo-telegram') }}
+    </a>
+    
+  </div>
+  
+</div>

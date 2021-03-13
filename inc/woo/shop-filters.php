@@ -2,8 +2,35 @@
 /**
 * Shop Filters
 *
-* @package Rmcc_Woo_Theme
+* @package Vigilant_Octo_Telegram
 */
+
+// grid_list badge name
+function gridlist_badge_name() {
+	if (get_query_var('grid_list') == 'grid-view') {
+    $name = __( 'Grid View', 'woocommerce' );
+  } elseif (get_query_var('grid_list') == 'list-view') {
+    $name = __( 'List View', 'woocommerce' );
+  }
+  return $name;
+}
+// orderby badge name
+function orderby_badge_name() {
+	if ($_GET['orderby'] == 'price') {
+    $name = __( 'Price: low to high', 'vigilant-octo-telegram' );
+  } elseif ($_GET['orderby'] == 'price-desc') {
+    $name =  __( 'Price: high to low', 'vigilant-octo-telegram' );
+  } elseif ($_GET['orderby'] == 'menu_order') {
+    $name =  __( 'Default', 'vigilant-octo-telegram' );
+  } elseif ($_GET['orderby'] == 'popularity') {
+    $name =  __( 'Popularity', 'vigilant-octo-telegram' );
+  } elseif ($_GET['orderby'] == 'rating') {
+    $name =  __( 'Rating', 'vigilant-octo-telegram' );
+  } elseif ($_GET['orderby'] == 'date') {
+    $name =  __( 'Latest', 'vigilant-octo-telegram' );
+  }
+  return $name;
+}
 
 // helper function: finding strings; see below
 function strpos_recursive($haystack, $needle, $offset = 0, &$results = array()) {

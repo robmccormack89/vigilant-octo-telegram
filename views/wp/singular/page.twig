@@ -1,15 +1,30 @@
 {% extends "base.twig" %}
 
-{% block pageheader %}
-  {% include 'header-page.twig' %}
-{% endblock %}
+{% block article %}
+  <article id="page-{{post.id|e('html_attr')}}" class="uk-article {{post.class|e('html_attr')}}" data-template="page.twig">
 
-{% block contentwrap %}
-  <div class="uk-container">
-    {{ post.content|e('wp_kses_post') }}
-  </div>
-{% endblock %}
+    {% block page_header %}
+      <header class="page-header">
+        <div class="uk-section uk-background-muted theme-border-bottom">
+          <div class="uk-container uk-text-center">
+            {% block page_header_title %}
+              <h1 class="uk-text-uppercase uk-text-muted uk-article-title">{{ post.title|e('esc_html') }}</h1>
+            {% endblock %}
+          </div>
+        </div>
+        {% block breads %}
+          <div class="breads-container uk-container">
+            {% include 'breads.twig' %} 
+          </div>
+        {% endblock %}
+      </header>
+    {% endblock %}
 
-{% block abovefooter %}
-  {% include 'above-footer-page.twig' %}
+    {% block page_content %}
+      <section class="page-content-section uk-section uk-section-small uk-container">
+        {{ post.content|e('wp_kses_post') }}
+      </section>
+    {% endblock %}
+    
+  </article>
 {% endblock %}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html {{site.language_attributes}}>
+
+<head>
+  
+  <meta charset="{{site.charset|e('html_attr')}}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  
+  {{ function('wp_head') }}
+  
+  {% block styles %}
+  {% endblock %}
+  
+</head>
+
+  {% block body %}
+    <body class="{{body_class|e('html_attr')}} no-overflow" data-template="base.twig">
+      
+      {% block theme_preload_html %}
+        <div id="ThemePreload" class="theme-preload"></div>
+      {% endblock %}
+      
+      {% block header %}
+        {% include 'header.twig' %}
+      {% endblock %}
+      
+      <main role="main">
+        
+        {% block content_wrap %}
+          <article class="block-content_wrap uk-article">
+            
+            {% block article_header %}
+            {% endblock %}
+            
+            <div class="uk-position-relative">
+              
+              {% block content_section %}
+              <div class="uk-section uk-section-small content-container">
+                {% block content_only %}
+                <p>{{ __('Sorry, nothing to display here...', 'vigilant-octo-telegram') }}</p>
+                {% endblock %}
+              </div>
+              {% endblock %}
+            
+            </div>
+            
+          </article>
+        {% endblock %}
+        
+        {% block above_footer %}
+          <aside class="uk-section uk-background-muted theme-border-top">
+            <div class="uk-container uk-container-large uk-text-center">
+              <p class="uk-margin-remove-bottom">{{above_footer_text|e('esc_html')}}</p>
+            </div>
+          </aside>
+        {% endblock %}
+        
+      </main>
+      
+      {% block footer %}
+        {% include 'footer.twig' %}
+      {% endblock %}
+      
+      {% block shop_fixed_nav %}
+        {% include 'shop-fixed-nav.twig' %} 
+      {% endblock %}
+      
+      {{ function('wp_footer') }}
+      
+      {% block scripts %}
+      {% endblock %}
+      
+      {% block theme_preload_js %}
+        <script>
+          // website preloader animation
+          window.onload = function(){
+            document.getElementById("ThemePreload").classList.add("hidden");
+            document.getElementsByTagName("BODY")[0].classList.remove("no-overflow");
+          }
+        </script>
+      {% endblock %}
+      
+    </body>
+  {% endblock %}
+
+</html>

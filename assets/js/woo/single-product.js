@@ -1,19 +1,17 @@
 jQuery(function($) {
   // add-to-cart
   $(".variations_form table").addClass("uk-table-small uk-table-divider uk-table-middle uk-table-justify uk-position-relative");
-  $(".variations_form .button").addClass("uk-button-primary");
   // reviews tab
   $("ol.commentlist").addClass("uk-list uk-list-divider");
   // additional info tab
   $(".woocommerce-product-attributes").addClass("uk-table-small uk-table-divider uk-table-middle uk-table-justify");
   // add-to-cart
-  $(".product-right .button").addClass("uk-button-primary");
-  $("#ProductButtons .button").addClass("uk-button-primary");
+  $(".product-right .button").addClass("uk-button uk-button-primary");
   // stock
   $(".in-stock").addClass("uk-text-success");
   $(".out-of-stock").addClass("uk-text-danger");
   // tab heading
-  $(".tab-content h2").addClass("uk-card-title");
+  $(".tab-content h2").addClass("uk-h4");
 });
 
 jQuery(function(){
@@ -31,12 +29,12 @@ jQuery(function(){
       dynamicBullets: true,
     },
     breakpoints: {
-      // 960: {
-      //   slidesPerView: 3,
-      //   spaceBetween: 15,
-      // },
-      1290: {
+      960: {
         slidesPerView: 3,
+        spaceBetween: 15,
+      },
+      1290: {
+        slidesPerView: 4,
         spaceBetween: 20,
       },
     }

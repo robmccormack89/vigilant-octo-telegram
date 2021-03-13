@@ -1,4 +1,4 @@
-/* my account dashboard subnav */
+/* subnav active is-actve class modification */
 .uk-subnav-pill>.uk-active>a, .uk-subnav-pill>.is-active>a {
   background-color: #EE3131;
   color: #fff;

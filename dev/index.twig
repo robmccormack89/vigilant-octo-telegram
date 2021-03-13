@@ -1,0 +1,51 @@
+{% extends "base.twig" %}
+
+{% block spec_styles %}
+  <!-- blog styles -->
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/blog.css" />
+{% endblock %}
+
+{% block pageheader %}
+  {% include 'header-archive.twig' %}
+{% endblock %}
+
+{% block contentonly %}
+  <div class="blog-wrap uk-container" data-block="content-only" data-template="index.twig">
+      
+    {% if is_posts %}
+      <div class="posts-nav-grid uk-flex-right uk-margin-bottom uk-visible@s" uk-grid>
+        <div>
+          <ul class="uk-subnav uk-subnav-pill uk-margin-remove">
+              
+            {% for item in blogcats %}
+              <li id="{{ item.term_id|e('html_attr') }}" class="{% if current_cat_id == item.term_id %}uk-active{% endif %}">
+                <a data-link="{{ function('get_term_link', item.slug, 'category')|e('esc_url') }}" onclick="quickLoad(event);" class="uk-text-uppercase font-600">{{ item.name|e('esc_html') }}</a>
+              </li>
+            {% endfor %}
+            
+            <li id="BlogPageID-{{ current_cat_id }}" class="{% if fn('is_home') %}uk-active{% endif %}">
+              <a data-link="{{ posts_page_url|e('esc_url') }}" onclick="quickLoad(event);" class="uk-text-uppercase font-600">{{ __('All', 'vigilant-octo-telegram') }}</a>
+            </li>
+              
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+    
+    {% if posts is not empty %}
+      <div class="uk-child-width-1-2@s uk-child-width-1-3@m archive-posts" uk-grid="masonry: true">
+        {% for post in posts %}
+          {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+        {% endfor %}
+      </div>
+      {% include 'pagination.twig' %}
+    {% else %}
+      <p class="uk-text-emphasis">{{ __('Sorry, nothing to display here...', 'vigilant-octo-telegram') }}</p>
+    {% endif %}
+      
+  </div>
+{% endblock %}
+
+{% block spec_scripts %}
+  <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/quickload.js'></script>
+{% endblock %}

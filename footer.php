@@ -2,7 +2,7 @@
 /**
  * The template for displaying the footer
  *
- * @package Rmcc_Woo_Theme
+ * @package Vigilant_Octo_Telegram
  */
 
  $timberContext = $GLOBALS['timberContext']; // @codingStandardsIgnoreFile

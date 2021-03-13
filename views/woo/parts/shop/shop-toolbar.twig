@@ -1,0 +1,54 @@
+<header class="uk-margin-small-bottom">
+  <nav id="ShopToolbar" class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+      
+      <div id="ShopToolbarLeft" class="uk-navbar-left pull-left-15">
+        {% if (fn('current_product_orderby_var')) %}
+          <div class="uk-navbar-item min-height-40">
+            <a class="uk-badge badge-sort icon close-icon" data-link="{{ fn('remove_query_arg', ['orderby'])|e('esc_url') }}" onclick="quickLoad(event);">
+              {{ fn('orderby_badge_name') }}
+            </a>
+          </div>
+        {% endif %}
+        {% if fn('current_product_cat_var') or fn('is_product_category') %}
+          <div class="uk-navbar-item min-height-40">
+            <a class="uk-badge badge-cat icon close-icon" data-link="{{ fn('remove_query_arg_product_cats_for_filters')|e('esc_url') }}" onclick="quickLoad(event);">
+              {{ fn('get_term_by', 'slug', fn('get_query_var', 'product_cat'), 'product_cat').name }}
+            </a>
+          </div>
+        {% endif %}
+        {% if fn('current_product_series_var') or fn('is_product_series') %}
+          <div class="uk-navbar-item min-height-40">
+            <a class="uk-badge badge-series icon close-icon" data-link="{{ fn('remove_query_arg_product_series_for_filters')|e('esc_url') }}" onclick="quickLoad(event);">
+              {{ fn('get_term_by', 'slug', fn('get_query_var', 'product_series'), 'product_series').name }}
+            </a>
+          </div>
+        {% endif %}
+        {% if fn('current_product_gridlist_var') %}
+        <div class="uk-navbar-item min-height-40">
+          <a class="uk-badge badge-view icon close-icon" data-link="{{ fn('remove_query_arg', ['grid_list'])|e('esc_url') }}" onclick="quickLoad(event);">
+            {{ fn('gridlist_badge_name') }}
+          </a>
+        </div>
+        {% endif %}
+      </div>
+      
+      <div id="ShopToolbarRight" class="uk-navbar-right pull-right-15">
+        <div id="GridList" class="uk-navbar-item min-height-40">
+          <a 
+            data-link="{{ function ('add_query_arg', 'grid_list', 'grid-view')|e('esc_url') }}" 
+            onclick="quickLoad(event);" 
+            class="uk-visible@s grid-toggle icon grid-icon uk-button uk-button-default uk-button-small padding-0-10 uk-margin-small-right {% if function('get_query_var', 'grid_list') == 'grid-view' %}uk-active{% endif %}" 
+          > 
+          </a>
+          <a 
+            data-link="{{ function ('add_query_arg', 'grid_list', 'list-view')|e('esc_url') }}" 
+            onclick="quickLoad(event);" 
+            class="uk-visible@s list-toggle icon list-icon uk-button uk-button-default uk-button-small padding-0-10 {% if function('get_query_var', 'grid_list') == 'list-view' %}uk-active{% endif %}" 
+          > 
+          </a>
+          <a uk-toggle="target: #toggle-animation" class="uk-button uk-button-default uk-button-small padding-0-10 uk-text-capitalize uk-hidden@m">{{ __('Filter', 'vigilant-octo-telegram') }}</a>
+        </div>
+      </div>
+      
+    </nav>
+</header>

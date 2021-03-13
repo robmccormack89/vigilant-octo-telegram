@@ -39,7 +39,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 		<ul id="my-id" class="uk-switcher">
 			<?php foreach ( $product_tabs as $key => $product_tab ) : ?>
 				<li class="tab_id_<?php echo $product_tab['callback']; ?>">
-					<div class="tab-content uk-card uk-card-small uk-card-default uk-card-body">
+					<div class="tab-content padding-5">
 						<?php
 						if ( isset( $product_tab['callback'] ) ) {
 							call_user_func( $product_tab['callback'], $key, $product_tab );

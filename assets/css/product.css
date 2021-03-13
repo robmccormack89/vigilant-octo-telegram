@@ -1,0 +1,114 @@
+/* onsale badge - main product */
+.onsale.uk-card-badge {
+  top: 15px;
+  left: 55px;
+  right: auto;
+}
+/* product left */
+/* product images */
+.woocommerce #content div.product div.images,
+.woocommerce-page #content div.product div.images,
+.woocommerce-page div.product div.images,
+.woocommerce div.product div.images {
+  width: 100%;
+}
+/* woo product img lightbox */
+.pswp__caption__center {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  line-height: 20px;
+  color: #ccc;
+}
+/* product right */
+/* product title */
+.product_title.entry-title {
+  font-size: 2rem;
+}
+@media (min-width: 960px) {
+  .product_title.entry-title {
+    font-size: 2.3rem;
+  }
+}
+/* product price */
+.product-right bdi {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ee3131;
+}
+/* product meta */
+.product_meta {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+span.sku_wrapper {
+    display: block;
+}
+span.posted_in {
+    display: block;
+}
+span.tagged_as {
+    display: block;
+}
+/* add to cart */
+.single_add_to_cart_button {
+  display: inline-block;
+}
+.quantity {
+  width: fit-content;
+  display: inline-block;
+}
+/* variations */
+.reset_variations {
+  position: absolute;
+  right: 15px;
+  bottom: -20px;
+}
+.woocommerce-variation-price {
+  margin-bottom: 20px;
+}
+/* tabs */
+.uk-tab>*>a {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+.tab-content h2 {
+  margin-bottom: 10px!important;
+}
+/* reviews tab, if enabled */
+.comment-form-rating {
+  margin-top: 20px;
+}
+/* related & upsells swiper */
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+:root {
+  --swiper-theme-color: #ee3131ba;
+}
+#slideshow_related, #slideshow_upsells {
+  margin-bottom: -25px;
+}
+#slideshow_related .swiper-wrapper, #slideshow_upsells .swiper-wrapper {
+  padding-bottom: 30px;
+}
+#slideshow_related .swiper-pagination, #slideshow_upsells .swiper-pagination {
+  z-index: 99999;
+  bottom: 16px!important;
+}
+/* related & upsells images */
+.product-related-upsells-section #ProductImg img {
+  height: 140px;
+  width: 100%;
+  object-fit: cover;
+}
+/* related & upsells badges */
+#RelatedGrid span.onsale.uk-card-badge.uk-label,
+#UpsellsGrid span.onsale.uk-card-badge.uk-label {
+  left: 15px;
+}
+
+
+
+

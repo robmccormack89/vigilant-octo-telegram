@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html {{site.language_attributes}}>
+
+<head>
+  
+  <meta charset="{{site.charset|e('html_attr')}}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  
+  {{ function('wp_head') }}
+  
+  {% block spec_styles %}
+  {% endblock %}
+  
+</head>
+
+{% block bodywrap %}
+
+  <body class="{{body_class|e('html_attr')}} no-overflow" data-template="base.twig">
+    
+    {% block theme_preload_markup %}
+      <div id="ThemePreload" class="theme-preload"></div>
+    {% endblock %}
+    
+    {% block custom_store_notice %}
+      {% do function('custom_store_notice') %}
+    {% endblock %}
+
+    {% block header %}
+      {% include 'header.twig' %}
+    {% endblock %}
+    
+    <main role="main">
+      {% block content %}
+        <div class="block-content_wrap">
+      
+          {% block pageheader %}
+          {% endblock %}
+          
+          <section class="uk-position-relative">
+            {% block contentbefore %}
+            
+              {% block breads %}
+              {% endblock %}
+              
+              <div class="uk-section uk-section-small content-container">
+                {% block contentwrap %}
+                  {% block contentonly %}
+                    <p>{{ __('Sorry, nothing to display here...', 'vigilant-octo-telegram') }}</p>
+                  {% endblock %}
+                {% endblock %}
+              </div>
+              
+            {% endblock %}
+          </section>
+          
+          {% block abovefooter %}
+            <section class="uk-section uk-background-muted">
+              <div class="uk-container uk-container-large uk-text-center">
+                <p class="uk-margin-remove-bottom">{{above_footer_text|e('esc_html')}}</p>
+              </div>
+            </section>
+          {% endblock %}
+        
+        </div>
+      {% endblock %}
+    </main>
+    
+    {% block footer %}
+      {% include 'footer.twig' %}
+    {% endblock %}
+    
+    {% block shop_fixed_nav %}
+      {% include 'shop-fixed-nav.twig' %} 
+    {% endblock %}
+    
+    {{ function('wp_footer') }}
+    
+    {% block spec_scripts %}
+    {% endblock %}
+    
+    {% block theme_preload_script %}
+      <script>
+        // website preloader animation
+        window.onload = function(){
+          document.getElementById("ThemePreload").classList.add("hidden");
+          document.getElementsByTagName("BODY")[0].classList.remove("no-overflow");
+        }
+      </script>
+    {% endblock %}
+    
+  </body>
+
+{% endblock %}
+
+</html>

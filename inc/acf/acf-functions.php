@@ -1,7 +1,7 @@
 <?php
 /**
 * ACF Functions
-* @package Rmcc_Woo_Theme
+* @package Vigilant_Octo_Telegram
 */
 
 function editor_settings( $settings ) {

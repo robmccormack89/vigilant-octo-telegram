@@ -39,8 +39,6 @@ if (isset($_GET['orderby'])) {
 				type="radio" 
 				data-link="<?php echo esc_url(add_query_arg(array('orderby' => esc_attr($id)))); ?>" 
 				onclick="quickLoad(event);" 
-				data-type="orderby" 
-				data-name="<?php echo esc_html( $name );?>"
 				<?php if ($orderby_sort == esc_attr($id)) { echo 'checked'; } ?>
 				>
 				<?php echo esc_html( $name ); ?>

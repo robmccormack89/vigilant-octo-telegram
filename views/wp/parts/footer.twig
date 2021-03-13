@@ -1,0 +1,111 @@
+<footer>
+  
+  <!-- <div id="FooterSecondary" class="uk-background-secondary uk-background-secondary-muted uk-light">
+    <div class="uk-child-width-1-2@m uk-grid-collapse" uk-grid>
+      <div class="uk-padding uk-text-center">
+        <h3 class="uk-h4 uk-text-uppercase">Receive our Latest Offers & Advice</h3>
+        <hr class="uk-divider-small">
+      </div>
+      <div class="uk-background-secondary-muted uk-background-secondary-muted-lighter uk-padding uk-text-center">
+        <h3 class="uk-h4 uk-text-uppercase">Independent Customer Reveiews</h3>
+        <hr class="uk-divider-small">
+      </div>
+    </div>
+  </div> -->
+  
+  <div id="FooterMain" class="uk-background-secondary uk-section uk-padding-remove-bottom uk-light">
+    <div class="uk-container uk-container-expand">
+      
+      <div class=" uk-margin-bottom uk-grid-large" uk-grid>
+        
+        <div class="uk-width-1-3@m">
+          
+          <div class="footer-logo uk-margin-bottom">
+            <a href="{{ site.url|e('esc_url') }}" title="{{ site.title|e('html_attr') }}">
+              <img class="uk-logo" data-src="{{ theme_logo_url|resize(250)|e('esc_url')|default('https://via.placeholder.com/250x82.png?text=+') }}" width="250" height="82" alt="{{ site.title|e('esc_html') }} Logo" uk-img>
+            </a>
+          </div>
+          
+          <div class="footer-left-content">
+            {% if sidebar_footer_top_left %}
+              {{ sidebar_footer_top_left }}
+            {% else %}
+              <p class="uk-text-emphasis">Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</p>
+              <a href="#" class="uk-text-underline">Click here</a>
+            {% endif %}
+          </div>
+          
+        </div>
+        
+        <div class="uk-width-1-6@m">
+          {% if has_footer_nav_menu %}
+            <h3 class="uk-text-uppercase uk-h4">{{footer_nav_menu.title|e('esc_html')}}</h3>
+            <ul class="uk-nav-default" uk-nav>
+              {% for item in footer_nav_menu.get_items %}
+                <li class="{{ item.classes | join(' ')|e('html_attr') }}">
+                  <a href="{{ item.get_link|e('esc_url') }}">{{ item.title|e('esc_html') }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <h3 class="uk-text-uppercase uk-h4">Navigation</h3>
+            <ul class="uk-nav-default" uk-nav>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Shipping Information</a></li>
+              <li><a href="#">Request a Catalogue</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          {% endif %}
+        </div>
+        
+        <div class="uk-width-1-6@m">
+          {% if has_footer_customers_menu %}
+            <h3 class="uk-text-uppercase uk-h4">{{footer_customers_menu.title|e('esc_html')}}</h3>
+            <ul class="uk-nav-default" uk-nav>
+              {% for item in footer_customers_menu.get_items %}
+                <li class="{{ item.classes | join(' ')|e('html_attr') }}">
+                  <a href="{{ item.get_link|e('esc_url') }}">{{ item.title|e('esc_html') }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <h3 class="uk-text-uppercase uk-h4">Customers</h3>
+            <ul class="uk-nav-default" uk-nav>
+              <li><a href="#">Trade</a></li>
+              <li><a href="#">Create an Account</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Contact us</a></li>
+            </ul>
+          {% endif %}
+        </div>
+        
+        <div class="uk-width-1-3@m uk-text-left uk-text-right@m">
+          <h3 class="uk-text-uppercase uk-h4">{{ __('Sales & Support', 'vigilant-octo-telegram') }}</h3>
+          <div class="widget-content">
+            <p class="uk-margin-remove-bottom"><a href="tel:{{company_phone_number|e('html_attr')}}">{{ __('Call us on', 'vigilant-octo-telegram') }} {{company_phone_number|e('esc_html')}}</a> | <a href="mailto:{{display_email|e('html_attr')}}">{{ __('Email us', 'vigilant-octo-telegram') }}</a></p>
+            <p class="uk-margin-remove-top uk-text-muted">
+              {{base_address|e('esc_html')|default('Address 1')}}, {{base_address_2|e('esc_html')|default('Address 2')}},<br>
+              {{base_city|e('esc_html')|default('City')}}, {{base_county|e('esc_html')|default('County')}},<br>
+              {{base_eircode|e('esc_html')|default('Eircode')}}.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="uk-margin-medium-top uk-margin-medium-bottom uk-child-width-1-2@m uk-flex uk-flex-bottom" uk-grid>
+        <div class="uk-text-center uk-text-left@m">
+          © {{ now|date('Y')|e('esc_html') }} {{ bloginfo('name')|e('esc_html') }}
+        </div>
+        <div class="uk-text-center uk-text-right@m">
+          <div class="footer-copyright">
+            Website by <a href="https://github.com/robmccormack89" target="_blank">RMcCormack</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</footer>

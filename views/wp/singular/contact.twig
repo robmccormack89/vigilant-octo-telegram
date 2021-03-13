@@ -1,0 +1,53 @@
+{% extends 'page.twig' %}
+
+{% block breads %}
+  <div class="breads-container uk-container uk-container-small">
+    {% include 'breads.twig' %} 
+  </div>
+{% endblock %}
+
+{% block page_content %}
+  <section class="page-content-section uk-section uk-section-small uk-container uk-container-small" data-template="contact.twig">
+      
+    <div uk-grid>
+      
+      <div class="contact-page-left uk-width-2-3@m">
+        
+        <h3>{{ __('Email us:', 'urban-carnival-theme') }}</h3>
+      
+        <ul uk-tab uk-switcher>
+          <li><a href="#">{{ __('General Information', 'vigilant-octo-telegram') }}</a></li>
+          <li><a href="#">{{ __('Orders', 'vigilant-octo-telegram') }}</a></li>
+          <li><a href="#">{{ __('Deliveries', 'vigilant-octo-telegram') }}</a></li>
+        </ul>
+        
+        <ul class="uk-switcher uk-margin">
+          <li>{{ function('do_shortcode', '[contact-form-7 title="Information"]') }}</li>
+          <li>{{ function('do_shortcode', '[contact-form-7 title="Orders"]') }}</li>
+          <li>{{ function('do_shortcode', '[contact-form-7 title="Deliveries"]') }}</li>
+        </ul>
+      
+      </div>
+      
+      <div class="contact-page-right uk-width-1-3@m">
+      
+        <h4>{{ __('Our Office:', 'urban-carnival-theme') }}</h4>
+      
+        <p>
+          {{base_address|e('esc_html')}}, {{base_address_2|e('esc_html')}},<br>
+          {{base_city|e('esc_html')}}, {{base_county|e('esc_html')}},<br>
+          {{base_eircode|e('esc_html')}}.
+        </p>
+        
+        <h4>{{ __('Contact Info:', 'urban-carnival-theme') }}</h4>
+      
+        <p>
+          <a href="mailto:{{display_email|e('html_attr')}}">{{display_email|e('html_attr')}}</a>
+        </p>
+      
+      </div>
+        
+    </div>
+
+  </section>
+{% endblock %}

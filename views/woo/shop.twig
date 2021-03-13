@@ -1,31 +1,35 @@
-{% extends 'base.twig' %}
+{% extends 'index.twig' %}
 
-{% block spec_styles %}
+{% block styles %}
   <!-- shop styles -->
   <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/shop.css" />
 {% endblock %}
 
-{% block pageheader %}
-  {% include 'shop-header.twig' %}
-{% endblock %}
-
-{% block contentonly %}
-
-  <div data-block="content-wrap" data-template="shop.twig">
-    <div class="uk-container">
-      
-      {% do action('woocommerce_before_main_content') %}
-      
-      {% include 'shop-grid.twig' %}
-
-      {% do action('woocommerce_after_shop_loop') %}
-
-      {% do action('woocommerce_after_main_content') %}
-
-    </div>
+{% block archive_header_title %}
+  <h1 class="uk-text-uppercase uk-text-muted uk-article-title uk-margin-remove">{{ title|e('esc_html') }}</h1>
+  <div hidden>
+    {% do action('woocommerce_archive_description') %}
   </div>
 {% endblock %}
 
-{% block spec_scripts %}
+{% block archive_content %}
+
+  <section class="shop-archive uk-section uk-section-small uk-container" data-template="shop.twig">
+    
+    <a class="element-to-replace" data-link="https://masseyfergusontractors.ie/shop/?orderby=menu_order">One</a> <a data-link="https://masseyfergusontractors.ie/about/">Two</a>
+    
+    {% do action('woocommerce_before_main_content') %}
+
+    {% include 'shop-grid.twig' %}
+    
+    {% do action('woocommerce_after_shop_loop') %}
+
+    {% do action('woocommerce_after_main_content') %}
+    
+  </section>
+{% endblock %}
+
+{% block scripts %}
   <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/shop.js'></script>
+  <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/shop-filters.js'></script>
 {% endblock %}

@@ -1,0 +1,10 @@
+/* cart table */
+.woocommerce-cart-form td.product-remove {
+  min-width: 20px;
+}
+.woocommerce-cart-form td.product-thumbnail {
+  min-width: 100px;
+}
+.woocommerce-cart-form td.product-name {
+  min-width: 150px;
+}

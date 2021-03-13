@@ -2,30 +2,31 @@
 /**
  * Timber theme class & other functions for Twig.
  *
- * @package Rmcc_Woo_Theme
+ * @package Vigilant_Octo_Telegram
  */
 
 // Define paths to Twig templates
 Timber::$dirname = array(
   'views',
-  'views/templates',
   'views/wp',
   'views/wp/archive',
   'views/wp/parts',
-  'views/wp/parts/tease',
+  'views/wp/parts/comments',
   'views/wp/parts/footer',
   'views/wp/parts/header',
   'views/wp/singular',
+  'views/wp/templates',
   'views/woo',
   'views/woo/parts',
   'views/woo/parts/tease',
+  'views/woo/parts/shop',
 );
 
 // set the $autoescape value
 Timber::$autoescape = false;
 
-// Define Rmcc_Woo_Theme Child Class
-class RmccWooTheme extends Timber\Site
+// Define Vigilant_Octo_Telegram Child Class
+class Vigilant_Octo_Telegram extends Timber\Site
 {
   public function __construct()
   {
@@ -33,13 +34,12 @@ class RmccWooTheme extends Timber\Site
     add_filter('timber_context', array( $this, 'add_to_context' ));
     add_filter('get_twig', array( $this, 'add_to_twig' ));
     add_action('after_setup_theme', array( $this, 'theme_supports' ));
-    add_action('wp_enqueue_scripts', array( $this, 'rmcc_woo_theme_enqueue_assets'));
-    add_action('widgets_init', array( $this, 'rmcc_woo_custom_uikit_widgets_init'));
+    add_action('wp_enqueue_scripts', array( $this, 'vigilant_octo_telegram_enqueue_assets'));
+    add_action('widgets_init', array( $this, 'vigilant_octo_telegram_custom_uikit_widgets_init'));
     add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
     add_filter( 'timber/context', array( $this, 'add_to_context' ) );
     add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
-    add_filter( 'query_vars', array( $this, 'rmcc_gridlist_query_vars_filter'));
-    // add_filter( 'query_vars', array( $this, 'rmcc_series_query_vars_filter'));
+    add_filter( 'query_vars', array( $this, 'vigilant_octo_telegram_gridlist_query_vars_filter'));
     add_action( 'init', array( $this, 'register_post_types' ) );
     add_action( 'init', array( $this, 'register_taxonomies' ) );
     add_action('init', array( $this, 'register_widget_areas' ));
@@ -50,37 +50,37 @@ class RmccWooTheme extends Timber\Site
   public function register_post_types()
   {
     $labels_one = array(
-  		'name'                  => _x( 'Banner Slides', 'Post Type General Name', 'text_domain' ),
-  		'singular_name'         => _x( 'Banner Slide', 'Post Type Singular Name', 'text_domain' ),
-  		'menu_name'             => __( 'Home Banner Slides', 'text_domain' ),
-  		'name_admin_bar'        => __( 'Banner Slide', 'text_domain' ),
-  		'archives'              => __( 'Banner Slide Archives', 'text_domain' ),
-  		'attributes'            => __( 'Item Attributes', 'text_domain' ),
-  		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-  		'all_items'             => __( 'All Slides', 'text_domain' ),
-  		'add_new_item'          => __( 'Add New Item', 'text_domain' ),
-  		'add_new'               => __( 'Add New', 'text_domain' ),
-  		'new_item'              => __( 'New Item', 'text_domain' ),
-  		'edit_item'             => __( 'Edit Item', 'text_domain' ),
-  		'update_item'           => __( 'Update Item', 'text_domain' ),
-  		'view_item'             => __( 'View Item', 'text_domain' ),
-  		'view_items'            => __( 'View Items', 'text_domain' ),
-  		'search_items'          => __( 'Search Item', 'text_domain' ),
-  		'not_found'             => __( 'Not found', 'text_domain' ),
-  		'not_found_in_trash'    => __( 'Not found in Trash', 'text_domain' ),
-  		'featured_image'        => __( 'Featured Image', 'text_domain' ),
-  		'set_featured_image'    => __( 'Set featured image', 'text_domain' ),
-  		'remove_featured_image' => __( 'Remove featured image', 'text_domain' ),
-  		'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
-  		'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
-  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
-  		'items_list'            => __( 'Items list', 'text_domain' ),
-  		'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
-  		'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+  		'name'                  => _x( 'Banner Slides', 'Post Type General Name', 'vigilant-octo-telegram' ),
+  		'singular_name'         => _x( 'Banner Slide', 'Post Type Singular Name', 'vigilant-octo-telegram' ),
+  		'menu_name'             => __( 'Home Banner Slides', 'vigilant-octo-telegram' ),
+  		'name_admin_bar'        => __( 'Banner Slide', 'vigilant-octo-telegram' ),
+  		'archives'              => __( 'Banner Slide Archives', 'vigilant-octo-telegram' ),
+  		'attributes'            => __( 'Item Attributes', 'vigilant-octo-telegram' ),
+  		'parent_item_colon'     => __( 'Parent Item:', 'vigilant-octo-telegram' ),
+  		'all_items'             => __( 'All Slides', 'vigilant-octo-telegram' ),
+  		'add_new_item'          => __( 'Add New Item', 'vigilant-octo-telegram' ),
+  		'add_new'               => __( 'Add New', 'vigilant-octo-telegram' ),
+  		'new_item'              => __( 'New Item', 'vigilant-octo-telegram' ),
+  		'edit_item'             => __( 'Edit Item', 'vigilant-octo-telegram' ),
+  		'update_item'           => __( 'Update Item', 'vigilant-octo-telegram' ),
+  		'view_item'             => __( 'View Item', 'vigilant-octo-telegram' ),
+  		'view_items'            => __( 'View Items', 'vigilant-octo-telegram' ),
+  		'search_items'          => __( 'Search Item', 'vigilant-octo-telegram' ),
+  		'not_found'             => __( 'Not found', 'vigilant-octo-telegram' ),
+  		'not_found_in_trash'    => __( 'Not found in Trash', 'vigilant-octo-telegram' ),
+  		'featured_image'        => __( 'Featured Image', 'vigilant-octo-telegram' ),
+  		'set_featured_image'    => __( 'Set featured image', 'vigilant-octo-telegram' ),
+  		'remove_featured_image' => __( 'Remove featured image', 'vigilant-octo-telegram' ),
+  		'use_featured_image'    => __( 'Use as featured image', 'vigilant-octo-telegram' ),
+  		'insert_into_item'      => __( 'Insert into item', 'vigilant-octo-telegram' ),
+  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'vigilant-octo-telegram' ),
+  		'items_list'            => __( 'Items list', 'vigilant-octo-telegram' ),
+  		'items_list_navigation' => __( 'Items list navigation', 'vigilant-octo-telegram' ),
+  		'filter_items_list'     => __( 'Filter items list', 'vigilant-octo-telegram' ),
   	);
   	$args_one = array(
-  		'label'                 => __( 'Banner Slide', 'text_domain' ),
-  		'description'           => __( 'Banner Slides for the Home Page Banner', 'text_domain' ),
+  		'label'                 => __( 'Banner Slide', 'vigilant-octo-telegram' ),
+  		'description'           => __( 'Banner Slides for the Home Page Banner', 'vigilant-octo-telegram' ),
   		'labels'                => $labels_one,
   		'supports'              => array( 'title', 'editor', 'thumbnail' ),
   		'hierarchical'          => false,
@@ -103,26 +103,26 @@ class RmccWooTheme extends Timber\Site
   public function register_taxonomies()
   {
   	$labels_series = array(
-  		'name'                       => _x( 'Series/Models', 'Taxonomy General Name', 'rmcc-woo-theme' ),
-  		'singular_name'              => _x( 'Series/Model', 'Taxonomy Singular Name', 'rmcc-woo-theme' ),
-  		'menu_name'                  => __( 'Series/Models', 'rmcc-woo-theme' ),
-  		'all_items'                  => __( 'All Series/Models', 'rmcc-woo-theme' ),
-  		'parent_item'                => __( 'Parent (Series)', 'rmcc-woo-theme' ),
-  		'parent_item_colon'          => __( 'Parent (Series):', 'rmcc-woo-theme' ),
-  		'new_item_name'              => __( 'New Series/Model Name', 'rmcc-woo-theme' ),
-  		'add_new_item'               => __( 'Add New Series/Model', 'rmcc-woo-theme' ),
-  		'edit_item'                  => __( 'Edit Series/Model', 'rmcc-woo-theme' ),
-  		'update_item'                => __( 'Update Series/Model', 'rmcc-woo-theme' ),
-  		'view_item'                  => __( 'View Series/Model', 'rmcc-woo-theme' ),
-  		'separate_items_with_commas' => __( 'Separate items with commas', 'rmcc-woo-theme' ),
-  		'add_or_remove_items'        => __( 'Add or remove Series/Model', 'rmcc-woo-theme' ),
-  		'choose_from_most_used'      => __( 'Choose from the most used', 'rmcc-woo-theme' ),
-  		'popular_items'              => __( 'Popular Series/Models', 'rmcc-woo-theme' ),
-  		'search_items'               => __( 'Search Series/Models', 'rmcc-woo-theme' ),
-  		'not_found'                  => __( 'Not Found', 'rmcc-woo-theme' ),
-  		'no_terms'                   => __( 'No items', 'rmcc-woo-theme' ),
-  		'items_list'                 => __( 'Items list', 'rmcc-woo-theme' ),
-  		'items_list_navigation'      => __( 'Items list navigation', 'rmcc-woo-theme' ),
+  		'name'                       => _x( 'Series/Models', 'Taxonomy General Name', 'vigilant-octo-telegram' ),
+  		'singular_name'              => _x( 'Series/Model', 'Taxonomy Singular Name', 'vigilant-octo-telegram' ),
+  		'menu_name'                  => __( 'Series/Models', 'vigilant-octo-telegram' ),
+  		'all_items'                  => __( 'All Series/Models', 'vigilant-octo-telegram' ),
+  		'parent_item'                => __( 'Parent (Series)', 'vigilant-octo-telegram' ),
+  		'parent_item_colon'          => __( 'Parent (Series):', 'vigilant-octo-telegram' ),
+  		'new_item_name'              => __( 'New Series/Model Name', 'vigilant-octo-telegram' ),
+  		'add_new_item'               => __( 'Add New Series/Model', 'vigilant-octo-telegram' ),
+  		'edit_item'                  => __( 'Edit Series/Model', 'vigilant-octo-telegram' ),
+  		'update_item'                => __( 'Update Series/Model', 'vigilant-octo-telegram' ),
+  		'view_item'                  => __( 'View Series/Model', 'vigilant-octo-telegram' ),
+  		'separate_items_with_commas' => __( 'Separate items with commas', 'vigilant-octo-telegram' ),
+  		'add_or_remove_items'        => __( 'Add or remove Series/Model', 'vigilant-octo-telegram' ),
+  		'choose_from_most_used'      => __( 'Choose from the most used', 'vigilant-octo-telegram' ),
+  		'popular_items'              => __( 'Popular Series/Models', 'vigilant-octo-telegram' ),
+  		'search_items'               => __( 'Search Series/Models', 'vigilant-octo-telegram' ),
+  		'not_found'                  => __( 'Not Found', 'vigilant-octo-telegram' ),
+  		'no_terms'                   => __( 'No items', 'vigilant-octo-telegram' ),
+  		'items_list'                 => __( 'Items list', 'vigilant-octo-telegram' ),
+  		'items_list_navigation'      => __( 'Items list navigation', 'vigilant-octo-telegram' ),
   	);
   	$rewrite_series = array(
   		'slug'                       => 'product-series-model',
@@ -150,9 +150,9 @@ class RmccWooTheme extends Timber\Site
     // Register widget areas
     if (function_exists('register_sidebar')) {
       register_sidebar(array(
-        'name' => esc_html__('Footer Left Area', 'rmcc-woo-theme'),
+        'name' => esc_html__('Footer Left Area', 'vigilant-octo-telegram'),
         'id' => 'sidebar-footer-left',
-        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'rmcc-woo-theme'),
+        'description' => esc_html__('Main Footer Widget Area; works best with the current widget only.', 'vigilant-octo-telegram'),
         'before_widget' => '',
         'after_widget' => '',
         'before_title' => '<span hidden>',
@@ -165,13 +165,13 @@ class RmccWooTheme extends Timber\Site
   {
     // This theme uses wp_nav_menu() in one locations.
     register_nav_menus(array(
-      'categories' => __('Categories Menu', 'rmcc-woo-theme'),
-      'main_menu' => __('Main Menu', 'rmcc-woo-theme'),
-      'mobile_menu' => __('Mobile Menu', 'rmcc-woo-theme'),
-      'accessories_menu' => __('Accessories Menu', 'rmcc-woo-theme'),
-      'parts_menu' => __('Parts Menu', 'rmcc-woo-theme'),
-      'footer_nav_menu' => __('Footer Nav Menu', 'rmcc-woo-theme'),
-      'footer_customers_menu' => __('Footer Customers Menu', 'rmcc-woo-theme'),
+      'categories' => __('Categories Menu', 'vigilant-octo-telegram'),
+      'main_menu' => __('Main Menu', 'vigilant-octo-telegram'),
+      'mobile_menu' => __('Mobile Menu', 'vigilant-octo-telegram'),
+      'accessories_menu' => __('Accessories Menu', 'vigilant-octo-telegram'),
+      'parts_menu' => __('Parts Menu', 'vigilant-octo-telegram'),
+      'footer_nav_menu' => __('Footer Nav Menu', 'vigilant-octo-telegram'),
+      'footer_customers_menu' => __('Footer Customers Menu', 'vigilant-octo-telegram'),
     ));
   }
 
@@ -185,6 +185,7 @@ class RmccWooTheme extends Timber\Site
     $context['is_category'] = is_category();
     $context['is_single_product'] = is_singular( 'product' );
     $context['is_product_category'] = is_product_category();
+    $context['is_posts'] = is_blog();
     // get the wp logo
     $theme_logo_id = get_theme_mod( 'custom_logo' );
     $theme_logo_url = wp_get_attachment_image_url( $theme_logo_id , 'full' );
@@ -270,27 +271,28 @@ class RmccWooTheme extends Timber\Site
     add_theme_support( 'wc-product-gallery-lightbox' );
     add_theme_support( 'wc-product-gallery-slider' );
     // custom thumbnail sizes
-    add_image_size('rmcc-woo-theme-featured-image-archive', 800, 300, true);
-    add_image_size('rmcc-woo-theme-featured-image-single-post', 1200, 450, true);
-    add_image_size('rmcc-woo-theme-product-main-image', 1200, 700, true);
-    add_image_size('rmcc-woo-theme-cart-image', 80, 80, true);
+    add_image_size('vigilant-octo-telegram-featured-image-archive', 800, 300, true);
+    add_image_size('vigilant-octo-telegram-featured-image-single-post', 1200, 450, true);
+    add_image_size('vigilant-octo-telegram-product-main-image', 1200, 700, true);
+    add_image_size('vigilant-octo-telegram-cart-image', 80, 80, true);
     // stop the br tag madness in the content editor
-    remove_filter( 'the_content', 'wpautop' );
-    remove_filter( 'the_excerpt', 'wpautop' );
+    // remove_filter( 'the_content', 'wpautop' );
+    // remove_filter( 'the_excerpt', 'wpautop' );
+    load_theme_textdomain('vigilant-octo-telegram', get_template_directory() . '/languages');
   }
   
   // add grid-list url paramater key
-  public function rmcc_gridlist_query_vars_filter($vars)
+  public function vigilant_octo_telegram_gridlist_query_vars_filter($vars)
   {
     $vars[] .= 'grid_list';
     return $vars;
   }
   
-  public function rmcc_woo_theme_enqueue_assets()
+  public function vigilant_octo_telegram_enqueue_assets()
   {
     // theme base scripts
     wp_enqueue_script(
-      'rmcc-woo-theme',
+      'vigilant-octo-telegram',
       get_template_directory_uri() . '/assets/js/base.js',
       '',
       '',
@@ -335,15 +337,6 @@ class RmccWooTheme extends Timber\Site
       true
     );
     
-    // theme base scripts
-    wp_enqueue_script(
-      'theme-quickload',
-      get_template_directory_uri() . '/assets/js/quickload.js',
-      '',
-      '',
-      true
-    );
-    
     wp_enqueue_style(
       'theme-google-fonts',
       'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap',
@@ -357,18 +350,22 @@ class RmccWooTheme extends Timber\Site
     );
     // theme base css
     wp_enqueue_style(
-      'rmcc-woo-theme',
+      'vigilant-octo-telegram',
       get_template_directory_uri() . '/assets/css/base.css'
     );
     // theme stylesheet
     wp_enqueue_style(
-      'rmcc-woo-theme-styles', get_stylesheet_uri()
+      'vigilant-octo-telegram-styles', get_stylesheet_uri()
+    );
+    wp_enqueue_style(
+      'vigilant-octo-telegram-woo',
+      get_template_directory_uri() . '/assets/css/woo.css'
     );
   }
   
-  public function rmcc_woo_custom_uikit_widgets_init()
+  public function vigilant_octo_telegram_custom_uikit_widgets_init()
   {
-    register_widget("Rmcc_Woo_Theme_Custom_UIKIT_Widget_Class");
+    register_widget("Vigilant_Octo_Telegram_Custom_UIKIT_Widget_Class");
   }
 
   public function add_to_twig($twig)
@@ -380,4 +377,4 @@ class RmccWooTheme extends Timber\Site
   
 }
 
-new RmccWooTheme();
+new Vigilant_Octo_Telegram();

@@ -1,72 +1,48 @@
 {% extends "base.twig" %}
 
-{% block contentwrap %}
-  <div data-block="content-wrap" data-template="index.twig">
+{% block article %}
+
+  <article id="IndexArchive" class="index-archive" data-template="index.twig">
+
+    {% block archive_header %}
+      <header class="archive-header">
+        <div class="uk-section uk-background-muted theme-border-bottom">
+          <div class="uk-container uk-text-center">
+            {% block archive_header_title %}
+              <h1 class="uk-text-uppercase uk-text-muted uk-article-title">{{ title|e('esc_html') }}</h1>
+            {% endblock %}
+          </div>
+        </div>
+        {% block breads %}
+          <div class="breads-container uk-container">
+            {% include 'breads.twig' %} 
+          </div>
+        {% endblock %}
+      </header>
+    {% endblock %}
     
-    <div class="blog-wrap">
-      
-      <div uk-grid>
-        
-        <div class="uk-width-auto@s">
-          <h1 class="uk-text-bold dark-text">{{ title|e('esc_html') }}</h1>
-        </div>
-        
-        {% if is_posts %}
-        <div class="page_nav uk-width-expand@s uk-inline">
-          <div class="uk-position-center-right uk-visible@s">
-            <ul class="uk-subnav uk-margin-remove-bottom">
-              
-              {% for item in blogcats %}
-              
-              {% if current_cat_id == item.term_id %}
-              {% set active_class = 'uk-active' %}
-              {% else %}
-              {% set active_class = 'not-active' %}
-              {% endif %}
-              
-              <li id="{{ item.term_id }}" class="{{active_class}}"><a href="{{ function('get_term_link', item.slug, 'category') }}" class="uk-text-uppercase font-600">{{ item.name }}</a></li>
-              {% endfor %}
-              
-              {% if is_category %}
-              <li id="" class=""><a href="{{ posts_page_url }}" class="uk-text-uppercase font-600">All</a></li>
-              {% endif %}
-              
-            </ul>
+    {% block archive_content %}
+      <section class="archive-content-section uk-section uk-section-small uk-container">
+        {% if posts is not empty %}
+          <div class="uk-child-width-1-2@s uk-child-width-1-3@m archive-posts" uk-grid="masonry: true">
+            {% for post in posts %}
+              {% block tease_include %}
+                {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+              {% endblock %}
+            {% endfor %}
           </div>
-          <div class="uk-hidden@s">
-            <ul class="uk-subnav uk-margin-remove-bottom">
-              {% for item in blogcats %}
-              {% if cat_id == item.term_id %}
-                {% set active_class = 'uk-active' %}
-              {% else %}
-                {% set active_class = 'not-active' %}
-              {% endif %}
-              <li id="{{ item.term_id }}" class="{{active_class}}"><a href="{{ catbase }}/{{ item.slug }}" class="uk-text-uppercase font-600">{{ item.name }}</a></li>
-              {% endfor %}
-              {% if is_category %}
-              <li id="" class=""><a href="{{ posts_page_url }}" class="uk-text-uppercase font-600">All</a></li>
-              {% endif %}
-            </ul>
-          </div>
-        </div>
+        {% else %}
+          <p class="uk-text-emphasis">{{ __('Sorry, nothing to display here...', 'vigilant-octo-telegram') }}</p>
         {% endif %}
-        
-      </div>
+      </section>
       
-      <div class="uk-child-width-1-2@s uk-child-width-1-3@m archive-posts margin-top-30" uk-grid="masonry: true">
-        {% for post in posts %}
-          {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-        {% endfor %}
-        {% if posts is empty %}
-        <p class="uk-text-emphasis">Nothing posted here yet....</p>
-        {% endif %}
-      </div>
-      
-      {% if is_paginated %}
-        {% include 'pagination.twig' %}
+      {% if (pagination.next or pagination.prev) %}
+        <footer class="archive-footer">
+          {% include 'pagination.twig' %}
+        </footer>
       {% endif %}
-      
-    </div>
-      
-  </div>
+    {% endblock %}
+    
+  </article>
+  
 {% endblock %}

@@ -56,6 +56,9 @@
 .padding-10-0-0-0 {
   padding: 10px 0 0 0;
 }
+.padding-top-4 {
+  padding-top: 4px;
+}
 .padding-remove-bottom {
   padding-bottom: 0;
 }
@@ -122,6 +125,15 @@
 .pull-right-40 {
   margin-right: -40px;
 }
+.push-right-15 {
+  padding-right: 15px;
+}
+.push-left-25 {
+  padding-left: 25px;
+}
+.push-right-25 {
+  padding-right: 25px;
+}
 .min-height-40 {
   min-height: 40px;
 }
@@ -136,6 +148,23 @@
 }
 a.dont-underline:hover, a.dont-underline:focus {
   text-decoration: none;
+}
+.stretch-me {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+}
+.push-down-5 {
+  margin-bottom: 5px;
+}
+.padding-10-30 {
+    padding: 10px 30px;
+}
+.padding-15-15-15-30 {
+  padding: 10px 10px 10px 25px;
 }
 // backgrounds
 // .theme-bg {

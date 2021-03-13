@@ -2,7 +2,7 @@
 /**
  * Template Name: Parts by Category Template
  *
- * @package Rmcc_Woo_Theme
+ * @package Vigilant_Octo_Telegram
  */
 
 $context = Timber::context();
@@ -18,4 +18,4 @@ $context['all_terms'] = get_terms([
 // get title
 $context['title'] = 'Parts by Category';
 
-Timber::render(  'collection.twig' , $context );
+Timber::render(  'collections.twig' , $context );

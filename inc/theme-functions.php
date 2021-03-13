@@ -2,8 +2,13 @@
 /**
  * Theme functions & bits
  *
- * @package Rmcc_Woo_Theme
+ * @package Vigilant_Octo_Telegram
  */
+ 
+// check if is blog or post
+function is_blog () {
+  return ( is_archive() || is_author() || is_category() || is_home() || is_single() || is_tag()) && 'post' == get_post_type();
+}
  
 add_filter( 'body_class','theme_body_classes' );
 function theme_body_classes( $classes ) {

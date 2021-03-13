@@ -1,45 +1,38 @@
-{% if (pagination.next or pagination.prev) %}
-  <div data-template="pagination.twig">
-    
-    <div class="uk-padding pagi">
-      <ul class="uk-pagination uk-flex-center">
-        {% if pagination.prev %}
-          <li>
-            <a href="{{pagination.prev.link|e('esc_url')}}" class="prev {{pagination.prev.link|length ? '' : 'invisible'|e('html_attr')}}"><i uk-icon="icon: chevron-left"></i> Previous Page</a>
-          </li>
-        {% endif %}
-        {% for page in pagination.pages %}
-          <li>
-            {% if page.link %}
-              <a href="{{page.link|e('esc_url')}}" class="{{page.class|e('html_attr')}}">{{page.title|e('esc_html')}}</a>
-            {% else %}
-              <span class="{{page.class|e('html_attr')}}">{{page.title|e('esc_html')}}</span>
-            {% endif %}
-          </li>
-        {% endfor %}
-        {% if pagination.next %}
-          <li>
-            <a href="{{pagination.next.link|e('esc_url')}}" class="next {{pagination.next.link|length ? '' : 'invisible'|e('html_attr')}}">Next Page <i uk-icon="icon: chevron-right"></i></a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
-    
-    {% if pagination.next %}
-      <div class="scroll-loaders uk-section uk-section-small padding-remove-top uk-section-default">
-        <div class="page-load-status">
-          <div class="loader-ellips infinite-scroll-request">
-            <span class="loader-ellips__dot"></span>
-            <span class="loader-ellips__dot"></span>
-            <span class="loader-ellips__dot"></span>
-            <span class="loader-ellips__dot"></span>
-          </div>
-          <p class="infinite-scroll-last">No more items</p>
-          <p class="infinite-scroll-error">No items to load</p>
-        </div>
-      </div>
-      <button class="view-more-button uk-button uk-align-center uk-margin-remove-bottom uk-margin-remove-top" hidden>View more</button>
+<nav class="uk-padding pagi">
+  <ul class="uk-pagination uk-flex-center">
+    {% if pagination.prev %}
+      <li>
+        <a href="{{pagination.prev.link|e('esc_url')}}" class="prev {{pagination.prev.link|length ? '' : 'invisible'|e('html_attr')}}"><i uk-icon="icon: chevron-left"></i> {{ __('Previous Page', 'vigilant-octo-telegram') }}</a>
+      </li>
     {% endif %}
-    
+    {% for page in pagination.pages %}
+      <li>
+        {% if page.link %}
+          <a href="{{page.link|e('esc_url')}}" class="{{page.class|e('html_attr')}}">{{page.title|e('esc_html')}}</a>
+        {% else %}
+          <span class="{{page.class|e('html_attr')}}">{{page.title|e('esc_html')}}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+    {% if pagination.next %}
+      <li>
+        <a href="{{pagination.next.link|e('esc_url')}}" class="next {{pagination.next.link|length ? '' : 'invisible'|e('html_attr')}}">{{ __('Next Page', 'vigilant-octo-telegram') }} <i uk-icon="icon: chevron-right"></i></a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+
+{% if pagination.next %}
+  <div class="scroll-loaders uk-section uk-section-small padding-remove-top uk-section-default">
+    <div class="page-load-status">
+      <div class="loader-ellips infinite-scroll-request">
+        <span class="loader-ellips__dot"></span>
+        <span class="loader-ellips__dot"></span>
+        <span class="loader-ellips__dot"></span>
+        <span class="loader-ellips__dot"></span>
+      </div>
+      <p class="infinite-scroll-last">{{ __('No more items...', 'vigilant-octo-telegram') }}</p>
+      <p class="infinite-scroll-error">{{ __('No more items to load...', 'vigilant-octo-telegram') }}</p>
+    </div>
   </div>
 {% endif %}

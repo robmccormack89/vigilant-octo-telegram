@@ -1,0 +1,145 @@
+<nav id="ProductFilters">
+
+  <h3 class="uk-h5">{{ __('Sorting', 'vigilant-octo-telegram') }}</h3>
+  <div class="uk-panel uk-panel-scrollable uk-margin-small-bottom">
+    {% do action('woocommerce_before_shop_loop') %}
+  </div>
+
+  <h3 class="uk-h5">{{ __('Filter by Category', 'vigilant-octo-telegram') }}</h3>
+  <div class="uk-panel uk-panel-scrollable uk-margin-small-bottom cat-list-panel">
+    <ul class="uk-nav uk-nav-default uk-margin-small-bottom cat-list">
+
+      {% for cat in function('product_cats_for_filters') %}
+      
+        {% if function ('product_cat_has_children', cat.term_id) %}
+        
+          <li id="{{ cat.slug|e('html_attr') }}" class="uk-parent">
+            <a>
+              <label>
+                <input 
+                  data-link="{{ function ('add_query_arg_product_cats_for_filters', cat.slug)|e('esc_url') }}" 
+                   
+                  class="uk-radio {% if function('get_query_var', 'product_cat') == cat.slug %}here{% endif %}" 
+                  type="radio" 
+                  {% if function('get_query_var', 'product_cat') == cat.slug %}checked{% endif %}
+                > 
+                {{ cat.name|e('esc_html') }}
+              </label>
+            </a>
+            <ul class="uk-nav-sub">
+                
+                {% for sub_cat in function ('sub_cats_for_filters', cat.term_id) %}
+                  <li id="{{ sub_cat.slug|e('html_attr') }}">
+                    <a>
+                      <label>
+                        <input 
+                          data-link="{{ function ('add_query_arg_product_cats_for_filters', sub_cat.slug)|e('esc_url') }}" 
+                          
+                          class="uk-radio {% if function('get_query_var', 'product_cat') == sub_cat.slug %}here{% endif %}" 
+                          type="radio" 
+                          {% if function('get_query_var', 'product_cat') == sub_cat.slug %}checked{% endif %}
+                        > {{ sub_cat.name|e('esc_html') }}
+                      </label>
+                    </a>
+                  </li>
+                {% endfor %}
+                
+              </ul>
+          </li>
+          
+        {% else %}
+        
+          <li id="{{ cat.slug|e('html_attr') }}" >
+            <a>
+              <label>
+                <input 
+                  data-link="{{ function ('add_query_arg_product_cats_for_filters', cat.slug)|e('esc_url') }}" 
+                  
+                  class="uk-radio {% if function('get_query_var', 'product_cat') == cat.slug %}here{% endif %}" 
+                  type="radio" 
+                  {% if function('get_query_var', 'product_cat') == cat.slug %}checked{% endif %}
+                > {{ cat.name|e('esc_html') }}
+              </label>
+            </a>
+          </li>
+          
+        {% endif %}
+        
+      {% endfor %}
+      
+      {% if function('product_cats_for_filters') is empty %}
+        <li>Add some products to some categories</li>
+      {% endif %}
+      
+    </ul>
+  </div>
+  <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg_product_cats_for_filters')|e('esc_url') }}" onclick="quickLoad(event);">{{ __('Reset', 'vigilant-octo-telegram') }}</a>
+
+  <h3 class="uk-h5">{{ __('Filter by Series', 'vigilant-octo-telegram') }}</h3>
+  <div class="uk-panel uk-panel-scrollable uk-margin-small-bottom series-list-panel">
+    <ul class="uk-nav uk-nav-default uk-margin-small-bottom series-list">
+      {% for cat in function('product_series_for_filters') %}
+      
+        {% if function ('product_series_has_children', cat.term_id) %}
+        
+          <li id="{{cat.slug|e('html_attr')}}" class="uk-parent">
+            <a>
+              <label>
+                <input 
+                  data-link="{{ function ('add_query_arg_product_series_for_filters', cat.slug)|e('esc_url') }}" 
+                   
+                  class="uk-radio {% if function('get_query_var', 'product_series') == cat.slug %}here{% endif %}" 
+                  type="radio" 
+                  {% if function('get_query_var', 'product_series') == cat.slug %}checked{% endif %}
+                >  {{ cat.name|e('esc_html') }}
+              </label>
+            </a>
+            <ul class="uk-nav-sub">
+                
+                {% for sub_cat in function ('sub_series_for_filters', cat.term_id) %}
+                  <li id="{{sub_cat.slug|e('html_attr')}}">
+                    <a>
+                      <label>
+                        <input 
+                          data-link="{{ function ('add_query_arg_product_series_for_filters', sub_cat.slug)|e('esc_url') }}" 
+                          
+                          class="uk-radio {% if function('get_query_var', 'product_series') == sub_cat.slug %}here{% endif %}" 
+                          type="radio" 
+                          {% if function('get_query_var', 'product_series') == sub_cat.slug %}checked{% endif %}
+                        > {{ sub_cat.name|e('esc_html') }}
+                      </label>
+                    </a>
+                  </li>
+                {% endfor %}
+                
+              </ul>
+          </li>
+          
+        {% else %}
+        
+          <li id="{{cat.slug|e('html_attr')}}">
+            <a>
+              <label>
+                <input 
+                  data-link="{{ function ('add_query_arg_product_series_for_filters', cat.slug)|e('esc_url') }}" 
+                  
+                  class="uk-radio {% if function('get_query_var', 'product_series') == cat.slug %}here{% endif %}" 
+                  type="radio" 
+                  {% if function('get_query_var', 'product_series') == cat.slug %}checked{% endif %}
+                > {{ cat.name|e('esc_html') }}}
+              </label>
+            </a>
+          </li>
+          
+        {% endif %}
+        
+      {% endfor %}
+      
+      {% if function('product_series_for_filters') is empty %}
+        <li>Add some products to some series/models</li>
+      {% endif %}
+    </ul>
+  </div>
+  <a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="{{ function ('remove_query_arg_product_series_for_filters')|e('esc_url') }}" onclick="quickLoad(event);">{{ __('Reset', 'vigilant-octo-telegram') }}</a>
+
+</nav>

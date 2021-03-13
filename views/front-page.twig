@@ -1,12 +1,12 @@
 {% extends "base.twig" %}
 
-{% block spec_styles %}
+{% block styles %}
   <!-- load in swiper-js css -->
   <link rel="stylesheet" href="{{theme.link}}/assets/css/lib/swiper-bundle.min.css" />
   <link rel="stylesheet" href="{{theme.link}}/assets/css/front.css" />
 {% endblock %}
 
-{% block pageheader %}
+{% block article_header %}
   <div id="slideshow_banner" class="swiper-container">
     <div class="swiper-wrapper">
       
@@ -34,7 +34,7 @@
             <div class="uk-section uk-secton-large">
               <div class="uk-container uk-container-expand uk-text-left">
                 <div class="uk-width-1-2@m">
-                  <h4 class="uk-margin-small-bottom uk-h5">Slide One</h4>
+                  <h4 class="uk-margin-small-bottom uk-h5">{{ __('Slide One', 'vigilant-octo-telegram') }}</h4>
                   <h2 class="uk-margin-small-top uk-h1">Example Slider</h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud.</p>
                   <a href="#" class="uk-button uk-button-primary">Get started</a>
@@ -64,7 +64,7 @@
   </div>
 {% endblock %}
 
-{% block contentbefore %}
+{% block article %}
 
   <div class="home-series-section uk-section uk-section-small uk-padding-small uk-section-muted">
     <div id="slideshow_info" class="swiper-container">
@@ -168,11 +168,7 @@
 
 {% endblock %}
 
-{% block abovefooter %}
-  {% include 'above-footer-page.twig' %} 
-{% endblock %}
-
-{% block spec_scripts %}
+{% block scripts %}
   <!-- load in swiper-js js -->
   <script src="{{theme.link}}/assets/js/lib/swiper-bundle.min.js"></script>
   <script src="{{theme.link}}/assets/js/front.js"></script>
