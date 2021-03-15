@@ -87,7 +87,7 @@
             <p class="uk-margin-remove-top uk-text-muted">
               {{base_address|e('esc_html')|default('Address 1')}}, {{base_address_2|e('esc_html')|default('Address 2')}},<br>
               {{base_city|e('esc_html')|default('City')}}, {{base_county|e('esc_html')|default('County')}},<br>
-              {{base_eircode|e('esc_html')|default('Eircode')}}.
+              {{ __('Eircode:', 'urban-carnival-theme') }} {{base_eircode|e('esc_html')|default('Eircode')}}.
             </p>
           </div>
         </div>

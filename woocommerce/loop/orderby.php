@@ -38,7 +38,6 @@ if (isset($_GET['orderby'])) {
 				class="uk-radio <?php if ($orderby_sort == esc_attr($id)) { echo 'here'; } ?>" 
 				type="radio" 
 				data-link="<?php echo esc_url(add_query_arg(array('orderby' => esc_attr($id)))); ?>" 
-				onclick="quickLoad(event);" 
 				<?php if ($orderby_sort == esc_attr($id)) { echo 'checked'; } ?>
 				>
 				<?php echo esc_html( $name ); ?>
@@ -47,4 +46,4 @@ if (isset($_GET['orderby'])) {
 	</li>
 <?php endforeach; ?>
 </ul>
-<a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="<?php echo esc_url(remove_query_arg(array('orderby'))); ?>" onclick="quickLoad(event);">Reset</a>
+<a class="uk-link-text uk-text-primary uk-text-small filters-reset-link" data-link="<?php echo esc_url(remove_query_arg(array('orderby'))); ?>"><?php __( 'Reset', 'vigilant-octo-telegram' ) ?></a>

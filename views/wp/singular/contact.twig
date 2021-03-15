@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block page_content %}
+
   <section class="page-content-section uk-section uk-section-small uk-container uk-container-small" data-template="contact.twig">
       
     <div uk-grid>
@@ -16,15 +17,26 @@
         <h3>{{ __('Email us:', 'urban-carnival-theme') }}</h3>
       
         <ul uk-tab uk-switcher>
-          <li><a href="#">{{ __('General Information', 'vigilant-octo-telegram') }}</a></li>
-          <li><a href="#">{{ __('Orders', 'vigilant-octo-telegram') }}</a></li>
-          <li><a href="#">{{ __('Deliveries', 'vigilant-octo-telegram') }}</a></li>
+          
+          {% for post in contact_forms %}
+            <li>
+              <a href="#">
+                {{ post.post_title|e('esc_html') }}
+              </a>
+            </li>
+          {% endfor %}
+          
         </ul>
         
         <ul class="uk-switcher uk-margin">
-          <li>{{ function('do_shortcode', '[contact-form-7 title="Information"]') }}</li>
-          <li>{{ function('do_shortcode', '[contact-form-7 title="Orders"]') }}</li>
-          <li>{{ function('do_shortcode', '[contact-form-7 title="Deliveries"]') }}</li>
+          
+          {% for post in contact_forms %}
+            <li>
+              {% set form_title = post.post_title %}
+              {{ function('do_shortcode', '[contact-form-7 title="' ~ form_title|e('esc_html') ~ '"]') }}
+            </li>
+          {% endfor %}
+          
         </ul>
       
       </div>
@@ -36,7 +48,7 @@
         <p>
           {{base_address|e('esc_html')}}, {{base_address_2|e('esc_html')}},<br>
           {{base_city|e('esc_html')}}, {{base_county|e('esc_html')}},<br>
-          {{base_eircode|e('esc_html')}}.
+          {{ __('Eircode:', 'urban-carnival-theme') }} {{base_eircode|e('esc_html')}}.
         </p>
         
         <h4>{{ __('Contact Info:', 'urban-carnival-theme') }}</h4>

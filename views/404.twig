@@ -1,0 +1,20 @@
+{% extends "page.twig" %}
+
+{% block breads %}
+  <div class="breads-container uk-container uk-container-small">
+    {% include 'breads.twig' %} 
+  </div>
+{% endblock %}
+
+{% block page_header_title %}
+  <h1 class="uk-text-uppercase uk-text-muted uk-article-title">{{ title|e('esc_html') }}</h1>
+{% endblock %}
+
+{% block page_content %}
+  <section class="page-content-section uk-section uk-section-small uk-container uk-container-small" data-template="404.twig">
+    {{ __('Sorry, we couldnt find what you were looking for...', 'vigilant-octo-telegram') }}
+    <div>
+      <a href="/" class="uk-margin-top uk-button uk-button-primary uk-button-small">{{ __('Return to Homepage', 'vigilant-octo-telegram') }}</a>
+    </div>
+  </section>
+{% endblock %}

@@ -15,9 +15,7 @@
 {% block archive_content %}
 
   <section class="shop-archive uk-section uk-section-small uk-container" data-template="shop.twig">
-    
-    <a class="element-to-replace" data-link="https://masseyfergusontractors.ie/shop/?orderby=menu_order">One</a> <a data-link="https://masseyfergusontractors.ie/about/">Two</a>
-    
+
     {% do action('woocommerce_before_main_content') %}
 
     {% include 'shop-grid.twig' %}

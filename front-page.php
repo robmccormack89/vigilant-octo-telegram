@@ -10,15 +10,6 @@ $context = Timber::context();
 $timber_post = Timber::get_post();
 $context['post'] = $timber_post;
 
-//featured products 
-$featured_ids = get_field('homepage_product_selection', 'option');
-$featured_args = array(
-   'post_type'             => 'product',
-   'post_status'           => 'publish',
-	 'post__in'      				 => $featured_ids,
-   'posts_per_page'        => '12',
-);
-$context['featured_products'] = new Timber\PostQuery($featured_args);
 // home slides
 $slides_args = array(
    'post_type' => 'slide',
@@ -27,13 +18,6 @@ $slides_args = array(
    'order' => 'asc',
 );
 $context['home_slides'] = new Timber\PostQuery($slides_args);
-// recent products
-$args = array(
-   'post_type'             => 'product',
-   'post_status'           => 'publish',
-   'posts_per_page'        => '8',
-);
-$context['recent_products'] = new Timber\PostQuery($args);
 // product series
 $context['product_series'] = get_terms([
 	'taxonomy'    => 'product_series',
@@ -49,5 +33,19 @@ $context['product_cats'] = get_terms([
 	'number' => 9,
 	'exclude' => '15', // excludes uncategorized
 ]);
+//featured products 
+$featured_ids = get_field('homepage_product_selection', 'option');
+$featured_args = array(
+   'post_type'             => 'product',
+   'post_status'           => 'publish',
+	 'post__in'      				 => $featured_ids,
+   'posts_per_page'        => '12',
+);
+$context['featured_products'] = new Timber\PostQuery($featured_args);
+// acf fields
+$context['default_series_image'] = get_field('default_series_image', 'option');
+$context['default_category_image'] = get_field('default_category_image', 'option');
+$context['homepage_all_categories_link'] = get_field('homepage_all_categories_link', 'option');
+$context['homepage_all_series_link'] = get_field('homepage_all_series_link', 'option');
 
-Timber::render( array( 'front-page.twig' ), $context );
+Timber::render( array( 'front.twig' ), $context );

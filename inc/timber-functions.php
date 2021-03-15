@@ -82,7 +82,7 @@ class Vigilant_Octo_Telegram extends Timber\Site
   		'label'                 => __( 'Banner Slide', 'vigilant-octo-telegram' ),
   		'description'           => __( 'Banner Slides for the Home Page Banner', 'vigilant-octo-telegram' ),
   		'labels'                => $labels_one,
-  		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+  		'supports'              => array( 'title', 'thumbnail' ),
   		'hierarchical'          => false,
   		'public'                => true,
   		'show_ui'               => true,
@@ -226,6 +226,7 @@ class Vigilant_Octo_Telegram extends Timber\Site
     $context['facebook_link'] = get_field('facebook_link', 'option');
     $context['display_email'] = get_field('display_email', 'option');
     $context['above_footer_text'] = get_field('above_footer_text', 'option');
+    $context['contact_page_link'] = get_field('contact_page_link', 'option');
     
     // get the woo cart url
     global $woocommerce;
