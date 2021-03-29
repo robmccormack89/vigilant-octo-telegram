@@ -1,23 +1,16 @@
-{% extends 'base.twig' %}
+{% extends 'index.twig' %}
 
-{% block spec_styles %}
+{% block styles %}
   <!-- shop styles -->
   <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/shop.css" />
 {% endblock %}
 
-{% block pageheader %}
-  {% include 'shop-header.twig' %}
-{% endblock %}
-
-{% block contentwrap %}
-
-  <div class="uk-container uk-container-large content-container" data-block="content-wrap" data-template="collection.twig">
-    
-    <div class="collection-wrap">
-
+{% block archive_content %}
+  <section class="archive-content-section uk-section uk-section-small uk-container content-container uk-position-relative">
+    <div class="collection-wrap filters-container">
       {% if all_terms is not empty %} 
       
-        <div class="uk-child-width-1-5@m uk-grid-small uk-flex uk-flex-center" uk-grid>
+        <div class="uk-child-width-1-2 uk-child-width-1-5@m uk-grid-small" uk-grid>
       
           {% for term in all_terms %}
           
@@ -32,13 +25,11 @@
         No collection items added...
       
       {% endif %}
-      
     </div>
-    
-  </div>
-
+  </section>
 {% endblock %}
 
-{% block spec_scripts %}
+{% block scripts %}
   <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/shop.js'></script>
+  <script type='text/javascript' src='{{theme.link|e('esc_url')}}/assets/js/woo/shop-filters.js'></script>
 {% endblock %}

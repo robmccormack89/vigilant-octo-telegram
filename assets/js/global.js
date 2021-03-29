@@ -12,6 +12,8 @@ jQuery(function($) {
 				status: '.page-load-status',
 				hideNav: '.pagi',
 				history: false,
+                button: '.view-more-button',
+                scrollThreshold: false,
 			});
 		}
 	};
@@ -25,11 +27,14 @@ jQuery(function($) {
 		var input_value = $(this).val();
 		var query = input_value;
 		var req;
+		
 		if (query.length < 2) {
 			$('#response_search_results').hide();
 			return false;
 		}
-		if (req !== null) req.abort();
+		
+		if (req != null) req.abort();
+		
 		req = $.ajax({
 			type: 'post',
 			url: myAjax.ajaxurl,
@@ -68,11 +73,14 @@ jQuery(function($) {
 		var input_value = $(this).val();
 		var query = input_value;
 		var req;
+		
 		if (query.length < 2) {
 			$('#response_search_results_mobile').hide();
 			return false;
 		}
-		if (req !== null) req.abort();
+		
+		if (req != null) req.abort();
+		
 		req = $.ajax({
 			type: 'post',
 			url: myAjax.ajaxurl,

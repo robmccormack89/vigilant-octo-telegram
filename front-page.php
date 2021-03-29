@@ -23,7 +23,6 @@ $context['product_series'] = get_terms([
 	'taxonomy'    => 'product_series',
 	'hide_empty'  => false,
 	'parent'   => 0,
-	'orderby' => 'meta_value_num', 
 ]);
 // product categories
 $context['product_cats'] = get_terms([

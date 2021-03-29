@@ -447,4 +447,47 @@ acf_add_local_field_group(array(
 	'description' => '',
 ));
 
+acf_add_local_field_group(array(
+	'key' => 'group_60502a0ac480c',
+	'title' => 'Tractors Fields',
+	'fields' => array(
+		array(
+			'key' => 'field_60502a14e5bae',
+			'label' => 'Tractor Price',
+			'name' => 'tractor_price',
+			'type' => 'text',
+			'instructions' => 'Add the Price for the item',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'tractor',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
+
 endif;

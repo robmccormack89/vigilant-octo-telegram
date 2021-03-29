@@ -15,10 +15,10 @@ jQuery(function(){
   // banner swiper
   var slider_swiper = new Swiper('#slideshow_banner', {
     centeredSlides: true,
-    // autoplay: {
-    //   delay: 4000,
-    //   disableOnInteraction: true,
-    // },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true,
+    },
     pagination: {
       el: '.swiper-pagination',
       type: 'progressbar',
@@ -34,10 +34,10 @@ jQuery(function(){
   var info_swiper = new Swiper('#slideshow_info', {
     slidesPerView: 3,
     spaceBetween: 10,
-    // autoplay: {
-    //   delay: 4000,
-    //   disableOnInteraction: true,
-    // },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: true,
+    },
     // init: false,
     pagination: {
       el: '.swiper-pagination',

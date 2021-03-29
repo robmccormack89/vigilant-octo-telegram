@@ -6,11 +6,33 @@
 * @package Vigilant_Octo_Telegram
 */
 
-// function bbloomer_remove_product_tabs( $tabs ) {
-//     unset( $tabs['additional_information'] ); 
-//     return $tabs;
-// }
-// add_filter( 'woocommerce_product_tabs', 'bbloomer_remove_product_tabs', 9999 );
+// change the post type labels for the Competition cpt
+function nk_custom_post_type_label_woo( $args ){
+  $labels = nk_get_cpt_labels( __( 'Tractor Part', 'vigilant-octo-telegram' ), __( 'Tractor Parts', 'vigilant-octo-telegram' ));
+  $args['labels'] = $labels;
+  return $args;
+}
+add_filter( 'woocommerce_register_post_type_product', 'nk_custom_post_type_label_woo' );
+
+function nk_get_cpt_labels($single,$plural){
+   $arr = array(
+    'name' => $plural,
+    'singular_name' => $single,
+    'menu_name' => $plural,
+    'add_new' => 'Add '.$single,
+    'add_new_item' => 'Add New '.$single,
+    'edit' => 'Edit',
+    'edit_item' => 'Edit '.$single,
+    'new_item' => 'New '.$single,
+    'view' => 'View '.$plural,
+    'view_item' => 'View '.$single,
+    'search_items' => 'Search '.$plural,
+    'not_found' => 'No '.$plural.' Found',
+    'not_found_in_trash' => 'No '.$plural.' Found in Trash',
+    'parent' => 'Parent '.$single
+ );
+   return $arr;
+}
 
 // custom data tab
 function parts_custom_tab( $tabs ) {
@@ -28,69 +50,13 @@ function parts_custom_tab_content( $slug, $tab ) {
   
   global $product;
   
-  // get the product's cats
-  $terms_cats = get_the_terms($product->ID,'product_cat');
-  // get the product's series (all)
-  $terms_series = get_the_terms($product->ID,'product_series');
-  // get the sku
-  $item_sku = $product->get_sku();
-
-  // if there is series
-  if ($terms_series) :
-
-    // all the series id's will be stored as an array
-    $terms_series_ids = array();
-    
-    // for each series, we store the term_id into the array for later
-    foreach($terms_series as $series) {
-      $terms_series_ids[] .= $series->term_id;
-    }
-    $series_ids = $terms_series_ids;
-
-    // get the series(parent only) using the using the series_ids from above
-    $parent_series = get_terms([
-      'taxonomy'    => 'product_series',
-      'hide_empty'  => true,
-      'parent' => 0,
-      'include' => $series_ids,
-    ]);
-    // get the models(series children) using the using the series_ids from above 
-    $models = get_terms([
-      'taxonomy'  => 'product_series',
-      'hide_empty'  => true,
-      'childless' => true,
-      'hierarchical'  => false,
-      'include' => $series_ids,
-    ]);
-    
-  endif;
+  $context['post'] = Timber::get_post();
+  $product = wc_get_product( $context['post']->ID );
+  $context['product'] = $product;
   
-  if ($terms_cats) :
-    echo '<div>Categories: ';
-    foreach ($terms_cats as $cat) {
-      $cat_names[] = $cat->name;
-    };
-    echo '<span>' . implode(", ", $cat_names) . '</span>';
-    echo '</div>';
-  endif;
+  wp_reset_postdata();
   
-  if ($terms_series) :
-    
-    if ($parent_series) :
-      foreach ($parent_series as $series) {
-        $series_names[] = $series->name;
-      };
-      echo '<span>' . implode(", ", $series_names) . '</span>';
-    endif;
-    
-    if ($models) :
-      foreach ($models as $model) {
-        $model_names[] = $model->name;
-      };
-      echo '<span>' . implode(", ", $model_names) . '</span>';
-    endif;
-    
-  endif;
+  Timber::render( 'data-tab.twig', $context );
   
 }
   
@@ -153,7 +119,7 @@ function custom_store_notice () {
   $notice = get_option( 'woocommerce_demo_store_notice' ); 
 
   if ( empty( $notice ) ) { 
-    $notice = __( 'This is a demo store for testing purposes — no orders shall be fulfilled.', 'woocommerce' ); 
+    $notice = __( 'This is a demo store for testing purposes — no orders shall be fulfilled.', 'vigilant-octo-telegram' ); 
   } 
 
   echo apply_filters( 'woocommerce_demo_store', '<div class="woocommerce-store-notice demo_store"><div class="store-notice-wrap">' . wp_kses_post( $notice ) . ' <a href="#" class="woocommerce-store-notice__dismiss-link">' . esc_html__( 'Dismiss', 'woocommerce' ) . ' <i class="fas fa-times"></i></a></div></div>', $notice ); 

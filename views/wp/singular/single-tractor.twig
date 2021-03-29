@@ -1,0 +1,71 @@
+{% extends "page.twig" %}
+
+{% block styles %}
+  <!-- single post styles -->
+  <link rel="stylesheet" href="{{theme.link|e('esc_url')}}/assets/css/post.css" />
+{% endblock %}
+
+{% block article %}
+  <article id="post-{{post.id|e('html_attr')}}" class="uk-article {{post.class|e('html_attr')}}" data-template="single.twig">
+    
+    {% block post_header %}
+      {% if post.thumbnail %}
+        <figure class="single-post-featured uk-position-relative">
+          <img class="article-img" data-src="{{ post.thumbnail.src|e('esc_url')|resize(1920, 300) }}" width="1920" height="300" alt="{{ post.thumbnail.alt|e('html_attr') }}" uk-img>
+          {% if post.thumbnail.caption %}
+            <figcaption class="uk-text-center uk-position-bottom-center">{{ post.thumbnail.caption|e('esc_html') }}</figcaption>
+          {% endif %}
+        </figure>
+      {% endif %}
+    {% endblock %}
+  
+    {% block post_content %}
+      <section class="single-post-content uk-article uk-section uk-section-small uk-container uk-container-xsmall">
+          
+        <h1 class="uk-article-title uk-h2 uk-margin-remove-top">
+          {{post.title|e('esc_html')}}
+        </h1>
+        
+        <p class="uk-article-meta uk-margin-small-bottom">
+          {{post.date|e('esc_html')}} | {{ post.terms( {query:{taxonomy:'tractor_type', orderby:'name', order: 'ASC', parent: 0, childless: 0, child_of: 0}} )|join(', ')|e('esc_html') }}
+        </p>
+        
+        {% if fn('has_excerpt') %}
+          <p class="uk-text-lead">{{ post.preview.read_more('')|e('esc_html') }}</p>
+        {% endif %}
+        
+        {{ post.content|e('wp_kses_post') }}
+          
+      </section>
+    {% endblock %}
+    
+    {% block post_footer %}
+      <footer class="single-post-footer uk-section uk-section-small uk-container uk-container-xsmall padding-remove-top">
+        
+        <div class="article-pagination uk-child-width-1-2" uk-grid>
+          
+          <div class="prev-article uk-text-left">
+            {% if post.next %}
+              <a href="{{ post.next.link|e('esc_url') }}" class="uk-link-reset">
+                <div class="uk-text-primary uk-text-bold"><span uk-icon="icon: arrow-left"></span> {{ __('Previous Article', 'vigilant-octo-telegram') }}</div>
+                <div class="uk-text-italic uk-width-large uk-visible@m">{{ post.next.title|e('esc_html') }}</div>
+              </a>
+            {% endif %}
+          </div>
+          
+          <div class="next-article uk-text-right">
+            {% if post.prev %}
+              <a href="{{ post.prev.link|e('esc_url') }}" class="uk-link-reset">
+                <div class="uk-text-primary uk-text-bold">{{ __('Next Article', 'vigilant-octo-telegram') }} <span uk-icon="icon: arrow-right"></span></div>
+                <div class="uk-text-italic uk-width-large uk-visible@m">{{ post.prev.title|e('esc_html') }}</div>
+              </a>
+            {% endif %}
+          </div>
+    
+        </div>
+        
+      </footer>
+    {% endblock %}
+    
+  </article>
+{% endblock %}

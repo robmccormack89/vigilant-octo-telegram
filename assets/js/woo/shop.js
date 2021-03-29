@@ -23,9 +23,9 @@ jQuery(function($) {
     }
   };
   // on load
-  $("#MainContent").load(ShopStyles());
-  $("#MainContent").load(ShopFilterScrollTo());
-  $("#MainContent").load(themePagination());
+  $("#ContentSection").load(ShopStyles());
+  $("#ContentSection").load(ShopFilterScrollTo());
+  $("#ContentSection").load(themePagination());
   // dom modified: on infinite scroll
   $("body").on('DOMSubtreeModified', ".shop-container", ShopStyles);
   

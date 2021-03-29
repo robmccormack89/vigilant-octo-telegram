@@ -1,9 +1,14 @@
 {% set url_out = function('get_term_link', new_cat.term_id) ~ '?product_series=' ~ term_slug %}
+
+{% set thumbnail_id = function ('get_term_meta', new_cat.term_id, 'thumbnail_id', true ) %}
+{% set thumb_src = function ('wp_get_attachment_url', thumbnail_id) %}
+{% set thumb_alt = function ('get_post_meta', thumbnail_id, '_wp_attachment_image_alt', true) %}
+
 <div>
   <div class="uk-card uk-card-hover uk-card-small uk-text-center">
     <div class="uk-card-media-top">
-      <img data-src="{{ thumb_link|e('esc_url')|default('https://via.placeholder.com/500x500.png?text=+') }}" data-width data-height alt="" uk-img>
-      <a class="stretch-me" data-link="{{url_out|e('esc_url')}}" onclick="quickLoad(event);"></a>
+      <img data-src="{{ thumb_src|resize(86, 86)|default(default_category_image.url|e('esc_url')|default(theme.link|e('esc_url') ~ '/assets/images/stock-cat.jpg')) }}" width="86" height="86" alt="{{thumb_alt}}" uk-img>
+      <a class="stretch-me" data-link="{{url_out|e('esc_url')}}"></a>
     </div>
     <div class="uk-card-body">
       <div class="uk-text-emphasis uk-margin-small-top uk-margin-remove">

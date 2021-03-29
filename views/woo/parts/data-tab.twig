@@ -1,0 +1,18 @@
+{% set series = post.terms( {query:{taxonomy:'product_series', orderby:'name', order: 'ASC', parent: 0}} ) %}
+{% if series is not empty %}
+  <div class="uk-overflow-auto">
+    <table class="shop_attributes uk-table uk-table-divider uk-margin-remove">
+      <tbody>
+        {% for term in series %}
+          <tr>
+            <th>{{term.name|e('esc_html')}}</th>
+            {% set models = post.terms( {query:{taxonomy:'product_series', orderby:'name', order: 'ASC', child_of: term.term_id}} ) %}
+            {% for item in models %} 
+              <td>{{item.name|e('esc_html')}}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endif %}

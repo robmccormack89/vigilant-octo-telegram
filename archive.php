@@ -26,6 +26,9 @@ if ( is_day() ) {
 } elseif ( is_post_type_archive() ) {
 	$context['title'] = post_type_archive_title( '', false );
 	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
+} elseif ( is_tax('tractor_type') ) {
+	$context['title'] = single_term_title( 'Tractor type: ', false );;
+  array_unshift( $templates, 'archive-tractor-types.twig' );
 }
 
 $context['pagination'] = Timber::get_pagination();

@@ -7,6 +7,9 @@
     transform: rotate(360deg);
   }
 }
+.quickloader {
+  border: none;
+}
 .quickloader::before {
   content: "";
   position: absolute;

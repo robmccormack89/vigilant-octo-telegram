@@ -23,7 +23,6 @@
 </nav>
 
 {% if pagination.next %}
-  <div class="scroll-loaders uk-section uk-section-small padding-remove-top uk-section-default">
     <div class="page-load-status">
       <div class="loader-ellips infinite-scroll-request">
         <span class="loader-ellips__dot"></span>
@@ -34,5 +33,5 @@
       <p class="infinite-scroll-last">{{ __('No more items...', 'vigilant-octo-telegram') }}</p>
       <p class="infinite-scroll-error">{{ __('No more items to load...', 'vigilant-octo-telegram') }}</p>
     </div>
-  </div>
+    <p><button class="view-more-button uk-button uk-button-primary uk-align-center uk-margin-top-remove uk-margin-bottom-remove">View more</button></p>
 {% endif %}

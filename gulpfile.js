@@ -7,7 +7,7 @@ const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 
 const config = {
-  "text_domain" : "vigilant-octo-telegram",
+  "text_domain" : "ned-murphy-tractors-theme",
   "twig_files"  : "views/**/*.twig",
   "php_files"   : "**/*.php",
   "cacheFolder" : "views/temp",

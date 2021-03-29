@@ -29,6 +29,9 @@
   z-index: 99999;
   bottom: 16px!important;
 }
+#slideshow_info .swiper-slide .uk-text-center {
+    background-color: #fff;
+}
 
 .front-page .related, .front-page .upsells {
   display: none;

@@ -106,21 +106,20 @@ if ( is_singular( 'product' ) ) {
     
       $context['current_series_obj_slug'] = get_query_var('product_series');
       $context['current_cat_obj_slug'] = $queried_object->slug;
-      $context['howya'] = 'hello';
     
       $someposts = get_posts(
-          array(
-              'post_type' => 'product',
-              'posts_per_page' => -1,
-              'fields' => 'ids', // return an array of ids
-              'tax_query' => array(
-                  array(
-                      'taxonomy' => 'product_series',
-                      'field' => 'slug',
-                      'terms' => $context['current_series_obj_slug'],
-                  )
-              )
+        array(
+          'post_type' => 'product',
+          'posts_per_page' => -1,
+          'fields' => 'ids', // return an array of ids
+          'tax_query' => array(
+            array(
+              'taxonomy' => 'product_series',
+              'field' => 'slug',
+              'terms' => $context['current_series_obj_slug'],
+            )
           )
+        )
       );
     
       // Get subcategories of the current category
@@ -129,25 +128,11 @@ if ( is_singular( 'product' ) ) {
         'hide_empty'  => true,
         'parent'      => $term_id,
         'object_ids' => $someposts,
-        // 'tax_query' => array(
-        //     'relation' => 'AND',
-        //     array(
-        //         'taxonomy' => 'tax1',
-        //         'field'    => 'slug',
-        //         'terms'    => $terms,
-        //     ),
-        //     array(
-        //         'taxonomy' => 'tax2',
-        //         'field'    => 'slug',
-        //         'terms'    => $terms,
-        //     )
-        // )
       ]);
     
     } else {
     
       $context['current_series_obj_slug'] = '';
-      $context['howya'] = '';
     
     }
     
@@ -212,7 +197,7 @@ if ( is_singular( 'product' ) ) {
   if (is_shop()) {
     
     // set shop page archive title
-    $context['title'] = 'Shop';
+    $context['title'] = get_bloginfo( 'name' );
     // get shop main thumbnail
     $context['archive_header_bg'] = get_template_directory_uri() . '/assets/images/field.jpg';
     

@@ -46,6 +46,17 @@ class Vigilant_Octo_Telegram extends Timber\Site
     add_action('init', array( $this, 'register_navigation_menus' ));
     parent::__construct();
   }
+  
+  // this makes custom taxonomy (status) work with archive.php->archive.twig templates with pre_get_post filter added to class construct above
+  public function add_custom_types_to_tax( $query )
+  {
+    if( is_category() || is_tax('tractor_type') || is_tag() && empty( $query->query_vars['suppress_filters'] ) ) {
+      // Get all your post types
+      $post_types = get_post_types();
+      $query->set( 'post_type', $post_types );
+      return $query;
+    }
+  }
 
   public function register_post_types()
   {
@@ -98,6 +109,58 @@ class Vigilant_Octo_Telegram extends Timber\Site
   		'show_in_rest'          => false,
   	);
   	register_post_type( 'slide', $args_one );
+
+    
+  	$labels_tractors = array(
+  		'name'                  => _x( 'Tractors', 'Post Type General Name', 'vigilant-octo-telegram' ),
+  		'singular_name'         => _x( 'Tractor', 'Post Type Singular Name', 'vigilant-octo-telegram' ),
+  		'menu_name'             => __( 'Tractors', 'vigilant-octo-telegram' ),
+  		'name_admin_bar'        => __( 'Tractor', 'vigilant-octo-telegram' ),
+  		'archives'              => __( 'Tractor Archives', 'vigilant-octo-telegram' ),
+  		'attributes'            => __( 'Tractor Attributes', 'vigilant-octo-telegram' ),
+  		'parent_item_colon'     => __( 'Parent Tractor:', 'vigilant-octo-telegram' ),
+  		'all_items'             => __( 'All Tractors', 'vigilant-octo-telegram' ),
+  		'add_new_item'          => __( 'Add New Tractor', 'vigilant-octo-telegram' ),
+  		'add_new'               => __( 'Add New', 'vigilant-octo-telegram' ),
+  		'new_item'              => __( 'New Tractor', 'vigilant-octo-telegram' ),
+  		'edit_item'             => __( 'Edit Tractor', 'vigilant-octo-telegram' ),
+  		'update_item'           => __( 'Update Tractor', 'vigilant-octo-telegram' ),
+  		'view_item'             => __( 'View Tractor', 'vigilant-octo-telegram' ),
+  		'view_items'            => __( 'View Tractors', 'vigilant-octo-telegram' ),
+  		'search_items'          => __( 'Search Tractor', 'vigilant-octo-telegram' ),
+  		'not_found'             => __( 'Not found', 'vigilant-octo-telegram' ),
+  		'not_found_in_trash'    => __( 'Not found in Trash', 'vigilant-octo-telegram' ),
+  		'featured_image'        => __( 'Featured Image', 'vigilant-octo-telegram' ),
+  		'set_featured_image'    => __( 'Set featured image', 'vigilant-octo-telegram' ),
+  		'remove_featured_image' => __( 'Remove featured image', 'vigilant-octo-telegram' ),
+  		'use_featured_image'    => __( 'Use as featured image', 'vigilant-octo-telegram' ),
+  		'insert_into_item'      => __( 'Insert into item', 'vigilant-octo-telegram' ),
+  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'vigilant-octo-telegram' ),
+  		'items_list'            => __( 'Tractors list', 'vigilant-octo-telegram' ),
+  		'items_list_navigation' => __( 'Items list navigation', 'vigilant-octo-telegram' ),
+  		'filter_items_list'     => __( 'Filter items list', 'vigilant-octo-telegram' ),
+  	);
+  	$args_tractors = array(
+  		'label'                 => __( 'Tractor', 'vigilant-octo-telegram' ),
+  		'description'           => __( 'Tractors for Sale/Breaking', 'vigilant-octo-telegram' ),
+  		'labels'                => $labels_tractors,
+  		'supports'              => array( 'title', 'excerpt', 'editor', 'thumbnail', 'revisions' ),
+  		'hierarchical'          => false,
+  		'public'                => true,
+  		'show_ui'               => true,
+  		'show_in_menu'          => true,
+  		'menu_position'         => 5,
+  		'show_in_admin_bar'     => true,
+  		'show_in_nav_menus'     => true,
+  		'can_export'            => true,
+  		'has_archive'           => 'tractors-for-sale-breaking',
+  		'exclude_from_search'   => false,
+  		'publicly_queryable'    => true,
+  		'capability_type'       => 'page',
+  	);
+  	register_post_type( 'tractor', $args_tractors );
+    
+    
   }
 
   public function register_taxonomies()
@@ -143,6 +206,46 @@ class Vigilant_Octo_Telegram extends Timber\Site
       'update_count_callback' => '_update_post_term_count',
   	);
   	register_taxonomy( 'product_series', array( 'product' ), $args_series );
+    
+  	$labels_type = array(
+  		'name'                       => _x( 'Tractor Types', 'Taxonomy General Name', 'vigilant-octo-telegram' ),
+  		'singular_name'              => _x( 'Tractor Type', 'Taxonomy Singular Name', 'vigilant-octo-telegram' ),
+  		'menu_name'                  => __( 'Tractor Type', 'vigilant-octo-telegram' ),
+  		'all_items'                  => __( 'All Tractor Types', 'vigilant-octo-telegram' ),
+  		'parent_item'                => __( 'Parent Tractor Type', 'vigilant-octo-telegram' ),
+  		'parent_item_colon'          => __( 'Parent Tractor Type:', 'vigilant-octo-telegram' ),
+  		'new_item_name'              => __( 'New Tractor Type Name', 'vigilant-octo-telegram' ),
+  		'add_new_item'               => __( 'Add New Tractor Type', 'vigilant-octo-telegram' ),
+  		'edit_item'                  => __( 'Edit Tractor Type', 'vigilant-octo-telegram' ),
+  		'update_item'                => __( 'Update Tractor Type', 'vigilant-octo-telegram' ),
+  		'view_item'                  => __( 'View Tractor Type', 'vigilant-octo-telegram' ),
+  		'separate_items_with_commas' => __( 'Separate items with commas', 'vigilant-octo-telegram' ),
+  		'add_or_remove_items'        => __( 'Add or remove Tractor Types', 'vigilant-octo-telegram' ),
+  		'choose_from_most_used'      => __( 'Choose from the most used', 'vigilant-octo-telegram' ),
+  		'popular_items'              => __( 'Popular Items', 'vigilant-octo-telegram' ),
+  		'search_items'               => __( 'Search Items', 'vigilant-octo-telegram' ),
+  		'not_found'                  => __( 'Not Found', 'vigilant-octo-telegram' ),
+  		'no_terms'                   => __( 'No items', 'vigilant-octo-telegram' ),
+  		'items_list'                 => __( 'Items list', 'vigilant-octo-telegram' ),
+  		'items_list_navigation'      => __( 'Items list navigation', 'vigilant-octo-telegram' ),
+  	);
+  	$rewrite_type = array(
+  		'slug'                       => 'tractor-type',
+  		'with_front'                 => true,
+  		'hierarchical'               => false,
+  	);
+  	$args_type = array(
+  		'labels'                     => $labels_type,
+  		'hierarchical'               => true,
+  		'public'                     => true,
+  		'show_ui'                    => true,
+  		'show_admin_column'          => true,
+  		'show_in_nav_menus'          => true,
+  		'show_tagcloud'              => true,
+  		'rewrite'                    => $rewrite_type,
+  	);
+  	register_taxonomy( 'tractor_type', array( 'tractor' ), $args_type );
+    
   }
 
   public function register_widget_areas()

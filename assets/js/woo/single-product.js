@@ -12,6 +12,9 @@ jQuery(function($) {
   $(".out-of-stock").addClass("uk-text-danger");
   // tab heading
   $(".tab-content h2").addClass("uk-h4");
+  
+  $("#ProductButtons .button").addClass("uk-button uk-button-small uk-button-primary");
+  $(".onsale").addClass("uk-card-badge uk-label");
 });
 
 jQuery(function(){

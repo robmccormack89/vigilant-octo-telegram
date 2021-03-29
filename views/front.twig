@@ -67,7 +67,7 @@
           {% set series_thumb_alt = function ('get_post_meta', thumbnail_id, '_wp_attachment_image_alt', true) %}
           <div class="swiper-slide">
             <a href="{{fn('get_term_link', term.slug, 'product_series')|e('esc_url')}}" class="uk-link-reset">
-              <div class="uk-text-center">
+              <div class="uk-text-center uk-box-shadow-small">
                 <div>
                   <img data-src="{{series_thumb|e('esc_url')|resize(215, 150)|default(default_series_image.url|e('esc_url')|default(theme.link|e('esc_url') ~ '/assets/images/stock-series.png'))}}" width="215" height="150" alt="{{series_thumb_alt|e('html_attr')|default(default_series_image.alt|e('html_attr'))}}" uk-img>
                 </div>
@@ -79,7 +79,7 @@
         
         <div class="swiper-slide">
           <a href="{{homepage_all_series_link|e('esc_url')|default('#')}}" class="uk-link-reset">
-            <div class="uk-text-center">
+            <div class="uk-text-center uk-box-shadow-small">
               <div>
                 <img data-src="{{default_series_image.url|e('esc_url')|default(theme.link|e('esc_url') ~ '/assets/images/stock-series.png')}}" width="215" height="150" alt="{{series_thumb_alt|e('html_attr')|default(default_series_image.alt|e('html_attr'))}}" uk-img>
               </div>

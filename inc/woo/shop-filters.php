@@ -156,7 +156,7 @@ function add_query_arg_product_cats_for_filters($cat_slug) {
   // if the 'category' exists in the current page path
   if($found) {
     // before new path
-    $new_path = '/shop';
+    $new_path = get_permalink(woocommerce_get_page_id('shop'));
     // remove the current url page path from url string & set new path
     $new_path .= str_replace($url_path,'/',$the_url);
   } else {
@@ -174,7 +174,7 @@ function remove_query_arg_product_cats_for_filters() {
   // $current_url_page_path = strtok($current_uri, '?'); // without https & host
   $current_url_query_string = $_SERVER['QUERY_STRING']; // isolated query string: key=value
   // shop base url
-  $shop_base = '/shop';
+  $shop_base = get_permalink(woocommerce_get_page_id('shop'));
   // key values
   $query_key_value = 'product_cat';
   $cat_key_value = 'product-category';
@@ -211,7 +211,7 @@ function add_query_arg_product_series_for_filters($cat_slug) {
   // if the 'category' exists in the current page path
   if($found) {
     // before new path
-    $new_path = '/shop';
+    $new_path = get_permalink(woocommerce_get_page_id('shop'));
     // remove the current url page path from url string & set new path
     $new_path .= str_replace($url_path,'/',$the_url);
   } else {
@@ -229,7 +229,7 @@ function remove_query_arg_product_series_for_filters() {
   // $current_url_page_path = strtok($current_uri, '?'); // without https & host
   $current_url_query_string = $_SERVER['QUERY_STRING']; // isolated query string: key=value
   // shop base url
-  $shop_base = '/shop';
+  $shop_base = get_permalink(woocommerce_get_page_id('shop'));
   // key values
   $query_key_value = 'product_series';
   $cat_key_value = 'product-series-model';
